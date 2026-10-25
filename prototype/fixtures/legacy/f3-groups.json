@@ -1,0 +1,23 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "id": "legacy-f3-groups",
+  "name": "이음 검사 — 형식 3 · 단체 종류별 · 연합 · 정권 · 간지 설정 · 문화권",
+  "version": "1.0.0",
+  "spheres": [{ "id": "mist-sea", "name": "안개 바다권", "order": 150 }],
+  "tracks": [{ "id": "ta", "name": "가 줄", "sphere": "mist-sea" }, { "id": "tb", "name": "나 줄", "sphere": "mist-sea" }],
+  "yearCycle": { "names": ["샘물", "숲길", "볕뉘", "들꽃", "바람", "노을"], "start": 2, "label": "여섯해" },
+  "periods": [
+    { "id": "p-top", "name": "윗나라", "track": "ta", "start": 100, "end": 500, "leaders": [["첫 임금", 100, 300], ["둘 임금", 300, 500]] },
+    { "id": "p-side", "name": "옆나라", "track": "ta", "start": 100, "end": 500 },
+    { "id": "p-far", "name": "먼나라", "track": "tb", "start": 100, "end": 500 }
+  ],
+  "groups": [
+    { "id": "g-blue", "track": "ta", "name": "푸른 무리", "type": "faction", "start": 120, "end": 300, "within": "윗나라", "power": [["집권", 130, 160]], "people": ["윗나라:첫 임금@100"] },
+    { "id": "g-red", "track": "ta", "name": "붉은 당", "type": "party", "start": 200, "end": 400, "within": [{ "polity": "윗나라", "end": 250 }, { "polity": "옆나라", "start": 250 }], "from": [{ "group": "푸른 무리", "how": "rename", "note": "이름을 바꿈" }] },
+    { "id": "g-league", "track": "ta", "name": "두 나라 연합", "type": "coalition", "start": 150, "end": 250, "members": [{ "polity": "윗나라", "role": "맹주" }, "옆나라"] },
+    { "id": "g-regime", "track": "ta", "name": "그림자 정권", "type": "regime", "start": 160, "end": 190, "within": "윗나라" },
+    { "id": "g-plain", "track": "tb", "name": "이름 없는 모임", "start": 130, "end": 140, "within": "먼나라" }
+  ],
+  "events": [{ "id": "ev-1", "track": "ta", "polity": "윗나라", "name": "무리가 모임", "start": 120 }]
+}

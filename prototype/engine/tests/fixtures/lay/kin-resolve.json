@@ -1,0 +1,39 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "id": "t-kin-resolve",
+  "name": "혈연 부모 잇기 검사",
+  "version": "1.0.0",
+  "description": "가상 나라 · 가상 사람만 — kin-resolve(357e5a3) 갈래: 같은 나라 지도자가 다른 시대의 같은 이름 인물보다 먼저 · 같은 이름 지도자 여럿이면 생몰로 고름",
+  "tracks": [{ "id": "t", "name": "가상 줄" }],
+  "periods": [
+    {
+      "id": "p-garam", "track": "t", "name": "가람", "start": 900, "end": 1100,
+      "leaders": [
+        { "name": "원도왕", "start": 900, "end": 940 },
+        { "name": "바다왕", "start": 940, "end": 960 },
+        { "name": "한솔왕", "start": 960, "end": 1000, "parents": [{ "who": "원도왕" }] },
+        { "name": "현명왕", "start": 1000, "end": 1020 },
+        { "name": "늘봄왕", "start": 1020, "end": 1100, "parents": [{ "who": "바다왕" }] }
+      ]
+    },
+    {
+      "id": "p-narae", "track": "t", "name": "나래", "start": 1400, "end": 1600,
+      "leaders": [
+        { "name": "현명왕", "start": 1450, "end": 1470 },
+        { "name": "고요왕", "start": 1470, "end": 1600 }
+      ]
+    },
+    {
+      "id": "p-dasom", "track": "t", "name": "다솜", "start": 1440, "end": 1520,
+      "leaders": [
+        { "name": "다솜왕", "start": 1490, "end": 1510, "parents": [{ "who": "현명왕" }], "accession": { "from": "현명왕", "kin": "son" } }
+      ]
+    }
+  ],
+  "figures": [
+    { "id": "f-wondo", "track": "t", "name": "원도왕", "birth": 1500, "death": 1550 },
+    { "id": "f-bada", "track": "t", "name": "바다왕", "birth": 1050, "death": 1090 },
+    { "id": "f-solmoe", "track": "t", "name": "솔뫼", "birth": 1010, "death": 1060, "parents": [{ "who": "현명왕" }] }
+  ]
+}

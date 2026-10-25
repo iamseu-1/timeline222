@@ -1,0 +1,17 @@
+[
+  {
+    "path": "별여울-본문.txt",
+    "bytes": 206,
+    "sha256": "b81d573cd010c6446dc7d29ecfcb55e9913dfc811e881c583770fcd654ab298c"
+  },
+  {
+    "path": "별여울-삽화.png",
+    "bytes": 18296,
+    "sha256": "d6dd31641bf57cd82be11b5493a9c01b485d6e2d8d31cdb9112cf257042323e0"
+  },
+  {
+    "path": "별여울-원문.pdf",
+    "bytes": 37364,
+    "sha256": "09177bf1e638630b63b6647f8d75817ef4fccc57acb56a3d0462487da5d17095"
+  }
+]

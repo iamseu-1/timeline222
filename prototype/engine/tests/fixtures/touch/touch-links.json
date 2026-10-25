@@ -1,0 +1,75 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 4,
+  "id": "touch-links",
+  "name": "닿는 트랙 시험 — 형식 4 이음(실권 · 빌림)",
+  "version": "1.0.0",
+  "description": "리메이크 3단계 저장소 걸음 8의 넓이 검사 자료. 남의 실권(power[].over — id · 이름)과 직위 줄 빌림(leadersFrom · cabinetsFrom · offices[].from)이 서로 다른 트랙을 잇는다. 이름은 모두 지어낸 것입니다.",
+  "spheres": [
+    { "id": "tl-sphere", "name": "시험 분지권", "order": 1 }
+  ],
+  "tracks": [
+    { "id": "tl-lead", "name": "앞줄", "sphere": "tl-sphere" },
+    { "id": "tl-hold", "name": "쥔 줄", "sphere": "tl-sphere" },
+    { "id": "tl-weak", "name": "약한 줄", "sphere": "tl-sphere" },
+    { "id": "tl-weak2", "name": "약한 줄 둘", "sphere": "tl-sphere" },
+    { "id": "tl-src", "name": "원천 줄", "sphere": "tl-sphere" },
+    { "id": "tl-b1", "name": "빌린 줄 하나", "sphere": "tl-sphere" },
+    { "id": "tl-b2", "name": "빌린 줄 둘", "sphere": "tl-sphere" },
+    { "id": "tl-b3", "name": "빌린 줄 셋", "sphere": "tl-sphere" },
+    { "id": "tl-quiet", "name": "조용한 줄", "sphere": "tl-sphere" }
+  ],
+  "objects": [
+    { "id": "o-lead", "name": "앞선 나라", "track": "tl-lead", "start": 600, "end": 1100 },
+    {
+      "id": "o-hold", "name": "쥔 나라", "track": "tl-hold", "start": 700, "end": 1000,
+      "power": [ { "name": "약한 나라의 실권", "start": 760, "end": 840, "over": "o-weak" } ]
+    },
+    {
+      "id": "o-hold2", "name": "쥔 나라 둘", "track": "tl-hold", "start": 1000, "end": 1080,
+      "power": [ { "name": "약한 나라 둘의 실권", "start": 1010, "end": 1050, "over": "약한 나라 둘" } ]
+    },
+    { "id": "o-weak", "name": "약한 나라", "track": "tl-weak", "start": 720, "end": 900 },
+    { "id": "o-weak2", "name": "약한 나라 둘", "track": "tl-weak2", "start": 980, "end": 1090 },
+    {
+      "id": "o-src", "name": "원천 나라", "track": "tl-src", "start": 650, "end": 1050,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            { "name": "원천왕 하나", "start": 700, "end": 760 },
+            { "name": "원천왕 둘", "start": 760, "end": 820 },
+            { "name": "원천왕 셋", "start": 820, "end": 900 }
+          ]
+        },
+        {
+          "name": "내각",
+          "cells": [
+            { "name": "원천 재상 하나", "start": 710, "end": 790 },
+            { "name": "원천 재상 둘", "start": 790, "end": 880 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-b1", "name": "빌린 나라 하나", "track": "tl-b1", "start": 690, "end": 920,
+      "offices": [ { "name": "지도자", "from": "o-src" } ]
+    },
+    {
+      "id": "o-b2", "name": "빌린 나라 둘", "track": "tl-b2", "start": 690, "end": 920,
+      "offices": [
+        { "name": "지도자", "cells": [ { "name": "둘째 나라 임금", "start": 700, "end": 850 } ] },
+        { "name": "내각", "from": "원천 나라/내각" }
+      ]
+    },
+    {
+      "id": "o-b3", "name": "빌린 나라 셋", "track": "tl-b3", "start": 690, "end": 920,
+      "offices": [
+        { "name": "지도자", "cells": [ { "name": "셋째 나라 임금", "start": 700, "end": 850 } ] },
+        { "name": "내각", "cells": [ { "name": "셋째 나라 재상", "start": 720, "end": 800 } ] },
+        { "name": "감찰", "from": "o-src/지도자" }
+      ]
+    },
+    { "id": "o-quiet", "name": "조용한 나라", "track": "tl-quiet", "start": 640, "end": 1060 }
+  ]
+}

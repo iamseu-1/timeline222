@@ -1,0 +1,12 @@
+[
+ {
+  "uid": "가상견본/p-garam",
+  "kind": "period",
+  "json": "{\"id\":\"p-garam\",\"uid\":\"가상견본/p-garam\",\"kind\":\"period\",\"itemKind\":\"period\",\"polityKind\":\"state\",\"name\":\"가람 나라\",\"track\":\"mw-edge\",\"start\":1400,\"end\":1520,\"endY\":1520,\"color\":\"#c8a27c\",\"packName\":\"같은 사람 견본\",\"leaders\":[{\"name\":\"첫 임금\",\"start\":1400,\"end\":1425,\"ordinal\":1},{\"name\":\"둘째 임금\",\"start\":1425,\"end\":1440,\"ordinal\":2},{\"name\":\"셋째 임금\",\"start\":1440,\"end\":1455,\"ordinal\":3},{\"name\":\"넷째 임금\",\"start\":1455,\"end\":1480,\"ordinal\":4,\"accession\":{\"from\":\"셋째 임금\",\"kin\":\"younger-brother\",\"how\":\"usurpation\"},\"person\":\"넷째 임금\"},{\"name\":\"여섯째 임금\",\"start\":1480,\"end\":1520,\"ordinal\":5}],\"x_lineage\":{\"leader:3\":{\"from\":{\"name\":\"셋째 임금\",\"uid\":\"가상견본/p-garam\",\"ref\":\"leader:2\",\"polity\":\"가람 나라\"},\"kin\":\"동생\",\"kinId\":\"younger-brother\",\"how\":\"찬탈\",\"howId\":\"usurpation\"}},\"x_persons\":{\"leader:3\":{\"others\":[{\"name\":\"넷째 임금\",\"uid\":\"가상견본/p-pogu\",\"ref\":\"leader:1\",\"polity\":\"포구 나라\",\"when\":\"1470년 ~ 1480년\"}],\"parents\":[{\"name\":\"둘째 임금\",\"uid\":\"가상견본/p-garam\",\"ref\":\"leader:1\",\"polity\":\"가람 나라\",\"as\":\"부\"}],\"children\":[{\"name\":\"여섯째 임금\",\"uid\":\"가상견본/p-garam\",\"ref\":\"leader:4\",\"polity\":\"가람 나라\"}]}}}"
+ },
+ {
+  "uid": "가상견본/p-pogu",
+  "kind": "period",
+  "json": "{\"id\":\"p-pogu\",\"uid\":\"가상견본/p-pogu\",\"kind\":\"period\",\"itemKind\":\"period\",\"polityKind\":\"state\",\"name\":\"포구 나라\",\"track\":\"mw-edge\",\"start\":1450,\"end\":1510,\"endY\":1510,\"color\":\"#b9c7a2\",\"packName\":\"같은 사람 견본\",\"leaders\":[{\"name\":\"포구 첫 임금\",\"start\":1450,\"end\":1470,\"ordinal\":1},{\"name\":\"넷째 임금\",\"start\":1470,\"end\":1480,\"ordinal\":2,\"accession\":{\"from\":\"포구 첫 임금\",\"how\":\"conquest\"},\"person\":\"넷째 임금\"},{\"name\":\"포구 셋째 임금\",\"start\":1480,\"end\":1510,\"ordinal\":3}],\"x_lineage\":{\"leader:1\":{\"from\":{\"name\":\"포구 첫 임금\",\"uid\":\"가상견본/p-pogu\",\"ref\":\"leader:0\",\"polity\":\"포구 나라\"},\"how\":\"정복\",\"howId\":\"conquest\"}},\"x_persons\":{\"leader:1\":{\"others\":[{\"name\":\"넷째 임금\",\"uid\":\"가상견본/p-garam\",\"ref\":\"leader:3\",\"polity\":\"가람 나라\",\"when\":\"1455년 ~ 1480년\"}]}}}"
+ }
+]

@@ -1,0 +1,1047 @@
+{
+ "at": -1477918080,
+ "end": -1477391040,
+ "window": 5259600,
+ "eras": [
+  {
+   "track": 1,
+   "name": "유리해안",
+   "color": 10534085,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-coast-0",
+     "name": "유리항 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/culture-coast",
+     "name": "유리항 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-coast",
+     "name": "별목 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "track": 2,
+   "name": "흑요산맥",
+   "color": 12297109,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-obsidian-0",
+     "name": "검은망치 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/culture-obsidian",
+     "name": "검은망치 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-obsidian",
+     "name": "잔화문 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "track": 3,
+   "name": "수관림",
+   "color": 10337960,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-canopy-0",
+     "name": "높은잎 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/culture-canopy",
+     "name": "높은잎 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-canopy",
+     "name": "새순문 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "track": 4,
+   "name": "청동초원",
+   "color": 14139790,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-steppe-0",
+     "name": "종울벌 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/culture-steppe",
+     "name": "종울벌 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-steppe",
+     "name": "말귀샘 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "track": 5,
+   "name": "거울사막",
+   "color": 14332309,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-mirror-0",
+     "name": "거울샘 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/myth-attested",
+     "name": "첫불 성채국",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/myth-semi",
+     "name": "안개 문지기국",
+     "hs": 1,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/myth-legendary",
+     "name": "두 달의 궁정",
+     "hs": 2,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/myth-disputed",
+     "name": "빈 종 왕국",
+     "hs": 3,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-mirror",
+     "name": "거울샘 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-mirror",
+     "name": "일곱우물 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "track": 6,
+   "name": "재의삼각주",
+   "color": 13935515,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-delta-0",
+     "name": "재물목 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/culture-delta",
+     "name": "재물목 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-delta",
+     "name": "갈대성 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "track": 7,
+   "name": "서리극관",
+   "color": 11252681,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-frost-0",
+     "name": "흰숨항 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/culture-frost",
+     "name": "흰숨항 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-frost",
+     "name": "얼음귀 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "track": 8,
+   "name": "공중열도",
+   "color": 12299464,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-sky-0",
+     "name": "뜬닻 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/culture-sky",
+     "name": "뜬닻 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-sky",
+     "name": "구름턱 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "track": 9,
+   "name": "뿌리심연",
+   "color": 11977624,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-root-0",
+     "name": "꿈실굴 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/culture-root",
+     "name": "꿈실굴 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-root",
+     "name": "고요뿌리 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "track": 10,
+   "name": "황혼습지",
+   "color": 13740473,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-dusk-0",
+     "name": "노을못 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/culture-dusk",
+     "name": "노을못 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-dusk",
+     "name": "물문턱 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "track": 11,
+   "name": "자철분지",
+   "color": 10793399,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-magnet-0",
+     "name": "쇠나침 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/culture-magnet",
+     "name": "쇠나침 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-magnet",
+     "name": "자석문 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "track": 12,
+   "name": "바깥성해",
+   "color": 13152659,
+   "periods": [
+    {
+     "uid": "moonwake-chronicle/p-outer-0",
+     "name": "먼빛항 패총국",
+     "hs": 0,
+     "rank": {
+      "cell": "rank:0",
+      "name": "문지기",
+      "level": 1
+     }
+    },
+    {
+     "uid": "moonwake-chronicle/culture-outer",
+     "name": "먼빛항 매듭토기 문화",
+     "hs": 0,
+     "rank": null
+    },
+    {
+     "uid": "moonwake-chronicle/culture-free-outer",
+     "name": "긴꼬리 울림돌 문화",
+     "hs": 0,
+     "rank": null
+    }
+   ]
+  }
+ ],
+ "phases": [
+  {
+   "track": 1,
+   "name": "유리해안",
+   "color": 10534085,
+   "period": "유리항 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-coast-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-coast-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  },
+  {
+   "track": 2,
+   "name": "흑요산맥",
+   "color": 12297109,
+   "period": "검은망치 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-obsidian-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-obsidian-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  },
+  {
+   "track": 3,
+   "name": "수관림",
+   "color": 10337960,
+   "period": "높은잎 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-canopy-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-canopy-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  },
+  {
+   "track": 4,
+   "name": "청동초원",
+   "color": 14139790,
+   "period": "종울벌 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-steppe-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-steppe-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  },
+  {
+   "track": 5,
+   "name": "거울사막",
+   "color": 14332309,
+   "period": "거울샘 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-mirror-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-mirror-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  },
+  {
+   "track": 6,
+   "name": "재의삼각주",
+   "color": 13935515,
+   "period": "재물목 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-delta-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-delta-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  },
+  {
+   "track": 7,
+   "name": "서리극관",
+   "color": 11252681,
+   "period": "흰숨항 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-frost-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-frost-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  },
+  {
+   "track": 8,
+   "name": "공중열도",
+   "color": 12299464,
+   "period": "뜬닻 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-sky-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-sky-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  },
+  {
+   "track": 9,
+   "name": "뿌리심연",
+   "color": 11977624,
+   "period": "꿈실굴 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-root-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-root-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  },
+  {
+   "track": 10,
+   "name": "황혼습지",
+   "color": 13740473,
+   "period": "노을못 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-dusk-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-dusk-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  },
+  {
+   "track": 11,
+   "name": "자철분지",
+   "color": 10793399,
+   "period": "쇠나침 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-magnet-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-magnet-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  },
+  {
+   "track": 12,
+   "name": "바깥성해",
+   "color": 13152659,
+   "period": "먼빛항 패총국",
+   "cells": [
+    {
+     "uid": "moonwake-chronicle/p-outer-0",
+     "cell": "phase:0",
+     "name": "복구기",
+     "scheme": "장부 학파",
+     "when": "기원전 960년 ~ 기원전 773년"
+    },
+    {
+     "uid": "moonwake-chronicle/p-outer-0",
+     "cell": "phase:1",
+     "name": "살아남는 시기",
+     "scheme": "생활사 학파",
+     "when": "기원전 960년 ~ 기원전 680년"
+    }
+   ]
+  }
+ ],
+ "figures": [
+  {
+   "track": 1,
+   "name": "유리해안",
+   "color": 10534085,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-coast-0-0",
+     "name": "은결 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  },
+  {
+   "track": 2,
+   "name": "흑요산맥",
+   "color": 12297109,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-obsidian-0-0",
+     "name": "돌새 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  },
+  {
+   "track": 3,
+   "name": "수관림",
+   "color": 10337960,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-canopy-0-0",
+     "name": "잎울 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  },
+  {
+   "track": 4,
+   "name": "청동초원",
+   "color": 14139790,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-steppe-0-0",
+     "name": "바람쇠 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  },
+  {
+   "track": 5,
+   "name": "거울사막",
+   "color": 14332309,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-mirror-0-0",
+     "name": "사경 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  },
+  {
+   "track": 6,
+   "name": "재의삼각주",
+   "color": 13935515,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-delta-0-0",
+     "name": "갈빛 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  },
+  {
+   "track": 7,
+   "name": "서리극관",
+   "color": 11252681,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-frost-0-0",
+     "name": "눈고리 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  },
+  {
+   "track": 8,
+   "name": "공중열도",
+   "color": 12299464,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-sky-0-0",
+     "name": "깃새 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  },
+  {
+   "track": 9,
+   "name": "뿌리심연",
+   "color": 11977624,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-root-0-0",
+     "name": "실온 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  },
+  {
+   "track": 10,
+   "name": "황혼습지",
+   "color": 13740473,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-dusk-0-0",
+     "name": "잔물 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  },
+  {
+   "track": 11,
+   "name": "자철분지",
+   "color": 10793399,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-magnet-0-0",
+     "name": "침울 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  },
+  {
+   "track": 12,
+   "name": "바깥성해",
+   "color": 13152659,
+   "figures": [
+    {
+     "uid": "moonwake-chronicle/f-outer-0-0",
+     "name": "별여울 아루나",
+     "role": "",
+     "when": "기원전 848년 ~ 기원전 813년"
+    }
+   ]
+  }
+ ],
+ "figureCount": 12,
+ "events": [
+  {
+   "uid": "moonwake-chronicle/p-coast-0-chronicle-3-0",
+   "title": "파도문 절벽 · 사라진 길의 재출현",
+   "label": "기원전 844년",
+   "color": 10534085,
+   "track": "유리해안",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-obsidian-0-chronicle-3-0",
+   "title": "탄루 다리 · 경계석의 밤 이동",
+   "label": "기원전 844년",
+   "color": 12297109,
+   "track": "흑요산맥",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-canopy-0-chronicle-3-0",
+   "title": "뿌리종 습원 · 빛을 잃은 물새",
+   "label": "기원전 844년",
+   "color": 10337960,
+   "track": "수관림",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-steppe-0-chronicle-3-0",
+   "title": "황금풀 극장 · 가면 없는 첫 공연",
+   "label": "기원전 844년",
+   "color": 14139790,
+   "track": "청동초원",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-mirror-0-chronicle-3-0",
+   "title": "사금등 망루 · 용병 급료의 중단",
+   "label": "기원전 844년",
+   "color": 14332309,
+   "track": "거울사막",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-delta-0-chronicle-3-0",
+   "title": "세갈래 수로 · 물길의 봉쇄",
+   "label": "기원전 844년",
+   "color": 13935515,
+   "track": "재의삼각주",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-frost-0-chronicle-3-0",
+   "title": "눈문 법정 · 죽은 증인의 출석",
+   "label": "기원전 844년",
+   "color": 11252681,
+   "track": "서리극관",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-sky-0-chronicle-3-0",
+   "title": "깃문 치유소 · 잠을 잃은 병자들",
+   "label": "기원전 844년",
+   "color": 12299464,
+   "track": "공중열도",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-root-0-chronicle-3-0",
+   "title": "깊은눈 항로 · 빈 배의 입항",
+   "label": "기원전 844년",
+   "color": 11977624,
+   "track": "뿌리심연",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-dusk-0-chronicle-3-0",
+   "title": "잔별섬 시장 · 이중 관세의 충돌",
+   "label": "기원전 844년",
+   "color": 13740473,
+   "track": "황혼습지",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-magnet-0-chronicle-3-0",
+   "title": "검은바늘 숲길 · 잠들지 않는 나무",
+   "label": "기원전 844년",
+   "color": 10793399,
+   "track": "자철분지",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-outer-0-chronicle-3-0",
+   "title": "돌아온별 회당 · 서로 다른 장례의 충돌",
+   "label": "기원전 844년",
+   "color": 13152659,
+   "track": "바깥성해",
+   "treaty": false,
+   "start": -1479494880,
+   "end": -1479494880
+  },
+  {
+   "uid": "moonwake-chronicle/p-coast-0-chronicle-3-1",
+   "title": "파도문 절벽 · 귀환자 명부의 작성",
+   "label": "기원전 833년",
+   "color": 10534085,
+   "track": "유리해안",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  },
+  {
+   "uid": "moonwake-chronicle/p-obsidian-0-chronicle-3-1",
+   "title": "탄루 다리 · 양안 주민의 표결",
+   "label": "기원전 833년",
+   "color": 12297109,
+   "track": "흑요산맥",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  },
+  {
+   "uid": "moonwake-chronicle/p-canopy-0-chronicle-3-1",
+   "title": "뿌리종 습원 · 둥지 이동의 관측",
+   "label": "기원전 833년",
+   "color": 10337960,
+   "track": "수관림",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  },
+  {
+   "uid": "moonwake-chronicle/p-steppe-0-chronicle-3-1",
+   "title": "황금풀 극장 · 왕의 역을 둘러싼 논쟁",
+   "label": "기원전 833년",
+   "color": 14139790,
+   "track": "청동초원",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  },
+  {
+   "uid": "moonwake-chronicle/p-mirror-0-chronicle-3-1",
+   "title": "사금등 망루 · 무장 창고의 봉쇄",
+   "label": "기원전 833년",
+   "color": 14332309,
+   "track": "거울사막",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  },
+  {
+   "uid": "moonwake-chronicle/p-delta-0-chronicle-3-1",
+   "title": "세갈래 수로 · 상류와 하류의 공동 조사",
+   "label": "기원전 833년",
+   "color": 13935515,
+   "track": "재의삼각주",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  },
+  {
+   "uid": "moonwake-chronicle/p-frost-0-chronicle-3-1",
+   "title": "눈문 법정 · 기억 증언의 재심",
+   "label": "기원전 833년",
+   "color": 11252681,
+   "track": "서리극관",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  },
+  {
+   "uid": "moonwake-chronicle/p-sky-0-chronicle-3-1",
+   "title": "깃문 치유소 · 꿈 교대의 첫 실험",
+   "label": "기원전 833년",
+   "color": 12299464,
+   "track": "공중열도",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  },
+  {
+   "uid": "moonwake-chronicle/p-root-0-chronicle-3-1",
+   "title": "깊은눈 항로 · 침묵 신호의 해독",
+   "label": "기원전 833년",
+   "color": 11977624,
+   "track": "뿌리심연",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  },
+  {
+   "uid": "moonwake-chronicle/p-dusk-0-chronicle-3-1",
+   "title": "잔별섬 시장 · 공동 저울 회담",
+   "label": "기원전 833년",
+   "color": 13740473,
+   "track": "황혼습지",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  },
+  {
+   "uid": "moonwake-chronicle/p-magnet-0-chronicle-3-1",
+   "title": "검은바늘 숲길 · 밤빛의 원인 조사",
+   "label": "기원전 833년",
+   "color": 10793399,
+   "track": "자철분지",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  },
+  {
+   "uid": "moonwake-chronicle/p-outer-0-chronicle-3-1",
+   "title": "돌아온별 회당 · 기억 보관자의 선언",
+   "label": "기원전 833년",
+   "color": 13152659,
+   "track": "바깥성해",
+   "treaty": false,
+   "start": -1473710400,
+   "end": -1473710400
+  }
+ ],
+ "count": 24
+}
