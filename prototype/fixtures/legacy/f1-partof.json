@@ -1,0 +1,19 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 1,
+  "id": "legacy-f1-partof",
+  "name": "이음 검사 — 형식 1 · 소속 · 시대 구분 · 기관 · 왕조",
+  "version": "1.0.0",
+  "tracks": [{ "id": "ta", "name": "가 줄" }, { "id": "tb", "name": "나 줄" }],
+  "epochs": [{ "id": "ep-first", "name": "첫 불 시대", "start": 100, "end": 300 }, { "id": "ep-row", "name": "나 줄 시대", "track": "tb", "start": 150, "end": 350 }],
+  "periods": [
+    { "id": "p-top", "name": "윗나라", "track": "ta", "start": 100, "end": 400, "leaders": [["첫 임금", 100, 180], ["둘 임금", 180, 400]], "capitals": [["윗성", 100, 400]] },
+    { "id": "p-side", "name": "옆나라", "track": "ta", "start": 120, "end": 380 },
+    { "id": "p-low", "name": "아랫나라", "track": "ta", "start": 150, "end": 300, "partOf": ["윗나라"] },
+    { "id": "p-far", "name": "먼나라", "track": "tb", "start": 160, "end": 340, "partOf": [{ "polity": "옆나라", "start": 200, "end": 260 }] },
+    { "id": "p-next", "name": "다음나라", "track": "tb", "start": 340, "end": 500, "succeeds": [{ "from": "먼나라", "type": "direct" }] }
+  ],
+  "organs": [{ "id": "og-sea", "track": "ta", "name": "바다 관청", "host": "윗나라", "start": 200, "end": 300 }],
+  "dynasties": [{ "id": "dy-top", "track": "ta", "name": "윗 왕조", "polities": "윗나라", "start": 100, "end": 400 }],
+  "events": [{ "id": "ev-1", "track": "ta", "polity": "윗나라", "name": "첫 불을 켬", "start": 101 }]
+}

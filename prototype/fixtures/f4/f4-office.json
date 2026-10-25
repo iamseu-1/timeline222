@@ -1,0 +1,200 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 4,
+  "id": "f4-office",
+  "name": "형식 4 가상 팩 — 한 직위를 두 객체가 봄(빌림) · 남의 실권",
+  "version": "1.0.0",
+  "spheres": [
+    {
+      "id": "ember-basin",
+      "name": "등불 분지권",
+      "order": 1
+    },
+    {
+      "id": "frost-ridge",
+      "name": "설령 빙원권",
+      "order": 2
+    }
+  ],
+  "tracks": [
+    {
+      "id": "hayeon",
+      "name": "하연",
+      "sphere": "ember-basin"
+    },
+    {
+      "id": "seolryeong",
+      "name": "설령",
+      "sphere": "frost-ridge"
+    }
+  ],
+  "objects": [
+    {
+      "id": "o-seat",
+      "name": "등불 성좌령",
+      "track": "hayeon",
+      "start": 650,
+      "end": 1100,
+      "importance": 3,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "등좌 서하",
+              "start": 760,
+              "end": 781
+            },
+            {
+              "name": "등좌 온결",
+              "start": 781,
+              "end": 803
+            },
+            {
+              "name": "등좌 다빈",
+              "start": 803,
+              "end": 829
+            },
+            {
+              "name": "등좌 하늘",
+              "start": 829,
+              "end": 856
+            },
+            {
+              "name": "등좌 무령",
+              "start": 856,
+              "end": 877
+            },
+            {
+              "name": "등좌 진",
+              "start": 877,
+              "end": 901,
+              "status": "rival"
+            },
+            {
+              "name": "등좌 해온",
+              "start": 901,
+              "end": 926
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-faith",
+      "type": "faith",
+      "name": "등불 교단",
+      "track": "hayeon",
+      "start": 400,
+      "importance": 3,
+      "offices": [
+        {
+          "name": "등좌",
+          "from": "o-seat/지도자"
+        }
+      ]
+    },
+    {
+      "id": "o-emp",
+      "name": "설원 제국",
+      "track": "seolryeong",
+      "start": 788,
+      "end": 1031,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "첫 황제",
+              "start": 788,
+              "end": 812
+            },
+            {
+              "name": "둘째 황제",
+              "start": 812,
+              "end": 840
+            },
+            {
+              "name": "셋째 황제",
+              "start": 840,
+              "end": 871
+            },
+            {
+              "name": "넷째 황제",
+              "start": 871,
+              "end": 900
+            },
+            {
+              "name": "다섯째 황제",
+              "start": 900,
+              "end": 933
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-khan",
+      "name": "북설 칸국",
+      "track": "seolryeong",
+      "start": 760,
+      "end": 1031,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "눈칸",
+              "start": 790,
+              "end": 838
+            },
+            {
+              "name": "서리칸",
+              "start": 838,
+              "end": 872
+            },
+            {
+              "name": "우박칸",
+              "start": 872,
+              "end": 905
+            }
+          ]
+        }
+      ],
+      "power": [
+        {
+          "name": "설원 제국의 실권",
+          "start": 840,
+          "end": 900,
+          "over": "o-emp"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "track": "hayeon",
+      "polity": "o-seat",
+      "name": "호반성 천도",
+      "start": 803
+    },
+    {
+      "track": "hayeon",
+      "polity": "o-faith",
+      "name": "등불 공의회",
+      "start": 905
+    },
+    {
+      "track": "seolryeong",
+      "polity": "o-emp",
+      "name": "설원 건국",
+      "start": 788
+    },
+    {
+      "track": "seolryeong",
+      "polity": "o-emp",
+      "name": "칸의 섭정",
+      "start": 840
+    }
+  ]
+}

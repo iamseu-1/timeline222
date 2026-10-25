@@ -1,0 +1,37 @@
+[package]
+name = "archive_engine"
+version = "0.1.0"
+edition = "2021"
+description = "역사 아카이브의 읽기 전용 성능 시제품"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "archive-tool"
+path = "src/main.rs"
+
+[dependencies]
+rusqlite = { version = "0.37", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["float_roundtrip"] }
+sha2 = "0.10"
+flate2 = "1"
+# 정규식 — 계약 0절 '새 크레이트 없음'의 예외(감독 허락 2026-10-16 · 계획-한벌-P3 정한 것 #8). 웹 코드의 정규식을 JS 뜻 그대로 옮길 때만 쓴다.
+# 기능 최소: std · perf · unicode-case — 유니코드 \d · \w · \s(unicode-perl)를 끄므로 JS 뜻(ASCII \d · JS 빈칸 목록)을 손으로 적게 된다.
+regex = { version = "=1.13.1", default-features = false, features = ["std", "perf", "unicode-case"] }
+
+[features]
+# 검사 비계(판정 R69-7): 살아 있는 JS 그릇 수 세기(`lay::js::live_containers`) — 그릇을 짓고 버리는 핫패스라 제품 빌드에서는 끈다. 검사는 아래
+# 자기 자신 dev-dependency로 늘 켠다(`cargo test`).
+oracle = []
+
+[dev-dependencies]
+archive_engine = { path = ".", features = ["oracle"] }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "=0.61.3", features = ["Win32_Foundation", "Win32_Graphics_DirectWrite", "Win32_UI_WindowsAndMessaging"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1

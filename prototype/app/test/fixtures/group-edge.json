@@ -1,0 +1,12 @@
+[
+ {
+  "uid": "sample-groups/gr-shadow",
+  "kind": "group",
+  "json": "{\"id\":\"gr-shadow\",\"uid\":\"sample-groups/gr-shadow\",\"kind\":\"group\",\"itemKind\":\"group\",\"track\":\"sample-gr-west\",\"name\":\"그림자 모임\",\"type\":\"비밀 결사\",\"start\":-210,\"startUnknown\":true,\"end\":-150,\"endY\":-150,\"startRange\":[-220,-200],\"certainty\":\"estimated\",\"color\":\"#b3a896\",\"typeName\":\"비밀 결사\",\"note\":\"기록이 한 줄뿐인 모임.\",\"debate\":\"실제로 있었는지 다툰다.\",\"event\":\"사라진 회합\",\"alternatives\":[{\"start\":-205,\"end\":-140,\"label\":\"다른 기록\"}],\"packId\":\"sample-groups\",\"packName\":\"단체 견본 — 붕당 · 연합 · 실권\",\"x_type\":\"비밀 결사\",\"x_span\":[-1146042720,-1114486560],\"x_within\":[{\"name\":\"없는 나라\"}],\"x_from\":[{\"name\":\"찾지 못한 모임\",\"how\":\"split\",\"howName\":\"갈라짐\",\"note\":\"전설\"}],\"x_people\":[{\"name\":\"이름만 남은 이\",\"missing\":1}],\"x_warnings\":[\"있던 나라 \\\"없는 나라\\\"을(를) 연표에서 찾지 못했습니다.\",\"맺은 사건 \\\"사라진 회합\\\"을(를) 연표에서 찾지 못했습니다.\"],\"x_find\":{\"hay\":\"비밀 결사 단체 없는 나라 이름만 남은 이\",\"sub\":\"단체 · 비밀 결사\",\"span\":[-1146042720,-1114486560],\"color\":\"#b3a896\"}}"
+ },
+ {
+  "uid": "sample-lens/ln-i-bare",
+  "kind": "institution",
+  "json": "{\"id\":\"ln-i-bare\",\"uid\":\"sample-lens/ln-i-bare\",\"kind\":\"institution\",\"itemKind\":\"institution\",\"theme\":\"guild\",\"polity\":\"먼 나라\",\"start\":780,\"endY\":1000,\"color\":\"#c8b193\",\"themeName\":\"길드 제도\",\"themeColor\":\"#c8b193\",\"polityName\":\"먼 나라\",\"packId\":\"sample-lens\",\"packName\":\"렌즈 견본 — 주제와 제도\",\"x_spans\":[{\"name\":\"장인 모임\",\"when\":\"780년 ~ 1000년\",\"span\":[-625880160,-510170400]}],\"x_warnings\":[\"나라 \\\"먼 나라\\\"을(를) 연표에서 찾지 못했습니다 — 적힌 칸의 연대로만 자리를 잡았습니다.\"]}"
+ }
+]

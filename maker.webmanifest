@@ -1,0 +1,20 @@
+{
+  "id": "dlc-maker.html",
+  "name": "DLC 메이커",
+  "short_name": "DLC 메이커",
+  "description": "역사 연표에 더할 DLC를 만들고 고치는 도구. 만든 DLC는 파일로 내보내 연표에서 설치합니다.",
+  "lang": "ko",
+  "start_url": "dlc-maker.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "file_handlers": [{ "action": "dlc-maker.html", "accept": { "application/x-htpack": [".htpack"] } }],
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

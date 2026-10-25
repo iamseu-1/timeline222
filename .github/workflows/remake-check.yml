@@ -1,0 +1,1464 @@
+# 리메이크 가지 클라우드 검사 — 조정자가 ci-push.sh로 <가지>의 트리에 이 파일 하나만 더한 **부모 없는 커밋**을 기록 없는 공개 저장소
+# (조정자 PC의 원격 public — 감독 결정 2026-10-25: 원본 저장소는 비공개 그대로 두고 정리된 트리만 공개 저장소로)의
+# refs/heads/ci/<가지>에 밀면 돈다. 밀기 전에 ci-push.sh가 공개 안전 검사(막을 경로 · 키 파일 · 개인 정보)를 한다 — 이 파일도 그 트리에 들어가 공개된다.
+# 결과는 마지막 report 일이 고아 커밋 하나로 **같은 공개 저장소**의 refs/heads/ci-results/<가지>에 강제로 민다(요약.md · 요약.json · logs/) —
+# 조정자 PC는 gh 없이 git fetch로만 읽는다(ci-results.mjs). 이 파일은 저장소 밖(.claude/research/ci)에 두고 밀 때만 트리에 끼운다.
+# 공개 저장소라 ci/* 트리 · ci-results/* 결과와 로그 · Actions 실행 로그는 누구나 보고, 꾸러미(artifact)는 로그인한 누구나 받는다(보관 7일 · 도구 3일).
+# 공개 저장소의 표준 러너는 분을 세지 않는다(리눅스 · Windows 모두) — 남는 한도는 계정 동시 일 20개 · 일 하나 6시간.
+#
+# 도구 판은 감독 PC와 같게(인수인계 3절): Node 24.22.1(ICU 78.3 — 정답지 머리의 ICU가 다르면 엔진 검사가 '정답지가 낡음'으로 멈춤 · 일마다 찍어 확인)
+# · Rust 1.99.1 · Flutter 3.47.5(release.yml과 같은 판).
+#
+# 일(나란히 — 공개 저장소 표준 러너는 4코어 · 16GB(리눅스 · Windows 같음) · 무거운 엔진 검사는 나눔 3개가 기본):
+#   plan            고를 일(Run workflow 입력 또는 머리 커밋 글의 'ci-jobs:' · 'ci-shards:' 줄 — ci-push.sh --jobs · --shards) · 엔진 시험 나눔 ·
+#                   도우미 스크립트 ht-bin(모든 일이 받아 씀 — run.sh · summarize.mjs · report.mjs …)
+#   engine-official 공식 LTO 엔진 검사(dev.ps1 engine-test와 같은 cargo test --locked --release --no-fail-fast)를 나눔 N개로 —
+#                   나눔마다 달력 표(warm-calendar) · 정답지(layout-oracle)를 새로 뜸(git 밖 자료). KTL이 없어 건너뛰는 시험은 그대로 건너뜀.
+#   engine-lint     cargo clippy --locked --all-targets(경고 수 · 줄) · lay-rules.mjs --check
+#   tool            자료 검사가 쓰는 archive-tool(cargo build --locked --release) — 꾸러미 ht-archive-tool
+#   data            build(build-check 전부) · old-dlc(old-dlc-check 묶음 걷기) · apply(apply-check) · misc(f4-same-check · remake3-same-check ·
+#                   check-format4 · 그 밖의 Node 검사) — 이 PC에만 있는 자료가 드는 것은 그 도구의 건너뛰기 길로 · 가지에 없는 스크립트는 '없음' ·
+#                   remake3-same-check는 검사 커밋에 부모(기록)가 없으면 기준 커밋을 못 떠 '건너뜀'(기록 없는 공개 저장소 — 이 PC 공식 검사로)
+#   app             Windows — 엔진 dll(dev.ps1 engine-build와 같은 LTO 릴리즈) · app-get · dart analyze --fatal-infos lib test · flutter test(app-check와 같게)
+#   android         리눅스 — 연표 앱 APK를 짓기까지(컴파일 확인 · 이 PC에는 Android SDK가 없음): 엔진 .so(aarch64-linux-android · NDK clang) →
+#                   jniLibs · 빈 시드 · flutter build apk --release --target-platform android-arm64(디버그 키 서명 — build.gradle.kts 그대로) →
+#                   apksigner · aapt2 확인. release.yml native-android(prototype/scripts/release/build-android.sh)와 같은 도구 판 · 명령 — 다른 것은
+#                   시드 저장소 없이(빈 seed — showcase 짓기를 하지 않음) · 받기 폴더 안에서 짓기 · 산출물을 올리지 않음
+#   report          모든 일 뒤(always) — 요약을 모아 ci-results/<가지>로
+# 걸음마다 continue-on-error — 하나가 깨져도 다음 검사로 가고, 일 끝의 '결과 표시'가 실패 · 중단을 빨강으로 보인다. 로그는 걸음마다 파일로(tee).
+name: remake-check
+
+on:
+  push:
+    branches: ['ci/**']
+  workflow_dispatch:
+    inputs:
+      jobs:
+        description: "고를 일 — all 또는 engine · lint · data · data-build · data-old-dlc · data-apply · data-misc · app · android(쉼표나 빈칸)"
+        type: string
+        default: all
+      shards:
+        description: "엔진 공식 검사를 나눌 수(1 ~ 16 · 4코어 러너 기본 3)"
+        type: string
+        default: "3"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: remake-check-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "24.22.1"
+  RUST_VERSION: "1.99.1"
+  FLUTTER_VERSION: "3.47.5"
+  # 안드로이드(android 일) — release.yml · build.gradle.kts의 ndkVersion과 같게
+  NDK_VERSION: "28.2.13676358"
+  JAVA_VERSION: "21"
+  CARGO_TERM_COLOR: never
+  FLUTTER_SUPPRESS_ANALYTICS: "true"
+
+jobs:
+  plan:
+    name: 고르기 · 나눔 · 도우미
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      engine: ${{ steps.plan.outputs.engine }}
+      lint: ${{ steps.plan.outputs.lint }}
+      app: ${{ steps.plan.outputs.app }}
+      android: ${{ steps.plan.outputs.android }}
+      tool: ${{ steps.plan.outputs.tool }}
+      data_groups: ${{ steps.plan.outputs.data_groups }}
+      shards: ${{ steps.plan.outputs.shards }}
+      engine_plan: ${{ steps.plan.outputs.engine_plan }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: prototype/engine/tests
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: 도우미 스크립트 쓰기(ht-bin)
+        run: |
+          bin="$RUNNER_TEMP/ht-bin"
+          mkdir -p "$bin"
+
+          cat > "$bin/where.sh" <<'HT_EOF'
+          #!/usr/bin/env bash
+          # 일마다 첫 걸음: 결과 폴더(HT_OUT) · 도우미 폴더(HT_BIN)를 정하고(Windows도 / 꼴 — bash · node 둘 다 읽음),
+          # 리눅스는 넓은 /mnt에 임시 폴더(TMPDIR — 엔진 시험의 저장소 · 검사의 작업 폴더)를 둔다.
+          set -euo pipefail
+          t=${RUNNER_TEMP//\\//}
+          { echo "HT_BIN=$t/ht-bin"; echo "HT_OUT=$t/ht-out"; } >> "$GITHUB_ENV"
+          mkdir -p "$t/ht-out/logs"
+          date +%s > "$t/ht-out/started"
+          if [[ ${RUNNER_OS:-} == Linux ]]; then
+            if sudo mkdir -p /mnt/ht-tmp && sudo chown "$(id -u):$(id -g)" /mnt/ht-tmp; then echo "TMPDIR=/mnt/ht-tmp" >> "$GITHUB_ENV"; fi
+            df -h / /mnt 2>/dev/null || true
+            free -m 2>/dev/null || true
+          fi
+          echo "코어 $(nproc 2>/dev/null || echo '?')"
+          HT_EOF
+
+          cat > "$bin/run.sh" <<'HT_EOF'
+          #!/usr/bin/env bash
+          # 검사 하나 — 명령의 출력을 로그 파일로 남기고(tee) 결과 한 줄(JSON)을 $HT_OUT/results.jsonl에 더한다. 끝 코드는 명령의 것 그대로.
+          # 사용: bash run.sh [--kind=<읽는 법>] [--cwd=<폴더>] [--need=<파일>]… [--skip=<까닭>] <id> <이름> [--] <명령…>
+          #   --kind  요약(summarize.mjs)이 로그를 읽는 법 — plain · lines · cargo-test · clippy · analyze · flutter-test · r3same · gradle
+          #   --need  이 파일이 가지에 없으면 돌리지 않고 '없음'으로 적는다(가지마다 스크립트가 다름)
+          #   --skip  돌리지 않고 '건너뜀'으로 적는다(이 PC에만 있는 자료가 드는 검사)
+          set -uo pipefail
+          kind=plain; cwd=''; skip=''; need=()
+          while [[ $# -gt 0 && $1 == --?* ]]; do
+            case $1 in
+              --kind=*) kind=${1#--kind=} ;;
+              --cwd=*) cwd=${1#--cwd=} ;;
+              --need=*) need+=("${1#--need=}") ;;
+              --skip=*) skip=${1#--skip=} ;;
+              *) echo "run.sh: 모르는 인자 $1" >&2; exit 2 ;;
+            esac
+            shift
+          done
+          id=${1:?검사 id}; label=${2:?검사 이름}; shift 2
+          [[ ${1:-} == -- ]] && shift
+          out=${HT_OUT:?HT_OUT이 없습니다 — where.sh를 먼저}
+          mkdir -p "$out/logs"
+          log="$out/logs/$id.log"
+          rec() {
+            node -e '
+              const [file, ...kv] = process.argv.slice(1);
+              const o = {};
+              for (let i = 0; i + 1 < kv.length; i += 2) o[kv[i]] = /^(code|seconds)$/.test(kv[i]) ? Number(kv[i + 1]) : kv[i + 1];
+              o.at = new Date().toISOString();
+              require("fs").appendFileSync(file, JSON.stringify(o) + "\n");
+            ' "$out/results.jsonl" id "$id" label "$label" kind "$kind" "$@"
+          }
+          for f in ${need[@]+"${need[@]}"}; do
+            if [[ ! -e $f ]]; then
+              printf '없음: %s — 이 가지에 %s가 없습니다\n' "$label" "$f" | tee "$log"
+              rec state missing note "이 가지에 $f 없음"
+              exit 0
+            fi
+          done
+          if [[ -n $skip ]]; then
+            printf '건너뜀: %s — %s\n' "$label" "$skip" | tee "$log"
+            rec state skipped note "$skip"
+            exit 0
+          fi
+          start=$(date +%s)
+          rec state started
+          printf '# 시작 %s · %s\n# 명령 %s\n' "$(date '+%F %T %Z')" "$label" "$*" | tee "$log"
+          if [[ -n $cwd ]]; then
+            (cd "$cwd" && "$@") 2>&1 | tee -a "$log"
+          else
+            "$@" 2>&1 | tee -a "$log"
+          fi
+          code=${PIPESTATUS[0]}
+          secs=$(( $(date +%s) - start ))
+          printf '# 끝 %s · 끝 코드 %s · %s초\n' "$(date '+%F %T %Z')" "$code" "$secs" | tee -a "$log"
+          rec state done code "$code" seconds "$secs"
+          exit "$code"
+          HT_EOF
+
+          cat > "$bin/engine-shard.sh" <<'HT_EOF'
+          #!/usr/bin/env bash
+          # 엔진 공식 검사의 나눔 하나 — plan이 정한 이 나눔의 몫을 공식과 같은 깃발(cargo test --locked --release --no-fail-fast)로 돌린다.
+          #   파일 묶음: cargo test … [--lib --bins] --test <파일>…(한 번에)
+          #   조각: 무거운 파일(add_pack)은 시험 이름으로 나눈 몫만(cargo-part.sh)
+          #   문서 시험: lib을 맡은 나눔이 cargo test … --doc(cargo는 --doc을 다른 대상과 섞지 못함)
+          # 환경: HT_ENGINE_PLAN(plan의 engine_plan JSON) · HT_SHARD(이 나눔 번호)
+          set -uo pipefail
+          bin=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+          manifest=prototype/engine/Cargo.toml
+          flags=(--locked --release --no-fail-fast --manifest-path "$manifest")
+          mine() {
+            node -e '
+              const p = JSON.parse(process.env.HT_ENGINE_PLAN || "{}");
+              const s = (p.shards || []).find((x) => String(x.shard) === process.env.HT_SHARD) || { files: [], parts: [], lib: false };
+              const v = s[process.argv[1]];
+              console.log(Array.isArray(v) ? v.map((x) => (typeof x === "object" ? [x.file, x.index, x.count].join(" ") : x)).join("\n") : String(!!v));
+            ' "$1"
+          }
+          mapfile -t files < <(mine files | sed '/^$/d')
+          mapfile -t parts < <(mine parts | sed '/^$/d')
+          lib=$(mine lib)
+          echo "나눔 $HT_SHARD — 파일 ${#files[@]}개(${files[*]:-없음}) · 조각 ${#parts[@]}개(${parts[*]:-없음}) · lib · bin · 문서: $lib"
+          status=0
+          args=()
+          what="파일 ${#files[@]}개"
+          if [[ $lib == true ]]; then args+=(--lib --bins); what="lib · bin + $what"; fi
+          for f in ${files[@]+"${files[@]}"}; do args+=(--test "$f"); done
+          if (( ${#args[@]} )); then
+            bash "$bin/run.sh" --kind=cargo-test cargo-main "cargo test($what)" -- cargo test "${flags[@]}" "${args[@]}" || status=1
+          fi
+          for p in ${parts[@]+"${parts[@]}"}; do
+            read -r file index count <<< "$p"
+            bash "$bin/run.sh" --kind=cargo-test "cargo-$file-p$index" "cargo test --test $file(조각 $((index + 1))/$count)" -- bash "$bin/cargo-part.sh" "$file" "$index" "$count" || status=1
+          done
+          if [[ $lib == true ]]; then
+            bash "$bin/run.sh" --kind=cargo-test cargo-doc "cargo test --doc" -- cargo test "${flags[@]}" --doc || status=1
+          fi
+          exit "$status"
+          HT_EOF
+
+          cat > "$bin/cargo-part.sh" <<'HT_EOF'
+          #!/usr/bin/env bash
+          # 무거운 시험 파일 하나를 시험 이름으로 나눈 조각 — 목록(--list)을 이름 차례로 세워 (차례 % 조각 수 == i)인 것만 --exact로 돌린다.
+          # 목록을 받을 때 그 시험 실행본을 공식과 같은 깃발로 짓는다(짓는 줄은 로그로). 사용: bash cargo-part.sh <파일> <i> <조각 수>
+          set -uo pipefail
+          file=$1; index=$2; count=$3
+          manifest=prototype/engine/Cargo.toml
+          list=$(cargo test --locked --release --manifest-path "$manifest" --test "$file" -- --list) || { echo "시험 목록을 받지 못했습니다(짓기 실패?)"; exit 101; }
+          mapfile -t names < <(printf '%s\n' "$list" | sed -n 's/: test$//p' | LC_ALL=C sort | awk -v i="$index" -v k="$count" '(NR - 1) % k == i')
+          if (( ${#names[@]} == 0 )); then echo "이 조각에 든 시험이 없습니다(목록 $(printf '%s\n' "$list" | grep -c ': test$')개)"; exit 101; fi
+          echo "조각 $((index + 1))/$count — 시험 ${#names[@]}개: ${names[*]}"
+          exec cargo test --locked --release --no-fail-fast --manifest-path "$manifest" --test "$file" -- --exact "${names[@]}"
+          HT_EOF
+
+          cat > "$bin/flutter-test.sh" <<'HT_EOF'
+          #!/usr/bin/env bash
+          # flutter test 전부(dev.ps1 app-check와 같은 --no-pub) — 사람이 읽는 줄(expanded)은 로그로, 기계가 읽는 결과(json)는 $HT_OUT/flutter-test.json으로.
+          # app-check처럼 엔진 dll이 없으면 실패로 끝낸다(진짜 엔진 시험 묶음이 소리 없이 건너뛰지 않게) — 시험은 그래도 다 돌린다.
+          set -uo pipefail
+          dll=../engine/target/release/archive_engine.dll
+          if [[ -f $dll ]]; then echo "엔진 dll: $dll ($(wc -c < "$dll")바이트)"; else echo "엔진 dll이 없습니다: $dll — 진짜 엔진 시험 묶음이 건너뛸 수 있음(app-check는 여기서 멈춤)"; fi
+          rm -f ht-flutter-test.json
+          flutter test --no-pub --reporter expanded --file-reporter json:ht-flutter-test.json
+          code=$?
+          [[ -f ht-flutter-test.json ]] && mv -f ht-flutter-test.json "$HT_OUT/flutter-test.json"
+          [[ -f $dll ]] || code=1
+          exit "$code"
+          HT_EOF
+
+          cat > "$bin/android-engine.sh" <<'HT_EOF'
+          #!/usr/bin/env bash
+          # 안드로이드 엔진 .so — prototype/scripts/release/build-android.sh 1단계와 같게(NDK clang · API 24 · arm64 · LTO 릴리즈 --lib).
+          # 지은 libarchive_engine.so는 받기 폴더 안의 앱 android/app/src/main/jniLibs/arm64-v8a/에 둔다(릴리즈 스크립트는 앱 사본에 둠 · 검사 받기는 버리는 폴더).
+          # 환경: ANDROID_HOME(또는 ANDROID_SDK_ROOT) · NDK_VERSION(그 판 폴더가 없을 때만 ANDROID_NDK_HOME — 러너 이미지는 다른 NDK를 가리키기도 함)
+          set -euo pipefail
+          sdk=${ANDROID_HOME:-${ANDROID_SDK_ROOT:?ANDROID_HOME이 없습니다}}
+          ndk="$sdk/ndk/${NDK_VERSION:?NDK_VERSION이 없습니다}"
+          [[ -d $ndk ]] || ndk=${ANDROID_NDK_HOME:-$ndk}
+          bin="$ndk/toolchains/llvm/prebuilt/linux-x86_64/bin"
+          [[ -x $bin/aarch64-linux-android24-clang ]] || { echo "NDK clang이 없습니다: $bin(NDK 걸음 확인)"; exit 1; }
+          echo "NDK $ndk"
+          # cc(rusqlite가 묶어 짓는 SQLite)와 링커 둘 다 NDK clang(API 24)
+          export CC_aarch64_linux_android="$bin/aarch64-linux-android24-clang"
+          export AR_aarch64_linux_android="$bin/llvm-ar"
+          export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$bin/aarch64-linux-android24-clang"
+          cargo build --locked --release --lib --target aarch64-linux-android --manifest-path prototype/engine/Cargo.toml
+          so=prototype/engine/target/aarch64-linux-android/release/libarchive_engine.so
+          [[ -f $so ]] || { echo "엔진 짓기가 $so를 내지 않았습니다"; exit 1; }
+          libs=prototype/app/android/app/src/main/jniLibs/arm64-v8a
+          mkdir -p "$libs"
+          cp "$so" "$libs/libarchive_engine.so"
+          echo "엔진 .so $(wc -c < "$so")바이트 → $libs/libarchive_engine.so"
+          HT_EOF
+
+          cat > "$bin/android-check.sh" <<'HT_EOF'
+          #!/usr/bin/env bash
+          # 지은 APK 확인(앱 폴더에서) — release.yml native-android의 '서명 확인'과 release/build-android.sh 5단계처럼:
+          # apksigner verify(디버그 키 서명 — build.gradle.kts 그대로) · aapt2 badging(native-code arm64-v8a · 패키지 · 시작 화면) · 엔진 .so가 APK에 있는지.
+          # 매니페스트의 링크 받기(android:scheme)는 알림으로만 찍는다(가지마다 다름). 어긋난 것은 '실패 <무엇>' 줄 — 요약은 그 줄을 센다(--kind=lines).
+          set -uo pipefail
+          apk=build/app/outputs/flutter-apk/app-release.apk
+          [[ -f $apk ]] || { echo "실패 APK가 없습니다: $apk — 짓기 걸음(build-apk) 로그를 보십시오"; exit 1; }
+          sdk=${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}
+          tools=$(find "$sdk/build-tools" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | sort -V | tail -n 1)
+          [[ -n $tools && -x $tools/apksigner ]] || { echo "실패 build-tools(apksigner · aapt2)를 찾지 못했습니다: $sdk/build-tools"; exit 1; }
+          echo "APK $apk — $(stat -c %s "$apk")바이트 · build-tools $(basename "$tools")"
+          status=0
+          echo '--- 서명(apksigner verify --print-certs)'
+          if signed=$("$tools/apksigner" verify --verbose --print-certs "$apk" 2>&1); then
+            grep -E '^Verified using|^Signer #1 certificate (DN|SHA-256)' <<< "$signed" || true
+          else
+            printf '%s\n' "$signed"
+            echo "실패 서명 확인(apksigner verify)"; status=1
+          fi
+          echo '--- aapt2 dump badging'
+          if badging=$("$tools/aapt2" dump badging "$apk" 2>&1); then
+            grep -E "^(package|sdkVersion|targetSdkVersion|launchable-activity|native-code):" <<< "$badging" || true
+            grep -q "^native-code: 'arm64-v8a'" <<< "$badging" || { echo "실패 native-code가 arm64-v8a가 아님: $(grep native-code <<< "$badging" || echo 없음)"; status=1; }
+          else
+            printf '%s\n' "$badging" | tail -n 20
+            echo "실패 aapt2 dump badging"; status=1
+          fi
+          echo '--- APK 안의 엔진 .so'
+          listing=$(unzip -l "$apk")
+          if grep -q ' lib/arm64-v8a/libarchive_engine.so$' <<< "$listing"; then grep ' lib/arm64-v8a/' <<< "$listing"
+          else echo "실패 엔진 .so가 APK에 없음(lib/arm64-v8a/libarchive_engine.so — 엔진 .so 걸음을 보십시오)"; status=1; fi
+          echo '--- 매니페스트의 링크 받기 · 묻기(알림)'
+          "$tools/aapt2" dump xmltree --file AndroidManifest.xml "$apk" 2>/dev/null | grep -oE 'android:scheme[^=]*="[^"]*"' | sort | uniq -c || echo '(scheme 없음)'
+          if (( status )); then echo "APK 확인 — 어긋남이 있음(위의 '실패' 줄)"; else echo "APK 확인 — 서명 · arm64 · 엔진 .so 모두 맞음"; fi
+          exit "$status"
+          HT_EOF
+
+          cat > "$bin/r3-same.sh" <<'HT_EOF'
+          #!/usr/bin/env bash
+          # remake3-same-check — 기준(고치기 전 내보내기 · 이 PC는 git 밖 prototype/results/remake3-before)을 클라우드에서 새로 뜬 뒤 견준다.
+          # 기준 자리 = 그 스크립트를 처음 더한 커밋의 부모(리메이크 3단계 내보내기 JS를 고치기 전 — 이 PC가 기준을 쓴 때).
+          # 코드만 그때 것이고 입력(fixtures/f4/*.json · fixtures/oracle/f4-office3.json)은 지금 가지의 것. 두 번 모두 같은 '오늘'(--now)로.
+          # 기록이 있어야 돈다 — 기록 없는 공개 저장소(ci-push.sh의 부모 없는 커밋)에서는 data 일의 걸음이 이 스크립트를 부르지 않고 '건너뜀'으로 적는다.
+          set -uo pipefail
+          script=prototype/scripts/remake3-same-check.mjs
+          now=${HT_R3_NOW:-2026-10-24T12:00:00+09:00}
+          # 얕은 받기(checkout 기본 1)면 기록을 마저 받는다 — 기록이 있는 저장소에서만 여기까지 옴
+          [[ $(git rev-parse --is-shallow-repository) == true ]] && { git fetch -q --unshallow origin "$(git rev-parse HEAD)" || echo "기록을 마저 받지 못했습니다"; }
+          first=$(git log --diff-filter=A --format=%H -- "$script" | tail -n 1)
+          [[ -n $first ]] || { echo "그 스크립트를 더한 커밋을 이력에서 찾지 못했습니다(얕은 받기?)"; exit 1; }
+          base=$(git rev-parse --verify -q "$first^") || { echo "기준 커밋($first^)이 없습니다"; exit 1; }
+          echo "기준 커밋 $base — $(git log -1 --format='%h %s' "$first")의 부모 · 오늘 $now"
+          dir=${TMPDIR:-${RUNNER_TEMP:-/tmp}}/r3-before
+          rm -rf "$dir"; git worktree prune
+          git worktree add -q --detach "$dir" "$base" || exit 1
+          cp "$script" "$dir/prototype/scripts/"
+          [[ -f $dir/prototype/scripts/oracle/clock.mjs ]] || cp prototype/scripts/oracle/clock.mjs "$dir/prototype/scripts/oracle/"
+          mkdir -p "$dir/prototype/fixtures/f4" "$dir/prototype/fixtures/oracle"
+          cp prototype/fixtures/f4/*.json "$dir/prototype/fixtures/f4/"
+          [[ -f prototype/fixtures/oracle/f4-office3.json ]] && cp prototype/fixtures/oracle/f4-office3.json "$dir/prototype/fixtures/oracle/"
+          echo "--- 기준 뜨기(기준 커밋의 코드)"
+          (cd "$dir" && node prototype/scripts/remake3-same-check.mjs --write-before "--now=$now") || { echo "기준을 뜨지 못했습니다"; exit 1; }
+          rm -rf prototype/results/remake3-before
+          mkdir -p prototype/results
+          cp -r "$dir/prototype/results/remake3-before" prototype/results/
+          echo "--- 견주기(지금 가지)"
+          node prototype/scripts/remake3-same-check.mjs "--now=$now"
+          HT_EOF
+
+          cat > "$bin/tools.mjs" <<'HT_EOF'
+          // 도구 판을 모아 $HT_OUT/tools.json에 적고 찍는다(요약 · 정답지 ICU 확인). 사용: node tools.mjs [--rust] [--flutter] [--android]
+          import fs from 'node:fs';
+          import os from 'node:os';
+          import { execSync } from 'node:child_process';
+          const out = process.env.HT_OUT;
+          const sh = (cmd) => { try { return execSync(cmd, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 300000 }).trim(); } catch { return ''; } };
+          const first = (s) => (s.split(/\r?\n/).find(Boolean) || '').trim();
+          const t = {
+            job: process.env.HT_JOB || '',
+            runner: `${process.env.ImageOS || os.platform()} ${process.env.ImageVersion || ''}`.trim(),
+            os: `${os.type()} ${os.release()}`,
+            cpus: os.cpus().length,
+            memGB: Math.round(os.totalmem() / 2 ** 30 * 10) / 10,
+            node: process.version,
+            icu: process.versions.icu || '',
+            tz: process.versions.tz || '',
+            unicode: process.versions.unicode || '',
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          };
+          try { t.sliceIcu = JSON.parse(fs.readFileSync('prototype/engine/tests/fixtures/lay/calendar-slice.json', 'utf8')).icu || ''; } catch { t.sliceIcu = ''; }
+          t.icuMatch = !t.sliceIcu || t.sliceIcu === t.icu;
+          if (process.argv.includes('--rust')) {
+            t.rustc = first(sh('rustc --version'));
+            t.cargo = first(sh('cargo --version'));
+            const clippy = first(sh('cargo clippy --version'));
+            if (clippy) t.clippy = clippy;
+          }
+          if (process.argv.includes('--flutter')) {
+            const fv = sh('flutter --version --suppress-analytics');
+            t.flutter = (fv.match(/^Flutter .*$/m) || [first(fv)])[0];
+            t.dart = (sh('dart --version').match(/Dart SDK version: \S+/) || [''])[0];
+          }
+          if (process.argv.includes('--android')) {
+            // java -version은 stderr로 찍는다 · NDK는 NDK_VERSION 판 폴더가 있는지 · build-tools는 가장 높은 판(apksigner · aapt2가 쓰는 것)
+            t.java = first(sh('java -version 2>&1'));
+            const sdk = process.env.ANDROID_HOME || process.env.ANDROID_SDK_ROOT || '';
+            const ndk = process.env.NDK_VERSION || '';
+            t.androidSdk = sdk;
+            t.ndk = ndk ? `${ndk}${fs.existsSync(`${sdk}/ndk/${ndk}`) ? '' : '(아직 없음)'}` : '';
+            try { t.buildTools = fs.readdirSync(`${sdk}/build-tools`).sort((a, b) => a.localeCompare(b, 'en', { numeric: true })).pop() || ''; } catch { t.buildTools = ''; }
+          }
+          if (process.platform === 'win32') {
+            try { t.fonts = fs.readdirSync('C:/Windows/Fonts').filter((f) => /malgun|noto|cambria|pretendard/i.test(f)); } catch { t.fonts = []; }
+          }
+          t.sha = process.env.GITHUB_SHA || '';
+          fs.mkdirSync(out, { recursive: true });
+          fs.writeFileSync(`${out}/tools.json`, JSON.stringify(t, null, 1) + '\n');
+          console.log(JSON.stringify(t, null, 1));
+          if (!t.icuMatch) console.log(`::warning::Node의 ICU(${t.icu})가 잘린 달력 표 calendar-slice.json의 ICU(${t.sliceIcu})와 다릅니다 — 정답지가 '낡음'으로 멈추거나 지문이 달라질 수 있음`);
+          HT_EOF
+
+          cat > "$bin/plan.mjs" <<'HT_EOF'
+          // plan 일: 고를 일 · 엔진 시험 나눔을 정해 GITHUB_OUTPUT에 적는다.
+          //   고를 일: Run workflow 입력 jobs → 머리 커밋 글의 'ci-jobs:' 줄(ci-push.sh --jobs) → 모두.
+          //   나눌 수: 입력 shards → 'ci-shards:' 줄 → 3(공개 저장소 4코어 러너 — 나눔마다 lib과 맡은 시험 실행본을 따로 지으니 너무 잘게 나누면 짓기만 늘어남).
+          //   나눔: tests/*.rs 하나가 cargo test 실행본 하나(LTO로 짓는 데 몇 분씩). 이 PC 공식 검사(2026-10-25 · 16코어)의 파일마다 초를 무게로 삼아
+          //         큰 것부터 가장 가벼운 나눔에 넣는다. 가장 무거운 add_pack(이 PC 20분)은 시험 이름으로 조각(최대 3) 내 서로 다른 나눔에(cargo-part.sh).
+          //         lib · bin 단위 시험과 문서 시험은 한 나눔이 맡는다.
+          import fs from 'node:fs';
+          const msg = process.env.HT_MESSAGE || '';
+          const trailer = (key) => ((msg.match(new RegExp(`^${key}:[ \\t]*(.+)$`, 'mi')) || [])[1] || '').trim();
+          const DATA = ['data-build', 'data-old-dlc', 'data-apply', 'data-misc'];
+          const ALL = ['engine-official', 'engine-lint', ...DATA, 'app', 'android'];
+          const ALIAS = { all: ALL, engine: ['engine-official'], 'engine-official': ['engine-official'], lint: ['engine-lint'], 'engine-lint': ['engine-lint'], data: DATA, app: ['app'], android: ['android'] };
+          for (const d of DATA) ALIAS[d] = [d];
+          const raw = (process.env.HT_INPUT_JOBS || '').trim() || trailer('ci-jobs') || 'all';
+          const want = new Set();
+          for (const w of raw.toLowerCase().split(/[\s,]+/).filter(Boolean)) {
+            if (ALIAS[w]) ALIAS[w].forEach((x) => want.add(x));
+            else console.log(`::warning::모르는 일 이름 '${w}' — 뺌(${Object.keys(ALIAS).join(' · ')})`);
+          }
+          if (!want.size) ALL.forEach((x) => want.add(x));
+          let n = Number((process.env.HT_INPUT_SHARDS || '').trim() || trailer('ci-shards') || 3);
+          if (!Number.isInteger(n) || n < 1 || n > 16) { console.log(`::warning::나눌 수 '${n}'가 1 ~ 16 밖 — 3으로`); n = 3; }
+
+          const dir = 'prototype/engine/tests';
+          const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.rs')).map((f) => f.slice(0, -3)).sort() : [];
+          const LOCAL = { add_pack: 1233, apply: 159, build: 121, lay_scope: 65, schema4: 36, rowkeys: 17, canon: 12, write_tx: 10, tiles: 10, generate: 8, htlayout: 3 };
+          const BUILD = 100; // 시험 실행본 하나를 LTO로 짓는 어림(초 · 4코어 러너)
+          const SLOW = 3.5; // 이 PC 16코어의 초 → 4코어 러너의 초 어림(코어 4분의 1 · 시험이 모두 코어를 다 쓰지는 않음)
+          const HEAVY = 'add_pack';
+          const k = files.includes(HEAVY) ? Math.min(3, n) : 0;
+          const units = [];
+          for (const f of files) {
+            const run = (LOCAL[f] ?? 2) * SLOW;
+            if (f === HEAVY && k > 1) for (let i = 0; i < k; i++) units.push({ part: { file: f, index: i, count: k }, w: BUILD + run / k });
+            else units.push({ file: f, w: BUILD + run });
+          }
+          if (files.length) units.push({ lib: true, w: BUILD + 60 });
+          units.sort((a, b) => b.w - a.w);
+          const shards = Array.from({ length: n }, (_, i) => ({ shard: i, files: [], parts: [], lib: false, load: 0 }));
+          for (const u of units) {
+            const pool = u.part ? shards.filter((s) => !s.parts.some((p) => p.file === u.part.file)) : shards;
+            const s = pool.reduce((a, b) => (b.load < a.load ? b : a));
+            if (u.part) s.parts.push(u.part);
+            else if (u.lib) s.lib = true;
+            else s.files.push(u.file);
+            s.load += u.w;
+          }
+          const used = shards.filter((s) => s.files.length || s.parts.length || s.lib);
+          for (const s of used) { s.files.sort(); s.load = Math.round(s.load); }
+          const engine = want.has('engine-official') && used.length > 0;
+          const groups = DATA.filter((d) => want.has(d)).map((d) => d.slice(5));
+          const plan = { files, heavy: k > 1 ? HEAVY : null, parts: k > 1 ? k : 0, shards: used };
+          const outputs = {
+            engine: String(engine),
+            lint: String(want.has('engine-lint')),
+            app: String(want.has('app')),
+            android: String(want.has('android')),
+            tool: String(groups.length > 0),
+            data_groups: JSON.stringify(groups),
+            shards: JSON.stringify(engine ? used.map((s) => s.shard) : []),
+            engine_plan: JSON.stringify(plan),
+          };
+          if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, Object.entries(outputs).map(([key, v]) => `${key}=${v}\n`).join(''));
+          const from = process.env.HT_INPUT_JOBS ? 'Run workflow 입력' : trailer('ci-jobs') ? '커밋 글의 ci-jobs' : '기본(모두)';
+          console.log(`고른 일: ${[...want].join(' · ')} — ${from}`);
+          console.log(`엔진 시험 파일 ${files.length}개 → 나눔 ${engine ? used.length : 0}개${engine && k > 1 ? ` · ${HEAVY}는 ${k}조각` : ''}`);
+          if (engine) for (const s of used) console.log(`  나눔 ${s.shard}: 무게 ${s.load} · ${[s.lib ? 'lib · bin · 문서' : '', ...s.parts.map((p) => `${p.file} 조각 ${p.index + 1}/${p.count}`), ...s.files].filter(Boolean).join(' · ')}`);
+          HT_EOF
+
+          cat > "$bin/summarize.mjs" <<'HT_EOF'
+          // 일 하나의 요약 JSON — run.sh가 적은 $HT_OUT/results.jsonl과 로그를 읽어 $HT_OUT/summary.json을 쓴다(검사 이름 · 결과 · 수 · 실패한 것 · 걸린 분).
+          // 사용: node summarize.mjs <일 id> <일 이름>  ·  node summarize.mjs --verdict(summary.json에 실패 · 중단이 있으면 끝 코드 1 — 일을 빨강으로)
+          // 결과 낱말: 통과(끝 코드 0) · 실패 · 중단(시작 기록만 — 시간 초과 · 취소) · 건너뜀(이 PC 전용 자료) · 없음(이 가지에 그 스크립트가 없음)
+          import fs from 'node:fs';
+          import path from 'node:path';
+
+          const out = process.env.HT_OUT || '.';
+          const read = (f) => { try { return fs.readFileSync(f, 'utf8'); } catch { return ''; } };
+          const split = (t) => t.split(/\r?\n/);
+          const clean = (s) => s.replace(/\x1b\[[0-9;]*[A-Za-z]/g, '').replace(/\r/g, '');
+          const lastLine = (t) => split(t).map((s) => clean(s).trim()).filter((s) => s && !/^# (시작|끝|명령) /.test(s)).pop() || '';
+          const countsText = (c) => Object.entries(c || {}).map(([k, v]) => `${k} ${v}`).join(' · ');
+
+          if (process.argv[2] === '--verdict') {
+            let s = null;
+            try { s = JSON.parse(read(path.join(out, 'summary.json'))); } catch { /* 없음 */ }
+            if (!s) { console.log('::error::요약 JSON이 없습니다'); process.exit(1); }
+            const bad = s.checks.filter((c) => c.result === '실패' || c.result === '중단');
+            for (const c of bad) console.log(`::error::${c.label} — ${c.result}${countsText(c.counts) ? ' · ' + countsText(c.counts) : ''}`);
+            console.log(bad.length ? `실패 · 중단 ${bad.length}건 — 자세한 것은 report 일의 요약.md` : '모두 통과(건너뜀 · 없음 빼고)');
+            process.exit(bad.length ? 1 : 0);
+          }
+
+          /** plain — 끝 코드와 끝줄만 */
+          function plain(log) { return { note: lastLine(log).slice(0, 300) }; }
+
+          /** lines — 줄 머리 낱말(같음 · 다름 · 실패 · 건너뜀 · 뽑음)을 세고 다름 · 실패 줄을 모음(build-check · f4-same-check · old-dlc-check · layout-oracle) */
+          function lines(log) {
+            const counts = {};
+            const failed = [];
+            for (const raw of split(log)) {
+              const l = clean(raw);
+              const m = l.match(/^\s*(같음|다름|실패|건너뜀|뽑음)\s+\S/);
+              if (!m) continue;
+              counts[m[1]] = (counts[m[1]] || 0) + 1;
+              if (m[1] === '다름' || m[1] === '실패') failed.push(l.trim().slice(0, 240));
+            }
+            return { counts, failed: failed.slice(0, 80), note: lastLine(log).slice(0, 300) };
+          }
+
+          /** cargo-test — 실행본(target)마다 통과 · 실패 · 무시, 실패한 시험 이름, 끝 보고 없이 멈춘 실행본(신호 · 메모리) */
+          function cargo(log) {
+            const targets = {};
+            const open = new Set();
+            const failed = [];
+            const notes = [];
+            let cur = null;
+            const begin = (name) => { cur = name; targets[name] ||= { passed: 0, failed: 0, ignored: 0 }; open.add(name); };
+            for (const raw of split(log)) {
+              const l = clean(raw);
+              let m;
+              if ((m = l.match(/^\s+Running (?:unittests )?(\S+)/))) { begin(m[1].replace(/\\/g, '/')); continue; }
+              if ((m = l.match(/^\s+Doc-tests (\S+)/))) { begin(`doc ${m[1]}`); continue; }
+              if ((m = l.match(/^test result: (?:ok|FAILED)\. (\d+) passed; (\d+) failed; (\d+) ignored/)) && cur) {
+                const t = targets[cur];
+                t.passed += +m[1]; t.failed += +m[2]; t.ignored += +m[3];
+                open.delete(cur);
+                continue;
+              }
+              if ((m = l.match(/^test (.+?) \.\.\. FAILED$/))) { failed.push(`${cur || '?'}: ${m[1]}`); continue; }
+              if ((m = l.match(/\((signal: \d+[^)]*)\)/))) notes.push(`${cur || '?'}: 비정상 끝(${m[1]}) — 메모리 모자람 · 시간 초과일 수 있음`);
+              if (/^error(\[E\d+\])?: /.test(l) && !/^error: (test failed|\d+ targets? failed)/.test(l)) notes.push(l.trim().slice(0, 240));
+              if (/정답지가 낡음/.test(l)) notes.push(l.trim().slice(0, 240));
+            }
+            const all = Object.values(targets);
+            const sum = (k) => all.reduce((a, t) => a + t[k], 0);
+            const crashed = [...open];
+            return {
+              counts: { 실행본: all.length, 통과: sum('passed'), 실패: sum('failed'), 무시: sum('ignored'), ...(crashed.length ? { 멈춤: crashed.length } : {}) },
+              targets, failed: [...new Set(failed)].slice(0, 300), crashed, notes: [...new Set(notes)].slice(0, 40), note: lastLine(log).slice(0, 300),
+            };
+          }
+
+          /** clippy — 경고 · 오류를 (낱말 · 자리)로 한 번씩만(같은 경고가 lib과 lib test에 두 번 나옴) */
+          function clippy(log) {
+            const L = split(log).map(clean);
+            const seen = new Map();
+            for (let i = 0; i < L.length; i++) {
+              const m = L[i].match(/^(warning|error)(\[[^\]]+\])?: (.+)$/);
+              if (!m) continue;
+              const msg = m[3].trim();
+              if (/generated \d+ warnings?|build failed|could not compile|aborting due to|warnings? emitted|^\d+ warnings?$/.test(msg)) continue;
+              let at = '';
+              for (let j = i + 1; j < Math.min(i + 5, L.length); j++) { const a = L[j].match(/^\s*--> (.+)$/); if (a) { at = a[1].trim(); break; } }
+              const key = `${m[1]}|${msg}|${at}`;
+              if (!seen.has(key)) seen.set(key, { level: m[1], msg, at });
+            }
+            const items = [...seen.values()];
+            return {
+              counts: { 경고: items.filter((x) => x.level === 'warning').length, 오류: items.filter((x) => x.level === 'error').length },
+              failed: items.slice(0, 80).map((x) => `${x.level === 'error' ? '오류' : '경고'} ${x.at || '(자리 없음)'} — ${x.msg}`),
+              note: lastLine(log).slice(0, 300),
+            };
+          }
+
+          /** analyze — dart analyze의 줄(  info - 파일:줄:칸 - 글 - 규칙) */
+          function analyze(log) {
+            const counts = { error: 0, warning: 0, info: 0 };
+            const items = [];
+            for (const raw of split(log)) {
+              const l = clean(raw);
+              const m = l.match(/^\s*(error|warning|info) - (.+)$/);
+              if (m) { counts[m[1]]++; items.push(l.trim().slice(0, 300)); }
+            }
+            return { counts: { 오류: counts.error, 경고: counts.warning, 알림: counts.info }, failed: items.slice(0, 80), note: lastLine(log).slice(0, 300) };
+          }
+
+          /** flutter-test — 결과 JSON(--file-reporter json)에서 통과 · 실패 · 건너뜀과 실패한 시험(파일: 이름) · 글꼴 탓일 수 있는 것 */
+          function flutter(log) {
+            const text = read(path.join(out, 'flutter-test.json'));
+            const suspects = split(read(path.join(out, 'font-suspect.txt'))).map((s) => s.trim()).filter(Boolean);
+            const font = (p) => suspects.some((f) => p.endsWith(f));
+            if (text.trim()) {
+              const suites = {};
+              const tests = {};
+              let passed = 0, failedN = 0, skipped = 0;
+              const bad = [];
+              for (const l of split(text)) {
+                if (!l.startsWith('{')) continue;
+                let e;
+                try { e = JSON.parse(l); } catch { continue; }
+                if (e.type === 'suite') suites[e.suite.id] = String(e.suite.path || '').replace(/\\/g, '/');
+                else if (e.type === 'testStart') tests[e.test.id] = { name: e.test.name, suite: e.test.suiteID };
+                else if (e.type === 'testDone') {
+                  if (e.hidden && e.result === 'success') continue;
+                  if (e.skipped) { skipped++; continue; }
+                  if (e.result === 'success') { passed++; continue; }
+                  failedN++;
+                  const t = tests[e.testID] || { name: '?', suite: -1 };
+                  const p = suites[t.suite] || '';
+                  const rel = p.includes('/test/') ? 'test/' + p.split('/test/').slice(1).join('/test/') : p;
+                  bad.push({ rel, name: t.name, font: font(rel) });
+                }
+              }
+              const fontN = bad.filter((b) => b.font).length;
+              return {
+                counts: { 통과: passed, 실패: failedN, 건너뜀: skipped, ...(fontN ? { '글꼴 의심': fontN } : {}) },
+                failed: bad.slice(0, 300).map((b) => `${b.rel}: ${b.name}${b.font ? ' — 클라우드 글꼴 탓일 수 있음' : ''}`),
+                fontSuspectFiles: suspects,
+                note: lastLine(log).slice(0, 300),
+              };
+            }
+            const m = [...log.matchAll(/\+(\d+)(?: ~(\d+))?(?: -(\d+))?: /g)].pop();
+            return { counts: m ? { 통과: +m[1], 건너뜀: +(m[2] || 0), 실패: +(m[3] || 0) } : {}, note: `${lastLine(log).slice(0, 240)} (결과 JSON이 없어 콘솔 끝줄에서 셈)` };
+          }
+
+          /** r3same — remake3-same-check의 '<자료>: 같음 · 다름 …' 줄 */
+          function r3same(log) {
+            const counts = {};
+            const failed = [];
+            for (const raw of split(log)) {
+              const l = clean(raw);
+              const m = l.match(/^(\S+): (같음|다름|기준이 없음|내보내기 실패|기준을 씀)/);
+              if (!m) continue;
+              counts[m[2]] = (counts[m[2]] || 0) + 1;
+              if (m[2] !== '같음' && m[2] !== '기준을 씀') failed.push(l.trim().slice(0, 240));
+            }
+            return { counts, failed, note: lastLine(log).slice(0, 300) };
+          }
+
+          /** gradle — flutter build apk(Gradle)의 오류 · 경고: Kotlin 'e: ' · 'w: ' 줄 · Dart '파일:줄:칸: Error:' 줄 · Gradle '* What went wrong:' 다음 줄 ·
+           *  javac · AAPT · 매니페스트 합치기 · R8의 error 줄. 경로는 prototype/부터(러너의 받기 폴더 앞부분을 뗌). 오류만 failed에, 경고는 수만. */
+          function gradle(log) {
+            const L = split(log).map(clean);
+            const rel = (s) => s.replace(/(?:file:\/\/)?\/\S*?\/(prototype\/)/g, '$1');
+            const errors = [];
+            let warnings = 0;
+            for (let i = 0; i < L.length; i++) {
+              const l = L[i];
+              let m;
+              if ((m = l.match(/^e: (.+)$/))) errors.push(`Kotlin ${rel(m[1])}`);
+              else if (/^w: /.test(l)) warnings++;
+              else if ((m = l.match(/^(\S+\.dart):(\d+):(\d+): Error: (.+)$/))) errors.push(`Dart ${rel(m[1])}:${m[2]}:${m[3]} — ${m[4]}`);
+              else if (/^\* What went wrong:/.test(l)) { const next = L.slice(i + 1, i + 4).map((s) => s.trim()).find(Boolean); if (next) errors.push(`Gradle — ${rel(next)}`); }
+              else if (/(^|\s)(ERROR|error):\s|AAPT: error|Manifest merger failed|Missing classes detected/.test(l) && !/^\s*> /.test(l)) errors.push(rel(l.trim()));
+            }
+            const uniq = [...new Set(errors.map((s) => s.slice(0, 300)))];
+            return { counts: { 오류: uniq.length, 경고: warnings }, failed: uniq.slice(0, 80), note: lastLine(log).slice(0, 300) };
+          }
+
+          const [job, title] = process.argv.slice(2);
+          const P = { plain, lines, 'cargo-test': cargo, clippy, analyze, 'flutter-test': flutter, r3same, gradle };
+          const byId = new Map();
+          for (const l of split(read(path.join(out, 'results.jsonl')))) {
+            if (!l.trim()) continue;
+            let r;
+            try { r = JSON.parse(l); } catch { continue; }
+            byId.set(r.id, { ...(byId.get(r.id) || {}), ...r });
+          }
+          const checks = [];
+          for (const r of byId.values()) {
+            const c = { id: r.id, label: r.label, kind: r.kind, code: r.code ?? null, minutes: r.seconds != null ? Math.round(r.seconds / 6) / 10 : null };
+            if (r.state === 'skipped') { c.result = '건너뜀'; c.note = r.note; }
+            else if (r.state === 'missing') { c.result = '없음'; c.note = r.note; }
+            else {
+              try { Object.assign(c, (P[r.kind] || plain)(read(path.join(out, 'logs', `${r.id}.log`)))); } catch (e) { c.parseError = String(e).slice(0, 200); }
+              if (r.state === 'done') c.result = r.code === 0 ? '통과' : '실패';
+              else {
+                c.result = '중단';
+                c.note = `끝 기록이 없음 — 시간 초과 · 취소 · 러너 멈춤일 수 있음${c.note ? ' · 마지막 줄: ' + c.note : ''}`;
+                if (r.at) c.minutes = Math.round((Date.now() - Date.parse(r.at)) / 6000) / 10;
+              }
+            }
+            checks.push(c);
+          }
+          let tools = {};
+          try { tools = JSON.parse(read(path.join(out, 'tools.json')) || '{}'); } catch { /* 없음 */ }
+          const started = Number(read(path.join(out, 'started')).trim());
+          const summary = { job, title, tools, minutes: started ? Math.round((Date.now() / 1000 - started) / 6) / 10 : null, checks };
+          fs.writeFileSync(path.join(out, 'summary.json'), JSON.stringify(summary, null, 1) + '\n');
+          console.log(`${title || job} — ${summary.minutes ?? '?'}분`);
+          for (const c of checks) console.log(`  [${c.result}] ${c.label}${countsText(c.counts) ? ' — ' + countsText(c.counts) : ''}${c.result !== '통과' && c.note ? ' — ' + c.note : ''}`);
+          HT_EOF
+
+          cat > "$bin/report.mjs" <<'HT_EOF'
+          // report 일: 모든 일의 요약(summary.json)을 모아 한국어 요약.md · 요약.json · logs/를 낸다.
+          // 사용: node report.mjs <모은 폴더(ht-out-* 꾸러미들)> <낼 폴더> <커밋 제목 파일>
+          // 환경: HT_NEEDS(toJSON(needs)) · HT_MESSAGE(머리 커밋 글 — ci-source · ci-branch) · HT_RUN_URL · GITHUB_SHA · GITHUB_REF_NAME
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import zlib from 'node:zlib';
+
+          const [inDir, outDir, subjectFile] = process.argv.slice(2);
+          const read = (f) => { try { return fs.readFileSync(f, 'utf8'); } catch { return ''; } };
+          const json = (f) => { try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch { return null; } };
+          const needs = (() => { try { return JSON.parse(process.env.HT_NEEDS || '{}'); } catch { return {}; } })();
+          const msg = process.env.HT_MESSAGE || '';
+          const trailer = (key) => ((msg.match(new RegExp(`^${key}:[ \\t]*(.+)$`, 'mi')) || [])[1] || '').trim();
+          const branch = trailer('ci-branch') || (process.env.GITHUB_REF_NAME || '').replace(/^ci\//, '') || '(모름)';
+          const source = trailer('ci-source');
+          const sha = process.env.GITHUB_SHA || '';
+          const runUrl = process.env.HT_RUN_URL || '';
+          const RANK = { 실패: 4, 중단: 3, 통과: 1, 건너뜀: 0, 없음: 0 };
+          const ORDER = ['engine-official', 'engine-lint', 'tool', 'data-build', 'data-old-dlc', 'data-apply', 'data-misc', 'app', 'android'];
+          const orderOf = (job) => { const i = ORDER.findIndex((p) => job === p || job.startsWith(p + '-')); return i < 0 ? 99 : i; };
+          const TITLE = (job) => (job.startsWith('engine-official') ? '엔진 공식' : job === 'engine-lint' ? '엔진 lint' : job === 'tool' ? '자료 도구'
+            : job.startsWith('data-') ? `자료 ${job.slice(5)}` : job === 'app' ? '앱(Windows)' : job === 'android' ? '안드로이드 APK' : job);
+          const KO = { success: '성공', failure: '실패', cancelled: '취소', skipped: '건너뜀' };
+          const shardOf = (job) => job.replace('engine-official-', '');
+          const num = (v) => (typeof v === 'number' ? v.toLocaleString('en-US') : v);
+          const countsText = (c) => Object.entries(c || {}).map(([k, v]) => `${k} ${num(v)}`).join(' · ');
+          const kst = () => new Date().toLocaleString('sv-SE', { timeZone: 'Asia/Seoul' }).slice(0, 16);
+
+          // ── 모으기 · 로그 옮기기(50MB 넘는 것은 gzip — GitHub는 100MB 넘는 파일을 받지 않음) ──
+          fs.mkdirSync(path.join(outDir, 'logs'), { recursive: true });
+          const BIG = 50 * 1024 * 1024;
+          const zipped = [];
+          const copy = (from, to) => {
+            fs.mkdirSync(path.dirname(to), { recursive: true });
+            const size = fs.statSync(from).size;
+            if (size > BIG) { fs.writeFileSync(`${to}.gz`, zlib.gzipSync(fs.readFileSync(from))); zipped.push(`${path.relative(outDir, to).replace(/\\/g, '/')}.gz(${Math.round(size / 1048576)}MB)`); }
+            else fs.copyFileSync(from, to);
+          };
+          const sums = [];
+          for (const d of fs.existsSync(inDir) ? fs.readdirSync(inDir).filter((x) => x.startsWith('ht-out-')) : []) {
+            const base = path.join(inDir, d);
+            const job = d.replace(/^ht-out-/, '');
+            const s = json(path.join(base, 'summary.json')) || { job, title: '', checks: [], minutes: null, tools: json(path.join(base, 'tools.json')) || {}, broken: true };
+            s.job = s.job || job;
+            sums.push(s);
+            for (const f of fs.readdirSync(base)) {
+              const p = path.join(base, f);
+              if (fs.statSync(p).isDirectory()) { if (f === 'logs') for (const g of fs.readdirSync(p)) copy(path.join(p, g), path.join(outDir, 'logs', s.job, g)); }
+              else if (f !== 'started') copy(p, path.join(outDir, 'logs', s.job, f));
+            }
+          }
+          sums.sort((a, b) => orderOf(a.job) - orderOf(b.job) || a.job.localeCompare(b.job, 'en', { numeric: true }));
+
+          // ── 검사 줄 합치기: 엔진 나눔의 cargo 검사는 한 줄로 · 달력 표 · 정답지는 여러 일에서 한 줄로 ──
+          const rows = [];
+          const once = new Map();
+          const eng = { targets: {}, failed: [], crashed: [], notes: [], results: [] };
+          const engineSums = sums.filter((s) => s.job.startsWith('engine-official'));
+          for (const s of sums) {
+            const jt = TITLE(s.job);
+            if (s.broken) rows.push({ job: s.job, jt, label: '요약', result: '중단', note: '요약 JSON이 없음 — 일이 중간에 멈췄을 수 있음(로그는 logs/에)' });
+            for (const c of s.checks || []) {
+              if (s.job.startsWith('engine-official') && c.id.startsWith('cargo-')) {
+                eng.results.push(c.result);
+                for (const [t, v] of Object.entries(c.targets || {})) {
+                  const m = (eng.targets[t] ||= { passed: 0, failed: 0, ignored: 0, shards: new Set() });
+                  m.passed += v.passed; m.failed += v.failed; m.ignored += v.ignored; m.shards.add(shardOf(s.job));
+                }
+                eng.failed.push(...(c.failed || []));
+                eng.crashed.push(...(c.crashed || []).map((t) => `${t}(나눔 ${shardOf(s.job)})`));
+                eng.notes.push(...(c.notes || []));
+                if (c.result === '중단') eng.notes.push(`${c.label} — 끝 기록 없음(시간 초과 · 취소?) · 나눔 ${shardOf(s.job)}`);
+                continue;
+              }
+              if (c.id === 'calendar' || c.id === 'oracle') {
+                const m = once.get(c.id);
+                if (!m) once.set(c.id, { ...c, jt: c.id === 'oracle' ? '엔진 공식' : '일마다', jobs: [s.job] });
+                else {
+                  m.jobs.push(s.job);
+                  if (RANK[c.result] > RANK[m.result]) Object.assign(m, { result: c.result, note: `${s.job}: ${c.note || ''}`, counts: c.counts, failed: c.failed });
+                  m.minutes = Math.max(m.minutes || 0, c.minutes || 0);
+                }
+                continue;
+              }
+              rows.push({ job: s.job, jt, ...c });
+            }
+          }
+          for (const m of once.values()) m.label = `${m.label} — 일 ${m.jobs.length}개`;
+
+          const planOut = (() => { try { return JSON.parse(needs.plan?.outputs?.engine_plan || 'null'); } catch { return null; } })();
+          const chosen = (() => { try { return JSON.parse(needs.plan?.outputs?.shards || '[]'); } catch { return []; } })();
+          let engRow = null;
+          if (chosen.length || engineSums.length) {
+            const T = Object.values(eng.targets);
+            const sum = (k) => T.reduce((a, t) => a + t[k], 0);
+            const missingFiles = (planOut?.files || []).filter((f) => !eng.targets[`tests/${f}.rs`]);
+            const got = new Set(engineSums.map((s) => Number(shardOf(s.job))));
+            const missingShards = chosen.filter((x) => !got.has(x));
+            const minutes = engineSums.map((s) => s.minutes || 0);
+            const bad = eng.results.includes('실패') || eng.crashed.length > 0 || sum('failed') > 0 || missingFiles.length > 0 || missingShards.length > 0;
+            const result = bad ? '실패' : eng.results.includes('중단') || !eng.results.length ? '중단' : '통과';
+            engRow = {
+              job: 'engine-official', jt: '엔진 공식', label: `cargo test --locked --release --no-fail-fast(LTO · 나눔 ${chosen.length}개)`, result,
+              counts: { 실행본: T.length, 통과: sum('passed'), 실패: sum('failed'), 무시: sum('ignored'), ...(eng.crashed.length ? { 멈춤: eng.crashed.length } : {}) },
+              failed: [...eng.failed, ...eng.crashed.map((x) => `멈춤 ${x}`), ...missingFiles.map((f) => `결과 없음 tests/${f}.rs`), ...missingShards.map((x) => `결과 없는 나눔 ${x}`)],
+              minutes: Math.max(0, ...minutes),
+              note: `가장 긴 나눔 ${Math.max(0, ...minutes)}분 · 나눔 합 ${Math.round(minutes.reduce((a, b) => a + b, 0))}분${eng.notes.length ? ' · ' + [...new Set(eng.notes)].slice(0, 3).join(' / ') : ''}`,
+            };
+          }
+          const all = [once.get('calendar'), once.get('oracle'), engRow, ...rows].filter(Boolean);
+          const tally = { 통과: 0, 실패: 0, 중단: 0, 건너뜀: 0, 없음: 0 };
+          for (const r of all) tally[r.result] = (tally[r.result] || 0) + 1;
+          const tallyText = Object.entries(tally).filter(([, v]) => v).map(([k, v]) => `${k} ${v}`).join(' · ') || '검사 기록 없음';
+          const cancelled = Object.values(needs).some((x) => x?.result === 'cancelled');
+          const subject = `${cancelled ? '[취소된 실행] ' : ''}${branch} @ ${(source || sha).slice(0, 12)} — ${tallyText}`;
+
+          // ── 도구 · 러너 · 분 ──
+          const tl = sums.map((s) => ({ job: s.job, ...(s.tools || {}) }));
+          const pick = (k, f = () => true) => tl.find((t) => t[k] && f(t))?.[k];
+          const isWin = (t) => /win/i.test(t.runner || '') || t.job === 'app';
+          const lin = tl.find((t) => t.node && !isWin(t)) || tl.find((t) => t.node) || {};
+          const icuBad = [...new Set(tl.filter((t) => t.icu && t.sliceIcu && t.icu !== t.sliceIcu).map((t) => `${t.job} ${t.icu}`))];
+          const runners = [...new Set(tl.filter((t) => t.runner).map((t) => `${t.runner}(${t.cpus}코어 · ${t.memGB}GB)`))];
+          const minOf = (f) => Math.round(sums.filter((s) => f(s.tools ? { job: s.job, ...s.tools } : { job: s.job })).reduce((a, s) => a + (s.minutes || 0), 0));
+          const linMin = minOf((t) => !isWin(t));
+          const winMin = minOf(isWin);
+          const longest = Math.max(0, ...sums.map((s) => s.minutes || 0));
+          const fonts = pick('fonts');
+
+          // ── 요약.md ──
+          const md = [];
+          const line = (r) => {
+            const parts = [`[${r.result}] ${r.jt} · ${r.label}`];
+            if (r.counts && Object.keys(r.counts).length) parts.push(countsText(r.counts));
+            const head = r.kind === 'clippy' || r.kind === 'analyze' ? '경고 · 오류' : r.kind === 'gradle' ? '오류' : '실패';
+            if (r.failed?.length) parts.push(`${head}: ${r.failed.slice(0, 4).join(' · ')}${r.failed.length > 4 ? ` 외 ${r.failed.length - 4}개(아래 목록)` : ''}`);
+            if (r.note && (r.result !== '통과' || r.kind !== 'cargo-test')) parts.push(String(r.note).slice(0, 200));
+            if (r.minutes != null) parts.push(`${r.minutes}분`);
+            return `- ${parts.join(' — ')}`;
+          };
+          md.push(`# 클라우드 검사 — ${branch} · ${tallyText}`, '');
+          md.push(`- 가지 커밋 \`${source || '(모름 — ci-push.sh로 띄우지 않음)'}\`(${branch}) · 검사 커밋 \`${sha}\` · 실행 ${runUrl} · 요약 ${kst()} KST`);
+          if (cancelled) md.push('- **이 실행은 취소되었습니다**(새 밀기 · 손으로 취소) — 아래는 끝난 몫만입니다.');
+          md.push(`- 일 결과: ${Object.entries(needs).map(([k, v]) => `${k} ${KO[v?.result] || v?.result || '?'}`).join(' · ') || '(모름)'}`);
+          md.push(`- 도구: Node ${lin.node || '?'}(ICU ${lin.icu || '?'} · 잘린 달력 표 ${lin.sliceIcu || '?'} ${icuBad.length ? `**다름 — ${icuBad.join(', ')}**` : '같음'} · tz ${lin.tz || '?'}) · ${pick('rustc') || 'rustc ?'}${pick('clippy') ? ` · ${pick('clippy')}` : ''} · ${pick('flutter') || 'Flutter ?'}${pick('dart') ? ` · ${pick('dart')}` : ''}${pick('java') ? ` · ${pick('java')} · NDK ${pick('ndk') || '?'} · build-tools ${pick('buildTools') || '?'}` : ''}`);
+          md.push(`- 러너: ${runners.join(' · ') || '?'}${fonts ? ` · Windows 글꼴(맑은 고딕 · Noto · Cambria · 프리텐다드): ${fonts.length ? fonts.join(', ') : '하나도 없음'}` : ''}`);
+          md.push(`- 걸린 분(일 안 걸음만 — 설치 걸음 일마다 2 ~ 4분 빠짐): 리눅스 ${linMin}분 · Windows ${winMin}분 · 설치 더한 어림 ${linMin + winMin + 3 * sums.length}분(공개 저장소 표준 러너라 청구 없음) · 가장 긴 일 ${longest}분`, '');
+          md.push('## 검사마다', '');
+          for (const r of all) md.push(line(r));
+          md.push('');
+          if (Object.keys(eng.targets).length) {
+            md.push('## 엔진 시험 실행본마다(나눔을 합침)', '', '| 실행본 | 통과 | 실패 | 무시 | 나눔 |', '| --- | ---: | ---: | ---: | --- |');
+            for (const [t, v] of Object.entries(eng.targets).sort(([a], [b]) => a.localeCompare(b))) md.push(`| ${t} | ${v.passed} | ${v.failed ? `**${v.failed}**` : 0} | ${v.ignored} | ${[...v.shards].join(', ')} |`);
+            md.push('');
+          }
+          if (engineSums.length) {
+            md.push('## 엔진 나눔', '', '| 나눔 | 맡은 것 | 결과 | 분 |', '| --- | --- | --- | ---: |');
+            for (const s of engineSums) {
+              const p = planOut?.shards?.find((x) => String(x.shard) === shardOf(s.job));
+              const what = p ? [p.lib ? 'lib · bin · 문서' : '', ...p.parts.map((q) => `${q.file} ${q.index + 1}/${q.count}`), p.files.length ? `파일 ${p.files.length}개` : ''].filter(Boolean).join(' + ') : '?';
+              const rs = (s.checks || []).filter((c) => c.id.startsWith('cargo-')).map((c) => c.result);
+              const res = rs.includes('실패') ? '실패' : rs.includes('중단') ? '중단' : rs.length ? '통과' : '기록 없음';
+              md.push(`| ${shardOf(s.job)} | ${what} | ${res} | ${s.minutes ?? '?'} |`);
+            }
+            md.push('');
+          }
+          const lists = all.filter((r) => r.failed?.length && r.result !== '통과' || (r.failed?.length && /clippy|analyze/.test(r.kind || '')));
+          if (lists.length || eng.notes.length) {
+            md.push('## 실패 · 경고 목록', '');
+            for (const r of lists) { md.push(`### ${r.jt} · ${r.label}`, ''); for (const f of r.failed.slice(0, 200)) md.push(`- ${f}`); if (r.failed.length > 200) md.push(`- … 외 ${r.failed.length - 200}개`); md.push(''); }
+            if (eng.notes.length) { md.push('### 엔진 공식 — 알림(오류 줄 · 정답지 낡음 · 비정상 끝)', ''); for (const x of [...new Set(eng.notes)].slice(0, 40)) md.push(`- ${x}`); md.push(''); }
+          }
+          const skipped = all.filter((r) => r.result === '건너뜀' || r.result === '없음');
+          md.push('## 이 PC 공식 검사와 다른 점', '');
+          md.push('- 엔진 공식: 이 PC는 Windows에서 `dev.ps1 engine-test` 한 번, 클라우드는 리눅스에서 같은 깃발(`cargo test --locked --release --no-fail-fast` · LTO)을 나눔 여럿으로 — 시험 모음은 같고(add_pack은 시험 이름으로 조각) 달력 표 · 정답지는 나눔마다 새로 뜸. Windows 전용 갈래(`cfg(windows)` — DirectWrite 글자 그리기 등)는 리눅스에서 빠지거나 다르게 돎.');
+          md.push('- KTL(감독의 실자료)이 없어 KTL 시험 · 정답지 `east-asia+ktl` 둘 · old-dlc-check의 KTL 걸음 · apply-check의 ktl 조합은 그 도구가 건너뜀(`HT_REQUIRE_KTL`을 켜지 않음).');
+          md.push('- old-dlc-check: 옛 배포 저장소 걸음(`--old-root` — 이 PC의 배포본 자료)은 도구가 건너뜀 · 동시 canon `--jobs=4`(이 PC 공식과 같음 · 러너 16GB). schema4-old-store-check: 건너뜀(배포본 0.0.4의 옛 Windows 도구 · 판 3 저장소).');
+          md.push('- remake3-same-check: 기록 없는 공개 저장소(검사 커밋에 부모가 없음)에서는 기준 커밋(그 스크립트를 처음 더한 커밋의 부모)을 찾을 수 없어 건너뜀 — 이 PC 공식 검사로. 기록이 있는 저장소에서 돌면 기준(이 PC는 git 밖 `prototype/results/remake3-before`)을 그 커밋에서 새로 뜸(입력 f4 자료는 지금 가지 것 · 오늘 2026-10-24 12:00 KST로 고정).');
+          md.push('- 앱: Windows Server 2025 러너 — 시스템 글꼴(맑은 고딕 · Noto Sans KR · Cambria)이 없거나 달라 1배 그림 · 글꼴 시험이 깨질 수 있음(실패 목록에 \'클라우드 글꼴 탓일 수 있음\') · 시스템 언어 en-US · 시간대는 한국으로 맞춤. 분석은 app-check와 같은 `dart analyze --fatal-infos lib test`.');
+          md.push('- 안드로이드: 이 PC에는 Android SDK가 없어 공식 검사에 없는 일 — 클라우드에서 APK를 짓기(Kotlin · Dart AOT · R8 · 엔진 .so 컴파일)까지만. release.yml native-android와 같은 판(Java · NDK · Flutter · Rust)과 명령이되 시드 저장소 없이(빈 seed) 받기 폴더 안에서 짓고, 기기 · 에뮬레이터에서 돌리지 않으며 산출물을 올리지 않음.');
+          md.push('- 러너는 4코어 · 16GB(공개 저장소 표준 — 이 PC 16코어보다 느림) — 시간을 재는 시험이 있으면 느려서 깨질 수 있음.');
+          md.push('- 이 결과 · 로그는 공개 저장소에 있어 누구나 봄(밀기 전 ci-push.sh의 공개 안전 검사를 거친 트리에서 나온 것).');
+          for (const r of skipped) md.push(`- [${r.result}] ${r.jt} · ${r.label}${r.note ? ` — ${r.note}` : ''}`);
+          md.push('');
+          md.push('## 파일', '');
+          md.push('- `logs/<일>/<검사 id>.log` — 걸음마다 전체 로그 · `logs/<일>/summary.json` · `tools.json` — 일마다 요약 · 도구 판 · `logs/app/flutter-test.json` — 앱 시험 결과(json) · `logs/android/build-apk.log` — APK 짓기(Gradle) 전체');
+          md.push('- `logs/실패-줄.txt` — 모든 로그에서 실패 · 다름 · 오류 줄만 모음(파일:줄) · `요약.json` — 이 요약의 기계용');
+          if (zipped.length) md.push(`- 50MB가 넘어 gzip으로 둔 로그: ${zipped.join(' · ')}`);
+          md.push('');
+          fs.writeFileSync(path.join(outDir, '요약.md'), md.join('\n'));
+
+          // ── 실패 줄 모음 ──
+          const FAIL = /(FAILED|panicked at|^\s*error(\[E\d+\])?:|^\s*(실패|다름)\s|✗|낡음|::error::|\[E\]|Some tests failed|EXCEPTION CAUGHT|signal: \d+|^\s*(error|warning|info) - |^e: |\.dart:\d+:\d+: Error: |^\* What went wrong:|BUILD FAILED)/;
+          const fails = [];
+          const walk = (dir) => {
+            for (const f of fs.readdirSync(dir).sort()) {
+              const p = path.join(dir, f);
+              if (fs.statSync(p).isDirectory()) { walk(p); continue; }
+              if (!f.endsWith('.log')) continue;
+              const rel = path.relative(path.join(outDir, 'logs'), p).replace(/\\/g, '/');
+              let n = 0;
+              read(p).split(/\r?\n/).forEach((l, i) => {
+                if (n >= 300 || fails.length >= 6000 || /^# (시작|끝|명령) /.test(l) || !FAIL.test(l)) return;
+                fails.push(`${rel}:${i + 1}: ${l.slice(0, 400)}`);
+                n++;
+              });
+            }
+          };
+          walk(path.join(outDir, 'logs'));
+          fs.writeFileSync(path.join(outDir, 'logs', '실패-줄.txt'), (fails.length ? fails.join('\n') : '(실패 줄 없음)') + '\n');
+
+          // ── 요약.json ──
+          const engTargets = Object.fromEntries(Object.entries(eng.targets).map(([k, v]) => [k, { ...v, shards: [...v.shards] }]));
+          fs.writeFileSync(path.join(outDir, '요약.json'), JSON.stringify({
+            branch, source, sha, run: runUrl, at: new Date().toISOString(), cancelled, tally,
+            jobs: Object.fromEntries(Object.entries(needs).map(([k, v]) => [k, v?.result])),
+            checks: all, engine: { targets: engTargets, notes: [...new Set(eng.notes)] }, summaries: sums,
+          }, null, 1) + '\n');
+          fs.writeFileSync(subjectFile, subject + '\n');
+          console.log(subject);
+          HT_EOF
+
+          ls -la "$bin"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ht-bin
+          path: ${{ runner.temp }}/ht-bin/
+          retention-days: 7
+          if-no-files-found: error
+      - id: plan
+        name: 고를 일 · 엔진 시험 나눔
+        env:
+          HT_MESSAGE: ${{ github.event.head_commit.message }}
+          HT_INPUT_JOBS: ${{ inputs.jobs }}
+          HT_INPUT_SHARDS: ${{ inputs.shards }}
+        run: node "$RUNNER_TEMP/ht-bin/plan.mjs"
+
+  engine-official:
+    name: 엔진 공식 검사 나눔 ${{ matrix.shard }}
+    needs: plan
+    if: needs.plan.outputs.engine == 'true'
+    runs-on: ubuntu-latest
+    # 이 PC(16코어)에서 짓기 23분 + 시험 29분 — 4코어 러너(공개 저장소)는 몇 배 걸려 나눔 여럿으로(기본 3 · 어림 나눔마다 60 ~ 110분).
+    # 한도는 나눔 1개(--shards=1 · 전부 · 어림 3시간)도 들어가게 5시간 — GitHub 일 한도 6시간 안. 공개 저장소라 분은 세지 않고, 멈춘 나눔이 동시 일 자리(계정 20)만 잡는다.
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
+    env:
+      TZ: Asia/Seoul
+      HT_JOB: engine-official-${{ matrix.shard }}
+      HT_SHARD: ${{ matrix.shard }}
+      HT_ENGINE_PLAN: ${{ needs.plan.outputs.engine_plan }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: ht-bin
+          path: ${{ runner.temp }}/ht-bin
+      - name: 자리 정하기(결과 폴더 · 넓은 임시 폴더)
+        run: bash "${RUNNER_TEMP//\\//}/ht-bin/where.sh"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+      # 의존 크레이트만 캐시(rust-cache가 이 저장소 크레이트의 산출물은 지움 — target이 커지지 않게) · 나눔 0만 저장
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: prototype/engine
+          key: engine-official
+          save-if: ${{ matrix.shard == 0 }}
+          cache-on-failure: true
+      - name: 도구 판(Node ICU · 잘린 달력 표 ICU · rustc)
+        run: node "$HT_BIN/tools.mjs" --rust
+      - name: 달력 표(warm-calendar — git 밖 공용 표)
+        continue-on-error: true
+        run: bash "$HT_BIN/run.sh" calendar "달력 표 뜨기(warm-calendar)" -- node prototype/scripts/warm-calendar.mjs
+      - name: 정답지 다시 뽑기(layout-oracle — git 밖)
+        continue-on-error: true
+        timeout-minutes: 60
+        run: bash "$HT_BIN/run.sh" --kind=lines oracle "정답지 뽑기(layout-oracle)" -- node prototype/scripts/layout-oracle.mjs
+      - name: cargo test(이 나눔의 몫 — 공식 LTO와 같은 깃발)
+        continue-on-error: true
+        timeout-minutes: 280
+        run: bash "$HT_BIN/engine-shard.sh"
+      - name: 요약 JSON
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" "$HT_JOB" "엔진 공식 검사 나눔 $HT_SHARD"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ht-out-engine-official-${{ matrix.shard }}
+          path: ${{ runner.temp }}/ht-out/
+          retention-days: 7
+      - name: 결과 표시
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" --verdict
+
+  engine-lint:
+    name: 엔진 lint(clippy · RULES)
+    needs: plan
+    if: needs.plan.outputs.lint == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60 # 4코어 어림 15 ~ 30분
+    env:
+      TZ: Asia/Seoul
+      HT_JOB: engine-lint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: ht-bin
+          path: ${{ runner.temp }}/ht-bin
+      - name: 자리 정하기
+        run: bash "${RUNNER_TEMP//\\//}/ht-bin/where.sh"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: prototype/engine
+          key: engine-lint
+          cache-on-failure: true
+      - name: 도구 판
+        run: node "$HT_BIN/tools.mjs" --rust
+      - name: cargo clippy --locked --all-targets
+        continue-on-error: true
+        timeout-minutes: 50
+        run: bash "$HT_BIN/run.sh" --kind=clippy clippy "cargo clippy --locked --all-targets" -- cargo clippy --locked --all-targets --manifest-path prototype/engine/Cargo.toml
+      - name: lay-rules --check(lay::RULES가 웹 코드 · 내보내기 모듈과 같은지)
+        continue-on-error: true
+        run: bash "$HT_BIN/run.sh" lay-rules "lay-rules --check" -- node prototype/scripts/lay-rules.mjs --check
+      - name: 요약 JSON
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" "$HT_JOB" "엔진 lint"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ht-out-engine-lint
+          path: ${{ runner.temp }}/ht-out/
+          retention-days: 7
+      - name: 결과 표시
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" --verdict
+
+  tool:
+    name: 자료 도구(archive-tool 릴리즈)
+    needs: plan
+    if: needs.plan.outputs.tool == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60 # 4코어 어림 15 ~ 25분(LTO 릴리즈 하나)
+    env:
+      TZ: Asia/Seoul
+      HT_JOB: tool
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: ht-bin
+          path: ${{ runner.temp }}/ht-bin
+      - name: 자리 정하기
+        run: bash "${RUNNER_TEMP//\\//}/ht-bin/where.sh"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: prototype/engine
+          key: data-tool
+          cache-on-failure: true
+      - name: 도구 판
+        run: node "$HT_BIN/tools.mjs" --rust
+      - name: cargo build --locked --release(archive-tool — LTO)
+        continue-on-error: true
+        timeout-minutes: 50
+        run: bash "$HT_BIN/run.sh" build-release "archive-tool 짓기(cargo build --locked --release)" -- cargo build --locked --release --manifest-path prototype/engine/Cargo.toml
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ht-archive-tool
+          path: prototype/engine/target/release/archive-tool
+          retention-days: 3
+          if-no-files-found: warn
+      - name: 요약 JSON
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" "$HT_JOB" "자료 도구"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ht-out-tool
+          path: ${{ runner.temp }}/ht-out/
+          retention-days: 7
+      - name: 결과 표시
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" --verdict
+
+  data:
+    name: 자료 검사 ${{ matrix.group }}
+    needs: [plan, tool]
+    # 도구 짓기가 깨져도 도구 없이 도는 검사(f4-same-check · check-format4 …)는 돌린다 — 도구가 드는 검사는 그 도구가 '엔진 도구가 없습니다'로 실패.
+    if: ${{ !cancelled() && needs.plan.result == 'success' && needs.plan.outputs.data_groups != '[]' }}
+    runs-on: ubuntu-latest
+    # 4코어 어림: apply 35 ~ 110분 · old-dlc 25 ~ 75분 · build 25 ~ 60분 · misc 10 ~ 20분
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix:
+        group: ${{ fromJSON(needs.plan.outputs.data_groups) }}
+    env:
+      TZ: Asia/Seoul
+      HT_JOB: data-${{ matrix.group }}
+    steps:
+      # 기록 없는 공개 저장소 — 검사 커밋 하나만 받는다(얕은 받기 기본). 예전 fetch-depth: 0은 remake3-same-check의 기준 커밋 때문이었으나
+      # 부모 없는 커밋에는 기준이 없어 그 검사는 건너뛰고, 0으로 두면 다른 ci/* · ci-results/* 가지까지 다 받는다.
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: ht-bin
+          path: ${{ runner.temp }}/ht-bin
+      - name: 자리 정하기
+        run: bash "${RUNNER_TEMP//\\//}/ht-bin/where.sh"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: 엔진 도구 받기(tool 일의 archive-tool)
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: ht-archive-tool
+          path: prototype/engine/target/release
+      - name: 엔진 도구 실행 권한(꾸러미는 권한을 싣지 않음)
+        continue-on-error: true
+        run: |
+          chmod +x prototype/engine/target/release/archive-tool
+          ls -la prototype/engine/target/release/
+      - name: 도구 판
+        run: node "$HT_BIN/tools.mjs"
+      - name: 달력 표(warm-calendar — build-check · 도구들이 사본으로 씀)
+        continue-on-error: true
+        run: bash "$HT_BIN/run.sh" calendar "달력 표 뜨기(warm-calendar)" -- node prototype/scripts/warm-calendar.mjs
+
+      # ── build: Rust 짓기 = Node 배치(전부 · KTL 둘 · synth-calclip은 도구가 건너뜀) ──
+      - name: build-check(전부)
+        if: matrix.group == 'build'
+        continue-on-error: true
+        timeout-minutes: 220
+        run: bash "$HT_BIN/run.sh" --kind=lines --need=prototype/scripts/build-check.mjs build-check "build-check(Rust 짓기 = Node 배치 · 전부)" -- node prototype/scripts/build-check.mjs
+
+      # ── old-dlc: 옛 DLC 묶음 걷기(저장소 안 자료 · 잘린 달력 표) — 옛 배포 저장소 걸음(--old-root)은 도구가 건너뜀 ──
+      - name: old-dlc-check(묶음 걷기)
+        if: matrix.group == 'old-dlc'
+        continue-on-error: true
+        timeout-minutes: 220
+        run: bash "$HT_BIN/run.sh" --kind=lines --need=prototype/scripts/old-dlc-check.mjs old-dlc-check "old-dlc-check(묶음 걷기 · --jobs=4)" -- node prototype/scripts/old-dlc-check.mjs --jobs=4
+
+      # ── apply: 넣고 빼기 = 통째 짓기(모든 조합 — ktl 조합은 도구가 건너뜀) ──
+      - name: apply-check(모든 조합)
+        if: matrix.group == 'apply'
+        continue-on-error: true
+        timeout-minutes: 220
+        run: bash "$HT_BIN/run.sh" --need=prototype/scripts/apply-check.mjs apply-check "apply-check(모든 조합 · KTL 빼고)" -- node prototype/scripts/apply-check.mjs
+
+      # ── misc: 가볍고 저장소 안 자료만 쓰는 Node 검사들 ──
+      - name: f4-same-check
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 60
+        run: bash "$HT_BIN/run.sh" --kind=lines --need=prototype/scripts/f4-same-check.mjs f4-same-check "f4-same-check(형식 4 사본 = 원본 배치)" -- node prototype/scripts/f4-same-check.mjs
+      - name: remake3-same-check(기준을 새로 뜸 — 기록이 없으면 건너뜀)
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 60
+        run: |
+          # 검사 커밋 객체에 parent 줄이 없으면(ci-push.sh의 부모 없는 커밋 — 얕은 받기와 상관없이 날 객체로 봄) 기준 커밋을 뜰 수 없다
+          skip=()
+          head=$(git cat-file commit HEAD)
+          if ! grep -q '^parent ' <<< "${head%%$'\n\n'*}"; then # 머리(빈 줄 앞)만
+            skip=("--skip=기록 없는 공개 저장소의 부모 없는 검사 커밋 — 기준 커밋(그 스크립트를 처음 더한 커밋의 부모)이 없음 · 이 PC 공식 검사로")
+          fi
+          bash "$HT_BIN/run.sh" --kind=r3same --need=prototype/scripts/remake3-same-check.mjs "${skip[@]}" remake3-same-check "remake3-same-check(스키마 4가 더한 것 빼면 같음)" -- bash "$HT_BIN/r3-same.sh"
+      - name: check-format4
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 30
+        run: bash "$HT_BIN/run.sh" --need=scripts/check-format4.mjs check-format4 "check-format4" -- node scripts/check-format4.mjs
+      - name: calendar-cache-check
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 30
+        run: bash "$HT_BIN/run.sh" --need=prototype/scripts/calendar-cache-check.mjs calendar-cache-check "calendar-cache-check(잘라 낸 표 = 바로 뜬 표)" -- node prototype/scripts/calendar-cache-check.mjs
+      - name: add-dlc-tomb-check
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 30
+        run: bash "$HT_BIN/run.sh" --need=prototype/scripts/add-dlc-tomb-check.mjs add-dlc-tomb-check "add-dlc-tomb-check(묘비 규칙)" -- node prototype/scripts/add-dlc-tomb-check.mjs
+      - name: dev-smoke
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 30
+        run: bash "$HT_BIN/run.sh" --need=scripts/dev-smoke.mjs dev-smoke "dev-smoke(웹 · 메이커 빠른 검사)" -- node scripts/dev-smoke.mjs
+      - name: maker-check-check
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 30
+        run: bash "$HT_BIN/run.sh" --need=scripts/maker-check-check.mjs maker-check-check "maker-check-check(메이커 검사 창)" -- node scripts/maker-check-check.mjs
+      - name: maker-paste-check --node
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 30
+        run: bash "$HT_BIN/run.sh" --need=scripts/maker-paste-check.mjs maker-paste-check "maker-paste-check --node(브라우저 단계 빼고)" -- node scripts/maker-paste-check.mjs . "$HT_OUT/maker-paste" --node
+      - name: maker-save-check(가지에 있으면)
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 30
+        run: bash "$HT_BIN/run.sh" --need=scripts/maker-save-check.mjs maker-save-check "maker-save-check(메이커 저장 왕복)" -- node scripts/maker-save-check.mjs
+      - name: maker-f4-check(가지에 있으면)
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 30
+        run: bash "$HT_BIN/run.sh" --need=scripts/maker-f4-check.mjs maker-f4-check "maker-f4-check(메이커 다리)" -- node scripts/maker-f4-check.mjs
+      - name: entity-id-check(가지에 있으면)
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 60
+        run: bash "$HT_BIN/run.sh" --need=prototype/scripts/entity-id-check.mjs entity-id-check "entity-id-check(항목ID가 길마다 같음)" -- node prototype/scripts/entity-id-check.mjs
+      - name: window-check(가지에 있으면)
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        timeout-minutes: 60
+        run: bash "$HT_BIN/run.sh" --need=prototype/scripts/window-check.mjs window-check "window-check(연표 창구)" -- node prototype/scripts/window-check.mjs
+      - name: schema4-old-store-check(이 PC 전용 자료 — 건너뜀)
+        if: matrix.group == 'misc'
+        continue-on-error: true
+        run: bash "$HT_BIN/run.sh" --need=prototype/scripts/schema4-old-store-check.mjs --skip="이 PC 전용 자료(배포본 0.0.4의 옛 Windows archive-tool.exe · 판 3 저장소)" schema4-old-store-check "schema4-old-store-check" -- true
+
+      - name: 요약 JSON
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" "$HT_JOB" "자료 검사 ${{ matrix.group }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ht-out-data-${{ matrix.group }}
+          path: ${{ runner.temp }}/ht-out/
+          retention-days: 7
+      - name: 결과 표시
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" --verdict
+
+  app:
+    name: 앱 검사(Windows · app-check와 같게)
+    needs: plan
+    if: needs.plan.outputs.app == 'true'
+    runs-on: windows-2025
+    # Windows 4코어 · 16GB(공개 저장소 — Windows도 분을 세지 않음) 어림 25 ~ 45분(짓기 · 설치 포함)
+    timeout-minutes: 120
+    env:
+      HT_JOB: app
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: 줄 끝을 저장소 그대로(LF) 받기
+        shell: pwsh
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+      - name: 시간대를 한국 시간으로(감독 PC와 같게)
+        shell: pwsh
+        continue-on-error: true
+        run: |
+          tzutil /s "Korea Standard Time"
+          Get-TimeZone | Format-List Id, DisplayName
+      - uses: actions/download-artifact@v4
+        with:
+          name: ht-bin
+          path: ${{ runner.temp }}/ht-bin
+      - name: 자리 정하기
+        run: bash "${RUNNER_TEMP//\\//}/ht-bin/where.sh"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: prototype/engine
+          key: app-windows
+          cache-on-failure: true
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - name: 도구 판(+ 시스템 글꼴)
+        run: node "$HT_BIN/tools.mjs" --rust --flutter
+      - name: 엔진 dll(dev.ps1 engine-build와 같게 — LTO 릴리즈)
+        continue-on-error: true
+        timeout-minutes: 60
+        run: bash "$HT_BIN/run.sh" engine-build "엔진 dll(cargo build --locked --release)" -- cargo build --locked --release --manifest-path prototype/engine/Cargo.toml
+      - name: app-get(빈 시드 폴더 · flutter pub get)
+        continue-on-error: true
+        timeout-minutes: 20
+        run: |
+          # dev.ps1 app-get과 같게: pubspec의 assets/seed/ 자리(안드로이드 첫 실행 자료)는 Windows에서는 빈 폴더 · 빈 목록이면 된다
+          bash "$HT_BIN/run.sh" --cwd=prototype/app pub-get "app-get(flutter pub get)" -- \
+            bash -c 'mkdir -p assets/seed/originals && { [ -f assets/seed/manifest.json ] || printf "[]\n" > assets/seed/manifest.json; } && flutter pub get'
+      - name: 분석(dart analyze --fatal-infos lib test — app-check와 같게)
+        continue-on-error: true
+        timeout-minutes: 20
+        run: bash "$HT_BIN/run.sh" --kind=analyze --cwd=prototype/app analyze "분석(dart analyze --fatal-infos lib test)" -- dart analyze --fatal-infos lib test
+      - name: 글꼴 탓일 수 있는 시험 파일 모으기(시스템 글꼴 · 기준 그림 · ClearType)
+        continue-on-error: true
+        run: |
+          grep -rlE 'C:/Windows/Fonts|mockFallback|matchesGoldenFile|[Cc]lear[Tt]ype|DirectWrite' prototype/app/test --include='*_test.dart' | sed 's#^prototype/app/##' | sort > "$HT_OUT/font-suspect.txt" || true
+          cat "$HT_OUT/font-suspect.txt"
+      - name: flutter test(전부 — app-check와 같게)
+        continue-on-error: true
+        timeout-minutes: 90
+        run: bash "$HT_BIN/run.sh" --kind=flutter-test --cwd=prototype/app flutter-test "flutter test(전부)" -- bash "$HT_BIN/flutter-test.sh"
+      - name: 요약 JSON
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" "$HT_JOB" "앱 검사(Windows)"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ht-out-app
+          path: ${{ runner.temp }}/ht-out/
+          retention-days: 7
+      - name: 결과 표시
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" --verdict
+
+  # 안드로이드 APK 짓기(컴파일 확인) — 이 PC에는 Android SDK가 없어 MainActivity.kt(딥링크 ht/link · 파일 고르기 ht/files) · 매니페스트 ·
+  # 안드로이드 쪽 Dart · 엔진의 aarch64-linux-android 갈래가 여기서만 컴파일된다. release.yml native-android와 같은 판 · 명령(Java 21 temurin ·
+  # setup-android · NDK 28.2.13676358 · Flutter 3.47.5 · flutter build apk --release --target-platform android-arm64 · 서명은 build.gradle.kts의
+  # 디버그 키 그대로)이되 시드 저장소 없이(빈 seed — showcase 짓기를 하지 않음) 받기 폴더 안에서 짓는다(릴리즈 스크립트는 앱 사본에서).
+  # 엔진 .so 걸음이 깨져도 APK는 짓는다(Kotlin · Dart 컴파일을 따로 보려고) — 그때 'APK 확인'이 .so가 없다고 실패로 적는다. 지은 APK는 올리지 않는다.
+  android:
+    name: 안드로이드 APK 짓기(연표 앱 · 디버그 키 서명)
+    needs: plan
+    if: needs.plan.outputs.android == 'true'
+    runs-on: ubuntu-latest
+    # 4코어 어림 30 ~ 50분(NDK 받기 2 ~ 5 · 엔진 .so LTO 10 ~ 20 · Gradle 처음 받기와 APK 10 ~ 20) — 넉넉히
+    timeout-minutes: 120
+    env:
+      TZ: Asia/Seoul
+      HT_JOB: android
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: ht-bin
+          path: ${{ runner.temp }}/ht-bin
+      - name: 자리 정하기
+        run: bash "${RUNNER_TEMP//\\//}/ht-bin/where.sh"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
+      - uses: android-actions/setup-android@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+          targets: aarch64-linux-android
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: prototype/engine
+          key: android
+          cache-on-failure: true
+      - name: NDK(sdkmanager — release.yml과 같게)
+        continue-on-error: true
+        timeout-minutes: 20
+        run: |
+          # 진행 막대(\r로 덮어 쓰는 줄)는 로그에서 뺀다 — 맞고 틀림은 그 판의 NDK 폴더가 생겼는지로(이미지에 있으면 받지 않고 끝남)
+          bash "$HT_BIN/run.sh" ndk "NDK $NDK_VERSION 받기(sdkmanager)" -- bash -c '
+            sdkmanager "ndk;$NDK_VERSION" | tr "\r" "\n" | grep -vE "^\[[= ]*\] +[0-9]+%"
+            d="${ANDROID_HOME:-$ANDROID_SDK_ROOT}/ndk/$NDK_VERSION"
+            if [ -x "$d/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang" ]; then echo "NDK 자리 $d"; else echo "NDK가 없습니다: $d"; exit 1; fi'
+      - name: 도구 판(+ Java · NDK · build-tools)
+        run: node "$HT_BIN/tools.mjs" --rust --flutter --android
+      - name: 엔진 .so(aarch64-linux-android — build-android.sh 1단계와 같게)
+        continue-on-error: true
+        timeout-minutes: 60
+        run: bash "$HT_BIN/run.sh" engine-so "엔진 .so(cargo build --locked --release --lib --target aarch64-linux-android)" -- bash "$HT_BIN/android-engine.sh"
+      - name: app-get(빈 시드 폴더 · flutter pub get)
+        continue-on-error: true
+        timeout-minutes: 20
+        run: |
+          # pubspec의 assets/seed/ 자리 — 릴리즈는 저장소를 넣지만 컴파일 확인은 빈 폴더 · 빈 목록(app 일 · dev.ps1 app-get과 같게)
+          bash "$HT_BIN/run.sh" --cwd=prototype/app pub-get "app-get(flutter pub get)" -- \
+            bash -c 'mkdir -p assets/seed/originals && { [ -f assets/seed/manifest.json ] || printf "[]\n" > assets/seed/manifest.json; } && flutter pub get'
+      - name: APK 짓기(flutter build apk --release --target-platform android-arm64)
+        continue-on-error: true
+        timeout-minutes: 60
+        run: bash "$HT_BIN/run.sh" --kind=gradle --cwd=prototype/app build-apk "APK 짓기(flutter build apk --release --target-platform android-arm64)" -- flutter build apk --release --target-platform android-arm64
+      - name: APK 확인(apksigner · aapt2 · 엔진 .so)
+        continue-on-error: true
+        timeout-minutes: 10
+        run: bash "$HT_BIN/run.sh" --kind=lines --cwd=prototype/app apk-check "APK 확인(디버그 키 서명 · arm64 · 엔진 .so)" -- bash "$HT_BIN/android-check.sh"
+      - name: 요약 JSON
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" "$HT_JOB" "안드로이드 APK"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ht-out-android
+          path: ${{ runner.temp }}/ht-out/
+          retention-days: 7
+      - name: 결과 표시
+        if: always()
+        run: node "$HT_BIN/summarize.mjs" --verdict
+
+  # 결과는 검사가 돈 같은 공개 저장소의 ci-results/<가지>로 — 공개 로그(누구나 봄). 쓰기 권한은 이 일만(GITHUB_TOKEN · contents: write).
+  report:
+    name: 결과 모으기 · ci-results에 밀기
+    needs: [plan, engine-official, engine-lint, tool, data, app, android]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      TZ: Asia/Seoul
+      HT_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: 결과 꾸러미 받기
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ht-out-*
+          path: ${{ runner.temp }}/collected
+      - name: 도우미 받기
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: ht-bin
+          path: ${{ runner.temp }}/ht-bin
+      - name: 요약 만들기(요약.md · 요약.json · logs/)
+        env:
+          HT_NEEDS: ${{ toJSON(needs) }}
+          HT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          out="$RUNNER_TEMP/result"
+          rm -rf "$out"; mkdir -p "$out"
+          if [ -f "$RUNNER_TEMP/ht-bin/report.mjs" ] && node "$RUNNER_TEMP/ht-bin/report.mjs" "$RUNNER_TEMP/collected" "$out" "$RUNNER_TEMP/subject.txt"; then
+            :
+          else
+            # 도우미가 없거나 깨졌을 때 — 일 결과만이라도
+            name=${GITHUB_REF_NAME#ci/}
+            {
+              echo "# 클라우드 검사 — $name · 요약을 만들지 못함"
+              echo
+              echo "- 검사 커밋 \`$GITHUB_SHA\` · 실행 $HT_RUN_URL"
+              echo "- 일 결과:"
+              echo "$HT_NEEDS" | jq -r 'to_entries[] | "  - \(.key): \(.value.result)"'
+            } > "$out/요약.md"
+            [ -d "$RUNNER_TEMP/collected" ] && cp -r "$RUNNER_TEMP/collected" "$out/logs" || true
+            echo "$name @ ${GITHUB_SHA:0:12} — 요약을 만들지 못함" > "$RUNNER_TEMP/subject.txt"
+          fi
+          cat "$out/요약.md" >> "$GITHUB_STEP_SUMMARY"
+          ls -la "$out"
+      - name: ci-results/<가지>로 밀기(고아 커밋 하나 · 강제 · 같은 공개 저장소 — 공개 로그)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          name=${GITHUB_REF_NAME#ci/}
+          cd "$RUNNER_TEMP/result"
+          git init -q -b results .
+          git add -A
+          subject=$(head -n 1 "$RUNNER_TEMP/subject.txt" 2>/dev/null || echo "$name — 요약")
+          printf '%s\n\n실행: %s\n검사 커밋: %s\n' "$subject" "$HT_RUN_URL" "$GITHUB_SHA" > "$RUNNER_TEMP/commit-msg.txt"
+          git -c user.name=timeline -c user.email=timeline@local commit -q -F "$RUNNER_TEMP/commit-msg.txt"
+          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\n')
+          echo "::add-mask::$auth"
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" push -q --force "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git" "HEAD:refs/heads/ci-results/$name"
+          echo "밂: refs/heads/ci-results/$name — $(git rev-parse --short HEAD) · $subject"

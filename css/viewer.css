@@ -1,0 +1,1191 @@
+/* 역사 연표 — 뷰어 레이아웃 */
+.app { position: relative; display: flex; flex-direction: column; height: 100vh; height: 100dvh; padding: var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left); }
+
+.search { position: relative; }
+.search input { width: 100%; height: 34px; padding-left: 34px; border-radius: 999px; border-color: transparent; background: var(--surface-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%238f897d' stroke-width='2'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3Cpath d='m11 11 3.5 3.5'/%3E%3C/svg%3E") no-repeat 12px center; }
+.search-results {
+  position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 50;
+  max-height: min(60vh, 460px); overflow: auto; padding: 6px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
+}
+.search-results .sr-meta { padding: 4px 8px 6px; font-size: 12px; color: var(--text-3); }
+.search-results button {
+  display: flex; align-items: center; gap: 10px; width: 100%; padding: 7px 8px;
+  border: 0; border-radius: 8px; background: none; text-align: left; cursor: pointer;
+}
+.search-results button:hover, .search-results button.is-active { background: var(--accent-soft); }
+.sr-dot { width: 9px; height: 9px; flex: none; border-radius: 50%; background: var(--c); }
+.sr-dot.is-period { border-radius: 3px; width: 14px; height: 8px; }
+.sr-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sr-when { font-size: 12px; color: var(--text-3); white-space: nowrap; }
+
+.stage { position: relative; flex: 1; min-height: 0; display: flex; }
+.timeline-host { flex: 1; min-width: 0; }
+
+.zoom-controls {
+  position: absolute; right: 16px; bottom: 16px; z-index: 20;
+  display: flex; flex-direction: column; gap: 2px; padding: 4px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
+}
+.zoom-controls { transition: right .32s var(--spring); }
+.detail:not([hidden]) ~ .zoom-controls, .stage:has(.detail:not([hidden])) .zoom-controls { right: 392px; }
+
+.detail {
+  position: absolute; top: 12px; right: 12px; bottom: 12px; z-index: 30;
+  width: min(360px, calc(100% - 24px)); display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+  animation: slide-in .26s var(--spring);
+}
+@keyframes slide-in { from { transform: translateX(12px); opacity: 0; } }
+.detail-head { display: flex; align-items: flex-start; gap: 8px; padding: 14px 12px 0 18px; }
+.detail-head .badges { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; padding-top: 5px; }
+.detail-body { flex: 1; overflow: auto; padding: 8px 18px 16px; }
+.detail h2 { margin: 6px 0 4px; font-size: 21px; line-height: 1.35; word-break: keep-all; }
+.detail .when { margin: 0 0 14px; color: var(--text-2); font-weight: 600; }
+.detail .desc { white-space: pre-wrap; line-height: 1.75; }
+.detail .desc.is-empty { color: var(--text-3); font-style: italic; }
+.detail .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; }
+.detail .tag { padding: 1px 8px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--line); font-size: 12px; color: var(--text-2); }
+.detail dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 18px 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; }
+.detail dt { color: var(--text-3); }
+.detail dd { margin: 0; word-break: break-all; }
+.detail-foot { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 18px; border-top: 1px solid var(--line); }
+
+.editor-note { margin: 0 0 14px; padding: 9px 12px; border-radius: 8px; background: var(--accent-soft); font-size: 13px; }
+
+/* DLC 관리 */
+.dlc-dialog { width: min(820px, calc(100vw - 24px)); }
+.dlc-section + .dlc-section { margin-top: 22px; }
+.dlc-section h3 { margin: 0 0 10px; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+.dlc-section h3 small { font-weight: 400; color: var(--text-3); }
+.pack-tag { font-size: 11px; font-weight: 600; padding: 0 6px; border-radius: 5px; background: var(--accent-soft); color: var(--accent); }
+
+.switch { position: relative; width: 40px; height: 22px; flex: none; margin-top: 2px; }
+.switch input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; z-index: 1; }
+.switch i { position: absolute; inset: 0; border-radius: 999px; background: var(--line-strong); transition: background .15s; }
+.switch i::after { content: ""; position: absolute; left: 3px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform .15s; }
+.switch input:checked + i { background: var(--ok); }
+.switch input:checked + i::after { transform: translateX(18px); }
+.switch input:focus-visible + i { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.install-log { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.log-item { padding: 8px 12px; border-radius: 8px; font-size: 13px; background: var(--surface-2); border-left: 3px solid var(--line-strong); }
+.log-item.ok { border-color: var(--ok); }
+.log-item.fail { border-color: var(--danger); }
+.log-item ul { margin: 4px 0 0; padding-left: 18px; color: var(--text-2); }
+
+.drop-overlay {
+  position: fixed; inset: 0; z-index: 2000; display: grid; place-items: center;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); border: 4px dashed var(--accent); pointer-events: none;
+}
+.drop-overlay div { padding: 18px 26px; border-radius: 14px; background: var(--surface); box-shadow: var(--shadow); font-size: 18px; font-weight: 700; }
+
+@media (max-width: 860px) {
+  .top-actions { margin-left: 0; width: 100%; }
+  .top-actions .btn { flex: 1; justify-content: center; }
+  .filter-options { margin-left: 0; }
+  .statusbar .hint { display: none; }
+  .stage:has(.detail:not([hidden])) .zoom-controls { display: none; }
+}
+
+/* 좁은 화면(폰): 필터 바를 서랍으로 접고, 손가락으로 누를 것들을 키웁니다 */
+@media (max-width: 720px) {
+  .topbar { gap: 8px 12px; padding: 8px 12px; }
+  .brand { min-width: 0; }
+  .brand-sub { display: none; }
+  .search { min-width: 0; flex-basis: 100%; order: 3; }
+  .top-actions .btn { padding: 0 8px; font-size: 13px; }
+  .zoom-controls { right: 10px; bottom: calc(10px + var(--safe-bottom)); }
+  .zoom-controls .icon-btn { width: 40px; height: 40px; }
+  .detail { top: 8px; right: 8px; bottom: 8px; left: 8px; width: auto; }
+  .detail-head .icon-btn { width: 40px; height: 40px; font-size: 20px; }
+  .legend { left: 8px; bottom: calc(8px + var(--safe-bottom)); }
+  .statusbar { padding: 4px 12px; }
+  .search-results { max-height: 50dvh; }
+}
+
+/* --- 확실성 · 이설 · 패치 --- */
+.badge-cert { background: color-mix(in srgb, var(--warn) 18%, transparent); }
+.badge-cert::before { background: var(--warn); }
+.detail .range-note { margin: -8px 0 12px; font-size: 13px; color: var(--warn); }
+/* 지도자·내각 창의 앞뒤 넘기기 */
+.detail .cell-nav { display: flex; justify-content: space-between; gap: 8px; margin: 12px 0 4px; }
+.detail .cell-nav .btn { max-width: 48%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sub-box { margin-top: 16px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); }
+.sub-box h3 { margin: 0 0 8px; font-size: 13px; }
+.sub-box h3 small { font-weight: 400; color: var(--text-3); }
+.sub-box h3 .sub-act { float: right; margin: -3px 0 0 8px; }
+.cell-list .cap-role { margin-left: 2px; padding: 0 5px; border-radius: 999px; font-style: normal; font-size: 10.5px; color: var(--text-2); background: var(--accent-soft); }
+.sub-box .desc { font-size: 13px; line-height: 1.7; }
+.sub-box > small { display: block; margin-top: 6px; font-size: 12px; color: var(--text-3); }
+.sub-box h3 small { margin-left: 4px; }
+.sub-box.is-patch { background: color-mix(in srgb, var(--accent) 7%, var(--surface-2)); }
+.alt-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.alt-list button { display: flex; gap: 8px; align-items: baseline; width: 100%; padding: 5px 8px; border: 0; border-radius: 7px; background: none; text-align: left; cursor: pointer; }
+.alt-list button:hover { background: var(--accent-soft); }
+.alt-list b { flex: none; font-variant-numeric: tabular-nums; }
+.alt-list span { font-size: 12px; color: var(--text-2); }
+.alt-list .is-main button { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+/* 다른 견해 — 메모는 줄 아래에 작게, 날짜 없이 근거만 적은 견해는 누르지 않는 줄(날짜 자리에 —), 칸 창이 없는 줄(소속 · 왕조 구간 · 활동 기록)은 목록 아래 작은 상자 (디테일 건의 4) */
+.alt-list button, .alt-list .alt-static { flex-wrap: wrap; row-gap: 1px; }
+.alt-list b { flex: 0 1 auto; min-width: 0; }
+.alt-list button > span, .alt-list .alt-static > span { flex: 1 1 150px; min-width: 0; }
+.alt-list .alt-fill { font-style: normal; font-weight: 400; color: var(--text-3); }
+.alt-list .alt-note { display: block; margin-top: 1px; font-size: 11.5px; color: var(--text-3); }
+.alt-list .alt-static { display: flex; gap: 8px; align-items: baseline; padding: 5px 8px; }
+.alt-list .alt-static b { color: var(--text-3); }
+.alt-list .alt-static b.is-when { color: inherit; } /* 날짜는 있으나 누를 해가 없는 줄 (시작 · 끝이 모두 미정인 칸의 첫 줄 · 앞뒤가 뒤집힌 이설) */
+.alt-list .is-main .alt-static { border-radius: 7px; background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.alt-sub { margin: 8px 0 2px; padding: 2px 0 2px 10px; border-left: 2px dashed color-mix(in srgb, var(--warn) 34%, var(--line)); }
+.alt-sub .succ-cap { margin: 0 0 3px; }
+.detail .alt-sub .range-note { margin: 0 0 4px; }
+.detail em.alt-tag { display: inline-block; margin-left: 4px; padding: 0 5px; border-radius: 999px; font-style: normal; font-size: 10.5px; line-height: 1.5; color: var(--text-2); background: color-mix(in srgb, var(--warn) 15%, transparent); white-space: nowrap; vertical-align: 1px; }
+.detail em.alt-tag.is-fuzzy { padding: 0 4px; background: none; border: 1px dashed color-mix(in srgb, var(--warn) 48%, transparent); }
+
+/* --- 같은 해 보기 --- */
+.year-eras { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.year-eras li { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.year-eras .muted, .year-events .muted { color: var(--text-3); font-size: 13px; }
+.linky { border: 0; background: none; padding: 0; color: var(--accent); font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.year-window { padding: 8px 0; border-top: 1px solid var(--line); font-size: 13px; color: var(--text-2); }
+.year-window select { height: 28px; }
+.year-events { list-style: none; margin: 0; padding: 0; }
+.year-events button { display: flex; gap: 8px; align-items: baseline; width: 100%; padding: 6px 8px; border: 0; border-radius: 7px; background: none; text-align: left; cursor: pointer; }
+.year-events button:hover { background: var(--accent-soft); }
+.year-events .y { flex: none; font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; min-width: min(var(--yw, 74px), 45%); } /* --yw: 창 안 가장 넓은 날짜 칸(viewer.js alignYearCols) — 한 해 사건과 기간 사건의 이름이 같은 자리에서 시작 */
+.year-events .t { flex: 1; min-width: 0; }
+.year-events .tr { font-size: 12px; color: var(--text-3); }
+.year-events .y { max-width: 45%; } /* 날짜까지 적은 기간이 길어도 제목 자리를 남깁니다 */
+/* 날짜 곁들임: 상세의 연대 아래 음력·일진·요일 줄 · DLC의 원문 날짜 표기 · 같은 해(달·날) 보기 제목 아래 줄 */
+.detail .when-sub { display: block; margin-top: 3px; font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.detail .when-orig { color: var(--text-3); font-weight: 400; }
+.detail .when-line { margin: -2px 0 10px; font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+/* 검색 결과: 날짜까지 적은 긴 기간은 말줄임 (제목이 먼저 보이게) */
+.search-results .sr-when { max-width: 55%; overflow: hidden; text-overflow: ellipsis; }
+
+/* --- 도구 --- */
+.tool-sep { width: 1px; height: 20px; background: var(--line); }
+.filter-options .btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.measure-info { color: var(--accent); }
+.measure-info .linky { font-size: 12px; margin-left: 6px; }
+.data-table td { vertical-align: top; font-size: 13px; }
+.data-table .nowrap { white-space: nowrap; }
+.data-table .desc-cell { color: var(--text-2); max-width: 340px; }
+.data-table .alt-cell { margin-top: 2px; font-size: 12px; color: var(--warn); }
+.data-table tbody tr { cursor: pointer; }
+.data-table tbody tr:hover { background: var(--accent-soft); }
+
+/* 부모·자식 · 공동 사건 */
+.detail .crumb { margin: -6px 0 10px; font-size: 13px; color: var(--muted); }
+.detail .shared-note { margin: -6px 0 12px; font-size: 13px; color: var(--ok); }
+.kid-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.kid-list button { display: flex; gap: 10px; align-items: baseline; width: 100%; padding: 5px 8px; border: 0; border-radius: 7px; background: none; text-align: left; cursor: pointer; }
+.kid-list button:hover { background: var(--accent-soft); }
+.kid-list b { flex: none; font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; min-width: 60px; }
+.kid-list span { font-size: 13px; }
+
+/* 나라별 관점 · 칸 목록(지도자 · 내각 · 연호 …) */
+.lens-tabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 2px 0 6px; }
+.lens-tabs button { padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 12px; color: var(--text-2); cursor: pointer; }
+.lens-tabs button[aria-selected="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.detail .aka { margin: -2px 0 8px; font-size: 12px; color: var(--text-3); }
+/* 상세 창 머리의 원어 (10건 3 · 감독 결정 D2-1 A — viewer.js namesHeadHTML): 제목 아래 첫 원어 19px · 둘째 줄 로마자 13px, 언어 · 종류 딱지 없음.
+   그릴 수 없는 원어(결정 4 B)는 글 대신 '원어 — ○○ · 글꼴 없음' 딱지. '다른 이름 n개' 칸은 설명 바로 위(종류 · 글 · 쓴 기간 세 칸) */
+.detail .names-orig { margin: -1px 0 9px; font-size: 19px; font-weight: 400; line-height: 1.35; letter-spacing: .01em; color: var(--text-2); word-break: keep-all; }
+.detail .names-orig:has(+ .names-roman) { margin-bottom: 3px; }
+.detail .names-roman { margin: 0 0 9px; font-size: 13px; line-height: 1.4; color: var(--text-2); word-break: keep-all; }
+.detail .names-orig.is-nofont { margin-top: 0; font-size: 12px; line-height: 1.5; }
+.detail .names-nofont { display: inline-block; padding: 3px 8px; border-radius: 4px; background: transparent; border: 1px solid var(--ha-ink20); font-size: 12px; font-weight: 400; line-height: 1.5; letter-spacing: 0; color: var(--text-3); white-space: nowrap; }
+/* 묶음 접기(감독 건의 2026-10-14 3번 — viewer.js applyDetailFolds): 머리글 오른쪽 끝의 선 꺾쇠(펼침 아래 · 접힘 오른쪽), 접히면 머리글만 남음 */
+.detail .sub-box.is-foldable > h3 { position: relative; padding-right: 22px; cursor: pointer; user-select: none; }
+.detail .sub-box.is-foldable > h3::after { content: ""; position: absolute; right: 5px; top: 50%; width: 6px; height: 6px; border-right: 1.5px solid var(--text-3); border-bottom: 1.5px solid var(--text-3); transform: translateY(-70%) rotate(45deg); transition: transform .16s var(--spring, ease); }
+.detail .sub-box.is-folded > h3::after { transform: translateY(-50%) rotate(-45deg); }
+.detail .sub-box.is-folded > :not(h3) { display: none; }
+.detail .sub-box.is-folded > h3 { margin-bottom: 0; }
+.detail .names-rest { margin: 20px 0 14px; padding: 12px 0 0; } /* 아래 14px — 바로 아래 설명과 붙지 않게(새 앱 NamesRest와 같다) */
+.detail .names-list { list-style: none; margin: 7px 0 0; padding: 0; display: grid; grid-template-columns: auto minmax(0, 1fr) fit-content(40%); gap: 6px 12px; align-items: baseline; }
+.detail .names-list b .note { display: block; margin-top: 2px; font-size: 11.5px; font-weight: 400; font-style: normal; color: var(--text-3); line-height: 1.5; overflow-wrap: anywhere; }
+.detail .names-list li { display: contents; }
+.detail .names-list .k { font-size: 11.5px; color: var(--text-3); white-space: nowrap; }
+.detail .names-list b { font-size: 14.5px; font-weight: 600; text-align: left; word-break: keep-all; overflow-wrap: anywhere; }
+.detail .names-list small { font-size: 11.5px; color: var(--text-3); text-align: right; }
+.cell-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 2px 8px; max-height: 220px; overflow: auto; }
+.cell-list li > button:first-child { display: flex; flex-direction: column; align-items: flex-start; width: 100%; padding: 4px 28px 4px 6px; border: 0; border-radius: 6px; background: none; text-align: left; cursor: pointer; }
+.cell-list li > button:first-child:hover { background: var(--accent-soft); }
+.cell-list b { font-size: 11px; font-weight: 400; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.cell-list span { font-size: 13px; }
+.cell-list i { font-size: 11px; color: var(--text-3); font-style: normal; }
+#lensSelect { max-width: 170px; }
+#densitySelect { max-width: 110px; }
+#birdShapeSelect { max-width: 140px; }
+.zoom-controls .icon-btn[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); } /* ↕ 조감이 켜져 있음 */
+.filter-options { gap: 8px 12px; }
+
+/* 승계 */
+.succ-cap { margin: 6px 0 2px; font-size: 12px; color: var(--text-3); }
+.succ-list { list-style: none; margin: 0; padding: 0; }
+.succ-list button { display: flex; gap: 8px; align-items: baseline; width: 100%; padding: 4px 6px; border: 0; border-radius: 6px; background: none; text-align: left; cursor: pointer; }
+.succ-list button:hover { background: var(--accent-soft); }
+.succ-list b { flex: none; font-size: 11px; padding: 0 6px; border-radius: 4px; border: 1px solid var(--line-strong); color: var(--text-2); }
+.succ-list b.succ-direct { border-style: solid; }
+.succ-list b.succ-indirect { border-style: dashed; }
+.succ-list small { margin-left: auto; font-size: 11px; color: var(--text-3); font-variant-numeric: tabular-nums; white-space: nowrap; } /* 연도 칸은 한 줄로 — 좁으면 이름 쪽이 꺾임 */
+/* 기간 칸 · 배지 폭 맞춤(감독 건의 2026-10-14 6번 — viewer.js alignYearCols가 창 전체에서 재어 둠): 기간은 같은 폭의 오른쪽 칸에서 왼쪽 맞춤(창의 45%까지), 배지는 같은 폭 가운데 맞춤 */
+.succ-list button > small { flex: none; box-sizing: border-box; min-width: min(var(--sw, 0px), 45%); text-align: left; }
+.succ-list button > b:first-child { box-sizing: border-box; min-width: var(--bw, 0px); text-align: center; }
+.detail .tr-related .succ-list button > small, .detail .tr-related .succ-list button > b:first-child { min-width: 0; } /* 관련 조약 목록은 꺾이는 꼴이라 맞추지 않음 */
+.succ-list span { min-width: 0; word-break: keep-all; overflow-wrap: anywhere; }
+
+/* --- 범례 · 종류 칩 --- */
+.legend {
+  position: absolute; left: 12px; bottom: 12px; z-index: 25; width: min(300px, calc(100% - 24px)); max-height: calc(100% - 24px); overflow: auto;
+  padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); font-size: 12px;
+  animation: slide-up .18s ease-out;
+}
+@keyframes slide-up { from { transform: translateY(8px); opacity: 0; } }
+.legend h3 { margin: 0 0 6px; font-size: 13px; display: flex; align-items: center; justify-content: space-between; }
+.legend h4 { margin: 10px 0 4px; font-size: 11.5px; color: var(--text-3); font-weight: 600; letter-spacing: .04em; }
+.legend ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
+.legend li { display: flex; align-items: center; gap: 9px; color: var(--text-2); }
+.legend li > span:last-child { flex: 1; min-width: 0; }
+.legend li > span:last-child, .legend .lg-note { word-break: keep-all; overflow-wrap: anywhere; } /* 좁은 범례에서 낱말 중간에서 꺾이지 않게 (너무 긴 낱말만 아무 데서나) */
+.lg { flex: none; width: 34px; height: 12px; border-radius: 4px; --c: #bba395; background: color-mix(in srgb, var(--c) 24%, var(--paper)); border: 1px solid var(--edge, color-mix(in srgb, var(--c) 55%, transparent)); box-sizing: border-box; position: relative; }
+.lg.z-estimated { border-color: color-mix(in srgb, var(--edge) 50%, var(--paper)); } /* 불확실한 띠의 옅은 실선 테(서고 모양 1단 라) */
+.lg.z-legend { border-color: color-mix(in srgb, var(--edge) 50%, var(--paper)); background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--c) 14%, var(--paper)) 0 4px, color-mix(in srgb, var(--c) 5%, var(--paper)) 4px 8px); }
+.lg.z-range { background: repeating-linear-gradient(90deg, color-mix(in srgb, var(--c) 14%, var(--paper)) 0 2px, var(--paper) 2px 5px); }
+.lg.z-unknown { border-color: color-mix(in srgb, var(--edge) 50%, var(--paper)); border-top-left-radius: 8px; border-bottom-left-radius: 8px; background: color-mix(in srgb, var(--c) 6%, var(--paper)); -webkit-mask-image: linear-gradient(to right, transparent, #000 60%); mask-image: linear-gradient(to right, transparent, #000 60%); }
+.lg.k-vassal { background: color-mix(in srgb, var(--c) 7%, var(--paper)); }
+.lg.k-federation { background: transparent; border: 3px double color-mix(in srgb, var(--c) 45%, transparent); }
+.lg.k-org { border-radius: 4px; border-style: dotted; }
+.lg.k-era { border-color: transparent; }
+.lg-dot { flex: none; width: 34px; display: flex; justify-content: center; align-items: center; }
+.lg-dot i { width: 7px; height: 7px; border-radius: 50%; background: var(--c, #3563e9); box-sizing: border-box; }
+.lg-dot.hollow i { background: var(--paper); border: 2px solid var(--c, #3563e9); width: 9px; height: 9px; }
+.lg-dot.dashed i { background: var(--paper); border: 1.5px dashed var(--c, #3563e9); width: 10px; height: 10px; }
+.lg-dot.sq i { border-radius: 2px; }
+.lg-dot.sq.hollow i { border-width: 1.6px; width: 7px; height: 7px; }
+.lg-line { flex: none; width: 34px; height: 0; border-top: 1.6px solid color-mix(in oklab, var(--c, #7a6a4a) var(--edge-k), var(--edge-to)); } /* 관계선과 같은 띠 테 빛깔(서고 모양 1단 마) */
+.lg-union { flex: none; display: block; } /* 동군연합 이음줄의 견본(건의 8의 6-다) — 위아래 두 칸을 꿰는 줄과 고리 */
+.lg-line.dashed { border-top-style: dashed; }
+.lg-line.dotted { border-top-style: dotted; border-top-width: 1.5px; }
+.lg-line.rail { position: relative; height: 2px; border-top: 0; background: color-mix(in srgb, var(--c) 70%, transparent); }
+.lg-line.rail::before, .lg-line.rail::after { content: ""; position: absolute; top: -2.5px; width: 1.5px; height: 7px; border-radius: 1px; background: var(--c); }
+.lg-line.rail::before { left: 0; }
+.lg-line.rail::after { right: 0; }
+.lg-line.alt { position: relative; }
+.lg-line.alt::before { content: ""; position: absolute; left: 0; top: -6px; width: 1.5px; height: 11px; background: repeating-linear-gradient(to bottom, var(--c) 0 2px, transparent 2px 4px); }
+.legend .lg-note { margin: 8px 0 0; color: var(--text-3); font-size: 11.5px; }
+.stage:has(.detail:not([hidden])) .legend { max-width: calc(100% - 400px); }
+@media (max-width: 860px) { .stage:has(.detail:not([hidden])) .legend { display: none; } }
+.sr-dot.is-cell { border-radius: 3px; width: 10px; height: 10px; background: transparent; border: 2px solid var(--c); box-sizing: border-box; }
+.sr-title small { margin-left: 6px; font-size: 12px; color: var(--text-3); }
+#leaderLabelSelect { max-width: 150px; }
+.cell-list.is-leaders { grid-template-columns: 1fr; }
+.cell-list em { font-style: normal; font-size: 11px; color: var(--text-3); }
+.cell-list small { font-size: 11px; color: var(--text-3); }
+
+/* --- 수정 모드(DLC 메이커 — 늘 켜져 있음: body.is-editing) · 위키 문서 창 --- */
+body.is-editing .tl-band, body.is-editing .tl-ev { cursor: cell; }
+.wiki-pane { position: absolute; inset: 12px; z-index: 35; display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); animation: slide-in .18s ease-out; }
+.wiki-head { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.wiki-titles { flex: 1; min-width: 0; }
+.wiki-titles h2 { margin: 0; font-size: 19px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wiki-meta { font-size: 12px; color: var(--text-3); }
+.wiki-body { flex: 1; min-height: 0; display: flex; gap: 18px; padding: 14px 18px; overflow: auto; }
+.wiki-toc { flex: none; width: 200px; position: sticky; top: 0; align-self: flex-start; font-size: 12.5px; }
+.wiki-toc:empty { display: none; }
+.wiki-toc ol { list-style: none; margin: 4px 0 0; padding: 0; }
+.wiki-toc li.lv2 { padding-left: .9em; } .wiki-toc li.lv3 { padding-left: 1.8em; } .wiki-toc li.lv4, .wiki-toc li.lv5, .wiki-toc li.lv6 { padding-left: 2.7em; }
+.wiki-toc a { color: var(--accent); text-decoration: none; } .wiki-toc a span { color: var(--text-3); margin-right: 3px; }
+.wiki-article { flex: 1; min-width: 0; max-width: 860px; font-size: 14.5px; }
+.wk-empty { color: var(--text-3); font-style: italic; }
+.wk-desc h4 { margin: 14px 0 4px; font-size: 13px; color: var(--text-3); }
+.wk-backlinks { margin-top: 20px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--text-3); }
+.wiki-editor { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.wiki-toolbar { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+.wiki-toolbar .spacer { flex: 1; }
+.wiki-edit-split { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; }
+.wiki-edit-split textarea { height: 100%; border: 0; border-right: 1px solid var(--line); border-radius: 0; resize: none; padding: 14px 16px; }
+.wiki-edit-split textarea:focus { outline: none; }
+.wiki-live { overflow: auto; padding: 14px 18px; }
+.stage:has(.wiki-pane:not([hidden])) .zoom-controls, .stage:has(.wiki-pane:not([hidden])) .legend { display: none; }
+@media (max-width: 860px) {
+  .wiki-body { flex-direction: column; } .wiki-toc { width: auto; position: static; }
+  .wiki-edit-split { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .wiki-edit-split textarea { border-right: 0; border-bottom: 1px solid var(--line); }
+  #wikiGoto { display: none; }
+}
+
+/* --- 메뉴 · 단축키 · 집중 모드 --- */
+.ctx-menu { position: fixed; z-index: 120; min-width: 230px; max-height: calc(100vh - 16px); overflow: auto; padding: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); font-size: 13px; animation: slide-up .12s ease-out; }
+.ctx-item { display: flex; align-items: center; gap: 14px; width: 100%; padding: 6px 10px 6px 26px; border: 0; border-radius: 6px; background: none; text-align: left; cursor: pointer; color: var(--text); position: relative; font: inherit; }
+.ctx-item:hover, .ctx-item:focus-visible { background: var(--accent-soft); outline: none; }
+.ctx-item .ctx-label { flex: 1; white-space: nowrap; }
+.ctx-item .ctx-key { font-size: 11px; color: var(--text-3); font-family: Consolas, "D2Coding", monospace; letter-spacing: .02em; }
+.ctx-item.is-checked::before { content: "✓"; position: absolute; left: 9px; color: var(--accent); font-weight: 700; }
+.ctx-item.is-disabled { opacity: .45; pointer-events: none; }
+.ctx-item.is-danger { color: var(--danger); }
+.ctx-sep { height: 1px; margin: 5px 6px; background: var(--line); }
+.ctx-title { padding: 4px 10px 2px; font-size: 11px; font-weight: 700; color: var(--text-3); letter-spacing: .04em; }
+body.is-zen .topbar, body.is-zen .filterbar, body.is-zen .statusbar { display: none; }
+.zen-exit { position: fixed; top: 8px; left: 8px; z-index: 110; width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); box-shadow: var(--shadow); font-size: 16px; cursor: pointer; opacity: .75; }
+.zen-exit:hover { opacity: 1; }
+
+
+/* ===== 독(dock): 왼쪽 위, 보고 있는 연도와 한 줄로. 연표는 그 아래에서 시작합니다 ===== */
+:root { --top: 60px; }
+.stage { position: absolute; inset: calc(var(--top) + var(--safe-top)) 0 0 0; }
+body.is-zen { --top: 0px; }
+.timeline-host { border-top: 1px solid var(--line); }
+body.is-zen .timeline-host { border-top: 0; }
+.dock {
+  position: absolute; top: calc(10px + var(--safe-top)); left: calc(12px + var(--safe-left)); z-index: 45;
+  display: flex; align-items: center; gap: 4px; height: 40px; max-width: calc(100% - 24px); padding: 4px 4px 4px 12px;
+  border-radius: 14px; border: 0;
+  background: var(--glass); backdrop-filter: blur(20px) saturate(1.6); -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  box-shadow: var(--shadow-sm), 0 0 0 1px var(--line);
+  transition: transform .4s var(--ease), opacity .3s ease, box-shadow .3s ease;
+}
+.dock-mark { font: 600 16px/1 "Apple SD Gothic Neo", "Batang", serif; color: var(--text-3); margin-right: 4px; user-select: none; }
+.dock-range { padding: 0 10px 0 4px; margin-right: 2px; border-right: 1px solid var(--line); font-size: 12.5px; font-weight: 600; color: var(--text); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.dock .search { position: relative; flex: 0 1 300px; min-width: 150px; }
+.search input { width: 100%; height: 32px; padding-left: 32px; border-radius: 9px; background: var(--surface-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' fill='none' stroke='%2386868b' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='6.5' cy='6.5' r='4.8'/%3E%3Cpath d='m10.2 10.2 3.3 3.3'/%3E%3C/svg%3E") no-repeat 10px center; }
+.dock .search-results { top: calc(100% + 10px); bottom: auto; left: -60px; right: auto; width: min(460px, calc(100vw - 24px)); border: 0; border-radius: 16px; background: var(--glass); backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6); box-shadow: var(--shadow), 0 0 0 1px var(--line); }
+.search-results button { border-radius: 10px; }
+.search-results button:hover, .search-results button.is-active { background: var(--accent); color: #fff; }
+.search-results button:hover .sr-when, .search-results button.is-active .sr-when, .search-results button.is-active small { color: rgba(255, 255, 255, .8); }
+.dock-actions { display: flex; align-items: center; gap: 2px; margin-left: 2px; }
+.dock-btn {
+  display: inline-flex; align-items: center; gap: 5px; height: 32px; padding: 0 11px; border: 0; border-radius: 9px;
+  background: transparent; font: inherit; font-size: 13px; font-weight: 500; color: var(--text-2); cursor: pointer; white-space: nowrap;
+  transition: background-color .2s var(--ease), color .2s, transform .2s var(--ease);
+}
+.dock-btn i { font-style: normal; font-size: 13px; }
+.dock-btn:hover { background: var(--surface-2); color: var(--text); }
+.dock-btn:active { transform: scale(.97); }
+.dock-btn:disabled { opacity: .45; }
+.dock-btn[aria-pressed="true"], .dock-btn[aria-expanded="true"] { background: var(--accent-soft); color: var(--accent); }
+.dock-btn.is-accent { background: var(--accent); color: #fff; }
+.dock-btn.is-accent:hover { background: color-mix(in srgb, var(--accent) 88%, #000); }
+body.is-editing .dock { box-shadow: var(--shadow-sm), 0 0 0 1.5px color-mix(in srgb, var(--warn) 70%, transparent); }
+body.is-zen .dock { transform: translateY(-70px); opacity: 0; pointer-events: none; }
+
+/* 필터·표시 설정 시트: 독 아래로 내려옵니다 */
+.filterbar {
+  position: absolute; top: calc(var(--top) + 6px + var(--safe-top)); left: calc(12px + var(--safe-left)); z-index: 44; width: min(1080px, calc(100% - 24px)); max-height: 64dvh; overflow: auto;
+  display: flex; align-items: center; gap: 12px 22px; flex-wrap: wrap; padding: 16px 18px;
+  border-radius: 18px; border: 0;
+  background: var(--glass); backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  box-shadow: var(--shadow), 0 0 0 1px var(--line);
+  opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-8px) scale(.985); transform-origin: top left;
+  transition: opacity .22s ease, transform .35s var(--ease), visibility 0s linear .35s;
+}
+.filterbar.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: none; transition-delay: 0s; }
+body.is-zen .filterbar { opacity: 0; visibility: hidden; pointer-events: none; }
+.filter-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.filter-title { font-size: 11.5px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .04em; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-options { margin-left: 0; gap: 8px 14px; }
+.filter-options select, .filter-show select { height: 30px; }
+/* 표시 체크 세 묶음(띠 안 · 날짜 칸 · 선·견해): 시트의 한 줄을 따로 쓰고, 묶음마다 가는 테두리의 둥근 칸 안에 작은 제목 + 체크. 좁으면 묶음째로 다음 줄로 */
+.filter-shows { flex: 1 1 100%; display: flex; align-items: stretch; flex-wrap: wrap; gap: 8px 10px; }
+.filter-show { gap: 4px 12px; min-height: 34px; padding: 2px 12px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line); }
+.filter-show .check { white-space: nowrap; }
+/* '표기' 무리 (10건 3 · 9 — 감독 결정 D2-3 A · 5 A): 원어 고르기 · '적용' 이름표 + 체크 셋 · 글꼴 고르기. 자료에 이름 목록이나 글꼴이 있을 때만 보임(viewer.js syncNamesUi) */
+.filter-show .filter-sub { margin-left: 2px; font-size: 12px; color: var(--text-3); white-space: nowrap; }
+.filter-options .btn { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+
+/* 기간 재기 결과: 독 오른쪽 아래 작은 알약 */
+.status-pill {
+  position: absolute; left: calc(12px + var(--safe-left)); top: calc(var(--top) + 8px + var(--safe-top)); z-index: 20; display: flex; align-items: center; gap: 10px;
+  padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--text-2); white-space: nowrap;
+  background: var(--glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: var(--shadow-sm), 0 0 0 1px var(--line);
+}
+.zoom-controls, .legend, .detail, .wiki-pane { bottom: 16px; }
+.zoom-controls { border: 0; border-radius: 14px; background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: var(--shadow-sm), 0 0 0 1px var(--line); }
+.zen-exit { top: calc(8px + var(--safe-top)); border: 0; border-radius: 10px; background: var(--glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: var(--shadow-sm), 0 0 0 1px var(--line); }
+
+/* 상세 패널 · 범례 · 메뉴 · 문서 창 — 유리 카드 */
+.detail, .legend, .ctx-menu { border: 0; background: color-mix(in srgb, var(--surface) 93%, transparent); backdrop-filter: blur(12px) saturate(1.4); -webkit-backdrop-filter: blur(12px) saturate(1.4); box-shadow: var(--shadow), 0 0 0 1px var(--line); }
+.detail { top: 12px; border-radius: 20px; width: min(380px, calc(100% - 24px)); }
+.detail h2 { font-size: 23px; font-weight: 700; letter-spacing: -.025em; }
+.detail .when { color: var(--text-3); font-weight: 500; }
+.detail-foot { border-top-color: var(--line); gap: 8px; }
+.sub-box { border: 0; border-radius: 14px; background: color-mix(in srgb, var(--surface-2) 70%, transparent); }
+.sub-box h3 { font-size: 12.5px; font-weight: 650; }
+/* 칸 목록: 📄 문서 단추는 자리를 차지하지 않고 항목 오른쪽 위에 겹쳐 뜹니다 */
+.cell-list li { position: relative; min-width: 0; }
+.cell-list li > button:first-child { padding-right: 28px; }
+.cell-list .cell-doc { position: absolute; top: 3px; right: 3px; display: grid; place-items: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 6px; background: none; font-size: 11px; opacity: 0; cursor: pointer; transition: opacity .2s, background-color .2s; }
+.cell-list li:hover .cell-doc, .cell-list li:focus-within .cell-doc, .cell-list .cell-doc.has-doc { opacity: 1; }
+.cell-list .cell-doc.has-doc:not(:hover) { opacity: .7; }
+@media (hover: none) { .cell-list .cell-doc { opacity: .55; } }
+.cell-list.is-leaders li > button:first-child { display: grid; grid-template-columns: 104px 1fr; column-gap: 8px; align-items: baseline; }
+.cell-list.is-leaders li > button:first-child small { grid-column: 2; }
+.cell-list { max-height: min(50vh, 420px); }
+.cell-list .cell-doc:hover { background: var(--accent-soft); }
+.badge.is-kind.is-organ { background: color-mix(in srgb, #bbacc8 40%, transparent); }
+.badge.is-kind.is-culture { background: color-mix(in srgb, #b6c398 40%, transparent); }
+.ctx-menu { border-radius: 14px; padding: 6px; }
+.ctx-item { border-radius: 8px; }
+.ctx-item:hover, .ctx-item:focus-visible { background: var(--accent); color: #fff; }
+.ctx-item:hover .ctx-key, .ctx-item:focus-visible .ctx-key { color: rgba(255, 255, 255, .8); }
+.legend { border-radius: 18px; }
+.wiki-pane { top: 12px; left: 12px; right: 12px; border: 0; border-radius: 22px; background: var(--surface); box-shadow: var(--shadow), 0 0 0 1px var(--line); overflow: hidden; }
+.wiki-head { padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.wiki-titles h2 { font-size: 22px; font-weight: 700; letter-spacing: -.025em; }
+.wiki-subs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 10px 18px; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--surface-2) 50%, var(--surface)); }
+.wk-crumbs { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-3); }
+.wk-crumbs i { font-style: normal; opacity: .6; }
+.wk-crumbs b { color: var(--text); font-weight: 600; }
+.wk-subs { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.wiki-body { padding: 22px 28px; gap: 28px; }
+.wiki-article { font-size: 15.5px; max-width: 780px; }
+.wiki-toc { padding: 12px 14px; border-radius: 14px; background: var(--surface-2); }
+.wk-empty { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 24px 0; color: var(--text-3); font-style: normal; }
+.wk-empty p { margin: 0; font-size: 15px; }
+.wiki-editor .wiki-toolbar { padding: 8px 14px; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--surface-2) 50%, var(--surface)); }
+.wiki-toolbar-insert { display: inline-flex; flex-wrap: wrap; gap: 2px; }
+.wiki-edit-split textarea { background: var(--surface); padding: 18px 20px; border-right: 1px solid var(--line); box-shadow: none !important; }
+.wiki-live { padding: 18px 24px; background: color-mix(in srgb, var(--surface-2) 35%, var(--surface)); }
+.sr-dot.is-doc { background: none; width: auto; height: auto; }
+@media (max-width: 720px) {
+  :root { --top: 104px; }
+  .dock { flex-wrap: wrap; height: auto; right: 12px; row-gap: 6px; padding: 6px 6px 6px 10px; }
+  .dock-mark { display: none; }
+  .dock .search { flex: 1 1 100%; order: 3; }
+  .dock .search-results { left: 0; }
+  .wiki-body { padding: 16px; }
+}
+/* 범례: 왕조 칸 */
+.lg.k-dynasty { height: 9px; border-radius: 5px; border: 1px solid var(--edge-soft, color-mix(in srgb, var(--c) 60%, transparent)); background: color-mix(in srgb, var(--c) 34%, var(--paper)); }
+
+/* ── 종류와 소속 관계 ── */
+/* 범례: 종속 갈래 한 줄(옅은 띠 · 실선) · 망명 정부 · 부흥·저항 세력(왼쪽 깃대) · 상국 띠의 속국 이름표 · 부흥 승계선의 고리 */
+.lg.fam-dep { background: color-mix(in srgb, var(--c) 7%, var(--paper)); }
+.lg.k-exile, .lg.k-movement { background: color-mix(in srgb, var(--c) 7%, var(--paper)); }
+.lg.k-movement { box-shadow: inset 3px 0 0 var(--edge, color-mix(in srgb, var(--c) 70%, transparent)); }
+/* 속국 이름표 견본: 상국 띠(.b) 아래에 매달린 빈 탭 · 칠한 탭 / 상국 띠 안 맨 아래의 옅은 칸 · 짙은 칸 (연표의 .tl-hang · .tl-dep과 같은 칠) */
+.lg-hang { flex: none; position: relative; width: 34px; height: 14px; --c: #abb3c9; --dc: #d7c18e; }
+.lg-hang .b { position: absolute; left: 0; right: 0; top: 0; height: 8px; box-sizing: border-box; border-radius: 4px; z-index: 1;
+  background: color-mix(in srgb, var(--c) 24%, var(--paper)); border: 1px solid color-mix(in oklab, var(--c) 84%, var(--paper-ink)); }
+.lg-hang .t { position: absolute; top: 6px; width: 13px; height: 8px; box-sizing: border-box; border: 1px solid color-mix(in oklab, var(--dc) 84%, var(--paper-ink)); border-top: 0; border-radius: 0 0 3px 3px;
+  background: color-mix(in srgb, var(--dc) 10%, var(--paper)); }
+.lg-hang .t.is-loose { left: 3px; }
+.lg-hang .t.is-firm { left: 18px; background: color-mix(in srgb, var(--dc) 38%, var(--paper)); }
+.lg-hang.is-in { height: 13px; }
+.lg-hang.is-in .b { height: 13px; }
+.lg-hang .c { position: absolute; bottom: 1.5px; width: 12px; height: 5px; box-sizing: border-box; border-radius: 2px; border: 1px solid color-mix(in oklab, var(--dc) 84%, var(--paper-ink));
+  background: color-mix(in srgb, var(--dc) 24%, var(--paper)); }
+.lg-hang .c.is-held { left: 3px; }
+.lg-hang .c.is-owned { left: 17px; background: color-mix(in srgb, var(--dc) 55%, var(--paper)); }
+.lg-line.ring { position: relative; width: 27px; margin-right: 7px; }
+.lg-line.ring::after { content: ""; position: absolute; right: -7px; top: -4.3px; width: 5.5px; height: 5.5px; border: 1.5px solid var(--c, #7a6a4a); border-radius: 50%; background: var(--paper); }
+/* 범례의 맞닿은 승계 견본(timeline.js Timeline.seamSample): 두 띠 끝 · 비켜 앉은 네모 · 문 · 다리 — 띠 바탕 · 테두리 · 조각은 연표와 같은 식 */
+.lg-seam { flex: none; display: block; overflow: hidden; }
+.lg-seam .b { --edge: color-mix(in oklab, var(--c) var(--edge-k), var(--edge-to)); fill: color-mix(in srgb, var(--c) 24%, var(--paper)); stroke: var(--edge); stroke-width: 1; }
+.lg-seam .s { opacity: .9; }
+.lg-seam .tl-seg { stroke-width: 1.6; }
+/* 상세의 소속 목록: 소속 관계 배지 (종류 배지 옆, 파선 테두리) · 승계 목록의 부흥 배지(점선) */
+.succ-list b.rel-badge { margin-left: -3px; border-style: dashed; }
+.succ-list button:has(> .rel-badge) { flex-wrap: wrap; row-gap: 2px; } /* 배지가 둘이라 좁으면 이름이 글자 단위로 꺾이지 않고 통째로 다음 줄로 */
+.succ-list b.succ-revival { border-style: dotted; }
+/* 부분 승계 배지: 연표의 선처럼 실선 테두리. 이름 뒤의 옅은 글은 정도('정도 중')와 이어진 것, '· n년 합류'(흡수) — 좁으면 이 글만 이름 아래 줄로 */
+.succ-list b.succ-partial { border-style: solid; }
+.succ-list .succ-parts { display: inline-block; font-style: normal; font-size: 11px; color: var(--text-3); word-break: keep-all; }
+/* 범례의 부분 승계 견본 (timeline.js Timeline.thinSample — 가는 실선) */
+.lg-thin { flex: none; display: block; overflow: visible; }
+
+/* ── 칸 기간 조명 · 조명 메아리 ── */
+/* 칸 상세 안의 스위치 '같은 시기를 타국에도' (필터의 체크와 같은 설정) */
+.detail .spot-echo { display: flex; margin: 8px 0 2px; font-size: 12.5px; }
+/* '같은 시기 타국' 묶음 (메아리가 켜져 있을 때만): 나라마다 색 점 · 이름 · 트랙 · 건수 + 그 나라의 사건. 스위치를 켜고 끌 때는 이 자리만 높이가 흐르며 바뀝니다(viewer.js fillEchoSlot) —
+   flow-root라 안 상자의 바깥 여백까지 자리의 높이에 듭니다 */
+.echo-slot { display: flow-root; overflow: hidden; }
+.echo-group + .echo-group { margin-top: 8px; }
+.echo-cap { display: flex; align-items: center; gap: 6px; min-width: 0; margin: 2px 0; font-size: 12.5px; color: var(--text); }
+.echo-cap i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+.echo-cap b { flex: none; max-width: 62%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 650; }
+.echo-cap small { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-3); }
+.echo-cap .echo-tag { flex: none; padding: 0 5px; border: 1px dashed var(--line-strong); border-radius: 4px; font-size: 10.5px; line-height: 16px; }
+.echo-box .echo-more, .echo-box .echo-rest { display: block; margin: 2px 0 0 8px; font-size: 12px; }
+
+/* ── 인물 ── */
+/* 검색 결과 · 관련 인물 칩 · 범례의 인물 표시: 연표의 활동 막대처럼 가로로 긴 둥근 칸 */
+.sr-dot.is-figure { width: 14px; height: 7px; border-radius: 4px; background: color-mix(in srgb, var(--c) 45%, var(--paper, #fff)); box-shadow: inset 0 0 0 1px var(--c); }
+.chip.is-figure::before { width: 12px; height: 7px; border-radius: 4px; }
+.chip.is-figure.is-missing { color: var(--text-3); background: transparent; box-shadow: inset 0 0 0 1px var(--line); cursor: default; }
+.chip.is-figure.is-missing::before { background: transparent; box-shadow: inset 0 0 0 1px var(--text-3); }
+.badge.is-kind.is-figure { background: color-mix(in srgb, #a0bcc5 40%, transparent); }
+.lg-fig { display: block; width: 26px; height: 9px; border-radius: 5px; box-sizing: border-box; background: color-mix(in srgb, var(--c) 42%, var(--paper)); border: 1px solid color-mix(in srgb, var(--c) 80%, #000 10%); }
+
+/* ── 시기 구분(학계) ── */
+.badge.badge-phase { --c: #b3a896; }
+/* 체계 견주기: 체계마다 한 줄(위에 체계 이름, 아래에 같은 시간 축 위의 막대) — 지금 시기는 진하게, 그 경계에 가는 세로 점선.
+   막대에 이름이 다 들어가지 않으면 이름을 감추고 설명글로만(is-bare — 글자가 잘리거나 겹치지 않게) */
+.ph-rows { position: relative; display: flex; flex-direction: column; gap: 6px; }
+.ph-row .ph-sch { display: block; margin-bottom: 2px; font-size: 11px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ph-row.is-cur .ph-sch { color: var(--text-2); font-weight: 600; }
+.ph-track { position: relative; height: 20px; border-radius: 5px; background: color-mix(in srgb, var(--text-3) 9%, transparent); }
+.ph-bar { position: absolute; top: 0; bottom: 0; min-width: 3px; box-sizing: border-box; margin: 0; padding: 0; border: 1px solid color-mix(in srgb, var(--text-3) 45%, transparent); border-radius: 4px;
+  background: var(--surface); color: var(--text-2); font: inherit; font-size: 11px; cursor: pointer; overflow: hidden; transition: background-color var(--t-micro) var(--ease), border-color var(--t-micro) var(--ease); }
+.ph-bar b { display: block; padding: 0 4px; font-weight: 500; line-height: 18px; white-space: nowrap; overflow: hidden; text-align: center; }
+.ph-bar.is-bare b { visibility: hidden; }
+.ph-bar:hover { border-color: var(--text-3); background: var(--accent-soft); }
+.ph-bar.is-cur { z-index: 1; border-color: var(--text-2); background: color-mix(in srgb, var(--text-2) 16%, var(--surface)); color: var(--text); }
+.ph-bar.is-cur b { font-weight: 700; }
+.ph-bar.unk-s { border-left-style: dashed; }
+.ph-bar.unk-e { border-right-style: dashed; }
+.ph-guide { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1px dashed color-mix(in srgb, var(--text-2) 55%, transparent); pointer-events: none; z-index: 2; }
+.ph-axis { display: flex; justify-content: space-between; gap: 8px; margin-top: 4px; font-size: 11px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+/* 같은 해 보기: 그때의 시기 (체계 이름은 작게) */
+.year-phases .yp-name { font-size: 13px; color: var(--text-2); }
+.year-phases small { margin-left: 3px; font-size: 11px; color: var(--text-3); }
+/* 범례: 시기 단 견본 — 종이빛 칸 둘이 이어진 얇은 줄 */
+.lg-dot i.lg-phase { display: flex; width: 26px; height: 8px; border-radius: 3px; background: var(--paper, #fbf7ef); border: 1px solid color-mix(in srgb, #9a8e7c 55%, transparent); overflow: hidden; }
+.lg-phase b { flex: 1; }
+.lg-phase b + b { border-left: 1px solid color-mix(in srgb, #9a8e7c 55%, transparent); }
+
+/* ── 지위 ── */
+.badge.badge-rank { --c: #bba395; }
+.badge.badge-rank.is-link { cursor: pointer; }
+/* 지위 목록(정권 창 · 지위 창): 승격 ▲ · 격하 ▼는 여기서만 (연표에는 두지 않음) */
+.cell-list.is-ranks { grid-template-columns: 1fr; }
+.cell-list .rk-move { margin-left: 4px; font-size: 10.5px; font-style: normal; color: var(--text-3); }
+.cell-list .rk-move.is-up { color: color-mix(in srgb, var(--ok, #5d8a64) 85%, var(--text)); }
+.cell-list .rk-move.is-down { color: color-mix(in srgb, var(--warn) 85%, var(--text)); }
+.cell-list li.is-cur > button:first-child { background: var(--accent-soft); }
+.cell-list li.is-cur span { font-weight: 700; }
+/* 서열 짙기 견본 (지위 창 · 범례): 칸 하나에 그 지위의 짙기 */
+.rk-chip { display: inline-block; width: 14px; height: 9px; margin-right: 4px; vertical-align: middle; border-radius: 3px; box-sizing: border-box; border: 1px solid color-mix(in srgb, var(--c) 55%, transparent); background: color-mix(in srgb, var(--c) var(--mix, 0%), var(--paper)); }
+.lg-ranks { flex: none; width: 40px; height: 12px; display: flex; box-sizing: border-box; border: 1px solid color-mix(in srgb, var(--c) 60%, transparent); border-radius: 4px; overflow: hidden; }
+.lg-ranks i { flex: 1; background: color-mix(in srgb, var(--c) var(--mix, 0%), var(--paper)); }
+.lg-ranks i + i { border-left: 1px solid color-mix(in srgb, var(--c) 35%, transparent); }
+/* 같은 해 보기: 나라 이름 뒤의 그때 지위 */
+.year-eras .yr-rank { margin-left: -2px; padding: 0 5px; border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); border-radius: 999px; font: inherit; font-size: 11px; color: var(--text-2); background: color-mix(in srgb, var(--c) var(--mix, 0%), var(--surface)); cursor: pointer; }
+.year-eras .yr-rank:hover { border-color: var(--c); }
+
+/* ── 가문 ── */
+/* 가문 창: 본가 → 분가 길(칩 사이의 ›) · 구성원 목록의 역할 딱지 */
+.detail .hs-path { align-items: center; }
+.detail .hs-arrow { font-style: normal; color: var(--text-3); }
+.detail .chip.is-here { cursor: default; box-shadow: inset 0 0 0 1.5px var(--c, var(--text-3)); }
+.detail .hs-members { margin-bottom: 6px; }
+.detail .hs-members span { min-width: 0; }
+.detail .hs-role { margin-left: 4px; padding: 0 6px; border-radius: 999px; font-style: normal; font-size: 10.5px; color: var(--text-2); background: var(--accent-soft); white-space: nowrap; }
+.detail .hs-members i { font-size: 11px; font-style: normal; color: var(--text-3); }
+.detail .succ-cap .linky { font-size: 12.5px; }
+
+/* ── 조약 ── */
+/* 마름모: 상세 머리의 조약 배지 · 검색 결과와 사건 목록의 점 · 범례 */
+.badge.is-treaty { --c: #9dbea8; }
+.badge.is-treaty::before, .sr-dot.is-treaty, .lg-dot.treaty i { border-radius: 1px; rotate: 45deg; }
+.badge.is-treaty::before { width: 6px; height: 6px; }
+.sr-dot.is-treaty { width: 7px; height: 7px; margin: 0 1px; }
+.lg-dot.treaty i { width: 5.5px; height: 5.5px; }
+.lg-line.rail.treaty { height: 4px; background: linear-gradient(color-mix(in srgb, var(--c) 70%, transparent) 0 1px, transparent 1px 3px, color-mix(in srgb, var(--c) 70%, transparent) 3px 4px); }
+.lg-line.rail.treaty::before, .lg-line.rail.treaty::after { top: -1.5px; }
+/* 조약문 양식: 정식 명칭 · 당사국 카드(편이 둘이면 좌우 두 칸) · 날짜 진행 표 · 조항(접었다 펴기) · 관련 */
+.detail .tr-formal { margin-top: 0; font-size: 12.5px; color: var(--text-2); }
+.detail .tr-parties .succ-cap:first-of-type { margin-top: 0; }
+.detail .tr-sides { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.detail .tr-side { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.detail .tr-sides .tr-side + .tr-side { padding-left: 10px; border-left: 1px dashed var(--line-strong); }
+.detail .tr-party { min-width: 0; margin: 4px 0; }
+.detail .tr-party + .tr-party { margin-top: 10px; }
+.detail .tr-who { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; min-width: 0; }
+.detail .tr-who .chip { max-width: 100%; height: 24px; padding: 0 10px; overflow: hidden; }
+.detail .tr-who .chip.is-off { cursor: default; color: var(--text-3); background: transparent; box-shadow: inset 0 0 0 1px var(--line); }
+.detail .tr-role { padding: 0 6px; border-radius: 999px; font-style: normal; font-size: 11px; color: var(--text-2); background: var(--accent-soft); overflow-wrap: anywhere; }
+.detail .tr-guess { font-size: 11px; color: var(--warn); overflow-wrap: anywhere; }
+.detail .tr-signers { list-style: none; margin: 4px 0 0; padding: 0 0 0 4px; font-size: 12.5px; line-height: 1.55; }
+.detail .tr-signers li { overflow-wrap: anywhere; }
+.detail .tr-signers small { color: var(--text-3); }
+.detail .tr-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.detail .tr-steps :is(button, .tr-step) { display: flex; gap: 10px; align-items: baseline; width: 100%; padding: 4px 6px; border: 0; border-radius: 6px; background: none; text-align: left; font: inherit; color: inherit; }
+.detail .tr-steps button { cursor: pointer; }
+.detail .tr-steps button:hover { background: var(--accent-soft); }
+.detail .tr-steps b { flex: none; min-width: 30px; font-size: 12px; color: var(--text-3); }
+.detail .tr-steps span { flex: 1; min-width: 0; font-size: 13px; overflow-wrap: anywhere; }
+.detail .tr-steps span i { font-style: normal; font-size: 11.5px; color: var(--text-3); }
+.detail .tr-steps .tr-sub { display: block; font-size: 11.5px; color: var(--text-3); }
+.detail .tr-steps > li > * > small { flex: none; font-size: 11px; color: var(--text-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.detail .tr-arts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.detail .tr-art > summary, .detail div.tr-art { display: flex; gap: 8px; align-items: baseline; padding: 4px 6px; border-radius: 6px; font-size: 13px; }
+.detail .tr-art > summary { cursor: pointer; list-style: none; }
+.detail .tr-art > summary::-webkit-details-marker { display: none; }
+.detail .tr-art > summary:hover { background: var(--accent-soft); }
+.detail .tr-art > summary::after { content: "›"; margin-left: auto; color: var(--text-3); transition: transform var(--t-micro) var(--ease); }
+.detail .tr-art[open] > summary::after { transform: rotate(90deg); }
+.detail .tr-no { flex: none; font-size: 12px; color: var(--text-3); white-space: nowrap; }
+.detail .tr-at { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.detail .tr-tag { flex: none; padding: 0 6px; border-radius: 999px; font-size: 10.5px; color: var(--text-2); background: color-mix(in srgb, var(--surface) 70%, transparent); box-shadow: inset 0 0 0 1px var(--line); white-space: nowrap; }
+.detail .tr-art .desc { margin: 2px 6px 6px; padding: 6px 8px; border-left: 2px solid var(--line-strong); }
+.detail .tr-meta { margin: 8px 0 0; padding: 0; border-top: 0; font-size: 12.5px; }
+.detail .tr-related .succ-list button { flex-wrap: wrap; row-gap: 0; }
+.detail .tr-related .succ-list b { white-space: nowrap; }
+.detail .tr-related .succ-list span { flex: 1 1 7em; min-width: 0; word-break: keep-all; overflow-wrap: anywhere; }
+.detail .tr-related .succ-list small { white-space: nowrap; }
+
+/* ── 실재성 · 민족 딱지 ── 범례 견본 · 상세 배지와 '실재성' 상자 · 민족 한마디 · 표의 딱지 · 같은 해 보기의 옅은 글씨 (docs/구상-체제-확장.md 8-4 마 · 사) */
+.lg.h-legendary { background: color-mix(in srgb, var(--c) 12%, var(--paper)); } /* 안개 = 고른 옅은 색(서고 모양 1단 다 — 전설 · 부정됨 24%의 반 · 반전설 3/4) */
+.lg.h-semi { background: color-mix(in srgb, var(--c) 18%, var(--paper)); }
+.lg.h-refuted { background: color-mix(in srgb, var(--paper-muted) 12%, var(--paper)); border-color: color-mix(in srgb, var(--paper-muted) 50%, transparent); }
+.badge-hs { background: color-mix(in srgb, var(--text-3) 16%, transparent); }
+.badge-hs::before { background: var(--text-3); }
+.badge-hs.is-legendary, .badge-hs.is-semi { font-style: italic; }
+.badge-hs.is-refuted { text-decoration: line-through; text-decoration-thickness: 1px; }
+.detail .people-note { margin: -6px 0 10px; font-size: 13px; color: var(--text-2); }
+.detail .people-note small { font-size: 12px; color: var(--text-3); }
+.sub-box.is-hs .succ-cap { margin-top: 0; }
+.data-table .hs-tag { margin-left: 4px; padding: 0 5px; border-radius: 4px; font-size: 11px; font-weight: 500; background: color-mix(in srgb, var(--text-3) 16%, transparent); color: var(--text-2); white-space: nowrap; }
+.year-eras .linky.is-hs-legendary, .year-eras .linky.is-hs-refuted { color: color-mix(in srgb, var(--accent) 45%, var(--text-3)); }
+.year-eras .linky.is-hs-legendary { font-style: italic; }
+.year-eras .linky.is-hs-refuted { text-decoration-line: underline line-through; }
+
+/* ── 대범위 ── 필터 시트의 칩 줄(트랙별) · 상세의 '모아 보기' 스위치와 대범위 목록 · 확인할 것 · 범례 견본 (docs/구상-체제-확장.md 7-4 · 8-4 바) */
+.scope-chips-track { display: inline-flex; align-items: center; gap: 5px; height: 28px; padding: 0 2px 0 4px; font-size: 11.5px; color: var(--text-3); white-space: nowrap; }
+.scope-chips-track::before { content: ""; width: 3px; height: 12px; border-radius: 2px; background: var(--c, var(--text-3)); }
+.scope-rows { display: flex; flex-direction: column; gap: 6px; margin: 2px 0 10px; }
+.scope-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.sub-box .scope-rows { margin-bottom: 0; }
+.chip.is-scope small { font-size: 11px; color: var(--text-3); }
+.scope-switch { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; height: 28px; padding: 0 12px 0 6px; border: 0; border-radius: 999px;
+  background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); color: var(--text-2); font: inherit; font-size: 12.5px; cursor: pointer;
+  transition: background-color var(--t-in) var(--ease), color var(--t-in) var(--ease), filter var(--t-micro) var(--ease); }
+.scope-switch i { position: relative; width: 28px; height: 16px; border-radius: 999px; background: color-mix(in srgb, var(--text-3) 30%, transparent); transition: background-color var(--t-in) var(--ease); }
+.scope-switch i::after { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); box-shadow: 0 1px 2px rgba(0, 0, 0, .18); transition: transform var(--t-in) var(--ease); }
+.scope-switch small { font-size: 11px; color: var(--text-3); }
+.scope-switch.is-on { color: var(--text); background: color-mix(in srgb, var(--c) 18%, var(--surface-2)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 45%, transparent); }
+.scope-switch.is-on i { background: color-mix(in srgb, var(--c) 80%, var(--text)); }
+.scope-switch.is-on i::after { transform: translateX(12px); }
+.scope-switch:hover { filter: brightness(.97); }
+.scope-switch:active { filter: brightness(.94); }
+.badge-scope { background: color-mix(in srgb, var(--text-3) 16%, transparent); }
+.badge-scope::before { display: none; }
+.sub-box.is-scope-warn { background: color-mix(in srgb, var(--warn) 10%, var(--surface-2)); }
+.scope-warn { margin: 0; padding-left: 18px; font-size: 12.5px; color: var(--text-2); }
+.lg.s-scope { height: 14px; border-radius: 6px; background: color-mix(in srgb, var(--c) 9%, transparent); border: 1px solid color-mix(in srgb, var(--edge) 55%, transparent); }
+.lg.s-hollow { background: linear-gradient(to bottom, color-mix(in srgb, var(--c) 24%, var(--paper)) 0 3px, var(--paper) 5px 7px, color-mix(in srgb, var(--c) 24%, var(--paper)) 9px); border-left-style: dashed; border-right-style: dashed; }
+
+/* 범례: 칸의 이설 · 모호한 칸 (디테일 건의 4 — 연표의 .tl-calt · .tl-altspot · 모호한 칸 무늬와 같은 말) */
+.legend .lg-calt, .legend .lg-czone { display: inline-block; width: 24px; height: 11px; box-sizing: border-box; border: 1px solid color-mix(in oklab, #9dbea8 92%, var(--paper-ink)); border-radius: 3px; background-color: color-mix(in srgb, var(--paper) 62%, #e4ece5);
+  background-repeat: no-repeat; }
+.legend .lg-calt { background-image: repeating-linear-gradient(to bottom, color-mix(in srgb, color-mix(in oklab, #9dbea8 92%, var(--paper-ink)) 75%, transparent) 0 1px, transparent 1px 3px), linear-gradient(color-mix(in oklab, #9dbea8 92%, var(--paper-ink)), color-mix(in oklab, #9dbea8 92%, var(--paper-ink)));
+  background-size: 1px calc(100% - 4px), 1px 100%; background-position: 7px 2px, 14px 0; }
+.legend .lg-altspot { display: inline-block; width: 24px; height: 11px; border-radius: 3px; background-color: color-mix(in srgb, #9dbea8 18%, var(--paper));
+  background-image: repeating-linear-gradient(to bottom, color-mix(in oklab, #9dbea8 70%, var(--paper-ink)) 0 1px, transparent 1px 3px), repeating-linear-gradient(to bottom, color-mix(in oklab, #9dbea8 70%, var(--paper-ink)) 0 1px, transparent 1px 3px), linear-gradient(color-mix(in srgb, #9dbea8 30%, var(--paper)), color-mix(in srgb, #9dbea8 30%, var(--paper)));
+  background-size: 1px 100%, 1px 100%, 10px 100%; background-position: 3px 0, 20px 0, 7px 0; background-repeat: no-repeat; }
+.legend .lg-czone { border-left-style: dotted; background-image: repeating-linear-gradient(90deg, color-mix(in srgb, color-mix(in oklab, #9dbea8 92%, var(--paper-ink)) 42%, transparent) 0 1.5px, transparent 1.5px 4px); background-size: 9px 100%; background-position: 0 0; }
+
+/* DLC 관리: 팩 카드 (docs/구상-메이커-팩.md 2-5) — 표지 모눈 + 고른 팩의 자세히 */
+#dlcDialog { width: min(1180px, calc(100vw - 24px)); }
+.pk-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; }
+.pk-top .spacer { flex: 1; }
+.pk-seg { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border-radius: 10px; background: var(--surface-2); }
+.pk-seg button { padding: 4px 10px; border: 0; border-radius: 8px; background: transparent; font: inherit; font-size: 12.5px; color: var(--text-2); cursor: pointer; transition: background-color var(--t-micro) var(--ease), color var(--t-micro) var(--ease); }
+.pk-seg button:hover { color: var(--text); }
+.pk-seg button[aria-selected="true"] { background: var(--surface); color: var(--text); font-weight: 700; box-shadow: var(--shadow-sm); }
+.pk-seg button.is-empty { opacity: .45; }
+.pk-seg small { font-weight: 500; color: var(--text-3); }
+.pk-find { flex: 0 1 240px; min-width: 160px; height: 30px; }
+.pk-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); gap: 16px; align-items: start; }
+.pk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.pk-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border-radius: 14px; background: var(--surface); box-shadow: 0 0 0 1px var(--line); cursor: pointer; transition: box-shadow var(--t-micro) var(--ease); }
+.pk-card:hover { box-shadow: 0 0 0 1px var(--line-strong), var(--shadow-sm); }
+.pk-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pk-card.is-sel { box-shadow: 0 0 0 2px var(--accent); }
+.pk-card.is-off .pk-cover > :not(.pk-cat) { filter: grayscale(.85); opacity: .5; }
+.pk-cover { position: relative; overflow: hidden; aspect-ratio: 16 / 9; background: #efe6d8; }
+.pk-cover > img, .pk-cover > svg { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pk-cat { position: absolute; left: 8px; top: 8px; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; color: var(--text); background: color-mix(in srgb, var(--surface) 92%, transparent); box-shadow: 0 1px 3px rgba(0, 0, 0, .14); }
+.pk-cat.is-base { color: #fff; background: var(--accent); }
+.pk-body { display: grid; gap: 5px; padding: 10px 12px 12px; }
+.pk-name { display: flex; align-items: center; gap: 6px; min-width: 0; font-size: 14px; }
+.pk-name b { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pk-name .ver { flex: none; font-size: 12px; color: var(--text-3); }
+.pk-name .switch { margin: 0 0 0 auto; }
+.pk-sum { display: -webkit-box; margin: 0; overflow: hidden; font-size: 12.5px; line-height: 1.5; color: var(--text-2); -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.pk-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.pk-tags span { padding: 1px 7px; border-radius: 999px; font-size: 11px; color: var(--text-2); background: var(--surface-2); }
+.pk-meta { font-size: 11.5px; color: var(--text-3); }
+.pk-rel { font-size: 11.5px; line-height: 1.6; }
+.pk-rel.is-ok { color: var(--ok); }
+.pk-rel.is-warn { font-weight: 600; color: color-mix(in srgb, var(--warn) 70%, var(--text)); }
+.pk-rel .btn { height: 22px; margin-left: 4px; padding: 0 8px; font-size: 11.5px; }
+.pk-detail { position: sticky; top: 0; overflow: hidden; border-radius: 16px; background: var(--surface); box-shadow: 0 0 0 1px var(--line); }
+.pk-detail .in { display: grid; gap: 8px; padding: 14px 16px 16px; font-size: 13px; }
+.pk-detail h3 { margin: 0; font-size: 17px; letter-spacing: -.01em; }
+.pk-detail h3 small { font-size: 12.5px; font-weight: 500; color: var(--text-3); }
+.pk-detail h4 { margin: 4px 0 0; font-size: 11.5px; font-weight: 700; color: var(--text-3); }
+.pk-detail p { margin: 0; line-height: 1.6; color: var(--text-2); }
+.pk-detail ul { margin: 0; padding-left: 18px; line-height: 1.7; }
+.pk-log { display: grid; gap: 2px; font-size: 12.5px; color: var(--text-2); }
+.pk-log b { margin-right: 6px; color: var(--text); font-variant-numeric: tabular-nums; }
+.pk-detail .pk-id { font-size: 11.5px; color: var(--text-3); }
+.pk-acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.pk-foot { margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--text-3); }
+@media (max-width: 900px) {
+  .pk-wrap { grid-template-columns: minmax(0, 1fr); }
+  .pk-detail { position: static; }
+  .pk-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+}
+
+/* --- 단체 · 선거 (형식 버전 3 — 상세 창의 글만: 구성 나라 줄 · 선거 결과 표) --- */
+.gp-members { list-style: none; margin: 0; padding: 0; } /* 승계 목록(.succ-list)의 단추 · 작은 글 규칙을 받지 않는 제 목록 — 칩 · 역할 · 트랙 · 기간 · 메모가 한 줄에 왼쪽부터 */
+.gp-member { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 6px; padding: 3px 0; font-size: 13px; }
+.gp-member small { color: var(--text-3); }
+.el-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.el-table th { padding: 3px 6px; text-align: left; font-size: 12px; font-weight: 500; color: var(--text-3); border-bottom: 1px solid var(--line); }
+.el-table td { padding: 4px 6px; border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+.el-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.el-table tr.is-won td { font-weight: 600; }
+
+/* --- 승계표 · 세계표 · 가문 막대 · 성씨 창 (D1 — 10건 1 · 2 · js/kin-view.js) ---
+   꼴은 상세 창 그대로(목업 결정 1 A · 2 A · 4 B · 7 A · 8 A의 1배 치수): 승계표 카드 34 · 이음매 22 · 사람 줄 28 · 선 2px(왼쪽 30px 자리) · 복위 고리는 오른쪽 여백 30px,
+   세계표 카드 124×42 · 세대 줄 82 · 선 2px(양자 짧은 파선 5 3.5 · n대손 긴 파선 12 5). 움직임은 JS(HT.motion 토큰)만 — 여기에는 전환을 두지 않음 */
+.kv-head { align-items: center; row-gap: 4px; }
+.kv-chip.is-auto { opacity: .7; }
+.kv-chip.is-tag { background: var(--surface-2); }
+.kv-chip.is-tag::before { display: none; }
+.kv-chip.is-empty { background: transparent; color: var(--text-3); border: 1px dashed var(--line-strong); padding: 1px 8px; cursor: pointer; }
+.kv-chip.is-empty::before { display: none; }
+.kv-chipw { display: inline-flex; align-items: center; gap: 1px; }
+.kv-pen, .kv-x { width: 18px; height: 18px; padding: 0; border: 0; border-radius: 6px; background: none; font-size: 10px; line-height: 18px; color: var(--text-3); cursor: pointer; opacity: .75; }
+.kv-x { width: 14px; height: 14px; margin-left: 3px; line-height: 14px; }
+.kv-pen:hover, .kv-x:hover { opacity: 1; background: var(--accent-soft); }
+.kv-sep { font-style: normal; color: var(--text-3); margin: 0 1px; }
+.detail .kv-sub { margin: 0 0 10px; font-size: 13px; color: var(--text-3); }
+.kv-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin: 0 0 12px; padding: 7px 12px; border-radius: 12px; background: color-mix(in srgb, var(--surface-2) 70%, transparent); font-size: 12px; color: var(--text-2); }
+.kv-legend > span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.kv-lg { --lc: color-mix(in srgb, var(--c, #c8b193) 40%, var(--text-2)); position: relative; display: inline-block; flex: none; width: 22px; height: 10px; }
+.kv-lg.is-solid, .kv-lg.is-line { background: linear-gradient(var(--lc), var(--lc)) center / 100% 2px no-repeat; }
+.kv-lg.is-two { background: linear-gradient(var(--lc), var(--lc)) 0 2.5px / 100% 2px no-repeat, linear-gradient(var(--lc), var(--lc)) 0 5.5px / 100% 2px no-repeat; }
+.kv-lg.is-cut { background: linear-gradient(90deg, var(--lc) 0 8px, transparent 8px 14px, var(--lc) 14px) center / 100% 2px no-repeat; }
+.kv-lg.is-cut::after { content: ""; position: absolute; left: 6px; top: 4px; width: 10px; height: 2px; background: var(--lc); transform: rotate(-37deg); }
+.kv-lg.is-unk { background: radial-gradient(circle, var(--lc) 1px, transparent 1.3px) 0 center / 4.2px 2px repeat-x; }
+.kv-lg.is-res { width: 18px; border: 2px solid var(--lc); border-bottom: 0; border-radius: 6px 6px 0 0; box-sizing: border-box; }
+/* 복위 견본의 화살촉은 내려가는 끝(오른쪽 다리 아래 — 다시 오른 쪽, 승계표 고리와 같은 쪽 · 건의 8의 5번 A) */
+.kv-lg.is-res::after { content: ""; position: absolute; left: 11px; top: 3.5px; width: 8px; height: 6px; background: var(--lc); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 6' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 4 4.5l3-3'/%3E%3C/svg%3E") center / 8px 6px no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 6' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 4 4.5l3-3'/%3E%3C/svg%3E") center / 8px 6px no-repeat; }
+.kv-lg.is-adopt { background: repeating-linear-gradient(90deg, var(--lc) 0 5px, transparent 5px 8.5px) center / 100% 2px no-repeat; }
+.kv-lg.is-skip { width: 30px; background: repeating-linear-gradient(90deg, var(--lc) 0 12px, transparent 12px 17px) center / 100% 2px no-repeat; }
+.kv-lg.is-ruler { width: 18px; height: 12px; border-radius: 4px; background: color-mix(in srgb, #c8b193 34%, var(--surface)); box-shadow: inset 0 0 0 1px color-mix(in srgb, #c8b193 60%, transparent); }
+.kv-lg.is-paper { width: 18px; height: 12px; border-radius: 4px; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.kv-lg.is-ring { width: 11px; height: 11px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 2px var(--kv-line); } /* 세계표의 이름 미상과 같은 원: 종이빛 채움 + 테 2px(선과 같은 빛 — 건의 8의 4-다) */
+
+/* 승계표 — 세로 한 줄 (보이는 줄만: 줄은 transform으로 놓고 상자는 contain: strict) */
+.kv-succ-body { -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(180deg, #000 calc(100% - 28px), transparent); overflow-anchor: none; }
+.kv-succ { position: relative; width: 100%; contain: strict; outline: none; --lc: color-mix(in srgb, var(--c, #c8b193) 40%, var(--text-2)); }
+.kv-row { position: absolute; left: 0; right: 30px; top: 0; box-sizing: border-box; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.kv-row.is-L { height: 34px; padding: 0 10px 0 12px; border-radius: 10px; background: color-mix(in srgb, var(--c) 20%, var(--surface)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 52%, transparent); cursor: pointer; }
+.kv-row.is-L:hover { background: color-mix(in srgb, var(--c) 28%, var(--surface)); }
+.kv-row.is-L em { flex: none; min-width: 30px; font-style: normal; font-size: 11px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.kv-row.is-L b { flex: none; max-width: 45%; overflow: hidden; text-overflow: ellipsis; font-size: 14px; font-weight: 600; }
+.kv-row.is-L small { flex: none; margin-left: auto; font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.kv-again { flex: none; padding: 0 6px; border-radius: 999px; font-size: 10.5px; font-weight: 600; color: var(--text-2); background: color-mix(in srgb, var(--c) 30%, var(--surface)); }
+.kv-pill { flex: none; height: 20px; padding: 0 8px; border: 0; border-radius: 999px; font: inherit; font-size: 11px; color: var(--text-2); background: color-mix(in srgb, var(--c) 30%, var(--surface)); cursor: pointer; white-space: nowrap; }
+.kv-pill:hover { background: color-mix(in srgb, var(--c) 45%, var(--surface)); }
+.kv-pill.is-branch { display: inline-flex; align-items: center; gap: 5px; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); }
+.kv-pill.is-branch::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+.kv-else { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; height: 18px; padding: 0 6px; border: 0; border-radius: 999px; font: inherit; font-size: 10.5px; color: var(--text-2); background: color-mix(in srgb, var(--c) 24%, transparent); cursor: pointer; }
+.kv-more { flex: none; font-size: 10.5px; color: var(--text-3); }
+.kv-row.is-S { height: 22px; padding-left: 46px; font-size: 12px; color: var(--text-2); overflow: hidden; }
+.kv-row.is-S span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.kv-row.is-S b { font-weight: 600; color: var(--text); }
+.kv-row.is-S i { font-style: normal; color: var(--text-3); }
+/* 선 갈래(결정 8 A): 무늬는 이음매 22px 안에만, 펼친 줄 왼쪽 여백에는 같은 색 실선으로 이어짐 */
+.kv-row[data-line]::before { content: ""; position: absolute; left: 29px; top: 0; bottom: 0; width: 2px; background: var(--lc); }
+.kv-row[data-line="none"]::before { left: 29.5px; width: 1px; opacity: .45; }
+.kv-row.is-S[data-line="two"]::before { left: 26.5px; width: 7px; box-sizing: border-box; background: none; border-left: 2px solid var(--lc); border-right: 2px solid var(--lc); }
+.kv-row.is-S[data-line="cut"]::before { background: linear-gradient(180deg, var(--lc) 0 8px, transparent 8px 14px, var(--lc) 14px); }
+.kv-row.is-S[data-line="cut"]::after { content: ""; position: absolute; left: 25px; top: 10px; width: 12px; height: 2px; background: var(--lc); transform: rotate(-37deg); }
+.kv-row.is-S[data-line="unk"]::before { background: radial-gradient(circle, var(--lc) 1px, transparent 1.3px) center 1px / 2px 4.2px repeat-y; }
+.kv-row.is-P, .kv-row.is-K { height: 28px; padding-left: calc(26px + var(--d, 1) * 14px); font-size: 13px; }
+.kv-row.is-P { cursor: pointer; border-radius: 7px; }
+.kv-row.is-P:hover { background: var(--accent-soft); }
+.kv-row.is-P small { min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 11.5px; color: var(--text-3); }
+.kv-nm { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.kv-row.is-out .kv-nm, .kv-row.is-faint .kv-nm { color: var(--text-3); }
+.kv-tw { flex: none; width: 14px; margin-right: -4px; font-style: normal; font-size: 10px; text-align: center; color: var(--text-3); cursor: pointer; }
+.kv-ring { flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--text-3) 90%, transparent); }
+.kv-deep { flex: none; font-style: normal; font-size: 10.5px; color: var(--text-3); }
+.kv-skip { min-width: 0; overflow: hidden; text-overflow: ellipsis; padding: 2px 6px; margin-left: -6px; border: 0; border-radius: 6px; background: none; font: inherit; font-size: 12.5px; color: var(--text-2); cursor: pointer; }
+.kv-skip:hover { background: var(--accent-soft); }
+.kv-loop { position: absolute; right: 8px; top: 0; width: 18px; box-sizing: border-box; border: 2px solid var(--lc); border-left: 0; border-radius: 0 9px 9px 0; pointer-events: none; }
+/* 화살촉 '<'(폭 5 · 위아래 4)은 아래 끝 — 다시 오른 카드를 가리킴(시간이 흐르는 쪽 · 건의 8의 5번 A, 예전에는 처음 오른 카드 쪽). 새 앱 _Loop.end와 같은 자리 */
+.kv-loop::before { content: ""; position: absolute; left: -1.5px; bottom: -6px; width: 8px; height: 10px; background: var(--lc); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 10' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 1 1.5 5l5 4'/%3E%3C/svg%3E") center / 8px 10px no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 10' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 1 1.5 5l5 4'/%3E%3C/svg%3E") center / 8px 10px no-repeat; }
+.kv-succ:focus-visible .kv-row.is-act { box-shadow: 0 0 0 2px var(--accent); }
+.kv-succ:focus-visible .kv-row.is-L.is-act { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 52%, transparent), 0 0 0 2px var(--accent); }
+.kv-succ-foot { gap: 6px; }
+.kv-succ-foot .btn-sm { padding-left: 9px; padding-right: 9px; }
+.kv-succ-foot select { height: 28px; padding: 0 6px; font-size: 12.5px; }
+
+/* 세계표 — 가문 창 왼쪽의 떠 있는 창 (상세 창의 꼴 · 자리와 크기는 JS) */
+.detail.kv-fam { right: auto; bottom: auto; max-width: none; z-index: 31; }
+.kv-fam .detail-head { cursor: grab; }
+.kv-title { display: flex; align-items: baseline; gap: 10px; padding: 4px 18px 0; }
+.kv-title h2 { margin: 0; font-size: 19px; }
+.kv-title span { font-size: 13px; color: var(--text-3); font-weight: 500; }
+.kv-crumb { margin: 2px 18px 0; font-size: 12.5px; color: var(--text-3); }
+.kv-fam .kv-legend { margin: 8px 18px 6px; }
+/* 틀(건의 8의 4-나 '둘 다'): 그림판 둘레 1px 먹 20% · 둥근 6 · 좌우 여백 18(범례 · 전체도와 같은 줄), 세대 번호 칸 오른쪽에 1px 먹 8% 세로선(.kv-gens) */
+.kv-view { position: relative; flex: 1; min-height: 0; margin: 0 18px; border: 1px solid var(--ha-ink20); border-radius: 6px; overflow: hidden; outline: none; cursor: grab; touch-action: none; user-select: none; }
+.kv-view.is-dragging { cursor: grabbing; }
+.kv-view:focus-visible { box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent); border-radius: 12px; }
+.kv-plane { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+.kv-edges { position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible; pointer-events: none; }
+.kv-fam, .kv-legend { --kv-line: color-mix(in srgb, var(--text-2) 70%, transparent); } /* 세계표 선의 빛 — 선 · 이름 미상 원 · 범례 견본이 함께 */
+.kv-e { fill: none; stroke: var(--kv-line); stroke-width: 2; stroke-linejoin: round; }
+.kv-e.adopt { stroke-dasharray: 5 3.5; }
+.kv-e.skip { stroke-dasharray: 12 5; }
+.kv-e.is-weak { opacity: .7; }
+.kv-p { position: absolute; left: 0; top: 0; width: 124px; height: 42px; box-sizing: border-box; padding: 6px 15px 0; display: block; border-radius: 11px; font-size: 13px; line-height: 17px; font-weight: 600; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+.kv-p:not([data-sub]) { padding-top: 12px; }
+.kv-p::after { content: attr(data-sub); display: block; margin: 0 -8px; overflow: hidden; font-size: 10.5px; line-height: 13px; font-weight: 400; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.kv-p.is-lsub::after { text-align: left; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 14px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 14px), transparent); }
+.kv-p:not([data-sub])::after { display: none; }
+.kv-p.is-ruler { background: color-mix(in srgb, var(--c, #c8b193) 36%, var(--surface)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c, #c8b193) 62%, var(--text-3)); }
+.kv-p.is-two { background: linear-gradient(90deg, color-mix(in srgb, var(--c) 36%, var(--surface)) 0 50%, color-mix(in srgb, var(--c2, var(--c)) 36%, var(--surface)) 50% 100%); }
+.kv-p.is-paper { background: var(--paper); box-shadow: inset 0 0 0 1px var(--line-strong); color: var(--text-2); }
+.kv-p.is-out { box-shadow: inset 0 0 0 1px var(--line); color: var(--text-3); }
+.kv-p.is-miss { color: var(--text-3); font-weight: 400; }
+/* 이름 미상(보통 단계): 글자 없이 원 하나 — 지름 14 · 종이빛 채움 · 테 2px(선과 같은 빛). 이름은 올리면 풍선(.kv-tip) · 읽어 주는 이름은 aria-label (건의 8의 4-다) */
+.kv-p.is-unk { padding: 0; background: none; box-shadow: none; font-size: 0; }
+.kv-p.is-unk::after { content: ""; display: block; position: absolute; left: calc(50% - 7px); top: calc(50% - 7px); width: 14px; height: 14px; margin: 0; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 2px var(--kv-line); }
+/* 이름 미상의 키보드 초점: 카드 크기 네모가 아니라 원 둘레(반지름 7 + 4 — 종이 틈 2 · 테 2) */
+.kv-fam:not(.is-dots) .kv-p.is-unk.is-focus { outline: none; }
+.kv-fam:not(.is-dots) .kv-p.is-unk.is-focus::after { box-shadow: inset 0 0 0 2px var(--kv-line), 0 0 0 2px var(--paper), 0 0 0 4px var(--accent); }
+.kv-p.is-open::before, .kv-p.is-closed::before { content: "▾"; position: absolute; top: 2px; right: 4px; width: 12px; font-size: 10px; line-height: 14px; font-weight: 400; text-align: center; color: var(--text-3); }
+.kv-p.is-closed::before { content: "▸"; }
+.kv-p.is-focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.kv-blabel { position: absolute; left: 0; top: 0; height: 16px; max-width: 54px; padding: 0; display: inline-flex; align-items: center; gap: 4px; border: 0; background: none; font: inherit; font-size: 10.5px; font-weight: 600; color: var(--text-2); white-space: nowrap; overflow: hidden; cursor: pointer; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 8px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 8px), transparent); }
+.kv-blabel::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+.kv-fpill, .kv-far { position: absolute; left: 0; top: 0; height: 16px; padding: 0 7px; border: 0; border-radius: 999px; font: inherit; font-size: 10.5px; line-height: 16px; color: var(--text-2); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line-strong); white-space: nowrap; cursor: pointer; }
+.kv-fpill { translate: -50% 0; }
+.kv-fpill.is-right { translate: 0 0; max-width: 54px; overflow: hidden; text-overflow: ellipsis; }
+.kv-far { max-width: 54px; overflow: hidden; text-overflow: ellipsis; color: var(--text-3); }
+.kv-tag { position: absolute; left: 0; top: 0; translate: -50% -50%; padding: 0 6px; border-radius: 999px; font-size: 10.5px; font-weight: 600; line-height: 16px; color: var(--text-2); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line-strong); white-space: nowrap; pointer-events: none; }
+.kv-gens { position: absolute; left: 0; top: 0; bottom: 0; width: 24px; background: color-mix(in srgb, var(--surface) 93%, transparent); box-shadow: inset -1px 0 0 var(--ha-ink8); pointer-events: none; z-index: 1; }
+/* 보기 단계 '점'(건의 8의 4-가): 사람 = 지름 12 점 · 선 1.2 — 지도자는 나라 색 칠(나라 색 70% + 종이 · 테 1.5 나라 색 62% + 먹), 그 밖은 종이 + 먹 40% 테, 이름 미상은 먹 20% 테.
+   이름 · 곁글 · 손잡이 · 알약 · 파 이름표 · 꼬리표 없음(js/kin-view.js가 그리지 않음 — 이름은 올리면 풍선) */
+.kv-fam.is-dots .kv-p { width: 12px; height: 12px; padding: 0; border-radius: 50%; font-size: 0; line-height: 0; overflow: visible; background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--ha-ink40); }
+.kv-fam.is-dots .kv-p::before, .kv-fam.is-dots .kv-p::after { display: none; }
+.kv-fam.is-dots .kv-p.is-ruler { background: color-mix(in srgb, var(--c, #c8b193) 70%, var(--paper)); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--c, #c8b193) 62%, var(--ha-ink)); }
+.kv-fam.is-dots .kv-p.is-unk { box-shadow: inset 0 0 0 1.5px var(--ha-ink20); }
+.kv-fam.is-dots .kv-e { stroke-width: 1.2; }
+/* 풍선(점 단계의 사람 · 이름 미상): 먹 바탕 · 종이 글 11.5 · 둥근 4 — 점 · 원의 6px 위 가운데 */
+.kv-tip { position: absolute; left: 0; top: 0; z-index: 3; translate: -50% -100%; padding: 2px 7px; border-radius: 4px; background: var(--ha-ink); color: var(--ha-paper); font-size: 11.5px; line-height: 16px; white-space: nowrap; pointer-events: none; }
+/* 아래 줄의 보기 단계 [보통 | 점] — 고른 칸만 반전 채움(DLC 관리 창의 갈래 탭과 같은 꼴) */
+.kv-seg { display: inline-flex; gap: 2px; padding: 2px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--ha-ink20); }
+.kv-seg button { height: 28px; padding: 0 12px; border: 0; border-radius: 4px; background: none; font: inherit; font-size: 12.5px; line-height: 16px; color: var(--ha-ink); cursor: pointer; }
+.kv-seg button:hover { background: var(--ha-ink8); }
+.kv-seg button[aria-checked="true"] { background: var(--ha-ink); color: var(--ha-paper); }
+.kv-gen, .kv-genhead { position: absolute; top: 0; font-size: 11px; color: var(--text-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.kv-gen { right: 4px; }
+.kv-genhead { left: 2px; top: 2px; }
+.kv-building { position: absolute; left: 50%; top: 40%; translate: -50% 0; padding: 6px 14px; border-radius: 999px; font-size: 12.5px; color: var(--text-2); background: var(--surface); box-shadow: var(--shadow-sm), 0 0 0 1px var(--line); }
+/* 큰 뼈대를 나눠 짓는 동안(4-6): '짓고 있습니다'는 --t-in으로 나타남 · 승계표는 목록 자리 가운데 한 줄 */
+.kv-building:not([hidden]) { animation: scope-in var(--t-in) var(--ease) both; }
+.kv-fam.is-building .kv-wait { cursor: default; }
+.kv-succ-wait { position: static; translate: none; display: table; margin: 28px auto; }
+.kv-over { position: relative; flex: none; height: 56px; margin: 6px 18px 0; border-radius: 8px; overflow: hidden; background: color-mix(in srgb, var(--surface-2) 70%, transparent); cursor: pointer; touch-action: none; }
+.kv-over canvas { display: block; }
+.kv-over-box { position: absolute; left: 0; top: 0; box-sizing: border-box; border: 1.5px solid var(--accent); border-radius: 3px; pointer-events: none; }
+.kv-foot { align-items: center; }
+.kv-lv, .kv-find { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-2); }
+.kv-lv select { height: 28px; padding: 0 8px; font-size: 12.5px; }
+.kv-find { margin-left: auto; }
+.kv-find input { width: 150px; height: 28px; font-size: 12.5px; }
+.kv-find input[aria-invalid="true"] { box-shadow: inset 0 0 0 1px var(--danger); }
+
+/* 다스린 기간 막대 (결정 7 A — 가문 창 맨 위 · 성씨 창) */
+.kv-eras ul { list-style: none; margin: 4px 0 2px; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.kv-era { display: grid; grid-template-columns: 44px 1fr; align-items: center; gap: 8px; width: 100%; padding: 0; border: 0; background: none; font: inherit; font-size: 12px; text-align: left; cursor: pointer; }
+.kv-era-n { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; color: var(--text-2); }
+.kv-era-bar { position: relative; height: 14px; }
+.kv-era-trk { position: absolute; top: 0; bottom: 0; border-radius: 5px; background: color-mix(in srgb, var(--c) 18%, var(--surface)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 45%, transparent); }
+.kv-era-trk i { position: absolute; top: 0; bottom: 0; min-width: 4px; border-radius: 4px; background: color-mix(in srgb, var(--hc) 78%, var(--paper-ink) 6%); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hc) 70%, var(--paper-ink)); }
+.kv-era:hover .kv-era-trk { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 70%, transparent); }
+.kv-era-trk i.is-real { background: color-mix(in srgb, var(--hc) 34%, var(--surface)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hc) 70%, var(--paper-ink)); } /* 실권(내각) 구간 — 지도자 구간보다 옅게 */
+.kv-era-when { grid-column: 2; margin-top: -4px; font-size: 11px; line-height: 1.5; color: var(--text-3); font-variant-numeric: tabular-nums; word-break: keep-all; } /* 그 가문이 자리에 있던 해(감독 건의 2026-10-14 5번) */
+.kv-era-axis { display: flex; justify-content: space-between; margin: 6px 0 0 52px; font-size: 10.5px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.detail .kv-links, .detail .kv-more-line { margin-top: 6px; }
+.detail .kv-path { margin: 0 0 8px; align-items: center; }
+.kv-fam-btn { color: var(--accent); }
+@media (max-width: 640px) {
+  .kv-head { flex-wrap: nowrap; overflow-x: auto; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+  .kv-legend { flex-wrap: nowrap; overflow-x: auto; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+}
+/* ── 집합 보기 (10건 6 — 감독 선택 D4 결정 3 · 4 · 5 · js/views-ui.js) ──
+   ① 독의 집합 보기 단추(겹친 판 기호만 — 꼴은 끝의 'HistoryArchive 통일' 절의 .dock-btn): 켠 판이 있으면 반전 채움(판 이름은 풍선) · 판이 하나도 없는 연표에서는 숨음
+   ② 독 아래 목록(.views-pop — 독과 같은 유리): 판마다 스위치(대범위 스위치와 같은 꼴) · 이름 · 나라 수 · 트랙 수 · DLC 표시, 메이커는 제 판에 고치기 · 지우기
+   ③ 시대 구분 상세의 '이 시대의 나라' 카드(.sub-box.is-views — 이어진 대범위 카드와 같은 자리 · 같은 꼴): 칩(눌러 빼기 — 뺀 칩은 속 빈 점) · 스위치(임시 판)
+   움직임은 토큰만 — 목록은 --t-in으로 떠오름 */
+.views-pop { position: fixed; z-index: 60; overflow: auto; padding: 12px 12px 10px; border-radius: 12px;
+  background: var(--surface); border: 1px solid var(--line); box-shadow: none; }
+.views-pop[hidden] { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .views-pop:not([hidden]) { animation: views-in var(--t-in) var(--ease) both; }
+}
+@keyframes views-in { from { opacity: 0; transform: translateY(-4px); } }
+.vw-head { display: flex; flex-direction: column; gap: 2px; padding: 0 4px 8px; }
+.vw-head b { font-size: 13px; font-weight: 700; color: var(--text); }
+.vw-head small { font-size: 11px; color: var(--text-3); line-height: 1.45; }
+.vw-rows { display: flex; flex-direction: column; gap: 2px; }
+.vw-row { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 6px; border-radius: 6px; }
+.vw-row:hover { background: var(--ha-ink8); }
+.vw-row.is-on { background: color-mix(in srgb, var(--c) 14%, transparent); }
+.vw-switch { flex: none; padding: 0 6px; }
+.vw-text { flex: 1 1 auto; min-width: 0; display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: 6px; row-gap: 1px; }
+.vw-text b { min-width: 0; font-size: 13px; font-weight: 650; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vw-text small { grid-column: 1 / -1; font-size: 11px; color: var(--text-3); }
+.vw-dlc { justify-self: start; max-width: 160px; height: 17px; padding: 0 6px; border-radius: 4px; font-size: 10px; line-height: 17px; font-weight: 600; color: var(--text-2);
+  background: color-mix(in srgb, var(--text-3) 14%, transparent); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vw-dlc.is-temp { background: color-mix(in srgb, var(--c) 30%, transparent); color: var(--text); }
+.vw-acts { flex: none; display: inline-flex; gap: 12px; font-size: 12px; }
+.vw-acts .linky { text-decoration: none; }
+.vw-acts .linky:hover { text-decoration: underline; }
+.linky.is-danger { color: var(--danger); }
+.vw-empty { margin: 4px 6px 2px; font-size: 12.5px; line-height: 1.55; color: var(--text-3); }
+.vw-note { margin: 6px 0 0; font-size: 11.5px; line-height: 1.5; color: var(--text-3); }
+.vw-edit { display: flex; flex-direction: column; gap: 8px; padding: 2px 4px; }
+.vw-edit label { display: flex; flex-direction: column; gap: 3px; font-size: 11.5px; color: var(--text-3); }
+.vw-edit input { height: 30px; box-sizing: border-box; width: 100%; }
+.vw-span { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.vw-members { list-style: none; margin: 2px 0 0; padding: 0; display: flex; flex-direction: column; gap: 2px; max-height: 260px; overflow: auto; }
+.vw-members li { display: flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 2px 0 8px; border-radius: 6px; background: var(--ha-ink8); }
+.vw-members li b { font-size: 12.5px; font-weight: 600; }
+.vw-members li small { flex: 1 1 auto; font-size: 11px; color: var(--text-3); }
+.vw-members .icon-btn { width: 26px; height: 26px; font-size: 12px; }
+.vw-dot { flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.vw-edit-foot { display: flex; gap: 8px; justify-content: flex-end; margin-top: 2px; }
+.vw-edit > .btn { align-self: flex-start; }
+.sub-box.is-views h3 small { font-weight: 500; }
+.vw-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 10px; }
+.vw-chip.is-off { text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--text-3) 60%, transparent); }
+.chip.vw-wide { color: var(--text); background: var(--surface); border: 1px solid var(--line); box-shadow: none; }
+.chip.vw-wide::before { display: none; }
+.vw-card-acts { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+/* --- 법 규격 · 선거 규격의 상세 (설계 D5 결정 7 A — 조약문 양식 빌림) ---
+   머리의 법 · 선거 딱지는 조약 딱지와 같은 마름모(주제 색) · 법의 내력은 조약의 날짜 진행 표(.tr-steps)에 '이 사건' 줄 테두리 ·
+   선거 결과는 의석 막대 하나(모임 색 칠 + 그 색의 짙은 테두리 · 사이 2px) · 과반 글 · 결과 표의 모임 색 네모와 '당선' 딱지 */
+.badge.is-law { --c: #bba395; }
+.badge.is-vote { --c: #a0bcc5; }
+.badge.is-law::before, .badge.is-vote::before { width: 6px; height: 6px; border-radius: 1px; rotate: 45deg; }
+.detail .tr-steps li.is-now > :is(button, .tr-step) { box-shadow: inset 0 0 0 1.5px var(--ha-ink); } /* 이 사건의 줄: 색이 아니라 잉크 선(고른 카드와 같은 붓) */
+.detail .tr-steps li.is-now span i { color: var(--ha-ink); }
+.detail .el-bar { display: flex; gap: 2px; height: 16px; margin: 4px 0 8px; }
+.detail .el-seg { display: block; min-width: 3px; height: 100%; padding: 0; border: 0; border-radius: 4px; background: color-mix(in srgb, var(--pc) 70%, var(--surface)); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--pc) 75%, var(--paper-ink)); }
+.detail button.el-seg { cursor: pointer; transition: filter var(--t-micro) var(--ease); }
+.detail button.el-seg:hover { filter: brightness(.95); }
+.detail .el-half { margin: -2px 0 8px; font-size: 11.5px; color: var(--text-3); }
+.detail .el-who { display: inline-flex; align-items: center; gap: 7px; min-width: 0; }
+.detail .el-who > i { flex: none; width: 10px; height: 10px; border-radius: 3px; background: color-mix(in srgb, var(--pc) 70%, var(--surface)); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--pc) 75%, var(--paper-ink)); }
+.detail .el-who em { flex: none; padding: 0 5px; border-radius: 4px; font-style: normal; font-size: 11px; font-weight: 600; color: var(--ha-ink); background: transparent; box-shadow: inset 0 0 0 1px var(--ha-ink20); } /* '당선' — 딱지 꼴(칠 없이 선 · 굵은 잉크 글) */
+.detail .el-box .el-table { margin-top: 2px; }
+.detail .el-box .desc { margin-top: 8px; }
+
+/* --- 단체 계보 창 (설계 D5 결정 4 A — 아래쪽 넓은 창 · 가로 시간 나무 · js/group-tree.js) ---
+   연표 폭 그대로 바닥에 붙음(위 모서리만 둥근 12px — 시트 · 메뉴 · 창의 둥근 정도) · 1080 화면에서 525px. 나무의 연도 눈금은 위 연표와 같은 x(.gt-plot의 자리 · 폭을 JS가 연표에 맞춤).
+   막대 = 있던 기간(단체 색 22% · 그 색의 테두리), 안의 짙은 칠 = 집권 · 실권, 중간 칠 = 연정 — 집권한 부분은 1px 짙은 테두리(감독 덧붙임 "겉에 아주 얇은 진한 테두리").
+   이음선: 실선 2px(갈라짐 · 합쳐짐 · 이름 바꿈) · 점선(방식 미상) · 옅은 1px(적지 않음) — 꼴은 SVG 속성으로, 색은 글자색 토큰.
+   창이 열려 있으면 연표는 창 위쪽까지만 그리고(띠가 창에 가려지지 않음 — 막대를 누른 조명이 늘 보임), 상세 창 · 확대 단추 · 범례도 창 위로 비킵니다(--gt-h = 창 높이) */
+.gtree { position: absolute; left: 0; right: 0; bottom: 0; z-index: 28; height: min(525px, 56%); display: flex; flex-direction: column; border-radius: 12px 12px 0 0;
+  background: var(--ha-paper); box-shadow: 0 0 0 1px var(--ha-ink20); } /* 떠 있는 면: 불투명한 종이 + 1px 선(그림자 · 흐림 · 반투명 없음 — HistoryArchive 통일) */
+.gtree.is-in { animation: slide-up var(--t-in) var(--ease); }
+.gt-head { display: flex; align-items: flex-start; gap: 8px; padding: 14px 12px 0 18px; }
+.gt-head .badges { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; padding-top: 5px; }
+.gt-title { display: flex; align-items: baseline; gap: 10px; min-width: 0; margin: 2px 18px 8px; }
+.gt-title h2 { flex: none; margin: 0; font-size: 20px; line-height: 28px; font-weight: 700; letter-spacing: -.02em; }
+.gt-sub { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; color: var(--text-3); }
+.gt-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin: 0 18px 6px; padding: 7px 12px; border-radius: 6px; background: transparent; box-shadow: inset 0 0 0 1px var(--ha-ink20); font-size: 12px; color: var(--text-2); } /* 카드 꼴이 아니라 선과 둥근 6 */
+.gt-legend > span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+/* 견본 막대는 어느 단체의 색도 아닌 잉크의 짙기로(있던 기간 22% · 연정 40% · 집권 62% — 막대와 같은 섞임) */
+.gt-sw { display: inline-block; width: 18px; height: 12px; border-radius: 4px; background: color-mix(in srgb, var(--ha-ink) 22%, var(--surface)); box-shadow: inset 0 0 0 1px var(--ha-ink60); }
+.gt-sw.is-power { background: color-mix(in srgb, var(--ha-ink) 62%, var(--surface)); box-shadow: inset 0 0 0 1px var(--ha-ink); }
+.gt-sw.is-coal { background: color-mix(in srgb, var(--ha-ink) 40%, var(--surface)); box-shadow: inset 0 0 0 1px var(--ha-ink); }
+.gt-main { position: relative; flex: 1; min-height: 0; }
+.gt-side { position: absolute; left: 18px; top: 18px; bottom: 6px; overflow: auto; font-size: 12px; line-height: 1.55; color: var(--text-3); }
+.gt-side p { margin: 0; }
+.gt-pick { margin-bottom: 2px !important; color: var(--text-2); word-break: keep-all; }
+.gt-pick b { font-size: 12.5px; font-weight: 650; }
+.gt-when { margin-bottom: 8px !important; font-variant-numeric: tabular-nums; }
+.gt-acts { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+.gt-plot { position: absolute; top: 0; bottom: 0; display: flex; flex-direction: column; }
+.gt-axis { position: relative; flex: none; height: 18px; overflow: hidden; }
+.gt-axis span { position: absolute; top: 1px; transform: translateX(-50%); font-size: 10.5px; color: var(--text-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.gt-scroll { flex: 1; min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; }
+.gt-svg { display: block; overflow: hidden; }
+.gt-gl { stroke: var(--line); stroke-width: 1; }
+.gt-bar { cursor: pointer; outline: none; }
+.gt-base { fill: color-mix(in srgb, var(--c) 22%, var(--surface)); stroke: color-mix(in oklab, var(--c) 84%, var(--paper-ink)); stroke-width: 1; transition: filter var(--t-micro) var(--ease); }
+.gt-bar.is-here .gt-base { stroke: color-mix(in oklab, var(--c) 70%, var(--paper-ink)); stroke-width: 2; }
+.gt-bar:hover .gt-base, .gt-bar:focus-visible .gt-base { filter: brightness(.97); }
+.gt-bar:focus-visible .gt-base { stroke-width: 2; }
+.gt-seg { stroke: color-mix(in oklab, var(--c) 52%, var(--paper-ink)); stroke-width: 1; }
+.gt-seg.is-power, .gt-seg.is-real { fill: color-mix(in srgb, var(--c) 62%, var(--surface)); }
+.gt-seg.is-coal { fill: color-mix(in srgb, var(--c) 40%, var(--surface)); }
+.gt-name { font-size: 12px; font-weight: 650; fill: color-mix(in srgb, var(--c) 25%, var(--paper-ink)); pointer-events: none; }
+.gt-yr { font-size: 10.5px; font-weight: 500; fill: var(--text-3); }
+.gt-knot { fill: var(--surface); stroke: color-mix(in srgb, var(--text-2) 78%, transparent); stroke-width: 1.5; pointer-events: none; }
+.gt-how { font-size: 11px; font-weight: 600; fill: var(--text-2); pointer-events: none; }
+.gt-hit { fill: none; stroke: transparent; stroke-width: 10; pointer-events: stroke; cursor: pointer; }
+.gt-foot { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 18px 12px; border-top: 1px solid var(--line); }
+.stage.has-gtree .detail { bottom: calc(var(--gt-h, 0px) + 12px); }
+.stage.has-gtree .zoom-controls { bottom: calc(var(--gt-h, 0px) + 16px); }
+.stage.has-gtree .legend { bottom: calc(var(--gt-h, 0px) + 12px); max-height: calc(100% - var(--gt-h, 0px) - 24px); }
+.stage.has-gtree .timeline-host { margin-bottom: var(--gt-h, 0px); } /* 연표는 창 위쪽까지만 — 띠 · 세로 닻 · 데려오기가 보이는 자리 안에서 (창을 닫으면 그대로) */
+@media (max-width: 720px) {
+  .gtree { height: min(525px, 62%); }
+  .gt-legend { gap: 2px 10px; font-size: 11px; }
+}
+/* --- 문서 그림 (형식 3 — 10건 D3 결정 9 B · js/wiki.js의 namu.figureHTML · 새 앱 doc_window.dart의 DocFigure · DocFlow와 같은 규칙) ---
+   기본(is-right): 오른쪽에 띄우고 글(문단 · 목록)이 왼쪽으로 흐름 — 폭은 적은 폭(--fig-w) · 원본 폭(--fig-nat) · 340px 가운데 작은 것, 글에 280px은 남김.
+   제목 · 가로줄 · 표 · 인용 · 상자 · 접기 · 코드 · 목차 · 각주는 그림 아래에서 시작(clear — 그림이 없으면 아무 일도 하지 않음).
+   is-center(align=center) · is-left(align=left)는 띄우지 않음. 본문이 600px보다 좁으면 띄우지 않고 본문 폭 가운데(결정 9 A — 그릇 물음). */
+.wiki-article:has(.wk-fig) { container-type: inline-size; }
+.wk .wk-fig { margin: 8px 0 16px; clear: both; }
+.wk .wk-fig.is-right { float: right; clear: right; width: min(var(--fig-w, 340px), var(--fig-nat, 340px), calc(100% - 304px)); margin: 6px 0 12px 24px; }
+.wk .wk-fig.is-center { width: min(var(--fig-w, var(--fig-nat, 100%)), 100%); margin-left: auto; margin-right: auto; }
+.wk .wk-fig.is-left { width: min(var(--fig-w, var(--fig-nat, 100%)), 100%); }
+.wk .wk-fig-img { display: block; width: 100%; padding: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface-2); cursor: zoom-in; }
+.wk .wk-fig-img img { display: block; width: 100%; height: auto; }
+.wk .wk-fig-img:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wk .wk-fig figcaption { margin-top: 6px; font-size: 12.5px; line-height: 1.5; color: var(--text-3); }
+.wk .wk-fig.is-center figcaption { text-align: center; }
+.wk .wk-fig.is-missing { width: fit-content; max-width: 100%; padding: 6px 12px; border: 1px dashed var(--danger); border-radius: 12px; font-size: 13px; line-height: 1.5; color: var(--danger); }
+.wk .wk-h, .wk .wk-hr, .wk .wk-table-wrap, .wk .wk-pre, .wk .wk-quote, .wk .wk-fold, .wk .wk-box, .wk div.wk-size, .wk .wk-footnotes, .wk .wk-cats, .wk-backlinks, .wk-desc { clear: both; }
+.wiki-article:has(.wk-fig) .wk-toc { display: table; clear: both; }
+@container (max-width: 599px) {
+  .wk .wk-fig.is-right { float: none; clear: both; width: min(var(--fig-w, var(--fig-nat, 100%)), 100%); margin: 8px auto 16px; }
+  .wk .wk-fig.is-right figcaption { text-align: center; }
+}
+/* 인용 · 상자 · 접기 · 크기 묶음 안의 그림도 띄우지 않고 그 상자 폭 가운데(새 앱과 같은 규칙 — 띄우는 것은 본문 바로 아래의 그림만) */
+.wk :is(.wk-quote, .wk-box, .wk-fold, div.wk-size) .wk-fig.is-right { float: none; clear: both; width: min(var(--fig-w, var(--fig-nat, 100%)), 100%); margin: 8px auto 16px; }
+.wk :is(.wk-quote, .wk-box, .wk-fold, div.wk-size) .wk-fig.is-right figcaption { text-align: center; }
+/* 그림 크게 보기 — 화면 전체(B안의 흰 면 · 잉크 글과 선) · 나타남 --t-in · 사라짐 --t-out · 되튐 없음 */
+.wk-zoom { position: fixed; inset: 0; z-index: 700; display: flex; align-items: center; justify-content: center; padding: 48px; background: var(--ha-paper); animation: wk-zoom-in var(--t-in) var(--ease) both; }
+.wk-zoom[hidden] { display: none; }
+.wk-zoom.is-out { animation: wk-zoom-out var(--t-out) var(--ease) both; }
+.wk-zoom-fig { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; max-width: 100%; }
+.wk-zoom-fig img { display: block; max-width: calc(100vw - 96px); max-height: calc(100vh - 140px); border: 1px solid var(--ha-ink20); border-radius: 12px; background: var(--ha-paper); box-shadow: none; }
+.wk-zoom-fig figcaption { max-width: 720px; font-size: 13.5px; line-height: 1.5; color: var(--ha-ink60); text-align: center; }
+.wk-zoom-close { position: absolute; top: 16px; right: 16px; border: 1px solid var(--ha-ink20); border-radius: 6px; color: var(--ha-ink); background: var(--ha-paper); }
+.wk-zoom-close:hover { background: var(--ha-ink8); }
+@keyframes wk-zoom-in { from { opacity: 0; } }
+@keyframes wk-zoom-out { to { opacity: 0; } }
+
+/* ═════════ HistoryArchive 통일 (감독 결정 2026-10-13 · B안) — 연표의 틀 ═════════
+   떠 있던 유리 창을 붙은 줄과 칸으로: 맨 위 줄(높이 60 · 아래 ink20 선) · 오른쪽 상세 칸(왼쪽 ink20 선). 시트 · 메뉴 · 창은 paper 채움 + ink20 테두리 + 둥근 12.
+   영역은 카드가 아니라 선과 머리글로 나눕니다 (css/common.css 끝의 같은 이름 절과 한 벌) */
+/* 맨 위 줄: 보는 시기 글은 줄 이름 칸(240)과 같은 폭, 검색 칸은 길게(읽는 폭 720까지) */
+body[data-app="view"] .dock { top: var(--safe-top); left: 0; right: 0; height: var(--top); max-width: none; padding: 0 16px 0 0; gap: 8px; border-radius: 0; background: var(--ha-paper); box-shadow: none; }
+body[data-app="view"] .dock-range { flex: none; width: 240px; margin: 0; padding: 0 12px 0 16px; border: 0; overflow: hidden; text-overflow: ellipsis; font-size: 14px; line-height: 20px; font-weight: 600; }
+body[data-app="view"] .dock .search { flex: 1 1 auto; max-width: 720px; }
+body[data-app="view"] .dock-actions { margin-left: auto; gap: 4px; }
+.search input { height: 44px; padding-left: 40px; border: 1px solid var(--ha-ink20); border-radius: 6px; background-color: var(--ha-paper); background-position: 13px center; font-size: 14px; }
+.search input:focus { border-color: var(--ha-ink); }
+.dock .search-results { top: calc(100% + 8px); left: 0; border-radius: 12px; background: var(--ha-paper); box-shadow: 0 0 0 1px var(--ha-ink20); }
+.search-results { border-radius: 12px; }
+.search-results button { border-radius: 4px; }
+.search-results button:hover { background: var(--ha-ink8); color: var(--ha-ink); }
+.search-results button:hover .sr-when { color: var(--ha-ink60); }
+.search-results button.is-active { background: var(--ha-ink); color: var(--ha-paper); }
+.search-results button.is-active .sr-when, .search-results button.is-active small { color: var(--ha-paper60); }
+/* 맨 위 줄의 단추는 기호만 (건의 8 — 감독 선택 2026-10-13 '1. A · 가'): 36×36 · 테 없음 · 기호 18(선 아이콘 — js/viewer.js HT.icon) · 사이 4.
+   평소 기호 먹 60% → 올리면 바탕 먹 8% + 기호 먹 100% → 켜짐(차림표가 열림 · 렌즈 켬 · 판 켬)은 반전 채움. 이름은 풍선(title)에만.
+   렌즈를 켠 동안 오른쪽 위에 그 주제의 색 점(지름 7 · 종이색 고리 1.5) */
+.dock-btn { position: relative; justify-content: center; width: 36px; height: 36px; padding: 0; gap: 0; border-radius: 6px; color: var(--ha-ink60); }
+.dock-btn svg.ic { width: 18px; height: 18px; }
+.dock-btn:hover { background: var(--ha-ink8); color: var(--ha-ink); }
+.dock-btn:active { background: var(--ha-ink20); transform: none; }
+.dock-btn[aria-pressed="true"], .dock-btn[aria-expanded="true"], .dock-btn.is-on, .dock-btn.is-accent, .dock-btn.is-accent:hover { background: var(--ha-ink); color: var(--ha-paper); }
+.dock-btn.lens-btn.is-on::after { content: ""; position: absolute; top: 4px; right: 4px; width: 7px; height: 7px; border-radius: 50%; background: var(--tc); box-shadow: 0 0 0 1.5px var(--ha-paper); pointer-events: none; }
+/* 시트 · 메뉴 · 작은 알약 */
+.filterbar { top: calc(var(--top) + 8px + var(--safe-top)); left: calc(16px + var(--safe-left)); border-radius: 12px; background: var(--ha-paper); box-shadow: 0 0 0 1px var(--ha-ink20); }
+.filter-title { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: -.01em; color: var(--ha-ink60); text-transform: none; }
+.filter-show { border-radius: 6px; box-shadow: inset 0 0 0 1px var(--ha-ink20); }
+.status-pill { border-radius: 6px; box-shadow: 0 0 0 1px var(--ha-ink20); color: var(--ha-ink); }
+.zoom-controls, .zen-exit { border-radius: 6px; background: var(--ha-paper); box-shadow: 0 0 0 1px var(--ha-ink20); }
+.zoom-controls .icon-btn, .zoom-controls button { border-radius: 4px; }
+.detail, .legend, .ctx-menu { background: var(--ha-paper); box-shadow: 0 0 0 1px var(--ha-ink20); }
+.legend { border-radius: 12px; }
+.ctx-menu { border-radius: 12px; padding: 4px; }
+.ctx-item { border-radius: 4px; }
+.ctx-item:hover, .ctx-item:focus-visible { background: var(--ha-ink8); color: var(--ha-ink); }
+.ctx-item:hover .ctx-key, .ctx-item:focus-visible .ctx-key { color: var(--ha-ink60); }
+/* 차림표 줄 (건의 8 — 감독 선택 '3. 후'): 기호 칸 16(먹 60% · 체크 줄은 체크) + 9 + 이름 13.5 + 오른쪽 단축키 11(먹 40%). 줄 높이 32 — 글자 위아래로 6px씩 비어 가름줄에 닿지 않음.
+   기호 칸이 없는 줄(렌즈 차림표 · 메이커의 차림표)의 체크도 같은 선 체크(그림 글자 ✓ 대신) */
+.ctx-item.has-ic { gap: 9px; padding: 6px 10px; font-size: 13.5px; line-height: 20px; }
+.ctx-item.has-ic .ctx-ic { flex: none; width: 16px; height: 16px; color: var(--ha-ink60); }
+.ctx-item.has-ic:is(:hover, :focus-visible) .ctx-ic, .ctx-item.has-ic.is-checked .ctx-ic { color: var(--ha-ink); }
+.ctx-item.has-ic .ctx-label { padding-right: 6px; }
+.ctx-item .ctx-key { color: var(--ha-ink40); }
+.ctx-item.has-ic.is-checked::before { content: none; }
+.ctx-item.is-checked::before { content: ""; top: calc(50% - 7px); left: 7px; width: 14px; height: 14px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 14px 14px no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 14px 14px no-repeat; }
+/* 단추 · 목록 안의 선 아이콘 (상세 창의 '이 시기로' · '문서' · '노선도', 필터 시트의 '같은 해' · '표' …, 검색 결과, 기간 재기 알약) */
+svg.ic { flex: none; width: 16px; height: 16px; }
+.btn svg.ic { margin-left: -2px; }
+.cell-list .cell-doc svg.ic { width: 14px; height: 14px; color: var(--ha-ink60); }
+.cell-list .cell-doc:hover svg.ic { color: var(--ha-ink); }
+.search-results svg.sr-ic { width: 14px; height: 14px; color: var(--ha-ink60); }
+.search-results button:is(:hover, .is-active) svg.sr-ic { color: inherit; }
+.measure-info svg.ic { width: 14px; height: 14px; margin-right: 6px; vertical-align: -2px; }
+.filter-options .filter-sub { margin-right: -6px; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--ha-ink60); white-space: nowrap; }
+/* 상세: 오른쪽에 붙은 칸. 묶음 상자는 선과 머리글로, 읽는 글(설명)은 명조 */
+body[data-app="view"] .detail { top: 0; right: 0; bottom: 0; width: min(380px, 100%); border-radius: 0; box-shadow: -1px 0 0 var(--ha-ink20); }
+/* 세계표 창은 떠 있는 창 — 붙은 상세 칸의 꼴(둥근 0 · 왼쪽 선만)을 받지 않고 둘레 1px 먹 20% · 둥근 12 테 (건의 8의 4-나 · 새 앱과 같게) */
+.detail.kv-fam, body[data-app="view"] .detail.kv-fam { right: auto; bottom: auto; border-radius: 12px; box-shadow: 0 0 0 1px var(--ha-ink20); }
+body[data-app="view"] .stage:has(.detail:not([hidden])) .zoom-controls { right: 396px; }
+.detail h2 { font-size: 20px; line-height: 28px; font-weight: 700; letter-spacing: -.02em; }
+.detail .when { color: var(--ha-ink60); font-weight: 400; }
+.detail .desc { font-family: var(--serif); font-size: 15px; line-height: 24px; }
+.detail .tag { border-radius: 4px; background: transparent; }
+.sub-box { margin-top: 20px; padding: 12px 0 0; border: 0; border-top: 1px solid var(--ha-ink20); border-radius: 0; background: transparent; }
+.sub-box h3 { font-size: 14px; line-height: 20px; font-weight: 600; }
+.wiki-pane { border-radius: 12px; box-shadow: 0 0 0 1px var(--ha-ink20); }
+.wiki-subs { background: var(--ha-paper); }
+.wiki-titles h2 { font-family: var(--font-title); font-size: 24px; line-height: 32px; letter-spacing: -.02em; }
+.wiki-article, .wiki-body .wk { font-family: var(--serif); font-size: 15px; line-height: 24px; }
+/* DLC 관리 창: 갈래 탭은 고른 칸만 반전 채움, 카드는 선으로만 */
+.pk-seg { padding: 2px; border-radius: 6px; background: transparent; box-shadow: inset 0 0 0 1px var(--ha-ink20); }
+.pk-seg button { border-radius: 4px; color: var(--ha-ink); }
+.pk-seg button[aria-selected="true"] { background: var(--ha-ink); color: var(--ha-paper); box-shadow: none; }
+.pk-seg button[aria-selected="true"] small { color: var(--ha-paper60); }
+.pk-seg button.is-empty { opacity: 1; color: var(--ha-ink40); }
+.pk-card { border-radius: 12px; }
+.pk-card:hover { box-shadow: 0 0 0 1px var(--ha-ink20); }
+.pk-card.is-sel { box-shadow: 0 0 0 1.5px var(--ha-ink); }
+.pk-cover { background: var(--paper-2); }
+.pk-tags span { border-radius: 4px; background: transparent; box-shadow: inset 0 0 0 1px var(--ha-ink20); }
+.pk-detail { border-radius: 12px; }
+.pk-detail h3 { line-height: 26px; letter-spacing: -.02em; }
+/* 끌어다 놓기 안내 · 승계표와 세계표(.kv-*)의 틀: 그림자만 있던 면에는 선을, 칸 · 범례는 둥근 6. 인물 네모와 작은 알약은 그림의 내용이라 그대로 */
+.drop-overlay div { box-shadow: 0 0 0 1px var(--ha-ink20); }
+.kv-legend { border-radius: 6px; }
+.kv-row.is-L { border-radius: 6px; }
+.kv-building { border-radius: 6px; }
+.kv-view:focus-visible { border-radius: 6px; }
+/* 한 사람의 창 (건의 8의 6-가 — 목업 #s6 '후'): 그 사람이 다른 자리(다른 나라 · 같은 나라 복위)를 가진 지도자 · 내각 칸 창 — js/viewer.js seatsHTML.
+   배지 '인물'(회색 점) · '자리 N' 상자(둥근 8 · 1px 먹 20% · 줄 사이 1px 선 · 안쪽 위아래 8 좌우 12) · 지금 자리는 왼쪽 3px 먹 막대 + 바탕 먹 4% ·
+   겹친 기간 한 줄(12 먹 60% · 기간 굵게) + 자리마다 가는 막대(높이 4 · 둥근 2 · 나라 색 · 사이 2 · 폭 최대 180) */
+.badge.badge-person { --c: var(--ha-ink40); }
+.seat-list { list-style: none; margin: 4px 0 0; padding: 0; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--ha-ink20); overflow: hidden; }
+.seat-list > li { position: relative; padding: 8px 12px; }
+.seat-list > li + li { border-top: 1px solid var(--ha-ink20); }
+.seat-list > li.is-here { background: color-mix(in srgb, var(--ha-ink) 4%, transparent); box-shadow: inset 3px 0 0 var(--ha-ink); }
+.seat-list > li:not(.is-here):hover { background: color-mix(in srgb, var(--ha-ink) 4%, transparent); }
+.seat-go { display: flex; align-items: center; gap: 6px; width: 100%; min-width: 0; padding: 0; border: 0; background: none; font: inherit; color: var(--ha-ink); text-align: left; white-space: nowrap; cursor: pointer; }
+.seat-go:focus-visible { outline: 2px solid var(--ha-ink); outline-offset: 2px; border-radius: 4px; }
+.seat-go i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+.seat-go b { flex: none; font-size: 13.5px; line-height: 20px; font-weight: 700; }
+.seat-go small { min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 11.5px; line-height: 16px; color: var(--ha-ink60); }
+.seat-go .seat-when { flex: none; margin-left: auto; padding-left: 8px; font-size: 12.5px; line-height: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.detail .seat-acc { margin: 2px 0 0 14px; font-size: 12px; line-height: 18px; color: var(--ha-ink60); }
+.detail .seat-acc b { color: var(--ha-ink60); font-weight: 600; }
+.detail .seat-acc .linky { font-size: 12px; }
+.detail .seat-ov { display: flex; align-items: center; gap: 6px; margin: 8px 0 0; font-size: 12px; line-height: 18px; color: var(--ha-ink60); white-space: nowrap; }
+.detail .seat-ov b { color: var(--ha-ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.seat-bars { position: relative; flex: 0 1 180px; max-width: 180px; margin-left: auto; }
+.seat-bars i { position: absolute; height: 4px; min-width: 2px; border-radius: 2px; background: var(--c); }
+.seat-kin .kin-line { margin: 0 0 4px; }

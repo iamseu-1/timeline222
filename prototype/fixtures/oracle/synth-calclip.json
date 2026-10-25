@@ -1,0 +1,22 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "id": "synth-calclip",
+  "name": "합성 먼 해 세계 — 검사 자료",
+  "version": "1.0.0",
+  "author": "검사 자료",
+  "description": "보조 달력을 쓰지 않는(양력만) 자료의 해 범위가 저장소 달력 표(−3500 ~ 2500년) 밖으로 나가는 갈래 — 기원전 8000년에 시작하는 띠 하나와 끝을 9999년으로 적은 띠 하나 — 를 밟는 가상 자료(판정 R61 · 과제 calclip). 모든 이름은 지어낸 것입니다.",
+  "requires": [],
+  "tracks": [
+    {"id":"old","name":"먼 옛 들판","order":1},
+    {"id":"far","name":"먼 앞날 마을","order":2}
+  ],
+  "categories": [],
+  "periods": [
+    {"id":"p-old","track":"old","name":"돌칼 문화","start":-8000,"end":-1500},
+    {"id":"p-far","track":"far","name":"끝없는 고을","start":1800,"end":9999}
+  ],
+  "events": [
+    {"id":"e-mid","track":"far","title":"고을 세움","start":1800}
+  ]
+}

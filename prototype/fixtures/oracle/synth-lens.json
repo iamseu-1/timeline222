@@ -1,0 +1,39 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "id": "synth-lens",
+  "name": "합성 렌즈 세계 — 검사 자료",
+  "version": "1.0.0",
+  "author": "검사 자료",
+  "description": "단체 단(power)과 렌즈(lens)의 갈래 — 지도자가 하나도 없는 트랙의 렌즈 켬 배치(지도자 자리가 새로 생김) · 짝을 모르는 연정 · 연합 둘에 든 나라 · 시작 미정 집권 칸 · 연대 폭과 추정이 든 칸의 렌즈 칸 — 를 밟는 가상 자료. 모든 이름은 지어낸 것입니다.",
+  "requires": [],
+  "tracks": [
+    {"id":"ln","name":"렌즈 마을","order":1},
+    {"id":"pw","name":"집권 마을","order":2}
+  ],
+  "categories": [],
+  "periods": [
+    {"id":"p-ln1","track":"ln","name":"제도만 나라","start":100,"end":300},
+    {"id":"p-ln2","track":"ln","name":"지위만 나라","start":150,"end":350,"ranks":[{"name":"공","start":150,"end":250},{"name":"왕","start":250,"end":350}]},
+    {"id":"p-ln3","track":"ln","name":"붕당만 나라","start":200,"end":400},
+    {"id":"p-pw1","track":"pw","name":"집권 나라","start":100,"end":400,
+      "ranks":[{"name":"공","start":100,"end":200,"certainty":"estimated"},{"name":"왕","start":200,"end":400,"startRange":[195,205]}],
+      "leaders":[
+        {"name":"첫 다스림이","start":100,"end":180,"certainty":"estimated"},
+        {"name":"둘째 다스림이","start":180,"end":300,"startRange":[175,185]},
+        {"name":"셋째 다스림이","start":300,"end":400}
+      ]},
+    {"id":"p-pw2","track":"pw","name":"이웃 나라","start":100,"end":400,"leaders":[{"name":"이웃 임금","start":100,"end":400}]}
+  ],
+  "groups": [
+    {"id":"g-ln","track":"ln","name":"붕당만 파","type":"faction","start":200,"end":400,"within":"붕당만 나라","power":[{"name":"집권","start":220,"end":300},{"name":"집권","start":320,"end":380}]},
+    {"id":"g-solo","track":"pw","name":"홀로 연정파","type":"faction","start":110,"end":160,"within":"집권 나라","power":[{"name":"연정","start":120,"end":150}]},
+    {"id":"g-ga","track":"pw","name":"가파","type":"faction","start":150,"end":260,"within":"집권 나라","power":[{"name":"집권","start":"미정","startHint":160,"end":200}]},
+    {"id":"g-na","track":"pw","name":"나파","type":"faction","start":190,"end":300,"within":"집권 나라","power":[{"name":"집권","start":200,"end":250}]},
+    {"id":"g-c1","track":"pw","name":"첫 연합","type":"coalition","start":200,"end":300,"members":[{"polity":"집권 나라"},{"polity":"이웃 나라"}]},
+    {"id":"g-c2","track":"pw","name":"둘째 연합","type":"coalition","start":250,"end":350,"members":[{"polity":"집권 나라"},{"polity":"이웃 나라"}]}
+  ],
+  "institutions": [
+    {"id":"in-ln","theme":"system","track":"ln","polity":"제도만 나라","spans":[["첫 제도",100,200],{"name":"둘째 제도","start":"미정","startHint":210,"end":300}]}
+  ]
+}
