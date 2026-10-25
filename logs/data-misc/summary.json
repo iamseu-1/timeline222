@@ -1,0 +1,153 @@
+{
+ "job": "data-misc",
+ "title": "자료 검사 misc",
+ "tools": {
+  "job": "data-misc",
+  "runner": "ubuntu24 20261023.334.3",
+  "os": "Linux 6.17.0-1022-azure",
+  "cpus": 4,
+  "memGB": 15.6,
+  "node": "v24.22.1",
+  "icu": "78.3",
+  "tz": "2026e",
+  "unicode": "17.0",
+  "timeZone": "Asia/Seoul",
+  "sliceIcu": "78.3",
+  "icuMatch": true,
+  "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+ },
+ "minutes": 2.3,
+ "checks": [
+  {
+   "id": "calendar",
+   "label": "달력 표 뜨기(warm-calendar)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.2,
+   "note": "달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · hebrew · ethiopic · coptic · indian · 12.5초",
+   "result": "통과"
+  },
+  {
+   "id": "f4-same-check",
+   "label": "f4-same-check(형식 4 사본 = 원본 배치)",
+   "kind": "lines",
+   "code": 0,
+   "minutes": 1,
+   "counts": {
+    "같음": 16,
+    "건너뜀": 1
+   },
+   "failed": [],
+   "note": "f4-same-check(자료 19 · 같음 16 · 알려진 차이 synth-lay, f4-federation, f4-moves · 다름 없음)",
+   "result": "통과"
+  },
+  {
+   "id": "remake3-same-check",
+   "label": "remake3-same-check(스키마 4가 더한 것 빼면 같음)",
+   "kind": "r3same",
+   "code": null,
+   "minutes": null,
+   "result": "건너뜀",
+   "note": "기록 없는 공개 저장소의 부모 없는 검사 커밋 — 기준 커밋(그 스크립트를 처음 더한 커밋의 부모)이 없음 · 이 PC 공식 검사로"
+  },
+  {
+   "id": "check-format4",
+   "label": "check-format4",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0,
+   "note": "형식 4 검사 통과 — 단위 249 · 실제 팩 기본팩 east-asia-base(84) · 견본 sample-lantern.json(141) · 옛 파일 묶음 f1-partof.json(판 1 · 객체 8) · f2-nest.json(판 2 · 객체 16) · f3-groups.json(판 3 · 객체 8) · 형식 4 가상 팩 f4-crowns.json(띠 8 · 알림 0) · f4-federation.json(띠 14 · 알림 0) · f4-office.json(띠 4 · 알림 0) · f4-liege.json(띠 4 · 알림",
+   "result": "통과"
+  },
+  {
+   "id": "calendar-cache-check",
+   "label": "calendar-cache-check(잘라 낸 표 = 바로 뜬 표)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.8,
+   "note": "달력 표 검사 135건 통과 — 바로 뜸 7889ms · 처음(넓혀 뜸) 9261ms · 두 번째(잘라 씀) 10ms",
+   "result": "통과"
+  },
+  {
+   "id": "add-dlc-tomb-check",
+   "label": "add-dlc-tomb-check(묘비 규칙)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.1,
+   "note": "모두 맞음 · 11가지",
+   "result": "통과"
+  },
+  {
+   "id": "dev-smoke",
+   "label": "dev-smoke(웹 · 메이커 빠른 검사)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.1,
+   "note": "문제 없음",
+   "result": "통과"
+  },
+  {
+   "id": "maker-check-check",
+   "label": "maker-check-check(메이커 검사 창)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0,
+   "note": "메이커 검사 창(형식 4) 검사 통과 — 11건",
+   "result": "통과"
+  },
+  {
+   "id": "maker-paste-check",
+   "label": "maker-paste-check --node(브라우저 단계 빼고)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0,
+   "note": "}",
+   "result": "통과"
+  },
+  {
+   "id": "maker-save-check",
+   "label": "maker-save-check(메이커 저장 왕복)",
+   "kind": "plain",
+   "code": null,
+   "minutes": null,
+   "result": "없음",
+   "note": "이 가지에 scripts/maker-save-check.mjs 없음"
+  },
+  {
+   "id": "maker-f4-check",
+   "label": "maker-f4-check(메이커 다리)",
+   "kind": "plain",
+   "code": null,
+   "minutes": null,
+   "result": "없음",
+   "note": "이 가지에 scripts/maker-f4-check.mjs 없음"
+  },
+  {
+   "id": "entity-id-check",
+   "label": "entity-id-check(항목ID가 길마다 같음)",
+   "kind": "plain",
+   "code": null,
+   "minutes": null,
+   "result": "없음",
+   "note": "이 가지에 prototype/scripts/entity-id-check.mjs 없음"
+  },
+  {
+   "id": "window-check",
+   "label": "window-check(연표 창구)",
+   "kind": "plain",
+   "code": null,
+   "minutes": null,
+   "result": "없음",
+   "note": "이 가지에 prototype/scripts/window-check.mjs 없음"
+  },
+  {
+   "id": "schema4-old-store-check",
+   "label": "schema4-old-store-check",
+   "kind": "plain",
+   "code": null,
+   "minutes": null,
+   "result": "건너뜀",
+   "note": "이 PC 전용 자료(배포본 0.0.4의 옛 Windows archive-tool.exe · 판 3 저장소)"
+  }
+ ]
+}

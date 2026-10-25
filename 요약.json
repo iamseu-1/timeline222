@@ -1,0 +1,2344 @@
+{
+ "branch": "remake-int2",
+ "source": "b27ce3d",
+ "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691",
+ "run": "https://github.com/iamseu-1/timeline222/actions/runs/40168367932",
+ "at": "2026-10-25T06:51:39.664Z",
+ "cancelled": false,
+ "tally": {
+  "통과": 25,
+  "실패": 0,
+  "중단": 0,
+  "건너뜀": 2,
+  "없음": 4
+ },
+ "jobs": {
+  "plan": "success",
+  "engine-official": "success",
+  "engine-lint": "success",
+  "tool": "success",
+  "data": "success",
+  "app": "success",
+  "android": "success"
+ },
+ "checks": [
+  {
+   "id": "calendar",
+   "label": "달력 표 뜨기(warm-calendar) — 일 7개",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.2,
+   "note": "달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · hebrew · ethiopic · coptic · indian · 8.5초",
+   "result": "통과",
+   "jt": "일마다",
+   "jobs": [
+    "engine-official-0",
+    "engine-official-1",
+    "engine-official-2",
+    "data-build",
+    "data-old-dlc",
+    "data-apply",
+    "data-misc"
+   ]
+  },
+  {
+   "id": "oracle",
+   "label": "정답지 뽑기(layout-oracle) — 일 3개",
+   "kind": "lines",
+   "code": 0,
+   "minutes": 1.1,
+   "counts": {
+    "뽑음": 33,
+    "건너뜀": 2
+   },
+   "failed": [],
+   "note": "뽑음 synth-lens@f4 — norm-0.json · prep.json · rows.json · upto-lens.json · pre-tracks.json · pre-tracks.shared.json · upto-tracks.json · pre-axis.json · pre-axis.shared.json · upto-axis.json · pre-bands.json · pre-bands.shared.json · upto-bands.json · pre-strips.json · pre-strips.shared.json · upto-s",
+   "result": "통과",
+   "jt": "엔진 공식",
+   "jobs": [
+    "engine-official-0",
+    "engine-official-1",
+    "engine-official-2"
+   ]
+  },
+  {
+   "job": "engine-official",
+   "jt": "엔진 공식",
+   "label": "cargo test --locked --release --no-fail-fast(LTO · 나눔 3개)",
+   "result": "통과",
+   "counts": {
+    "실행본": 68,
+    "통과": 565,
+    "실패": 0,
+    "무시": 7
+   },
+   "failed": [],
+   "minutes": 37,
+   "note": "가장 긴 나눔 37분 · 나눔 합 86분"
+  },
+  {
+   "job": "engine-lint",
+   "jt": "엔진 lint",
+   "id": "clippy",
+   "label": "cargo clippy --locked --all-targets",
+   "kind": "clippy",
+   "code": 0,
+   "minutes": 0.5,
+   "counts": {
+    "경고": 160,
+    "오류": 0
+   },
+   "failed": [
+    "경고 src/generate.rs:313:19 — operator precedence might not be obvious",
+    "경고 src/lay/m/entities/kin.rs:495:103 — this looks like an `else if` but the `else` is missing",
+    "경고 src/layout.rs:70:23 — unnecessary `>= y + 1` or `x - 1 >=`",
+    "경고 src/rowmap.rs:106:57 — unnecessary `>= y + 1` or `x - 1 >=`",
+    "경고 src/builder.rs:504:13 — very complex type used. Consider factoring parts into `type` definitions",
+    "경고 src/builder.rs:1261:5 — this function has too many arguments (8/7)",
+    "경고 src/builder.rs:1346:5 — this function has too many arguments (8/7)",
+    "경고 src/builder.rs:1368:5 — this function has too many arguments (8/7)",
+    "경고 src/builder.rs:1396:5 — this function has too many arguments (8/7)",
+    "경고 src/lay/cal.rs:87:9 — consider using `sort_by_key`",
+    "경고 src/lay/cal.rs:195:20 — very complex type used. Consider factoring parts into `type` definitions",
+    "경고 src/lay/cal.rs:586:12 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/f4.rs:12:5 — doc list item without indentation",
+    "경고 src/lay/f4.rs:13:5 — doc list item without indentation",
+    "경고 src/lay/f4.rs:14:5 — doc list item without indentation",
+    "경고 src/lay/f4.rs:15:5 — doc list item without indentation",
+    "경고 src/lay/js/num.rs:26:18 — this `repeat().take()` can be written more concisely",
+    "경고 src/lay/js/text.rs:200:1 — non-canonical implementation of `partial_cmp` on an `Ord` type",
+    "경고 src/lay/link/people.rs:739:28 — this `if` can be collapsed into the outer `match`",
+    "경고 src/lay/m/calendar.rs:55:8 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/m/calendar.rs:55:35 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/m/docs/wiki.rs:397:36 — very complex type used. Consider factoring parts into `type` definitions",
+    "경고 src/lay/m/docs/wiki.rs:645:17 — this loop could be written as a `while let` loop",
+    "경고 src/lay/m/docs/wiki.rs:797:13 — manual implementation of `Vec::pop_if`",
+    "경고 src/lay/m/docs.rs:127:8 — checking if a string is ascii using iterators",
+    "경고 src/lay/m/docs.rs:128:8 — manual implementation of `.is_multiple_of()`",
+    "경고 src/lay/m/entities/group_tree.rs:28:12 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/m/entities/group_tree.rs:100:15 — the loop variable `gi` is used to index `parents_of`",
+    "경고 src/lay/m/entities/group_tree.rs:108:19 — the loop variable `gi` is only used to index `primary`",
+    "경고 src/lay/m/entities/group_tree.rs:118:9 — this function has too many arguments (10/7)",
+    "경고 src/lay/m/entities/group_tree.rs:147:19 — the loop variable `gi` is used to index `primary`",
+    "경고 src/lay/m/entities/group_tree.rs:162:24 — very complex type used. Consider factoring parts into `type` definitions",
+    "경고 src/lay/m/entities/group_tree.rs:191:15 — the loop variable `ei` is used to index `edges`",
+    "경고 src/lay/m/entities/group_tree.rs:118:75 — parameter is only used in recursion",
+    "경고 src/lay/m/entities/kin.rs:125:53 — using `chunks_exact` with a constant chunk size",
+    "경고 src/lay/m/entities/kin.rs:243:24 — using `chunks_exact` with a constant chunk size",
+    "경고 src/lay/m/entities/kin.rs:322:28 — using `chunks_exact` with a constant chunk size",
+    "경고 src/lay/m/entities/people.rs:501:14 — the loop variable `k` is used to index `tree`",
+    "경고 src/lay/m/entities/web.rs:15:5 — doc list item without indentation",
+    "경고 src/lay/m/entities/web.rs:177:8 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/m/entities/web.rs:178:8 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/m/entities/window.rs:122:12 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/m/entities/window.rs:199:26 — unused \"map closure\" when calling `Option::map_or_else` value",
+    "경고 src/lay/m/entities.rs:428:72 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/m/entities.rs:436:23 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/m/events.rs:127:26 — manual `Range::contains` implementation",
+    "경고 src/lay/m/hangs.rs:157:20 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/m/labels.rs:6:5 — doc list item without indentation",
+    "경고 src/lay/m/labels.rs:71:12 — this `map_or` can be simplified",
+    "경고 src/lay/m/labels.rs:139:40 — this expression creates a reference which is immediately dereferenced by the compiler",
+    "경고 src/lay/m/links.rs:80:20 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/m/links.rs:277:20 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/m/links.rs:375:75 — this `map_or` can be simplified",
+    "경고 src/lay/m/tracks.rs:348:13 — manual `RangeInclusive::contains` implementation",
+    "경고 src/lay/m/variants.rs:164:12 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/model/parts.rs:647:113 — called `expect` on `host_ref` after checking its variant with `is_some`",
+    "경고 src/lay/read/dates.rs:90:57 — this `if` has identical blocks",
+    "경고 src/lay/read/misc.rs:161:73 — length comparison to zero",
+    "경고 src/lay/read/names.rs:351:18 — very complex type used. Consider factoring parts into `type` definitions",
+    "경고 src/lay/read/normalize/bands.rs:6:5 — doc list item without indentation",
+    "경고 src/lay/read/normalize/bands.rs:7:5 — doc list item without indentation",
+    "경고 src/lay/read/normalize/bands.rs:166:26 — this expression creates a reference which is immediately dereferenced by the compiler",
+    "경고 src/lay/read/normalize/bands.rs:169:54 — this expression creates a reference which is immediately dereferenced by the compiler",
+    "경고 src/lay/read/normalize/bands.rs:173:28 — this expression creates a reference which is immediately dereferenced by the compiler",
+    "경고 src/lay/read/normalize/bands.rs:383:84 — this expression creates a reference which is immediately dereferenced by the compiler",
+    "경고 src/lay/read/normalize/bands.rs:384:88 — this expression creates a reference which is immediately dereferenced by the compiler",
+    "경고 src/lay/read/normalize/bands.rs:385:89 — this expression creates a reference which is immediately dereferenced by the compiler",
+    "경고 src/lay/read/normalize/items.rs:8:5 — doc list item without indentation",
+    "경고 src/lay/read/normalize/patches.rs:7:5 — doc list item without indentation",
+    "경고 src/lay/read/treaty.rs:59:5 — doc list item without indentation",
+    "경고 src/lay/rows.rs:293:20 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/rows.rs:351:16 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+    "경고 src/lay/track.rs:475:29 — redundant closure",
+    "경고 src/lay/track.rs:496:25 — very complex type used. Consider factoring parts into `type` definitions",
+    "경고 src/legacy.rs:5:5 — doc list item without indentation",
+    "경고 src/legacy.rs:6:5 — doc list item without indentation",
+    "경고 src/legacy.rs:7:5 — doc list item without indentation",
+    "경고 src/packs.rs:319:24 — very complex type used. Consider factoring parts into `type` definitions",
+    "경고 src/packs.rs:690:32 — manual implementation of `.is_multiple_of()`",
+    "경고 src/patch.rs:878:11 — very complex type used. Consider factoring parts into `type` definitions"
+   ],
+   "note": "Finished `dev` profile [unoptimized + debuginfo] target(s) in 27.42s",
+   "result": "통과"
+  },
+  {
+   "job": "engine-lint",
+   "jt": "엔진 lint",
+   "id": "lay-rules",
+   "label": "lay-rules --check",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0,
+   "note": "lay-rules: RULES가 지금 원본과 같습니다",
+   "result": "통과"
+  },
+  {
+   "job": "tool",
+   "jt": "자료 도구",
+   "id": "build-release",
+   "label": "archive-tool 짓기(cargo build --locked --release)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 3.4,
+   "note": "Finished `release` profile [optimized] target(s) in 3m 21s",
+   "result": "통과"
+  },
+  {
+   "job": "data-build",
+   "jt": "자료 build",
+   "id": "build-check",
+   "label": "build-check(Rust 짓기 = Node 배치 · 전부)",
+   "kind": "lines",
+   "code": 0,
+   "minutes": 8.9,
+   "counts": {
+    "건너뜀": 3,
+    "같음": 35
+   },
+   "failed": [],
+   "note": "모두 같음 — 35개 자료(Node 길 = Rust 길 · 누락 · 중복 0)",
+   "result": "통과"
+  },
+  {
+   "job": "data-old-dlc",
+   "jt": "자료 old-dlc",
+   "id": "old-dlc-check",
+   "label": "old-dlc-check(묶음 걷기 · --jobs=4)",
+   "kind": "lines",
+   "code": 0,
+   "minutes": 6.4,
+   "counts": {
+    "건너뜀": 3
+   },
+   "failed": [],
+   "note": "모두 같음 — 옛 DLC 묶음을 넣고 빼도 통째 짓기와 같습니다.",
+   "result": "통과"
+  },
+  {
+   "job": "data-apply",
+   "jt": "자료 apply",
+   "id": "apply-check",
+   "label": "apply-check(모든 조합 · KTL 빼고)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 12.4,
+   "note": "걸음 52 · 어긋남 0 · 건너뛴 조합 1 · 742.8초 — 모두 같음 · 누락·중복 0",
+   "result": "통과"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "f4-same-check",
+   "label": "f4-same-check(형식 4 사본 = 원본 배치)",
+   "kind": "lines",
+   "code": 0,
+   "minutes": 1,
+   "counts": {
+    "같음": 16,
+    "건너뜀": 1
+   },
+   "failed": [],
+   "note": "f4-same-check(자료 19 · 같음 16 · 알려진 차이 synth-lay, f4-federation, f4-moves · 다름 없음)",
+   "result": "통과"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "remake3-same-check",
+   "label": "remake3-same-check(스키마 4가 더한 것 빼면 같음)",
+   "kind": "r3same",
+   "code": null,
+   "minutes": null,
+   "result": "건너뜀",
+   "note": "기록 없는 공개 저장소의 부모 없는 검사 커밋 — 기준 커밋(그 스크립트를 처음 더한 커밋의 부모)이 없음 · 이 PC 공식 검사로"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "check-format4",
+   "label": "check-format4",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0,
+   "note": "형식 4 검사 통과 — 단위 249 · 실제 팩 기본팩 east-asia-base(84) · 견본 sample-lantern.json(141) · 옛 파일 묶음 f1-partof.json(판 1 · 객체 8) · f2-nest.json(판 2 · 객체 16) · f3-groups.json(판 3 · 객체 8) · 형식 4 가상 팩 f4-crowns.json(띠 8 · 알림 0) · f4-federation.json(띠 14 · 알림 0) · f4-office.json(띠 4 · 알림 0) · f4-liege.json(띠 4 · 알림",
+   "result": "통과"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "calendar-cache-check",
+   "label": "calendar-cache-check(잘라 낸 표 = 바로 뜬 표)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.8,
+   "note": "달력 표 검사 135건 통과 — 바로 뜸 7889ms · 처음(넓혀 뜸) 9261ms · 두 번째(잘라 씀) 10ms",
+   "result": "통과"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "add-dlc-tomb-check",
+   "label": "add-dlc-tomb-check(묘비 규칙)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.1,
+   "note": "모두 맞음 · 11가지",
+   "result": "통과"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "dev-smoke",
+   "label": "dev-smoke(웹 · 메이커 빠른 검사)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.1,
+   "note": "문제 없음",
+   "result": "통과"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "maker-check-check",
+   "label": "maker-check-check(메이커 검사 창)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0,
+   "note": "메이커 검사 창(형식 4) 검사 통과 — 11건",
+   "result": "통과"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "maker-paste-check",
+   "label": "maker-paste-check --node(브라우저 단계 빼고)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0,
+   "note": "}",
+   "result": "통과"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "maker-save-check",
+   "label": "maker-save-check(메이커 저장 왕복)",
+   "kind": "plain",
+   "code": null,
+   "minutes": null,
+   "result": "없음",
+   "note": "이 가지에 scripts/maker-save-check.mjs 없음"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "maker-f4-check",
+   "label": "maker-f4-check(메이커 다리)",
+   "kind": "plain",
+   "code": null,
+   "minutes": null,
+   "result": "없음",
+   "note": "이 가지에 scripts/maker-f4-check.mjs 없음"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "entity-id-check",
+   "label": "entity-id-check(항목ID가 길마다 같음)",
+   "kind": "plain",
+   "code": null,
+   "minutes": null,
+   "result": "없음",
+   "note": "이 가지에 prototype/scripts/entity-id-check.mjs 없음"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "window-check",
+   "label": "window-check(연표 창구)",
+   "kind": "plain",
+   "code": null,
+   "minutes": null,
+   "result": "없음",
+   "note": "이 가지에 prototype/scripts/window-check.mjs 없음"
+  },
+  {
+   "job": "data-misc",
+   "jt": "자료 misc",
+   "id": "schema4-old-store-check",
+   "label": "schema4-old-store-check",
+   "kind": "plain",
+   "code": null,
+   "minutes": null,
+   "result": "건너뜀",
+   "note": "이 PC 전용 자료(배포본 0.0.4의 옛 Windows archive-tool.exe · 판 3 저장소)"
+  },
+  {
+   "job": "app",
+   "jt": "앱(Windows)",
+   "id": "engine-build",
+   "label": "엔진 dll(cargo build --locked --release)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 9.9,
+   "note": "Finished `release` profile [optimized] target(s) in 9m 52s",
+   "result": "통과"
+  },
+  {
+   "job": "app",
+   "jt": "앱(Windows)",
+   "id": "pub-get",
+   "label": "app-get(flutter pub get)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0,
+   "note": "Try `flutter pub outdated` for more information.",
+   "result": "통과"
+  },
+  {
+   "job": "app",
+   "jt": "앱(Windows)",
+   "id": "analyze",
+   "label": "분석(dart analyze --fatal-infos lib test)",
+   "kind": "analyze",
+   "code": 0,
+   "minutes": 0.4,
+   "counts": {
+    "오류": 0,
+    "경고": 0,
+    "알림": 0
+   },
+   "failed": [],
+   "note": "No issues found!",
+   "result": "통과"
+  },
+  {
+   "job": "app",
+   "jt": "앱(Windows)",
+   "id": "flutter-test",
+   "label": "flutter test(전부)",
+   "kind": "flutter-test",
+   "code": 0,
+   "minutes": 3.8,
+   "counts": {
+    "통과": 1801,
+    "실패": 0,
+    "건너뜀": 113
+   },
+   "failed": [],
+   "fontSuspectFiles": [
+    "test/axis_paint_test.dart",
+    "test/cleartype_compare_test.dart",
+    "test/cleartype_menu_test.dart",
+    "test/cleartype_paint_test.dart",
+    "test/cleartype_test.dart",
+    "test/doc_figure_test.dart",
+    "test/doc_window_test.dart",
+    "test/export_image_test.dart",
+    "test/export_svg_test.dart",
+    "test/glyph_atlas_lcd_test.dart",
+    "test/group_tree_shot_test.dart",
+    "test/metro_card_test.dart",
+    "test/minibars_test.dart",
+    "test/mock/board_test.dart",
+    "test/mock/parity_test.dart",
+    "test/mock/svg_lite_test.dart",
+    "test/motion_meter_test.dart",
+    "test/profile_layers_test.dart",
+    "test/render_scene_test.dart",
+    "test/theme_lens_shot_test.dart"
+   ],
+   "note": "03:32 +1801 ~113: All tests passed!",
+   "result": "통과"
+  },
+  {
+   "job": "android",
+   "jt": "안드로이드 APK",
+   "id": "ndk",
+   "label": "NDK 28.2.13676358 받기(sdkmanager)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.4,
+   "note": "NDK 자리 /usr/local/lib/android/sdk/ndk/28.2.13676358",
+   "result": "통과"
+  },
+  {
+   "job": "android",
+   "jt": "안드로이드 APK",
+   "id": "engine-so",
+   "label": "엔진 .so(cargo build --locked --release --lib --target aarch64-linux-android)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 2.6,
+   "note": "엔진 .so 13130984바이트 → prototype/app/android/app/src/main/jniLibs/arm64-v8a/libarchive_engine.so",
+   "result": "통과"
+  },
+  {
+   "job": "android",
+   "jt": "안드로이드 APK",
+   "id": "pub-get",
+   "label": "app-get(flutter pub get)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.1,
+   "note": "Try `flutter pub outdated` for more information.",
+   "result": "통과"
+  },
+  {
+   "job": "android",
+   "jt": "안드로이드 APK",
+   "id": "build-apk",
+   "label": "APK 짓기(flutter build apk --release --target-platform android-arm64)",
+   "kind": "gradle",
+   "code": 0,
+   "minutes": 3.1,
+   "counts": {
+    "오류": 0,
+    "경고": 0
+   },
+   "failed": [],
+   "note": "✓ Built build/app/outputs/flutter-apk/app-release.apk (47.4MB)",
+   "result": "통과"
+  },
+  {
+   "job": "android",
+   "jt": "안드로이드 APK",
+   "id": "apk-check",
+   "label": "APK 확인(디버그 키 서명 · arm64 · 엔진 .so)",
+   "kind": "lines",
+   "code": 0,
+   "minutes": 0,
+   "counts": {},
+   "failed": [],
+   "note": "APK 확인 — 서명 · arm64 · 엔진 .so 모두 맞음",
+   "result": "통과"
+  }
+ ],
+ "engine": {
+  "targets": {
+   "tests/apply.rs": {
+    "passed": 69,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/blobs.rs": {
+    "passed": 5,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/canon.rs": {
+    "passed": 9,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/doc_list.rs": {
+    "passed": 3,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/format3.rs": {
+    "passed": 10,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/generate.rs": {
+    "passed": 3,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/kin.rs": {
+    "passed": 7,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lay_js.rs": {
+    "passed": 18,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lay_m_boards.rs": {
+    "passed": 2,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lay_m_e_intact.rs": {
+    "passed": 3,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lay_m_figures.rs": {
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lay_m_lens.rs": {
+    "passed": 5,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lay_m_minibars.rs": {
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lay_m_rails.rs": {
+    "passed": 2,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lay_m_tracks.rs": {
+    "passed": 2,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lay_oracle.rs": {
+    "passed": 6,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lay_read.rs": {
+    "passed": 5,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lay_wiki.rs": {
+    "passed": 8,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/lod_cells.rs": {
+    "passed": 9,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/prints.rs": {
+    "passed": 17,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/variants.rs": {
+    "passed": 8,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "0"
+    ]
+   },
+   "tests/add_pack.rs": {
+    "passed": 64,
+    "failed": 0,
+    "ignored": 5,
+    "shards": [
+     "0",
+     "1",
+     "2"
+    ]
+   },
+   "src/lib.rs": {
+    "passed": 52,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "src/main.rs": {
+    "passed": 0,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/boards.rs": {
+    "passed": 3,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/build.rs": {
+    "passed": 11,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/echo.rs": {
+    "passed": 22,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/glyph.rs": {
+    "passed": 0,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/htlayout.rs": {
+    "passed": 7,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/lay_frame.rs": {
+    "passed": 6,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/lay_m_axis.rs": {
+    "passed": 2,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/lay_m_calendar.rs": {
+    "passed": 5,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/lay_m_entities.rs": {
+    "passed": 15,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/lay_m_hangs.rs": {
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/lay_m_links.rs": {
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/lay_m_persons.rs": {
+    "passed": 2,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/lay_m_scopes.rs": {
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/lay_m_variants.rs": {
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/lay_out.rs": {
+    "passed": 5,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/lay_rows.rs": {
+    "passed": 8,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/layout_static.rs": {
+    "passed": 4,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/names.rs": {
+    "passed": 5,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/queries.rs": {
+    "passed": 15,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/tiles.rs": {
+    "passed": 16,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/year_cycle.rs": {
+    "passed": 3,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "doc archive_engine": {
+    "passed": 0,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "1"
+    ]
+   },
+   "tests/apply_scale.rs": {
+    "passed": 0,
+    "failed": 0,
+    "ignored": 1,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/correctness.rs": {
+    "passed": 9,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/filter.rs": {
+    "passed": 12,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/import.rs": {
+    "passed": 11,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_golden.rs": {
+    "passed": 2,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_m_bands.rs": {
+    "passed": 2,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_m_docs.rs": {
+    "passed": 3,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_m_events.rs": {
+    "passed": 2,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_m_labels.rs": {
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_m_metro.rs": {
+    "passed": 2,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_m_power.rs": {
+    "passed": 4,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_m_strips.rs": {
+    "passed": 4,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_model.rs": {
+    "passed": 8,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_reach.rs": {
+    "passed": 3,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_same.rs": {
+    "passed": 6,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lay_scope.rs": {
+    "passed": 11,
+    "failed": 0,
+    "ignored": 1,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/lens.rs": {
+    "passed": 8,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/old_calendar.rs": {
+    "passed": 2,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/rowkeys.rs": {
+    "passed": 15,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/schema4.rs": {
+    "passed": 4,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/spheres.rs": {
+    "passed": 4,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   },
+   "tests/write_tx.rs": {
+    "passed": 10,
+    "failed": 0,
+    "ignored": 0,
+    "shards": [
+     "2"
+    ]
+   }
+  },
+  "notes": []
+ },
+ "summaries": [
+  {
+   "job": "engine-official-0",
+   "title": "엔진 공식 검사 나눔 0",
+   "tools": {
+    "job": "engine-official-0",
+    "runner": "ubuntu24 20261023.334.3",
+    "os": "Linux 6.17.0-1022-azure",
+    "cpus": 4,
+    "memGB": 15.6,
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "tz": "2026e",
+    "unicode": "17.0",
+    "timeZone": "Asia/Seoul",
+    "sliceIcu": "78.3",
+    "icuMatch": true,
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+   },
+   "minutes": 23.9,
+   "checks": [
+    {
+     "id": "calendar",
+     "label": "달력 표 뜨기(warm-calendar)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.1,
+     "note": "달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · hebrew · ethiopic · coptic · indian · 8.5초",
+     "result": "통과"
+    },
+    {
+     "id": "oracle",
+     "label": "정답지 뽑기(layout-oracle)",
+     "kind": "lines",
+     "code": 0,
+     "minutes": 0.8,
+     "counts": {
+      "뽑음": 33,
+      "건너뜀": 2
+     },
+     "failed": [],
+     "note": "뽑음 synth-lens@f4 — norm-0.json · prep.json · rows.json · upto-lens.json · pre-tracks.json · pre-tracks.shared.json · upto-tracks.json · pre-axis.json · pre-axis.shared.json · upto-axis.json · pre-bands.json · pre-bands.shared.json · upto-bands.json · pre-strips.json · pre-strips.shared.json · upto-s",
+     "result": "통과"
+    },
+    {
+     "id": "cargo-main",
+     "label": "cargo test(파일 21개)",
+     "kind": "cargo-test",
+     "code": 0,
+     "minutes": 16.5,
+     "counts": {
+      "실행본": 21,
+      "통과": 193,
+      "실패": 0,
+      "무시": 0
+     },
+     "targets": {
+      "tests/apply.rs": {
+       "passed": 69,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/blobs.rs": {
+       "passed": 5,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/canon.rs": {
+       "passed": 9,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/doc_list.rs": {
+       "passed": 3,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/format3.rs": {
+       "passed": 10,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/generate.rs": {
+       "passed": 3,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/kin.rs": {
+       "passed": 7,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_js.rs": {
+       "passed": 18,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_boards.rs": {
+       "passed": 2,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_e_intact.rs": {
+       "passed": 3,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_figures.rs": {
+       "passed": 1,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_lens.rs": {
+       "passed": 5,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_minibars.rs": {
+       "passed": 1,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_rails.rs": {
+       "passed": 2,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_tracks.rs": {
+       "passed": 2,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_oracle.rs": {
+       "passed": 6,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_read.rs": {
+       "passed": 5,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_wiki.rs": {
+       "passed": 8,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lod_cells.rs": {
+       "passed": 9,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/prints.rs": {
+       "passed": 17,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/variants.rs": {
+       "passed": 8,
+       "failed": 0,
+       "ignored": 0
+      }
+     },
+     "failed": [],
+     "crashed": [],
+     "notes": [],
+     "note": "test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s",
+     "result": "통과"
+    },
+    {
+     "id": "cargo-add_pack-p0",
+     "label": "cargo test --test add_pack(조각 1/3)",
+     "kind": "cargo-test",
+     "code": 0,
+     "minutes": 6.3,
+     "counts": {
+      "실행본": 1,
+      "통과": 20,
+      "실패": 0,
+      "무시": 3
+     },
+     "targets": {
+      "tests/add_pack.rs": {
+       "passed": 20,
+       "failed": 0,
+       "ignored": 3
+      }
+     },
+     "failed": [],
+     "crashed": [],
+     "notes": [],
+     "note": "test result: ok. 20 passed; 0 failed; 3 ignored; 0 measured; 46 filtered out; finished in 303.21s",
+     "result": "통과"
+    }
+   ]
+  },
+  {
+   "job": "engine-official-1",
+   "title": "엔진 공식 검사 나눔 1",
+   "tools": {
+    "job": "engine-official-1",
+    "runner": "ubuntu24 20261023.334.3",
+    "os": "Linux 6.17.0-1022-azure",
+    "cpus": 4,
+    "memGB": 15.6,
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "tz": "2026e",
+    "unicode": "17.0",
+    "timeZone": "Asia/Seoul",
+    "sliceIcu": "78.3",
+    "icuMatch": true,
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+   },
+   "minutes": 37,
+   "checks": [
+    {
+     "id": "calendar",
+     "label": "달력 표 뜨기(warm-calendar)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.2,
+     "note": "달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · hebrew · ethiopic · coptic · indian · 12.4초",
+     "result": "통과"
+    },
+    {
+     "id": "oracle",
+     "label": "정답지 뽑기(layout-oracle)",
+     "kind": "lines",
+     "code": 0,
+     "minutes": 1.1,
+     "counts": {
+      "뽑음": 33,
+      "건너뜀": 2
+     },
+     "failed": [],
+     "note": "뽑음 synth-lens@f4 — norm-0.json · prep.json · rows.json · upto-lens.json · pre-tracks.json · pre-tracks.shared.json · upto-tracks.json · pre-axis.json · pre-axis.shared.json · upto-axis.json · pre-bands.json · pre-bands.shared.json · upto-bands.json · pre-strips.json · pre-strips.shared.json · upto-s",
+     "result": "통과"
+    },
+    {
+     "id": "cargo-main",
+     "label": "cargo test(lib · bin + 파일 21개)",
+     "kind": "cargo-test",
+     "code": 0,
+     "minutes": 22.6,
+     "counts": {
+      "실행본": 23,
+      "통과": 185,
+      "실패": 0,
+      "무시": 0
+     },
+     "targets": {
+      "src/lib.rs": {
+       "passed": 52,
+       "failed": 0,
+       "ignored": 0
+      },
+      "src/main.rs": {
+       "passed": 0,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/boards.rs": {
+       "passed": 3,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/build.rs": {
+       "passed": 11,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/echo.rs": {
+       "passed": 22,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/glyph.rs": {
+       "passed": 0,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/htlayout.rs": {
+       "passed": 7,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_frame.rs": {
+       "passed": 6,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_axis.rs": {
+       "passed": 2,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_calendar.rs": {
+       "passed": 5,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_entities.rs": {
+       "passed": 15,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_hangs.rs": {
+       "passed": 1,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_links.rs": {
+       "passed": 1,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_persons.rs": {
+       "passed": 2,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_scopes.rs": {
+       "passed": 1,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_variants.rs": {
+       "passed": 1,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_out.rs": {
+       "passed": 5,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_rows.rs": {
+       "passed": 8,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/layout_static.rs": {
+       "passed": 4,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/names.rs": {
+       "passed": 5,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/queries.rs": {
+       "passed": 15,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/tiles.rs": {
+       "passed": 16,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/year_cycle.rs": {
+       "passed": 3,
+       "failed": 0,
+       "ignored": 0
+      }
+     },
+     "failed": [],
+     "crashed": [],
+     "notes": [],
+     "note": "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s",
+     "result": "통과"
+    },
+    {
+     "id": "cargo-add_pack-p1",
+     "label": "cargo test --test add_pack(조각 2/3)",
+     "kind": "cargo-test",
+     "code": 0,
+     "minutes": 12.9,
+     "counts": {
+      "실행본": 1,
+      "통과": 23,
+      "실패": 0,
+      "무시": 0
+     },
+     "targets": {
+      "tests/add_pack.rs": {
+       "passed": 23,
+       "failed": 0,
+       "ignored": 0
+      }
+     },
+     "failed": [],
+     "crashed": [],
+     "notes": [],
+     "note": "test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 46 filtered out; finished in 666.59s",
+     "result": "통과"
+    },
+    {
+     "id": "cargo-doc",
+     "label": "cargo test --doc",
+     "kind": "cargo-test",
+     "code": 0,
+     "minutes": 0,
+     "counts": {
+      "실행본": 1,
+      "통과": 0,
+      "실패": 0,
+      "무시": 0
+     },
+     "targets": {
+      "doc archive_engine": {
+       "passed": 0,
+       "failed": 0,
+       "ignored": 0
+      }
+     },
+     "failed": [],
+     "crashed": [],
+     "notes": [],
+     "note": "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+     "result": "통과"
+    }
+   ]
+  },
+  {
+   "job": "engine-official-2",
+   "title": "엔진 공식 검사 나눔 2",
+   "tools": {
+    "job": "engine-official-2",
+    "runner": "ubuntu24 20261023.334.3",
+    "os": "Linux 6.17.0-1022-azure",
+    "cpus": 4,
+    "memGB": 15.6,
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "tz": "2026e",
+    "unicode": "17.0",
+    "timeZone": "Asia/Seoul",
+    "sliceIcu": "78.3",
+    "icuMatch": true,
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+   },
+   "minutes": 25,
+   "checks": [
+    {
+     "id": "calendar",
+     "label": "달력 표 뜨기(warm-calendar)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.2,
+     "note": "달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · hebrew · ethiopic · coptic · indian · 10.2초",
+     "result": "통과"
+    },
+    {
+     "id": "oracle",
+     "label": "정답지 뽑기(layout-oracle)",
+     "kind": "lines",
+     "code": 0,
+     "minutes": 0.9,
+     "counts": {
+      "뽑음": 33,
+      "건너뜀": 2
+     },
+     "failed": [],
+     "note": "뽑음 synth-lens@f4 — norm-0.json · prep.json · rows.json · upto-lens.json · pre-tracks.json · pre-tracks.shared.json · upto-tracks.json · pre-axis.json · pre-axis.shared.json · upto-axis.json · pre-bands.json · pre-bands.shared.json · upto-bands.json · pre-strips.json · pre-strips.shared.json · upto-s",
+     "result": "통과"
+    },
+    {
+     "id": "cargo-main",
+     "label": "cargo test(파일 22개)",
+     "kind": "cargo-test",
+     "code": 0,
+     "minutes": 17.8,
+     "counts": {
+      "실행본": 22,
+      "통과": 123,
+      "실패": 0,
+      "무시": 2
+     },
+     "targets": {
+      "tests/apply_scale.rs": {
+       "passed": 0,
+       "failed": 0,
+       "ignored": 1
+      },
+      "tests/correctness.rs": {
+       "passed": 9,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/filter.rs": {
+       "passed": 12,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/import.rs": {
+       "passed": 11,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_golden.rs": {
+       "passed": 2,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_bands.rs": {
+       "passed": 2,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_docs.rs": {
+       "passed": 3,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_events.rs": {
+       "passed": 2,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_labels.rs": {
+       "passed": 1,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_metro.rs": {
+       "passed": 2,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_power.rs": {
+       "passed": 4,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_m_strips.rs": {
+       "passed": 4,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_model.rs": {
+       "passed": 8,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_reach.rs": {
+       "passed": 3,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_same.rs": {
+       "passed": 6,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/lay_scope.rs": {
+       "passed": 11,
+       "failed": 0,
+       "ignored": 1
+      },
+      "tests/lens.rs": {
+       "passed": 8,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/old_calendar.rs": {
+       "passed": 2,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/rowkeys.rs": {
+       "passed": 15,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/schema4.rs": {
+       "passed": 4,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/spheres.rs": {
+       "passed": 4,
+       "failed": 0,
+       "ignored": 0
+      },
+      "tests/write_tx.rs": {
+       "passed": 10,
+       "failed": 0,
+       "ignored": 0
+      }
+     },
+     "failed": [],
+     "crashed": [],
+     "notes": [],
+     "note": "test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.71s",
+     "result": "통과"
+    },
+    {
+     "id": "cargo-add_pack-p2",
+     "label": "cargo test --test add_pack(조각 3/3)",
+     "kind": "cargo-test",
+     "code": 0,
+     "minutes": 5.8,
+     "counts": {
+      "실행본": 1,
+      "통과": 21,
+      "실패": 0,
+      "무시": 2
+     },
+     "targets": {
+      "tests/add_pack.rs": {
+       "passed": 21,
+       "failed": 0,
+       "ignored": 2
+      }
+     },
+     "failed": [],
+     "crashed": [],
+     "notes": [],
+     "note": "test result: ok. 21 passed; 0 failed; 2 ignored; 0 measured; 46 filtered out; finished in 264.19s",
+     "result": "통과"
+    }
+   ]
+  },
+  {
+   "job": "engine-lint",
+   "title": "엔진 lint",
+   "tools": {
+    "job": "engine-lint",
+    "runner": "ubuntu24 20261023.334.3",
+    "os": "Linux 6.17.0-1022-azure",
+    "cpus": 4,
+    "memGB": 15.6,
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "tz": "2026e",
+    "unicode": "17.0",
+    "timeZone": "Asia/Seoul",
+    "sliceIcu": "78.3",
+    "icuMatch": true,
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "clippy": "clippy 0.1.99 (58cf8f9c35 2026-10-13)",
+    "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+   },
+   "minutes": 0.7,
+   "checks": [
+    {
+     "id": "clippy",
+     "label": "cargo clippy --locked --all-targets",
+     "kind": "clippy",
+     "code": 0,
+     "minutes": 0.5,
+     "counts": {
+      "경고": 160,
+      "오류": 0
+     },
+     "failed": [
+      "경고 src/generate.rs:313:19 — operator precedence might not be obvious",
+      "경고 src/lay/m/entities/kin.rs:495:103 — this looks like an `else if` but the `else` is missing",
+      "경고 src/layout.rs:70:23 — unnecessary `>= y + 1` or `x - 1 >=`",
+      "경고 src/rowmap.rs:106:57 — unnecessary `>= y + 1` or `x - 1 >=`",
+      "경고 src/builder.rs:504:13 — very complex type used. Consider factoring parts into `type` definitions",
+      "경고 src/builder.rs:1261:5 — this function has too many arguments (8/7)",
+      "경고 src/builder.rs:1346:5 — this function has too many arguments (8/7)",
+      "경고 src/builder.rs:1368:5 — this function has too many arguments (8/7)",
+      "경고 src/builder.rs:1396:5 — this function has too many arguments (8/7)",
+      "경고 src/lay/cal.rs:87:9 — consider using `sort_by_key`",
+      "경고 src/lay/cal.rs:195:20 — very complex type used. Consider factoring parts into `type` definitions",
+      "경고 src/lay/cal.rs:586:12 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/f4.rs:12:5 — doc list item without indentation",
+      "경고 src/lay/f4.rs:13:5 — doc list item without indentation",
+      "경고 src/lay/f4.rs:14:5 — doc list item without indentation",
+      "경고 src/lay/f4.rs:15:5 — doc list item without indentation",
+      "경고 src/lay/js/num.rs:26:18 — this `repeat().take()` can be written more concisely",
+      "경고 src/lay/js/text.rs:200:1 — non-canonical implementation of `partial_cmp` on an `Ord` type",
+      "경고 src/lay/link/people.rs:739:28 — this `if` can be collapsed into the outer `match`",
+      "경고 src/lay/m/calendar.rs:55:8 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/m/calendar.rs:55:35 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/m/docs/wiki.rs:397:36 — very complex type used. Consider factoring parts into `type` definitions",
+      "경고 src/lay/m/docs/wiki.rs:645:17 — this loop could be written as a `while let` loop",
+      "경고 src/lay/m/docs/wiki.rs:797:13 — manual implementation of `Vec::pop_if`",
+      "경고 src/lay/m/docs.rs:127:8 — checking if a string is ascii using iterators",
+      "경고 src/lay/m/docs.rs:128:8 — manual implementation of `.is_multiple_of()`",
+      "경고 src/lay/m/entities/group_tree.rs:28:12 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/m/entities/group_tree.rs:100:15 — the loop variable `gi` is used to index `parents_of`",
+      "경고 src/lay/m/entities/group_tree.rs:108:19 — the loop variable `gi` is only used to index `primary`",
+      "경고 src/lay/m/entities/group_tree.rs:118:9 — this function has too many arguments (10/7)",
+      "경고 src/lay/m/entities/group_tree.rs:147:19 — the loop variable `gi` is used to index `primary`",
+      "경고 src/lay/m/entities/group_tree.rs:162:24 — very complex type used. Consider factoring parts into `type` definitions",
+      "경고 src/lay/m/entities/group_tree.rs:191:15 — the loop variable `ei` is used to index `edges`",
+      "경고 src/lay/m/entities/group_tree.rs:118:75 — parameter is only used in recursion",
+      "경고 src/lay/m/entities/kin.rs:125:53 — using `chunks_exact` with a constant chunk size",
+      "경고 src/lay/m/entities/kin.rs:243:24 — using `chunks_exact` with a constant chunk size",
+      "경고 src/lay/m/entities/kin.rs:322:28 — using `chunks_exact` with a constant chunk size",
+      "경고 src/lay/m/entities/people.rs:501:14 — the loop variable `k` is used to index `tree`",
+      "경고 src/lay/m/entities/web.rs:15:5 — doc list item without indentation",
+      "경고 src/lay/m/entities/web.rs:177:8 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/m/entities/web.rs:178:8 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/m/entities/window.rs:122:12 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/m/entities/window.rs:199:26 — unused \"map closure\" when calling `Option::map_or_else` value",
+      "경고 src/lay/m/entities.rs:428:72 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/m/entities.rs:436:23 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/m/events.rs:127:26 — manual `Range::contains` implementation",
+      "경고 src/lay/m/hangs.rs:157:20 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/m/labels.rs:6:5 — doc list item without indentation",
+      "경고 src/lay/m/labels.rs:71:12 — this `map_or` can be simplified",
+      "경고 src/lay/m/labels.rs:139:40 — this expression creates a reference which is immediately dereferenced by the compiler",
+      "경고 src/lay/m/links.rs:80:20 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/m/links.rs:277:20 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/m/links.rs:375:75 — this `map_or` can be simplified",
+      "경고 src/lay/m/tracks.rs:348:13 — manual `RangeInclusive::contains` implementation",
+      "경고 src/lay/m/variants.rs:164:12 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/model/parts.rs:647:113 — called `expect` on `host_ref` after checking its variant with `is_some`",
+      "경고 src/lay/read/dates.rs:90:57 — this `if` has identical blocks",
+      "경고 src/lay/read/misc.rs:161:73 — length comparison to zero",
+      "경고 src/lay/read/names.rs:351:18 — very complex type used. Consider factoring parts into `type` definitions",
+      "경고 src/lay/read/normalize/bands.rs:6:5 — doc list item without indentation",
+      "경고 src/lay/read/normalize/bands.rs:7:5 — doc list item without indentation",
+      "경고 src/lay/read/normalize/bands.rs:166:26 — this expression creates a reference which is immediately dereferenced by the compiler",
+      "경고 src/lay/read/normalize/bands.rs:169:54 — this expression creates a reference which is immediately dereferenced by the compiler",
+      "경고 src/lay/read/normalize/bands.rs:173:28 — this expression creates a reference which is immediately dereferenced by the compiler",
+      "경고 src/lay/read/normalize/bands.rs:383:84 — this expression creates a reference which is immediately dereferenced by the compiler",
+      "경고 src/lay/read/normalize/bands.rs:384:88 — this expression creates a reference which is immediately dereferenced by the compiler",
+      "경고 src/lay/read/normalize/bands.rs:385:89 — this expression creates a reference which is immediately dereferenced by the compiler",
+      "경고 src/lay/read/normalize/items.rs:8:5 — doc list item without indentation",
+      "경고 src/lay/read/normalize/patches.rs:7:5 — doc list item without indentation",
+      "경고 src/lay/read/treaty.rs:59:5 — doc list item without indentation",
+      "경고 src/lay/rows.rs:293:20 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/rows.rs:351:16 — the use of negated comparison operators on partially ordered types produces code that is hard to read and refactor, please consider using the `partial_cmp` method instead, to make it clear that the two values could be incomparable",
+      "경고 src/lay/track.rs:475:29 — redundant closure",
+      "경고 src/lay/track.rs:496:25 — very complex type used. Consider factoring parts into `type` definitions",
+      "경고 src/legacy.rs:5:5 — doc list item without indentation",
+      "경고 src/legacy.rs:6:5 — doc list item without indentation",
+      "경고 src/legacy.rs:7:5 — doc list item without indentation",
+      "경고 src/packs.rs:319:24 — very complex type used. Consider factoring parts into `type` definitions",
+      "경고 src/packs.rs:690:32 — manual implementation of `.is_multiple_of()`",
+      "경고 src/patch.rs:878:11 — very complex type used. Consider factoring parts into `type` definitions"
+     ],
+     "note": "Finished `dev` profile [unoptimized + debuginfo] target(s) in 27.42s",
+     "result": "통과"
+    },
+    {
+     "id": "lay-rules",
+     "label": "lay-rules --check",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0,
+     "note": "lay-rules: RULES가 지금 원본과 같습니다",
+     "result": "통과"
+    }
+   ]
+  },
+  {
+   "job": "tool",
+   "title": "자료 도구",
+   "tools": {
+    "job": "tool",
+    "runner": "ubuntu24 20261023.334.3",
+    "os": "Linux 6.17.0-1022-azure",
+    "cpus": 4,
+    "memGB": 15.6,
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "tz": "2026e",
+    "unicode": "17.0",
+    "timeZone": "Asia/Seoul",
+    "sliceIcu": "78.3",
+    "icuMatch": true,
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+   },
+   "minutes": 3.7,
+   "checks": [
+    {
+     "id": "build-release",
+     "label": "archive-tool 짓기(cargo build --locked --release)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 3.4,
+     "note": "Finished `release` profile [optimized] target(s) in 3m 21s",
+     "result": "통과"
+    }
+   ]
+  },
+  {
+   "job": "data-build",
+   "title": "자료 검사 build",
+   "tools": {
+    "job": "data-build",
+    "runner": "ubuntu24 20261023.334.3",
+    "os": "Linux 6.17.0-1022-azure",
+    "cpus": 4,
+    "memGB": 15.6,
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "tz": "2026e",
+    "unicode": "17.0",
+    "timeZone": "Asia/Seoul",
+    "sliceIcu": "78.3",
+    "icuMatch": true,
+    "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+   },
+   "minutes": 9.2,
+   "checks": [
+    {
+     "id": "calendar",
+     "label": "달력 표 뜨기(warm-calendar)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.2,
+     "note": "달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · hebrew · ethiopic · coptic · indian · 10.2초",
+     "result": "통과"
+    },
+    {
+     "id": "build-check",
+     "label": "build-check(Rust 짓기 = Node 배치 · 전부)",
+     "kind": "lines",
+     "code": 0,
+     "minutes": 8.9,
+     "counts": {
+      "건너뜀": 3,
+      "같음": 35
+     },
+     "failed": [],
+     "note": "모두 같음 — 35개 자료(Node 길 = Rust 길 · 누락 · 중복 0)",
+     "result": "통과"
+    }
+   ]
+  },
+  {
+   "job": "data-old-dlc",
+   "title": "자료 검사 old-dlc",
+   "tools": {
+    "job": "data-old-dlc",
+    "runner": "ubuntu24 20261023.334.3",
+    "os": "Linux 6.17.0-1022-azure",
+    "cpus": 4,
+    "memGB": 15.6,
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "tz": "2026e",
+    "unicode": "17.0",
+    "timeZone": "Asia/Seoul",
+    "sliceIcu": "78.3",
+    "icuMatch": true,
+    "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+   },
+   "minutes": 6.7,
+   "checks": [
+    {
+     "id": "calendar",
+     "label": "달력 표 뜨기(warm-calendar)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.2,
+     "note": "달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · hebrew · ethiopic · coptic · indian · 12.5초",
+     "result": "통과"
+    },
+    {
+     "id": "old-dlc-check",
+     "label": "old-dlc-check(묶음 걷기 · --jobs=4)",
+     "kind": "lines",
+     "code": 0,
+     "minutes": 6.4,
+     "counts": {
+      "건너뜀": 3
+     },
+     "failed": [],
+     "note": "모두 같음 — 옛 DLC 묶음을 넣고 빼도 통째 짓기와 같습니다.",
+     "result": "통과"
+    }
+   ]
+  },
+  {
+   "job": "data-apply",
+   "title": "자료 검사 apply",
+   "tools": {
+    "job": "data-apply",
+    "runner": "ubuntu24 20261023.334.3",
+    "os": "Linux 6.17.0-1022-azure",
+    "cpus": 4,
+    "memGB": 15.6,
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "tz": "2026e",
+    "unicode": "17.0",
+    "timeZone": "Asia/Seoul",
+    "sliceIcu": "78.3",
+    "icuMatch": true,
+    "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+   },
+   "minutes": 12.6,
+   "checks": [
+    {
+     "id": "calendar",
+     "label": "달력 표 뜨기(warm-calendar)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.2,
+     "note": "달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · hebrew · ethiopic · coptic · indian · 8.8초",
+     "result": "통과"
+    },
+    {
+     "id": "apply-check",
+     "label": "apply-check(모든 조합 · KTL 빼고)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 12.4,
+     "note": "걸음 52 · 어긋남 0 · 건너뛴 조합 1 · 742.8초 — 모두 같음 · 누락·중복 0",
+     "result": "통과"
+    }
+   ]
+  },
+  {
+   "job": "data-misc",
+   "title": "자료 검사 misc",
+   "tools": {
+    "job": "data-misc",
+    "runner": "ubuntu24 20261023.334.3",
+    "os": "Linux 6.17.0-1022-azure",
+    "cpus": 4,
+    "memGB": 15.6,
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "tz": "2026e",
+    "unicode": "17.0",
+    "timeZone": "Asia/Seoul",
+    "sliceIcu": "78.3",
+    "icuMatch": true,
+    "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+   },
+   "minutes": 2.3,
+   "checks": [
+    {
+     "id": "calendar",
+     "label": "달력 표 뜨기(warm-calendar)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.2,
+     "note": "달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · hebrew · ethiopic · coptic · indian · 12.5초",
+     "result": "통과"
+    },
+    {
+     "id": "f4-same-check",
+     "label": "f4-same-check(형식 4 사본 = 원본 배치)",
+     "kind": "lines",
+     "code": 0,
+     "minutes": 1,
+     "counts": {
+      "같음": 16,
+      "건너뜀": 1
+     },
+     "failed": [],
+     "note": "f4-same-check(자료 19 · 같음 16 · 알려진 차이 synth-lay, f4-federation, f4-moves · 다름 없음)",
+     "result": "통과"
+    },
+    {
+     "id": "remake3-same-check",
+     "label": "remake3-same-check(스키마 4가 더한 것 빼면 같음)",
+     "kind": "r3same",
+     "code": null,
+     "minutes": null,
+     "result": "건너뜀",
+     "note": "기록 없는 공개 저장소의 부모 없는 검사 커밋 — 기준 커밋(그 스크립트를 처음 더한 커밋의 부모)이 없음 · 이 PC 공식 검사로"
+    },
+    {
+     "id": "check-format4",
+     "label": "check-format4",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0,
+     "note": "형식 4 검사 통과 — 단위 249 · 실제 팩 기본팩 east-asia-base(84) · 견본 sample-lantern.json(141) · 옛 파일 묶음 f1-partof.json(판 1 · 객체 8) · f2-nest.json(판 2 · 객체 16) · f3-groups.json(판 3 · 객체 8) · 형식 4 가상 팩 f4-crowns.json(띠 8 · 알림 0) · f4-federation.json(띠 14 · 알림 0) · f4-office.json(띠 4 · 알림 0) · f4-liege.json(띠 4 · 알림",
+     "result": "통과"
+    },
+    {
+     "id": "calendar-cache-check",
+     "label": "calendar-cache-check(잘라 낸 표 = 바로 뜬 표)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.8,
+     "note": "달력 표 검사 135건 통과 — 바로 뜸 7889ms · 처음(넓혀 뜸) 9261ms · 두 번째(잘라 씀) 10ms",
+     "result": "통과"
+    },
+    {
+     "id": "add-dlc-tomb-check",
+     "label": "add-dlc-tomb-check(묘비 규칙)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.1,
+     "note": "모두 맞음 · 11가지",
+     "result": "통과"
+    },
+    {
+     "id": "dev-smoke",
+     "label": "dev-smoke(웹 · 메이커 빠른 검사)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.1,
+     "note": "문제 없음",
+     "result": "통과"
+    },
+    {
+     "id": "maker-check-check",
+     "label": "maker-check-check(메이커 검사 창)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0,
+     "note": "메이커 검사 창(형식 4) 검사 통과 — 11건",
+     "result": "통과"
+    },
+    {
+     "id": "maker-paste-check",
+     "label": "maker-paste-check --node(브라우저 단계 빼고)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0,
+     "note": "}",
+     "result": "통과"
+    },
+    {
+     "id": "maker-save-check",
+     "label": "maker-save-check(메이커 저장 왕복)",
+     "kind": "plain",
+     "code": null,
+     "minutes": null,
+     "result": "없음",
+     "note": "이 가지에 scripts/maker-save-check.mjs 없음"
+    },
+    {
+     "id": "maker-f4-check",
+     "label": "maker-f4-check(메이커 다리)",
+     "kind": "plain",
+     "code": null,
+     "minutes": null,
+     "result": "없음",
+     "note": "이 가지에 scripts/maker-f4-check.mjs 없음"
+    },
+    {
+     "id": "entity-id-check",
+     "label": "entity-id-check(항목ID가 길마다 같음)",
+     "kind": "plain",
+     "code": null,
+     "minutes": null,
+     "result": "없음",
+     "note": "이 가지에 prototype/scripts/entity-id-check.mjs 없음"
+    },
+    {
+     "id": "window-check",
+     "label": "window-check(연표 창구)",
+     "kind": "plain",
+     "code": null,
+     "minutes": null,
+     "result": "없음",
+     "note": "이 가지에 prototype/scripts/window-check.mjs 없음"
+    },
+    {
+     "id": "schema4-old-store-check",
+     "label": "schema4-old-store-check",
+     "kind": "plain",
+     "code": null,
+     "minutes": null,
+     "result": "건너뜀",
+     "note": "이 PC 전용 자료(배포본 0.0.4의 옛 Windows archive-tool.exe · 판 3 저장소)"
+    }
+   ]
+  },
+  {
+   "job": "app",
+   "title": "앱 검사(Windows)",
+   "tools": {
+    "job": "app",
+    "runner": "win25-vs2026 20261021.278.1",
+    "os": "Windows_NT 10.0.26100",
+    "cpus": 4,
+    "memGB": 16,
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "tz": "2026e",
+    "unicode": "17.0",
+    "timeZone": "Asia/Seoul",
+    "sliceIcu": "78.3",
+    "icuMatch": true,
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "flutter": "Flutter 3.47.5 • channel stable • https://github.com/flutter/flutter.git",
+    "dart": "Dart SDK version: 3.13.4",
+    "fonts": [
+     "cambria.ttc",
+     "cambriab.ttf",
+     "cambriai.ttf",
+     "cambriaz.ttf",
+     "malgun.ttf",
+     "malgunbd.ttf",
+     "malgunsl.ttf"
+    ],
+    "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+   },
+   "minutes": 16.1,
+   "checks": [
+    {
+     "id": "engine-build",
+     "label": "엔진 dll(cargo build --locked --release)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 9.9,
+     "note": "Finished `release` profile [optimized] target(s) in 9m 52s",
+     "result": "통과"
+    },
+    {
+     "id": "pub-get",
+     "label": "app-get(flutter pub get)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0,
+     "note": "Try `flutter pub outdated` for more information.",
+     "result": "통과"
+    },
+    {
+     "id": "analyze",
+     "label": "분석(dart analyze --fatal-infos lib test)",
+     "kind": "analyze",
+     "code": 0,
+     "minutes": 0.4,
+     "counts": {
+      "오류": 0,
+      "경고": 0,
+      "알림": 0
+     },
+     "failed": [],
+     "note": "No issues found!",
+     "result": "통과"
+    },
+    {
+     "id": "flutter-test",
+     "label": "flutter test(전부)",
+     "kind": "flutter-test",
+     "code": 0,
+     "minutes": 3.8,
+     "counts": {
+      "통과": 1801,
+      "실패": 0,
+      "건너뜀": 113
+     },
+     "failed": [],
+     "fontSuspectFiles": [
+      "test/axis_paint_test.dart",
+      "test/cleartype_compare_test.dart",
+      "test/cleartype_menu_test.dart",
+      "test/cleartype_paint_test.dart",
+      "test/cleartype_test.dart",
+      "test/doc_figure_test.dart",
+      "test/doc_window_test.dart",
+      "test/export_image_test.dart",
+      "test/export_svg_test.dart",
+      "test/glyph_atlas_lcd_test.dart",
+      "test/group_tree_shot_test.dart",
+      "test/metro_card_test.dart",
+      "test/minibars_test.dart",
+      "test/mock/board_test.dart",
+      "test/mock/parity_test.dart",
+      "test/mock/svg_lite_test.dart",
+      "test/motion_meter_test.dart",
+      "test/profile_layers_test.dart",
+      "test/render_scene_test.dart",
+      "test/theme_lens_shot_test.dart"
+     ],
+     "note": "03:32 +1801 ~113: All tests passed!",
+     "result": "통과"
+    }
+   ]
+  },
+  {
+   "job": "android",
+   "title": "안드로이드 APK",
+   "tools": {
+    "job": "android",
+    "runner": "ubuntu24 20261023.334.3",
+    "os": "Linux 6.17.0-1022-azure",
+    "cpus": 4,
+    "memGB": 15.6,
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "tz": "2026e",
+    "unicode": "17.0",
+    "timeZone": "Asia/Seoul",
+    "sliceIcu": "78.3",
+    "icuMatch": true,
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "flutter": "Flutter 3.47.5 • channel stable • https://github.com/flutter/flutter.git",
+    "dart": "Dart SDK version: 3.13.4",
+    "java": "openjdk version \"21.0.12.1\" 2026-08-18 LTS",
+    "androidSdk": "/usr/local/lib/android/sdk",
+    "ndk": "28.2.13676358",
+    "buildTools": "37.0.0",
+    "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+   },
+   "minutes": 7.4,
+   "checks": [
+    {
+     "id": "ndk",
+     "label": "NDK 28.2.13676358 받기(sdkmanager)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.4,
+     "note": "NDK 자리 /usr/local/lib/android/sdk/ndk/28.2.13676358",
+     "result": "통과"
+    },
+    {
+     "id": "engine-so",
+     "label": "엔진 .so(cargo build --locked --release --lib --target aarch64-linux-android)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 2.6,
+     "note": "엔진 .so 13130984바이트 → prototype/app/android/app/src/main/jniLibs/arm64-v8a/libarchive_engine.so",
+     "result": "통과"
+    },
+    {
+     "id": "pub-get",
+     "label": "app-get(flutter pub get)",
+     "kind": "plain",
+     "code": 0,
+     "minutes": 0.1,
+     "note": "Try `flutter pub outdated` for more information.",
+     "result": "통과"
+    },
+    {
+     "id": "build-apk",
+     "label": "APK 짓기(flutter build apk --release --target-platform android-arm64)",
+     "kind": "gradle",
+     "code": 0,
+     "minutes": 3.1,
+     "counts": {
+      "오류": 0,
+      "경고": 0
+     },
+     "failed": [],
+     "note": "✓ Built build/app/outputs/flutter-apk/app-release.apk (47.4MB)",
+     "result": "통과"
+    },
+    {
+     "id": "apk-check",
+     "label": "APK 확인(디버그 키 서명 · arm64 · 엔진 .so)",
+     "kind": "lines",
+     "code": 0,
+     "minutes": 0,
+     "counts": {},
+     "failed": [],
+     "note": "APK 확인 — 서명 · arm64 · 엔진 .so 모두 맞음",
+     "result": "통과"
+    }
+   ]
+  }
+ ]
+}

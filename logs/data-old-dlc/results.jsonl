@@ -1,0 +1,4 @@
+{"id":"calendar","label":"달력 표 뜨기(warm-calendar)","kind":"plain","state":"started","at":"2026-10-25T06:18:21.841Z"}
+{"id":"calendar","label":"달력 표 뜨기(warm-calendar)","kind":"plain","state":"done","code":0,"seconds":13,"at":"2026-10-25T06:18:34.401Z"}
+{"id":"old-dlc-check","label":"old-dlc-check(묶음 걷기 · --jobs=4)","kind":"lines","state":"started","at":"2026-10-25T06:18:34.447Z"}
+{"id":"old-dlc-check","label":"old-dlc-check(묶음 걷기 · --jobs=4)","kind":"lines","state":"done","code":0,"seconds":382,"at":"2026-10-25T06:24:56.919Z"}

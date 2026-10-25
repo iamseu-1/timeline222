@@ -1,0 +1,2 @@
+engine-lint/clippy.log:1365: 1228 |     let refusal = |e: &Box<dyn std::error::Error + Send + Sync>| -> (&'static str, String, Option<String>) {
+engine-lint/clippy.log:1366:      |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: consider using just `&T`: `&(dyn std::error::Error + Send + Sync)`

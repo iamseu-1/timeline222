@@ -1,0 +1,79 @@
+# 시작 2026-10-25 15:18:35 KST · f4-same-check(형식 4 사본 = 원본 배치)
+# 명령 node prototype/scripts/f4-same-check.mjs
+같음 lantern — ①=②
+같음 east-asia — ①=② · ①=③
+건너뜀 east-asia+ktl — 선택 자료의 파일이 없습니다: /home/runner/work/timeline222/timeline222/D:/Timeline/KoreanTimeLine-v1.0.5.htpack
+같음 east-asia+move — ①=② · ①=③
+같음 east-asia+nest — ①=② · ①=③
+같음 east-asia+dep — ①=② · ①=③
+같음 east-asia+d7 — ①=② · ①=③
+같음 east-asia+sphere — ①=② · ①=③
+같음 nest-f4 — ①=②
+같음 synth — ①=②
+같음 synth+patch — ①=②
+알려진 차이 synth-lay — ①≠② 12곳(알려진 차이 — 기록과 같음)
+    (참고) 까닭: 올림이 nest:true(상위 하나 · 기간 없는 소속 — 접힘이 기본)를 뺌(js/core.js HT.F4.project P1 nest 최소화) · 종속 kind(tributary)를 국가 + 관계로 옮김(P2 — 찾을 글의 종류 낱말과 띠 look 비트(종속 갈래 표시)도 따라 바뀜 · 띠 form의 관계 칸(5 ~ 9비트 — 옛 종속 kind의 관계만 실음: 조공 1 → 0, 리메이크 3단계 과제 3)도 따라 바뀜) · 대범위 구성원을 이름 → 객체 id로(P4) — project한 입력의 배치와 구조로 같음(과제 X 합성 자료 — 숨은 고을 · 옮김 접힌 나라 · 물가 나라 · 옮김 모임)
+    (참고) ①≠② upto-lens.json · entities.15.json.hosts.0.nest: true ≠ null
+    (참고) ①≠② upto-lens.json · entities.15.json.partOf: [{"polity":"가람 왕국","nest":true}] ≠ "가람 왕국"
+    (참고) ①≠② upto-lens.json · entities.16.json.x_partOf.members.2.kind: "조공·책봉국" ≠ "국가"
+    (참고) ①≠② upto-lens.json · entities.17.json.polityKind: "tributary" ≠ "state"
+    (참고) ①≠② upto-lens.json · entities.17.json.x_find.hay: "바다 조공·책봉국 바다 나라" ≠ "바다 바다 나라"
+    (참고) ①≠② upto-lens.json · entities.53.json.hosts.0.nest: true ≠ null
+    (참고) ①≠② upto-lens.json · entities.53.json.partOf: [{"polity":"옮김 으뜸 나라","nest":true}] ≠ "옮김 으뜸 나라"
+    (참고) ①≠② upto-lens.json · entities.292.json.memberRefs.0: "옮김 앞 나라" ≠ "p-mv-p"
+    (참고) ①≠② upto-lens.json · entities.292.json.memberRefs.1: "옮김 뒤 나라" ≠ "p-mv-a"
+    (참고) ①≠② upto-lens.json · entities.292.json.memberRefs.2: "옮김 접힌 나라" ≠ "p-mv-x"
+    (참고) ①≠② upto-lens.json · periods.4.form: 33 ≠ 1
+    (참고) ①≠② upto-lens.json · periods.4.look: 526369 ≠ 524320
+같음 synth-lens — ①=②
+같음 f4-crowns — ①=②
+같음 f4-office3 — ①=②
+같음 f4-sphere — ①=②
+알려진 차이 f4-federation — ①≠② 36곳(알려진 차이 — 기록과 같음)
+    (참고) 까닭: 올림이 옛 제후국(fief)의 소속 줄을 그릇(within)과 섬김(partOf · 관계 fief) 두 줄로 올려, 이미 형식 4인 원본을 한 번 왕복하면 섬김 줄이 생김(항목 기록의 관계 · 접기와 소속선(구역 22)의 관계 글 text2 — 띠 · 칸 · 줄은 같음). 메이커 첫 저장의 표류와 같은 갈래 — 5단계 잔여 과제 2
+    (참고) ①≠② upto-lens.json · entities.9.json.x_partOf.members.0.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.9.json.x_partOf.members.1.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.9.json.x_partOf.members.3.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.9.json.x_partOf.members.5.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.9.json.x_partOf.members.9.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.9.json.x_partOf.members.11.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.10.json.hosts.0.nest: null ≠ true
+    (참고) ①≠② upto-lens.json · entities.10.json.hosts.0.relation: "" ≠ "fief"
+    (참고) ①≠② upto-lens.json · entities.10.json.partOf: "o-fed" ≠ [{"polity":"o-fed","relation":"fief","nest":true}]
+    (참고) ①≠② upto-lens.json · entities.10.json.x_partOf.hosts.0.rel: (없음) ≠ "봉국·제후국"
+    (참고) ①≠② upto-lens.json · entities.11.json.hosts.0.nest: null ≠ true
+    (참고) ①≠② upto-lens.json · entities.11.json.hosts.0.relation: "" ≠ "fief"
+    (참고) ①≠② upto-lens.json · entities.11.json.partOf: "o-fed" ≠ [{"polity":"o-fed","relation":"fief","nest":true}]
+    (참고) ①≠② upto-lens.json · entities.11.json.x_partOf.hosts.0.rel: (없음) ≠ "봉국·제후국"
+    (참고) ①≠② upto-lens.json · entities.15.json.hosts.0.nest: null ≠ true
+    (참고) ①≠② upto-lens.json · entities.15.json.hosts.0.relation: "" ≠ "fief"
+    (참고) ①≠② upto-lens.json · entities.15.json.partOf: "o-fed" ≠ [{"polity":"o-fed","relation":"fief","nest":true}]
+    (참고) ①≠② upto-lens.json · entities.15.json.x_partOf.hosts.0.rel: (없음) ≠ "봉국·제후국"
+    (참고) ①≠② upto-lens.json · entities.17.json.hosts.0.nest: null ≠ true
+    (참고) ①≠② upto-lens.json · entities.17.json.hosts.0.relation: "" ≠ "fief"
+같음 f4-liege — ①=②
+알려진 차이 f4-moves — ①≠② 1268곳(알려진 차이 — 기록과 같음)
+    (참고) 까닭: 형식 3(옛 꼴) 한 바퀴가 기간 있는 within을 잃음 — 옛 꼴에는 대범위 구성원의 기간 칸이 없어 내림이 기간 있는 시대 그릇 듦을 그릇 안 구성원(끝까지)으로 적고, 올림은 기간 없는 within으로 되올림. 그래서 ②는 옮겨 앉기(그릇 밖 토막 · 토막 상대 돌리기)가 일어나지 않은 배치(토막 둘이 하나로 · 섬김 · 실권 · 사건이 원 객체에 · 토막 난 나라가 쥔 실권 줄도 원 객체 하나에). 메이커 저장 길(옛 형식 내보내기)도 같은 손실 — 형식 4 그대로 두면 생기지 않음
+    (참고) ①≠② upto-lens.json · cells.length: 5 ≠ 4
+    (참고) ①≠② upto-lens.json · cells.2.end: -562764960 ≠ -541728000
+    (참고) ①≠② upto-lens.json · cells.3.end: -541728000 ≠ -510170400
+    (참고) ①≠② upto-lens.json · cells.3.name: "셋째 임금" ≠ "넷째 임금"
+    (참고) ①≠② upto-lens.json · cells.3.period: "f4-moves/o-blue.mv900" ≠ "f4-moves/o-blue"
+    (참고) ①≠② upto-lens.json · cells.3.start: -562764960 ≠ -541728000
+    (참고) ①≠② upto-lens.json · cells.3.style: 32768 ≠ 147460
+    (참고) ①≠② upto-lens.json · entities.length: 29 ≠ 26
+    (참고) ①≠② upto-lens.json · entities.9.json.color: "#abb3c9" ≠ "#9dbea8"
+    (참고) ①≠② upto-lens.json · entities.9.json.end: 900 ≠ 1000
+    (참고) ①≠② upto-lens.json · entities.9.json.endY: 900 ≠ 1000
+    (참고) ①≠② upto-lens.json · entities.9.json.leaders.length: 3 ≠ 4
+    (참고) ①≠② upto-lens.json · entities.9.json.leaders.2.end: 900 ≠ 940
+    (참고) ①≠② upto-lens.json · entities.9.json.members.length: 1 ≠ 5
+    (참고) ①≠② upto-lens.json · entities.9.json.spanMax: 900 ≠ 1000
+    (참고) ①≠② upto-lens.json · entities.9.json.successors.length: 0 ≠ 1
+    (참고) ①≠② upto-lens.json · entities.9.json.x_cellBounds.leader:2.1: -562239360 ≠ -541728000
+    (참고) ①≠② upto-lens.json · entities.9.json.x_cellBounds.leader:3: (없음) ≠ [-541728000,-510170400]
+    (참고) ①≠② upto-lens.json · entities.9.json.x_eventStat: (없음) ≠ {"count":1,"span":[-536467680,-536467680]}
+    (참고) ①≠② upto-lens.json · entities.9.json.x_find.cells.leader:3: (없음) ≠ "넷째 임금"
+같음 synth-calclip — ①=②
+f4-same-check(자료 19 · 같음 16 · 알려진 차이 synth-lay, f4-federation, f4-moves · 다름 없음)
+# 끝 2026-10-25 15:19:33 KST · 끝 코드 0 · 58초

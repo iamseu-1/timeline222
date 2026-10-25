@@ -1,0 +1,41 @@
+# 시작 2026-10-25 15:18:34 KST · old-dlc-check(묶음 걷기 · --jobs=4)
+# 명령 node prototype/scripts/old-dlc-check.mjs --jobs=4
+건너뜀 쌓기 +ktl — 파일이 없습니다
+건너뜀 쌓기 -ktl — 파일이 없습니다
+건너뜀 이 계획 전의 저장소 — 배포 폴더의 저장소가 없습니다: D:/Timeline/배포/아카이브-리메이크2부-2026-10-15/자료/동아시아/archive.db (--old-root로 알려 주세요)
+
+걷기(고쳐 쓴 저장소 = 그 조합을 통째로 지은 것?)
+| 걷기 | 걸음 | 같음 | 표본 누락·중복 | 다시 쓴/든/뺀 트랙 | 범위 | 줄 | ms |
+| --- | --- | --- | --- | --- | --- | ---: | ---: |
+| 하나씩 move | +move → ea+move | 같음 | 0 | 0/1/0 | 2 | 32 | 192 |
+| 하나씩 move | -move → ea | 같음 | 0 | 0/0/1 | 1 | 25 | 241 |
+| 하나씩 nest | +nest → ea+nest | 같음 | 0 | 0/3/0 | 4 | 41 | 422 |
+| 하나씩 nest | -nest → ea | 같음 | 0 | 0/0/3 | 1 | 25 | 298 |
+| 하나씩 dep | +dep → ea+dep | 같음 | 0 | 2/5/0 | 8 | 35 | 375 |
+| 하나씩 dep | -dep → ea | 같음 | 0 | 2/0/5 | 3 | 25 | 510 |
+| 하나씩 d7 | +d7 → ea+d7 | 같음 | 0 | 1/2/0 | 3 | 32 | 640 |
+| 하나씩 d7 | -d7 → ea | 같음 | 0 | 1/0/2 | 1 | 25 | 443 |
+| 하나씩 sphere | +sphere → ea+sphere | 같음 | 0 | 0/2/0 | 3 | 29 | 254 |
+| 하나씩 sphere | -sphere → ea | 같음 | 0 | 0/0/2 | 1 | 25 | 207 |
+| 쌓기 | +move → ea+move | 같음 | 0 | 0/1/0 | 2 | 32 | 271 |
+| 쌓기 | +nest → ea+move+nest | 같음 | 0 | 1/2/0 | 4 | 53 | 230 |
+| 쌓기 | -move → ea+nest | 같음 | 0 | 2/0/0 | 3 | 41 | 320 |
+| 쌓기 | +dep → ea+nest+dep | 같음 | 0 | 3/4/0 | 8 | 51 | 444 |
+| 쌓기 | +d7 → ea+nest+dep+d7 | 같음 | 0 | 1/2/0 | 3 | 58 | 477 |
+| 쌓기 | -nest → ea+dep+d7 | 같음 | 0 | 2/0/2 | all | 42 | 355 |
+| 쌓기 | +sphere → ea+dep+d7+sphere | 같음 | 0 | 0/2/0 | 3 | 46 | 366 |
+| 쌓기 | -dep → ea+d7+sphere | 같음 | 0 | 2/0/5 | 7 | 36 | 377 |
+| 쌓기 | -d7 → ea+sphere | 같음 | 0 | 1/0/2 | 3 | 29 | 288 |
+| 쌓기 | -sphere → ea | 같음 | 0 | 0/0/2 | 1 | 25 | 242 |
+| 형식 4 | +dep4 → ea+dep4 | 같음 | 0 | 2/5/0 | 8 | 35 | 364 |
+| 형식 4 | +nest4 → ea+dep4+nest4 | 같음 | 0 | 1/2/0 | 4 | 51 | 229 |
+| 형식 4 | +ea4 → ea4+dep4+nest4 | 같음 | 0 | 0/0/0 | 7 | 51 | 244 |
+| 형식 4 | -dep4 → ea4+nest4 | 같음 | 0 | 3/0/4 | 6 | 41 | 235 |
+| 형식 4 JSON | +nestj → ea+nestj | 같음 | 0 | 0/3/0 | 4 | 41 | 185 |
+| 형식 4 JSON | -nestj → ea | 같음 | 0 | 0/0/3 | 1 | 25 | 139 |
+
+건너뛴 걸음: KoreanTimeLine 파일이 없어(/home/runner/work/timeline222/timeline222/D:/Timeline/KoreanTimeLine-v1.0.5.htpack) ktl이 든 걸음은 돌리지 않았습니다.
+
+26/26 같음 · 382.375초 · 엔진 /home/runner/work/timeline222/timeline222/prototype/engine/target/release/archive-tool
+모두 같음 — 옛 DLC 묶음을 넣고 빼도 통째 짓기와 같습니다.
+# 끝 2026-10-25 15:24:56 KST · 끝 코드 0 · 382초

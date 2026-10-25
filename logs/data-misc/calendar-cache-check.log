@@ -1,0 +1,4 @@
+# 시작 2026-10-25 15:19:33 KST · calendar-cache-check(잘라 낸 표 = 바로 뜬 표)
+# 명령 node prototype/scripts/calendar-cache-check.mjs
+달력 표 검사 135건 통과 — 바로 뜸 7889ms · 처음(넓혀 뜸) 9261ms · 두 번째(잘라 씀) 10ms
+# 끝 2026-10-25 15:20:20 KST · 끝 코드 0 · 47초

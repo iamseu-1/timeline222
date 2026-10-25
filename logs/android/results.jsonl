@@ -1,0 +1,10 @@
+{"id":"ndk","label":"NDK 28.2.13676358 받기(sdkmanager)","kind":"plain","state":"started","at":"2026-10-25T06:15:39.165Z"}
+{"id":"ndk","label":"NDK 28.2.13676358 받기(sdkmanager)","kind":"plain","state":"done","code":0,"seconds":24,"at":"2026-10-25T06:16:03.964Z"}
+{"id":"engine-so","label":"엔진 .so(cargo build --locked --release --lib --target aarch64-linux-android)","kind":"plain","state":"started","at":"2026-10-25T06:16:04.457Z"}
+{"id":"engine-so","label":"엔진 .so(cargo build --locked --release --lib --target aarch64-linux-android)","kind":"plain","state":"done","code":0,"seconds":153,"at":"2026-10-25T06:18:37.620Z"}
+{"id":"pub-get","label":"app-get(flutter pub get)","kind":"plain","state":"started","at":"2026-10-25T06:18:37.661Z"}
+{"id":"pub-get","label":"app-get(flutter pub get)","kind":"plain","state":"done","code":0,"seconds":5,"at":"2026-10-25T06:18:42.474Z"}
+{"id":"build-apk","label":"APK 짓기(flutter build apk --release --target-platform android-arm64)","kind":"gradle","state":"started","at":"2026-10-25T06:18:42.518Z"}
+{"id":"build-apk","label":"APK 짓기(flutter build apk --release --target-platform android-arm64)","kind":"gradle","state":"done","code":0,"seconds":183,"at":"2026-10-25T06:21:45.706Z"}
+{"id":"apk-check","label":"APK 확인(디버그 키 서명 · arm64 · 엔진 .so)","kind":"lines","state":"started","at":"2026-10-25T06:21:45.770Z"}
+{"id":"apk-check","label":"APK 확인(디버그 키 서명 · arm64 · 엔진 .so)","kind":"lines","state":"done","code":0,"seconds":1,"at":"2026-10-25T06:21:46.592Z"}

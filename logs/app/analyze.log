@@ -1,0 +1,5 @@
+# 시작 2026-10-25 15:26:21 KST · 분석(dart analyze --fatal-infos lib test)
+# 명령 dart analyze --fatal-infos lib test
+Analyzing lib, test...
+No issues found!
+# 끝 2026-10-25 15:26:46 KST · 끝 코드 0 · 25초

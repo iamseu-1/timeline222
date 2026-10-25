@@ -1,0 +1,23 @@
+{
+ "job": "android",
+ "runner": "ubuntu24 20261023.334.3",
+ "os": "Linux 6.17.0-1022-azure",
+ "cpus": 4,
+ "memGB": 15.6,
+ "node": "v24.22.1",
+ "icu": "78.3",
+ "tz": "2026e",
+ "unicode": "17.0",
+ "timeZone": "Asia/Seoul",
+ "sliceIcu": "78.3",
+ "icuMatch": true,
+ "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+ "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+ "flutter": "Flutter 3.47.5 • channel stable • https://github.com/flutter/flutter.git",
+ "dart": "Dart SDK version: 3.13.4",
+ "java": "openjdk version \"21.0.12.1\" 2026-08-18 LTS",
+ "androidSdk": "/usr/local/lib/android/sdk",
+ "ndk": "28.2.13676358",
+ "buildTools": "37.0.0",
+ "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+}

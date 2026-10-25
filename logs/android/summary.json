@@ -1,0 +1,82 @@
+{
+ "job": "android",
+ "title": "안드로이드 APK",
+ "tools": {
+  "job": "android",
+  "runner": "ubuntu24 20261023.334.3",
+  "os": "Linux 6.17.0-1022-azure",
+  "cpus": 4,
+  "memGB": 15.6,
+  "node": "v24.22.1",
+  "icu": "78.3",
+  "tz": "2026e",
+  "unicode": "17.0",
+  "timeZone": "Asia/Seoul",
+  "sliceIcu": "78.3",
+  "icuMatch": true,
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "flutter": "Flutter 3.47.5 • channel stable • https://github.com/flutter/flutter.git",
+  "dart": "Dart SDK version: 3.13.4",
+  "java": "openjdk version \"21.0.12.1\" 2026-08-18 LTS",
+  "androidSdk": "/usr/local/lib/android/sdk",
+  "ndk": "28.2.13676358",
+  "buildTools": "37.0.0",
+  "sha": "b42f65746078a2e0fc4be871cc5290a24fddb691"
+ },
+ "minutes": 7.4,
+ "checks": [
+  {
+   "id": "ndk",
+   "label": "NDK 28.2.13676358 받기(sdkmanager)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.4,
+   "note": "NDK 자리 /usr/local/lib/android/sdk/ndk/28.2.13676358",
+   "result": "통과"
+  },
+  {
+   "id": "engine-so",
+   "label": "엔진 .so(cargo build --locked --release --lib --target aarch64-linux-android)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 2.6,
+   "note": "엔진 .so 13130984바이트 → prototype/app/android/app/src/main/jniLibs/arm64-v8a/libarchive_engine.so",
+   "result": "통과"
+  },
+  {
+   "id": "pub-get",
+   "label": "app-get(flutter pub get)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.1,
+   "note": "Try `flutter pub outdated` for more information.",
+   "result": "통과"
+  },
+  {
+   "id": "build-apk",
+   "label": "APK 짓기(flutter build apk --release --target-platform android-arm64)",
+   "kind": "gradle",
+   "code": 0,
+   "minutes": 3.1,
+   "counts": {
+    "오류": 0,
+    "경고": 0
+   },
+   "failed": [],
+   "note": "✓ Built build/app/outputs/flutter-apk/app-release.apk (47.4MB)",
+   "result": "통과"
+  },
+  {
+   "id": "apk-check",
+   "label": "APK 확인(디버그 키 서명 · arm64 · 엔진 .so)",
+   "kind": "lines",
+   "code": 0,
+   "minutes": 0,
+   "counts": {},
+   "failed": [],
+   "note": "APK 확인 — 서명 · arm64 · 엔진 .so 모두 맞음",
+   "result": "통과"
+  }
+ ]
+}
