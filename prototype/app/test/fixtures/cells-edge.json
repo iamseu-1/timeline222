@@ -1,0 +1,7 @@
+[
+ {
+  "uid": "가상견본/p-edge",
+  "kind": "period",
+  "json": "{\"id\":\"p-edge\",\"uid\":\"가상견본/p-edge\",\"track\":\"mw-edge\",\"name\":\"물빛 성좌국\",\"color\":\"#9dbea8\",\"packName\":\"가상 견본집\",\"start\":1400,\"endY\":2026,\"ongoing\":true,\"itemKind\":\"period\",\"kind\":\"period\",\"polityKind\":\"state\",\"leaders\":[{\"name\":\"노을 하리\",\"start\":1400,\"end\":1440,\"ordinal\":1,\"temple\":\"첫물\",\"note\":\"\"},{\"name\":\"노을 미리\",\"start\":1440,\"ordinal\":2,\"rank\":\"별지기\",\"note\":\"끝을 적지 않아 정권의 끝까지 놓았다.\"}],\"eras\":[{\"name\":\"첫별\",\"start\":1400,\"startUnknown\":true,\"end\":1500}],\"capitals\":[{\"city\":\"물빛뜰\",\"start\":1400,\"role\":\"main\",\"name\":\"물빛뜰\",\"endY\":2026}],\"rankSpans\":[{\"name\":\"별지기\",\"i\":0,\"start\":1400,\"end\":1500,\"startAuto\":true,\"endAuto\":false,\"derived\":false,\"note\":\"\"},{\"name\":\"큰별지기\",\"i\":1,\"start\":1500,\"endAuto\":true,\"endPolity\":true,\"derived\":false,\"note\":\"\"}],\"phaseSchemes\":[{\"scheme\":\"\",\"note\":\"\",\"si\":0,\"spans\":[{\"name\":\"첫 무렵\",\"scheme\":\"\",\"si\":0,\"ii\":0,\"ci\":0,\"start\":1400,\"end\":1460,\"startAuto\":true,\"endAuto\":false,\"guess\":false},{\"name\":\"뒤 무렵\",\"scheme\":\"\",\"si\":0,\"ii\":1,\"ci\":1,\"start\":1460,\"end\":2026,\"startAuto\":false,\"endAuto\":true,\"endPolity\":true,\"guess\":false}]}]}"
+ }
+]

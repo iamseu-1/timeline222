@@ -1,0 +1,172 @@
+{
+ "legacy": {
+  "epochs": [],
+  "events": [
+   {
+    "name": "갈대 공위 상속",
+    "polity": "o-king",
+    "start": 1121,
+    "track": "cheongnim"
+   }
+  ],
+  "figures": [
+   {
+    "end": 1166,
+    "house": "온씨",
+    "id": "ps-seoha",
+    "name": "온 서하",
+    "start": 1121,
+    "track": "cheongnim"
+   }
+  ],
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "houses": [
+   {
+    "id": "h-on",
+    "name": "온씨",
+    "surname": "온"
+   }
+  ],
+  "id": "f4-liege",
+  "name": "형식 4 가상 팩 — 영지마다 다른 주군(공국 객체 · 같은 사람 · 두 주군)",
+  "periods": [
+   {
+    "end": 1402,
+    "house": "온씨",
+    "id": "o-king",
+    "leaders": [
+     {
+      "end": 1121,
+      "name": "온 담원",
+      "start": 1090
+     },
+     {
+      "end": 1166,
+      "name": "온 서하",
+      "person": "ps-seoha",
+      "start": 1121
+     },
+     {
+      "end": 1203,
+      "name": "온 바람",
+      "start": 1166
+     }
+    ],
+    "name": "청림 왕국",
+    "start": 1031,
+    "track": "cheongnim"
+   },
+   {
+    "end": 1402,
+    "id": "o-grand",
+    "leaders": [
+     {
+      "end": 1118,
+      "name": "수해 대공 벨로",
+      "start": 1077
+     },
+     {
+      "end": 1160,
+      "name": "수해 대공 카시안",
+      "start": 1118
+     },
+     {
+      "end": 1204,
+      "name": "수해 대공 네로",
+      "start": 1160
+     }
+    ],
+    "name": "수해 대공국",
+    "start": 1000,
+    "track": "cheongnim"
+   },
+   {
+    "end": 1300,
+    "id": "o-duke",
+    "kind": "fief",
+    "leaders": [
+     {
+      "end": 1121,
+      "name": "세린공",
+      "start": 1090
+     },
+     {
+      "end": 1166,
+      "name": "온 서하",
+      "person": "ps-seoha",
+      "start": 1121
+     },
+     {
+      "end": 1210,
+      "name": "무령공",
+      "start": 1166
+     }
+    ],
+    "name": "갈대 공국",
+    "partOf": [
+     {
+      "polity": "o-grand",
+      "relation": "fief"
+     },
+     {
+      "end": 1240,
+      "polity": "o-baek",
+      "relation": "tributary",
+      "start": 1170
+     }
+    ],
+    "start": 1050,
+    "track": "cheongnim"
+   },
+   {
+    "end": 1400,
+    "id": "o-baek",
+    "kind": "fief",
+    "leaders": [
+     {
+      "end": 1190,
+      "name": "운결공",
+      "start": 1150
+     },
+     {
+      "end": 1230,
+      "name": "세린공",
+      "start": 1190
+     }
+    ],
+    "name": "백사 공국",
+    "start": 1100,
+    "track": "baeksa"
+   }
+  ],
+  "spheres": [
+   {
+    "id": "jade-canopy",
+    "name": "청림 수해권",
+    "order": 1
+   },
+   {
+    "id": "prism-strait",
+    "name": "백사 해협권",
+    "order": 2
+   }
+  ],
+  "tracks": [
+   {
+    "id": "cheongnim",
+    "name": "청림",
+    "sphere": "jade-canopy"
+   },
+   {
+    "id": "baeksa",
+    "name": "백사만",
+    "sphere": "prism-strait"
+   }
+  ],
+  "version": "1.0.0"
+ },
+ "notes": [],
+ "errors": [],
+ "warnings": []
+}

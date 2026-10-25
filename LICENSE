@@ -1,0 +1,132 @@
+HistoryTime — All Rights Reserved (Source Available for Viewing Only)
+
+Copyright (c) 2026 HistoryTime 저작자 (the HistoryTime authors). All rights reserved.
+
+This is NOT an open-source license.
+
+1. Scope
+
+   This notice applies to every file in this repository that was written by
+   the HistoryTime authors (the "Software"), including source code, data,
+   documents, images and other materials.
+
+   It does not apply to third-party material. Third-party material is listed
+   in THIRD_PARTY_NOTICES.md (code, icons, fonts and dependency packages) and
+   in 지도/LICENSE-DATA.md (map data). Each item is governed by its own license
+   as stated there, and nothing in this notice limits any right you have under
+   those licenses.
+
+   Where those files state that a file, or part of a file, of this repository
+   is made available under another license (for example, map data offered
+   under the Open Database License because it is derived from OpenStreetMap),
+   that statement prevails over this notice for that file or part.
+
+2. What you may do
+
+   You may view the Software where it is published, and you may clone or
+   download a copy of this repository solely to read and study the Software
+   for your own personal, non-commercial reference.
+
+   If the Software is hosted on GitHub, you also have the limited rights that
+   the GitHub Terms of Service grant to other GitHub users (to view the public
+   repository and to fork it within GitHub's functionality). Those rights do
+   not extend beyond what the GitHub Terms of Service require.
+
+3. What you may not do without prior written permission
+
+   Except as expressly allowed in section 2, you may not, in whole or in part,
+   without the prior written permission of the copyright holder:
+
+   (a) copy or reproduce the Software;
+   (b) modify, adapt, translate, or create derivative works of the Software;
+   (c) distribute, publish, sublicense, sell, rent, lend, or otherwise make
+       the Software available to anyone, in source or compiled form;
+   (d) use the Software, or any part of it, for any commercial purpose.
+
+   No other right or license is granted, whether by implication, estoppel or
+   otherwise. All rights not expressly granted are reserved.
+
+   Requests for permission may be made through the issue tracker of the
+   repository in which this file is published, or by otherwise contacting
+   the owner of that repository through GitHub.
+
+4. No warranty and limitation of liability
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, ACCURACY AND NONINFRINGEMENT. IN NO EVENT
+   SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+   OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+   ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+   DEALINGS IN THE SOFTWARE.
+
+   Historical dates, names, borders and descriptions in the Software are
+   provided for reference only and may be incomplete or inaccurate.
+
+5. Language
+
+   A Korean translation follows. It is provided for convenience only; if the
+   two texts differ, the English text above prevails.
+
+--------------------------------------------------------------------------------
+
+[한국어 번역 — 이해를 돕기 위한 것이며, 위 영어 본문과 뜻이 갈리면 영어 본문을 따릅니다]
+
+HistoryTime — 모든 권리 보유 (열람만 허락하는 공개 원본)
+
+Copyright (c) 2026 HistoryTime 저작자. 모든 권리를 보유합니다.
+
+이것은 오픈 소스 허락이 아닙니다.
+
+1. 적용 범위
+
+   이 고지는 이 저장소에서 HistoryTime 저작자가 쓴 모든 파일(이하 "소프트웨어")에
+   적용됩니다. 원본 코드 · 자료 · 문서 · 그림 같은 것이 모두 들어갑니다.
+
+   남의 저작물에는 적용되지 않습니다. 남의 저작물은 THIRD_PARTY_NOTICES.md(코드 ·
+   아이콘 · 글꼴 · 의존 꾸러미)와 지도/LICENSE-DATA.md(지도 자료)에 적혀 있고,
+   저마다 거기 적힌 허락을 따릅니다. 이 고지는 그 허락이 주는 권리를 줄이지 않습니다.
+
+   그 두 파일이 이 저장소의 어떤 파일(또는 파일의 일부)을 다른 허락으로 내놓는다고
+   적었다면(예: OpenStreetMap에서 파생되어 Open Database License로 내놓는 지도 자료),
+   그 파일이나 그 부분에는 이 고지보다 그 적힌 허락이 앞섭니다.
+
+2. 할 수 있는 것
+
+   소프트웨어가 게시된 곳에서 소프트웨어를 볼 수 있습니다. 또 이 저장소를 클론하거나
+   내려받아, 오직 개인의 비상업적 참고를 위해 읽고 공부할 수 있습니다.
+
+   소프트웨어가 GitHub에 있다면, GitHub 이용 약관이 다른 GitHub 사용자에게 주는
+   좁은 권리(공개 저장소를 보고 GitHub 기능 안에서 포크하는 것)도 가집니다. 그
+   권리는 GitHub 이용 약관이 요구하는 범위를 넘지 않습니다.
+
+3. 서면 허락 없이는 할 수 없는 것
+
+   2절에서 분명히 허락한 것 말고는, 저작권자의 미리 받은 서면 허락 없이 소프트웨어의
+   전부나 일부를 다음과 같이 할 수 없습니다.
+
+   (가) 복제하거나 베끼기
+   (나) 고치거나 바꾸거나 옮기거나(번역), 2차적 저작물 만들기
+   (다) 원본이든 지은 실행본이든 배포 · 게시 · 재허락 · 판매 · 대여하거나 남이 쓸 수
+        있게 내놓기
+   (라) 어떤 목적이든 상업적으로 쓰기
+
+   묵시 · 금반언 그 밖의 어떤 방식으로도 다른 권리나 허락을 주지 않습니다. 분명히
+   주지 않은 권리는 모두 보유합니다.
+
+   허락은 이 파일이 게시된 저장소의 이슈 게시판으로, 또는 GitHub에서 그 저장소
+   소유자에게 연락하는 다른 방법으로 요청할 수 있습니다.
+
+4. 보증 없음과 책임 제한
+
+   소프트웨어는 "있는 그대로" 제공되며, 상품성 · 특정 목적 적합성 · 정확성 · 비침해를
+   비롯한 어떤 명시적 · 묵시적 보증도 하지 않습니다. 저작자나 저작권자는 계약 · 불법
+   행위 그 밖의 어떤 근거로든, 소프트웨어나 그 사용 · 거래에서 또는 그와 관련해 생긴
+   청구 · 손해 · 그 밖의 책임을 지지 않습니다.
+
+   소프트웨어에 든 역사의 연대 · 이름 · 경계 · 설명은 참고용이며, 모자라거나 틀릴 수
+   있습니다.
+
+5. 언어
+
+   이 번역은 편의를 위한 것입니다. 두 글이 다르면 위의 영어 본문을 따릅니다.

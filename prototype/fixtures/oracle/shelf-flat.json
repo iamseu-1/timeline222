@@ -1,0 +1,35 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "id": "shelf-flat",
+  "name": "선반 시험 — 낱 사슬",
+  "version": "1.0.0",
+  "author": "검사 자료",
+  "description": "견본 등불(sample-lantern)에 얹는 덧팩 — 하연 트랙에 그릇 하나(아홉 불씨 다섯 + 부흥 둘 · 구성원마다 제 사슬)를 더한다. 서고 선반(상위 다섯만 제 줄)의 엔진 변형 시험 자료(리메이크 4단계 선반 갈래). 모든 이름은 지어낸 것입니다.",
+  "requires": [],
+  "tracks": [
+    {
+      "id": "hayeon",
+      "name": "하연",
+      "color": "#d7c18e",
+      "order": 20,
+      "sphere": "ember-basin"
+    }
+  ],
+  "scopes": [
+    {
+      "id": "shelf-flat",
+      "name": "선반 시험 — 낱 사슬",
+      "track": "hayeon",
+      "members": [
+        "p-upper",
+        "p-lower",
+        "p-reed",
+        "p-bitnaru",
+        "p-mulangae",
+        "p-blackwater",
+        "p-namgang"
+      ]
+    }
+  ]
+}

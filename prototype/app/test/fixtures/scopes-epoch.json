@@ -1,0 +1,27 @@
+[
+ {
+  "uid": "moonwake-chronicle/local-epoch-coast",
+  "kind": "epoch",
+  "json": "{\"id\":\"local-epoch-coast\",\"name\":\"유리해안 재건기\",\"start\":220,\"end\":480,\"track\":\"mw-coast\",\"color\":\"#a0bcc5\",\"note\":\"공통 시대와 경계가 다른 지방의 시대 구분.\",\"kind\":\"epoch\",\"itemKind\":\"epoch\",\"uid\":\"moonwake-chronicle/local-epoch-coast\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":480,\"trackName\":\"유리해안\",\"wiki\":\"== 유리해안 재건기 ==\\n공통 시대와 경계가 다른 지방의 시대 구분.\\n연대의 경계는 국가·왕조·생활사의 경계와 반드시 일치하지 않는다.\"}"
+ },
+ {
+  "uid": "moonwake-chronicle/epoch-6",
+  "kind": "epoch",
+  "json": "{\"id\":\"epoch-6\",\"name\":\"흑염 전쟁 시대\",\"start\":720,\"end\":960,\"color\":\"#abb3c9\",\"note\":\"기억을 돌려 달라는 봉기와 검은 소금의 확산이 열두 땅을 전쟁으로 끌어들였다.\",\"alternatives\":[{\"start\":708,\"label\":\"꿈실 학파의 긴 전쟁설\",\"end\":968,\"source\":\"가상 문헌 『돌려받지 못한 밤』\"},{\"label\":\"전쟁을 하나의 시대로 묶지 않는 견해\",\"note\":\"평화로운 지방의 생활사는 단절되지 않았다고 본다.\"}],\"kind\":\"epoch\",\"itemKind\":\"epoch\",\"uid\":\"moonwake-chronicle/epoch-6\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":960,\"trackName\":\"\",\"wiki\":\"== 흑염 전쟁 시대 ==\\n기억을 돌려 달라는 봉기와 검은 소금의 확산이 열두 땅을 전쟁으로 끌어들였다.\\n연대의 경계는 국가·왕조·생활사의 경계와 반드시 일치하지 않는다.\"}"
+ },
+ {
+  "uid": "moonwake-chronicle/epoch-7",
+  "kind": "epoch",
+  "json": "{\"id\":\"epoch-7\",\"name\":\"무왕 협약 시대\",\"start\":960,\"end\":1200,\"color\":\"#bbacc8\",\"note\":\"왕의 이름 대신 주민의 서명을 권력의 근거로 삼았다.\",\"kind\":\"epoch\",\"itemKind\":\"epoch\",\"uid\":\"moonwake-chronicle/epoch-7\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":1200,\"trackName\":\"\",\"scopes\":[{\"$ref\":\"moonwake-chronicle/scope-epoch\",\"name\":\"무왕 협약 시대\"}],\"wiki\":\"== 무왕 협약 시대 ==\\n왕의 이름 대신 주민의 서명을 권력의 근거로 삼았다.\\n연대의 경계는 국가·왕조·생활사의 경계와 반드시 일치하지 않는다.\",\"x_scopes\":[{\"uid\":\"moonwake-chronicle/scope-epoch\",\"name\":\"무왕 협약 시대\",\"color\":\"#bbacc8\"}]}"
+ },
+ {
+  "uid": "moonwake-chronicle/epoch-8",
+  "kind": "epoch",
+  "json": "{\"id\":\"epoch-8\",\"name\":\"귀환 항로 시대\",\"start\":1200,\"ongoing\":true,\"color\":\"#b6c398\",\"note\":\"사라진 배와 마을이 돌아오며 이미 나눈 땅과 시간을 다시 협상하게 되었다.\",\"kind\":\"epoch\",\"itemKind\":\"epoch\",\"uid\":\"moonwake-chronicle/epoch-8\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":2026.7205479452055,\"trackName\":\"\",\"wiki\":\"== 귀환 항로 시대 ==\\n사라진 배와 마을이 돌아오며 이미 나눈 땅과 시간을 다시 협상하게 되었다.\\n연대의 경계는 국가·왕조·생활사의 경계와 반드시 일치하지 않는다.\"}"
+ },
+ {
+  "uid": "moonwake-chronicle/scope-epoch",
+  "kind": "scope",
+  "json": "{\"id\":\"scope-epoch\",\"track\":\"mw-coast\",\"members\":[{\"$ref\":\"moonwake-chronicle/partial-2\",\"name\":\"새빛 공동국\"},{\"$ref\":\"moonwake-chronicle/partial-0\",\"name\":\"물새 자유시\"},{\"$ref\":\"moonwake-chronicle/partial-1\",\"name\":\"갈대 피난연맹\"}],\"epoch\":{\"$ref\":\"moonwake-chronicle/epoch-7\",\"name\":\"무왕 협약 시대\"},\"description\":\"무왕 협약 시대의 이름과 기간을 물려받는 대범위.\",\"kind\":\"scope\",\"itemKind\":\"scope\",\"uid\":\"moonwake-chronicle/scope-epoch\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"memberRefs\":[\"partial-0\",\"partial-1\",\"partial-2\"],\"hostRef\":null,\"host\":null,\"epochRef\":\"epoch-7\",\"warnings\":[],\"default\":false,\"name\":\"무왕 협약 시대\",\"nameAuto\":true,\"start\":960,\"end\":1200,\"rangeFrom\":\"epoch\",\"endAuto\":true,\"startAuto\":true,\"endY\":1200,\"colorAuto\":true,\"color\":\"#bbacc8\",\"trackName\":\"유리해안\",\"afterHost\":false,\"wiki\":\"== 무왕 협약 시대의 묶음 ==\\n무왕 협약 시대의 이름과 기간을 물려받는 대범위.\\n[[월흔해 안내서/구성요소 길잡이]]에서 관련 표현을 찾아볼 수 있다.\",\"x_members\":[{\"uid\":\"moonwake-chronicle/partial-2\",\"name\":\"새빛 공동국\",\"color\":\"#bbacc8\",\"when\":\"890년 ~ 1160년\",\"kind\":\"해민\"},{\"uid\":\"moonwake-chronicle/partial-0\",\"name\":\"물새 자유시\",\"color\":\"#b6c398\",\"when\":\"960년 ~ 1160년\",\"kind\":\"해민\"},{\"uid\":\"moonwake-chronicle/partial-1\",\"name\":\"갈대 피난연맹\",\"color\":\"#a0bcc5\",\"when\":\"960년 ~ 1160년\",\"kind\":\"해민\"}]}"
+ }
+]

@@ -1,0 +1,30 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 2,
+  "id": "legacy-f2-nest",
+  "name": "이음 검사 — 형식 2 · 접기 갈래 넷 · 구성국 · 동군연합 · 종속 종류만 · 대범위 · 가문 · 인물",
+  "version": "1.0.0",
+  "tracks": [{ "id": "ta", "name": "가 줄" }, { "id": "tb", "name": "나 줄" }],
+  "houses": [{ "id": "h-sky", "name": "하늘씨", "surname": "하늘" }],
+  "periods": [
+    { "id": "p-top", "name": "윗나라", "track": "ta", "start": 100, "end": 500, "house": "하늘씨", "leaders": [["하늘 첫", 100, 200, { "house": "하늘씨" }], ["하늘 둘", 200, 500]] },
+    { "id": "p-side", "name": "옆나라", "track": "ta", "start": 100, "end": 500 },
+    { "id": "p-n1", "name": "접힘 하나", "track": "ta", "start": 150, "end": 250, "partOf": [{ "polity": "윗나라", "relation": "tributary", "nest": true }] },
+    { "id": "p-n2", "name": "접힘 없음", "track": "ta", "start": 150, "end": 250, "partOf": [{ "polity": "윗나라", "relation": "tributary" }] },
+    { "id": "p-n3", "name": "펼침 하나", "track": "ta", "start": 150, "end": 250, "partOf": [{ "polity": "윗나라", "nest": false }] },
+    { "id": "p-n4", "name": "접힘 둘", "track": "ta", "start": 150, "end": 250, "partOf": [{ "polity": "윗나라", "nest": true }, { "polity": "옆나라", "nest": true }] },
+    { "id": "p-mem", "name": "구성 나라", "track": "ta", "start": 160, "end": 240, "partOf": [{ "polity": "윗나라", "relation": "member" }] },
+    { "id": "p-uni", "name": "동군 나라", "track": "tb", "start": 160, "end": 240, "partOf": [{ "polity": "윗나라", "relation": "union", "start": 180, "end": 220 }] },
+    { "id": "p-kind", "name": "외딴 조공국", "track": "tb", "start": 300, "end": 400, "kind": "tributary" },
+    { "id": "p-fief", "name": "봉토 나라", "track": "tb", "start": 300, "end": 400, "kind": "fief", "partOf": ["윗나라"] },
+    { "id": "p-era", "name": "갈라진 시대", "track": "tb", "start": 250, "end": 450, "kind": "era", "historicity": "legend", "historicityNote": "전승" },
+    { "id": "p-a", "name": "첫 고을", "track": "ta", "start": 300, "end": 360, "phases": [{ "name": "일어남", "start": 300, "end": 330 }] },
+    { "id": "p-b", "name": "둘 고을", "track": "ta", "start": 320, "end": 400 }
+  ],
+  "scopes": [{ "id": "s-split", "track": "ta", "name": "두 고을 할거", "label": "할거", "members": ["첫 고을", "둘 고을"], "host": "옆나라", "default": true }],
+  "figures": [
+    { "id": "fg-gap", "track": "ta", "name": "갑", "role": "장군", "birth": 140, "death": 202, "importance": 3, "service": [{ "polity": "윗나라", "office": "대장군", "start": 165, "end": 200 }] },
+    { "id": "fg-mu", "track": "tb", "name": "무", "role": "학자", "start": 170, "end": 215 }
+  ],
+  "events": [{ "id": "ev-1", "track": "ta", "polity": "윗나라", "name": "하늘 맹약", "start": 150, "figures": ["갑"] }]
+}

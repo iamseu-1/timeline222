@@ -1,0 +1,527 @@
+# 릴리즈: 독립형 연표 앱(prototype/app · prototype/engine — Windows exe · 안드로이드 apk)과 DLC 메이커 앱을 한 번에 지어
+# GitHub Release(시험판)로 게시합니다. 부르는 법: Actions → release → Run workflow(입력 scope — 아래 '게시 범위' · 부르면 곧 게시) 또는 태그 v<판>을 밀기,
+# 또는 작업 가지 claude/compassionate-keller-5ip12l에 커밋 글에 [release]가 든 커밋을 밀기(그 밖의 그 가지 커밋에서는 아무 작업도 돌지 않음 —
+# 태그를 밀 수 없고 기본 가지에 워크플로가 아직 등록되지 않았을 때를 위한 길).
+# 판은 package.json의 version 하나(npm version이 tauri.conf.json · Cargo.toml · sw.js를 맞춤)이고 prototype/app/pubspec.yaml의 version도 같아야 합니다.
+# 이미 있는 태그 · 릴리즈는 덮어쓰지 않습니다 — 새로 게시하려면 판을 올립니다.
+#
+# 게시 범위(2026-10-13 감독 지시 "메이저 업데이트 아닐 경우 APK와 포터블만"): version 작업이 full(true/false) 하나를 정하고 뒤의 작업이 모두 그것을 따릅니다.
+#   전체(full)  큰 판(x.0.0 — 둘째 · 셋째 자리가 모두 0) 또는 Run workflow의 scope=full — 설치 exe · 포터블 zip · APK ·
+#               DLC 메이커 앱 셋(Windows 단일 exe · 설치 exe · 안드로이드 APK) · 견본 DLC(등불 연대기 .htpack) · SHA256SUMS.
+#   작은 판     그 밖의 판(scope=auto) 또는 scope=light — APK · 포터블 zip · DLC 메이커 앱 셋 · SHA256SUMS. 설치 exe(Inno Setup) · 설치한 앱의 연기 검사 ·
+#               견본 DLC 파일을 건너뜁니다(메이커 앱은 감독 지시로 늘 — 2026-10-14).
+#   웹 연표 종료(2026-10-15 감독 결정 "메이커 앱 체제로 바꾸자" — 보는 화면은 독립형 연표 앱, 편집은 DLC 메이커 앱): 지금 연표의 Windows 프로그램(tauri-windows)과
+#               웹 폴더 zip 둘(web)을 더는 짓지 않습니다. 웹 코드(core.js · timeline.js)는 내보내기(showcase)와 메이커가 계속 씁니다.
+#
+#   version          판 읽기 · 맞추어 보기 · 게시 범위
+#   showcase         저장소 둘 — 동아시아(동아시아 기본팩 · samples/에 기본팩 위에 얹는 견본이 생기면 그것도)와 등불 연대기(견본
+#                    samples/sample-lantern.json — 따로 세계 하나) — prototype/scripts/build-showcase.mjs
+#                    (입력 — samples · packs · index.html · js · 엔진 · 짓는 스크립트 — 이 같으면 캐시에서 되살림)
+#   native-windows   엔진(MSVC) · Flutter Windows 빌드 · 꾸러미(bundle-app.mjs — 저장소 둘) · 포터블 zip(+ 전체면 설치 exe — Inno Setup) · 연기 검사
+#   native-android   엔진(NDK) · 아래 env ANDROID_SEED의 저장소를 seed로 넣은 APK(arm64 · 디버그 키 서명) · 든 것 확인
+#   maker-windows    DLC 메이커의 Windows 프로그램(Tauri — 단일 실행 파일 + 설치 파일). 판의 크기와 상관없이(작은 판에서도) 늘 짓고 늘 게시합니다
+#                    (2026-10-14 감독 지시 "앞으로 … dlc maker도 함께 앱으로" — 꼭 있어야 할 파일: 실패하면 게시하지 않음)
+#   maker-android    DLC 메이커의 안드로이드 앱(Tauri — APK arm64 · 디버그 키). maker-android.yml을 부름 — 늘 짓고 늘 게시(감독 "모바일도")
+#   release          꼭 있어야 할 작업(showcase · native 둘 · 메이커 둘)이 성공했을 때만 — 하나라도 실패하면 이 작업도 실패하고 게시하지 않음.
+#                    모은 파일 · SHA256SUMS · 한국어 안내(지난 게시 판 뒤의 변경만)로 시험판 게시
+name: release
+
+on:
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: "게시 범위 — auto: 판으로 정함(x.0.0이면 전체, 아니면 APK · 포터블 · 메이커 앱만) · light: APK · 포터블 · 메이커 앱만 · full: 전체"
+        type: choice
+        options: [auto, light, full]
+        default: auto
+  push:
+    tags: ["v*"]
+    branches: [claude/compassionate-keller-5ip12l]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+env:
+  FLUTTER_VERSION: "3.47.5"
+  RUST_VERSION: "1.97.0"
+  NODE_VERSION: "22"
+  NDK_VERSION: "28.2.13676358"
+  # 안드로이드 APK에 넣을 저장소(build-showcase.mjs의 저장소 이름) — lantern = 가상 세계 견본 등불 연대기만(동아시아 기본팩 없음 · 판타지 판 —
+  # 2026-10-16 감독 "기본팩 빼고 등불만 넣은 판타지 apk로 릴리즈해줘") · showcase = 동아시아. 휴대폰도 앱 안의 엔진(add_pack · remove_pack)으로 DLC를
+  # 넣고 뺀다 — 시드에 달력 표가 있어야 하므로 build-showcase.mjs(archive-tool build --calendar)로 지은 저장소를 쓴다(판정 R36).
+  ANDROID_SEED: lantern
+
+jobs:
+  version:
+    name: 판 읽기
+    # 가지 push는 커밋 글에 [release]가 있을 때만 — 이 작업이 건너뛰면 나머지 작업(모두 version에 기댐)도 건너뜀
+    if: github.event_name != 'push' || github.ref_type == 'tag' || contains(github.event.head_commit.message, '[release]')
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.read.outputs.version }}
+      tag: ${{ steps.read.outputs.tag }}
+      # 'true' = 전체 게시(큰 판 x.0.0 또는 scope=full) · 'false' = APK · 포터블 · 메이커 앱만 — 머리글의 '게시 범위'
+      full: ${{ steps.read.outputs.full }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - id: read
+        name: package.json · tauri.conf.json · Cargo.toml · pubspec.yaml의 판 맞추어 보기 · 게시 범위
+        env:
+          SCOPE: ${{ inputs.scope }}
+        run: |
+          node --input-type=module - <<'EOF'
+          import fs from 'node:fs';
+          const version = JSON.parse(fs.readFileSync('package.json', 'utf8')).version;
+          const fail = (m) => { console.log(`::error::${m}`); process.exit(1); };
+          if (!/^\d+\.\d+\.\d+$/.test(version)) fail(`package.json version must be major.minor.patch: ${version}`);
+          const tauri = JSON.parse(fs.readFileSync('src-tauri/tauri.conf.json', 'utf8')).version;
+          const cargo = (fs.readFileSync('src-tauri/Cargo.toml', 'utf8').match(/^version = "([^"]+)"/m) || [])[1];
+          const pub = fs.readFileSync('prototype/app/pubspec.yaml', 'utf8').match(/^version: (\d+\.\d+\.\d+)\+(\d+)\s*$/m);
+          if (tauri !== version || cargo !== version) fail(`tauri.conf.json ${tauri} · Cargo.toml ${cargo} must equal package.json ${version} (node scripts/sync-version.mjs)`);
+          if (!pub || pub[1] !== version) fail(`prototype/app/pubspec.yaml version must be ${version}+<build> (now ${pub ? pub[0] : 'none'})`);
+          const tag = `v${version}`;
+          if (process.env.GITHUB_REF_TYPE === 'tag' && process.env.GITHUB_REF_NAME !== tag) fail(`tag ${process.env.GITHUB_REF_NAME} does not match package.json version ${version}`);
+          // 게시 범위: Run workflow의 scope(push에는 없음 = auto). auto는 판으로 — 둘째 · 셋째 자리가 모두 0인 큰 판만 전체.
+          const scope = process.env.SCOPE || 'auto';
+          if (!['auto', 'light', 'full'].includes(scope)) fail(`scope must be auto, light or full: ${scope}`);
+          const [, minor, patch] = version.split('.').map(Number);
+          const full = scope === 'full' || (scope === 'auto' && minor === 0 && patch === 0);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `version=${version}\ntag=${tag}\nfull=${full}\n`);
+          console.log(`version ${version} · tag ${tag} · Android versionCode ${pub[2]} · scope ${scope} → ${full ? 'full (모든 파일)' : 'light (APK · 포터블 · SHA256SUMS)'}`);
+          EOF
+
+  showcase:
+    name: 저장소(동아시아 · 등불 연대기)
+    needs: version
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      # 짓는 데 6분쯤 걸리므로 입력이 같으면 지난 결과를 되살린다. 열쇠는 짓기에 드는 파일 전부 — 견본 · 기본팩 · index.html(싣는 팩 차례) ·
+      # js(배치 셈은 웹 코드) · 엔진 · 짓는 스크립트(release/ 아래 포장 스크립트는 저장소와 무관해 뺌). 엔진을 짓기 전(target/이 없을 때)에 센다.
+      # package.json의 판은 열쇠에 넣지 않는다(판마다 새로 지을 까닭이 없음) — 되살린 목록의 판은 아래에서 맞춘다.
+      # GitHub 캐시는 만든 가지(태그)와 기본 가지에서만 보인다 — 태그를 밀어 지은 캐시는 다음 태그에서 안 보이고, master에서
+      # Run workflow로 지은 캐시는 모든 태그에서 보인다. 7일 동안 안 쓰면 지워진다(그때는 새로 짓는다).
+      - id: cache
+        name: 지은 저장소 되살리기(입력이 같을 때)
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/showcase
+          key: showcase-v1-${{ runner.os }}-${{ hashFiles('samples/**', 'packs/**', 'index.html', 'js/**', 'prototype/engine/**', 'prototype/scripts/**', '!prototype/scripts/release/**') }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: dtolnay/rust-toolchain@master
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+      - uses: Swatinem/rust-cache@v2
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          workspaces: prototype/engine
+      - name: 엔진 도구(리눅스)
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: cargo build --locked --release --manifest-path prototype/engine/Cargo.toml
+      - name: 동아시아 · 등불 연대기 저장소 짓기
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: node prototype/scripts/build-showcase.mjs "$RUNNER_TEMP/showcase"
+      # 출하 저장소를 짓는 리눅스 Rust 길(archive-tool build)이 Node 배치(정답지와 같은 길)로 지은 저장소와 같은지(판정 R58 ⑤-6): 등불 · 동아시아 두 자료.
+      # 달력 표는 위에서 이 Node가 뜬 전체 표(<출력>/calendar-cache.json — build-check는 읽기만 하고 Node에는 임시 사본을 준다 · 같은 ICU라 다시 뜨지 않음).
+      # 되살린 캐시(입력이 같음)에서는 건너뛴다 — 열쇠에 엔진 · 짓는 스크립트 · 웹 코드가 모두 들어 있다.
+      - name: Rust 짓기 = Node 배치(build-check — 등불 · 동아시아)
+        if: steps.cache.outputs.cache-hit != 'true'
+        env:
+          HT_ARCHIVE_TOOL: prototype/engine/target/release/archive-tool
+        run: node prototype/scripts/build-check.mjs --only=lantern,east-asia "--calendar=$RUNNER_TEMP/showcase/calendar-cache.json" "--work=$RUNNER_TEMP/build-check"
+      - name: 되살린 저장소 확인 · 목록의 판 맞추기
+        if: steps.cache.outputs.cache-hit == 'true'
+        env:
+          APP_VERSION: ${{ needs.version.outputs.version }}
+        run: |
+          node --input-type=module - <<'EOF'
+          import fs from 'node:fs';
+          const dir = `${process.env.RUNNER_TEMP}/showcase`;
+          const file = `${dir}/showcase.json`;
+          const listing = JSON.parse(fs.readFileSync(file, 'utf8'));
+          const lost = (listing.stores || []).map(s => s.database).filter(db => !fs.existsSync(`${dir}/${db}`));
+          if (!(listing.stores || []).length || lost.length) { console.log(`::error::되살린 저장소가 모자랍니다: ${lost.join(' ') || '목록이 빔'}`); process.exit(1); }
+          if (listing.version !== process.env.APP_VERSION) {
+            console.log(`목록의 판 ${listing.version} → ${process.env.APP_VERSION}`);
+            listing.version = process.env.APP_VERSION;
+            fs.writeFileSync(file, JSON.stringify(listing, null, 1) + '\n');
+          }
+          console.log(`캐시에서 되살린 저장소 ${listing.stores.length}개: ${listing.stores.map(s => s.key).join(' · ')}`);
+          EOF
+      - name: 지은 저장소 확인(타일 · 카드)
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          tool=prototype/engine/target/release/archive-tool
+          for db in "$RUNNER_TEMP"/showcase/*/archive.db; do
+            "$tool" verify-tiles "$db" 600
+            "$tool" query "$db" '{"op":"layout"}' | tail -n 1 | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const a=JSON.parse(s);const p=(a.data||a).packs;console.log(p.length+" DLC cards: "+p.map(c=>c.key).join(" "))})'
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: showcase
+          path: ${{ runner.temp }}/showcase/
+          if-no-files-found: error
+          retention-days: 30
+
+  native-windows:
+    name: 독립형 앱 (Windows)
+    needs: [version, showcase]
+    runs-on: windows-2025
+    timeout-minutes: 90
+    env:
+      APP_VERSION: ${{ needs.version.outputs.version }}
+      FULL: ${{ needs.version.outputs.full }}
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: 줄 끝을 저장소 그대로(LF) 받기
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: prototype/engine
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - name: 엔진(archive_engine.dll · archive-tool.exe)
+        run: |
+          cargo build --locked --release --manifest-path prototype/engine/Cargo.toml
+          if ($LASTEXITCODE -ne 0) { throw 'engine build failed' }
+          foreach ($file in @('archive_engine.dll', 'archive-tool.exe')) {
+            if (-not (Test-Path -LiteralPath "prototype/engine/target/release/$file" -PathType Leaf)) { throw "engine build did not produce $file" }
+          }
+      - uses: actions/download-artifact@v4
+        with:
+          name: showcase
+          path: ${{ runner.temp }}/showcase
+      - name: 저장소를 Windows 엔진 도구로도 확인
+        run: |
+          foreach ($db in @(Get-ChildItem -LiteralPath "$env:RUNNER_TEMP/showcase" -Recurse -File -Filter 'archive.db')) {
+            & prototype/engine/target/release/archive-tool.exe verify-tiles $db.FullName 600
+            if ($LASTEXITCODE -ne 0) { throw "verify-tiles failed: $($db.FullName)" }
+          }
+      - name: Flutter Windows 빌드
+        working-directory: prototype/app
+        run: |
+          # Hangul in windows/runner/main.cpp compiles as UTF-8 already (/utf-8 in windows/CMakeLists.txt APPLY_STANDARD_SETTINGS).
+          # pubspec.yaml lists assets/seed/ - the Windows build carries no seed (Windows\prototype.json names the store), but the folders must exist.
+          New-Item -ItemType Directory -Force -Path assets/seed/originals | Out-Null
+          flutter config --enable-windows-desktop
+          flutter pub get
+          if ($LASTEXITCODE -ne 0) { throw 'flutter pub get failed' }
+          git diff --quiet -- pubspec.lock
+          if ($LASTEXITCODE -ne 0) { Write-Host '::warning::flutter pub get changed prototype/app/pubspec.lock'; git --no-pager diff -- pubspec.lock }
+          flutter build windows --release
+          if ($LASTEXITCODE -ne 0) { throw 'flutter build windows failed' }
+          # windows/CMakeLists.txt installs ../../engine/target/release/archive_engine.dll next to the exe.
+          if (-not (Test-Path -LiteralPath 'build/windows/x64/runner/Release/archive_engine.dll' -PathType Leaf)) { throw 'archive_engine.dll is not in the Release folder' }
+      - name: 꾸러미 모으기(실행본 · 저장소 · 엔진 도구 · 사용 안내)
+        run: |
+          $bundle = Join-Path $env:RUNNER_TEMP "pkg/HistoryTimeline-$env:APP_VERSION"
+          node prototype/scripts/bundle-app.mjs "--out=$bundle" "--showcase=$env:RUNNER_TEMP/showcase" --release=prototype/app/build/windows/x64/runner/Release --tool=prototype/engine/target/release/archive-tool.exe "--version=$env:APP_VERSION"
+          if ($LASTEXITCODE -ne 0) { throw 'bundle-app.mjs failed' }
+          "BUNDLE=$bundle" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+      - name: Inno Setup 준비(전체 게시만)
+        if: needs.version.outputs.full == 'true'
+        run: |
+          if (-not (Get-Command ISCC.exe -ErrorAction SilentlyContinue) -and -not (Test-Path -LiteralPath "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe")) {
+            choco install innosetup --yes --no-progress
+            if ($LASTEXITCODE -ne 0) { throw 'Inno Setup install failed' }
+          }
+      - name: 포터블 zip(+ 전체 게시면 설치 exe)
+        run: ./prototype/scripts/release/package-windows.ps1 -Version $env:APP_VERSION -BundleDirectory $env:BUNDLE -OutputDirectory out/windows -PortableOnly:($env:FULL -ne 'true')
+      - name: 연기 검사 — 포터블(창 · 저장소마다 첫 장면 · 저장소마다 달력 표)
+        run: |
+          $dir = Join-Path $env:RUNNER_TEMP 'portable'
+          Expand-Archive -LiteralPath "out/windows/HistoryTimeline-$env:APP_VERSION-windows-x64-portable.zip" -DestinationPath $dir
+          ./prototype/scripts/release/smoke-windows.ps1 -BundleDirectory (Join-Path $dir "HistoryTimeline-$env:APP_VERSION") -CheckTools -LogDirectory (Join-Path $env:RUNNER_TEMP 'smoke-portable')
+      - name: 연기 검사 — 설치한 앱(전체 게시만)
+        if: needs.version.outputs.full == 'true'
+        run: |
+          $installer = (Resolve-Path -LiteralPath "out/windows/HistoryTimeline-$env:APP_VERSION-windows-x64-setup.exe").Path
+          $dir = Join-Path $env:RUNNER_TEMP 'installed'
+          $log = Join-Path $env:RUNNER_TEMP 'install.log'
+          $setup = Start-Process -FilePath $installer -ArgumentList @('/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/SP-', "/DIR=`"$dir`"", "/LOG=`"$log`"") -Wait -PassThru
+          if ($setup.ExitCode -ne 0) { Get-Content -LiteralPath $log; throw "installer failed: $($setup.ExitCode)" }
+          ./prototype/scripts/release/smoke-windows.ps1 -BundleDirectory $dir -LogDirectory (Join-Path $env:RUNNER_TEMP 'smoke-installed')
+      - name: 설치본 판 올림 — 옛 도구 · 저장소 일지를 지우는지(전체 게시만 · 판정 R55 · R58)
+        if: needs.version.outputs.full == 'true'
+        run: |
+          # 같은 /DIR에 옛 판의 모양(Node 도구 · 다시 짓기 cmd · 쓰다 멈춘 저장소 일지)을 심고 설치기를 다시 돌린다 — [InstallDelete]가 지워야 한다.
+          $installer = (Resolve-Path -LiteralPath "out/windows/HistoryTimeline-$env:APP_VERSION-windows-x64-setup.exe").Path
+          $dir = Join-Path $env:RUNNER_TEMP 'installed'
+          $info = Get-Content -LiteralPath (Join-Path $dir 'bundle.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+          $default = Join-Path $dir (([string]@($info.stores | Where-Object { $_.default })[0].db) -replace '/', '\')
+          $tool = @(Get-ChildItem -LiteralPath $dir -Recurse -File -Filter 'archive-tool.exe')[0].FullName
+          $tools = Split-Path -Parent (Split-Path -Parent $tool)
+          $planted = @("$default-journal", "$default-wal", (Join-Path $dir 'DLC-추가.cmd'), (Join-Path $tools 'node\node.exe'), (Join-Path $tools 'js\core.js'),
+            (Join-Path $tools 'packs\east-asia\pack.json'), (Join-Path $tools 'prototype\scripts\add-dlc.mjs'), (Join-Path $tools 'index.html'))
+          foreach ($file in $planted) { New-Item -ItemType Directory -Force -Path (Split-Path -Parent $file) | Out-Null; Set-Content -LiteralPath $file -Value 'old' }
+          $log = Join-Path $env:RUNNER_TEMP 'upgrade.log'
+          $setup = Start-Process -FilePath $installer -ArgumentList @('/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/SP-', "/DIR=`"$dir`"", "/LOG=`"$log`"") -Wait -PassThru
+          if ($setup.ExitCode -ne 0) { Get-Content -LiteralPath $log; throw "upgrade install failed: $($setup.ExitCode)" }
+          $left = @($planted | Where-Object { Test-Path -LiteralPath $_ })
+          if ($left.Count -gt 0) { Get-Content -LiteralPath $log; throw "the upgrade kept old files: $($left -join '; ')" }
+          foreach ($file in @($default, $tool)) { if (-not (Test-Path -LiteralPath $file -PathType Leaf)) { throw "the upgrade removed a file it ships: $file" } }
+          Write-Host "upgrade removed $($planted.Count) old files and kept the store and the tool"
+      - name: 연기 검사 기록(첫 장면 그림 · 로그)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-smoke
+          path: |
+            ${{ runner.temp }}/smoke-portable/
+            ${{ runner.temp }}/smoke-installed/
+            ${{ runner.temp }}/install.log
+            ${{ runner.temp }}/upgrade.log
+          if-no-files-found: ignore
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: out/windows/
+          if-no-files-found: error
+          retention-days: 30
+
+  native-android:
+    name: 독립형 앱 (안드로이드)
+    needs: [version, showcase]
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    env:
+      APP_VERSION: ${{ needs.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: android-actions/setup-android@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+          targets: aarch64-linux-android
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: prototype/engine
+      - name: NDK
+        run: sdkmanager "ndk;$NDK_VERSION"
+      - uses: actions/download-artifact@v4
+        with:
+          name: showcase
+          path: ${{ runner.temp }}/showcase
+      - name: APK(엔진 .so · seed = ANDROID_SEED · arm64)
+        run: |
+          seed="$RUNNER_TEMP/showcase/$ANDROID_SEED/archive.db"
+          [ -f "$seed" ] || { echo "::error::ANDROID_SEED 저장소가 없습니다: $seed"; exit 1; }
+          bash prototype/scripts/release/build-android.sh "$seed" "out/android/HistoryTimeline-$APP_VERSION-arm64.apk" "$RUNNER_TEMP/android-copy"
+      - name: 서명 확인(디버그 키 — build.gradle.kts 그대로)
+        run: |
+          tools="$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
+          "$tools/apksigner" verify --verbose --print-certs "out/android/HistoryTimeline-$APP_VERSION-arm64.apk" | tee out/android/SIGNATURE.txt
+          (cd out/android && sha256sum "HistoryTimeline-$APP_VERSION-arm64.apk")
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android
+          path: out/android/
+          if-no-files-found: error
+          retention-days: 30
+
+  maker-windows:
+    name: DLC 메이커 (Windows · Tauri)
+    needs: version
+    # 늘 짓고 늘 게시(머리글) — 작은 판에서도 빼지 않는다. 실패하면 release가 돌지 않는다.
+    runs-on: windows-2025
+    timeout-minutes: 60
+    env:
+      APP_VERSION: ${{ needs.version.outputs.version }}
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: 줄 끝을 저장소 그대로(LF) 받기
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+      - run: npm ci
+      - name: DLC 메이커(단일 실행 파일 · 설치 파일)
+        run: |
+          npm run tauri -- build --config src-tauri/tauri.maker.conf.json
+          if ($LASTEXITCODE -ne 0) { throw 'tauri build (maker) failed' }
+          New-Item -ItemType Directory -Force -Path out/maker | Out-Null
+          Copy-Item -LiteralPath 'src-tauri/target/release/HistoryTimelineMaker.exe' -Destination "out/maker/HistoryTimelineMaker-$env:APP_VERSION-windows-x64.exe"
+          Copy-Item -LiteralPath "src-tauri/target/release/bundle/nsis/HistoryTimelineMaker_$($env:APP_VERSION)_x64-setup.exe" -Destination "out/maker/HistoryTimelineMaker-$env:APP_VERSION-windows-x64-setup.exe"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: maker
+          path: out/maker/
+          if-no-files-found: error
+          retention-days: 30
+
+  maker-android:
+    needs: version
+    # 늘 짓고 늘 게시(머리글) — 지은 APK는 이 실행의 'maker-android' 꾸러미로 release에 감
+    uses: ./.github/workflows/maker-android.yml
+    with:
+      version: ${{ needs.version.outputs.version }}
+
+  release:
+    name: 게시(GitHub Release · 시험판)
+    needs: [version, showcase, native-windows, native-android, maker-windows, maker-android]
+    # 판을 읽었으면(가지 push의 [release] 없는 커밋이 아니면) 늘 돈다 — 건너뛴 작업에 막히지 않게 !cancelled()로.
+    # 꼭 있어야 할 작업(showcase · native 둘 · 메이커 둘)은 첫 단계가 본다: 하나라도 성공이 아니면 이 작업이 실패하고 아무것도 게시하지 않는다.
+    if: ${{ !cancelled() && needs.version.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      APP_VERSION: ${{ needs.version.outputs.version }}
+      TAG: ${{ needs.version.outputs.tag }}
+      FULL: ${{ needs.version.outputs.full }}
+    steps:
+      - name: 꼭 있어야 할 작업 확인(저장소 · Windows · 안드로이드 · 메이커 둘)
+        env:
+          RESULTS: >-
+            showcase=${{ needs.showcase.result }}
+            native-windows=${{ needs.native-windows.result }}
+            native-android=${{ needs.native-android.result }}
+            maker-windows=${{ needs.maker-windows.result }}
+            maker-android=${{ needs.maker-android.result }}
+        run: |
+          bad=0
+          for pair in $RESULTS; do
+            if [ "${pair#*=}" != success ]; then
+              echo "::error::${pair%%=*} 작업이 ${pair#*=} — 게시하지 않습니다."
+              bad=1
+            fi
+          done
+          echo "게시 범위: $([ "$FULL" = true ] && echo '전체' || echo 'APK · 포터블 · 메이커 앱만')"
+          exit $bad
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 안내 글의 '이번 판의 변경' — 지난 게시 판의 태그부터 지금까지의 커밋 제목(notes.mjs)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: 지은 파일 받기(전체 — 모든 작업)
+        if: needs.version.outputs.full == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          path: dl
+      - name: 지은 파일 받기(작은 판 — Windows)
+        if: needs.version.outputs.full != 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: windows
+          path: dl/windows
+      - name: 지은 파일 받기(작은 판 — 안드로이드)
+        if: needs.version.outputs.full != 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: android
+          path: dl/android
+      - name: 지은 파일 받기(작은 판 — DLC 메이커 Windows)
+        if: needs.version.outputs.full != 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: maker
+          path: dl/maker
+      - name: 지은 파일 받기(작은 판 — DLC 메이커 안드로이드)
+        if: needs.version.outputs.full != 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: maker-android
+          path: dl/maker-android
+      - name: 게시할 파일 · SHA256SUMS · 안내 글
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p release
+          take() { # take <artifact folder> <pattern>... - copies what exists, warns when an optional build left nothing
+            local dir=$1; shift
+            local found=0
+            for pattern in "$@"; do
+              for file in "dl/$dir"/$pattern; do
+                [ -f "$file" ] || continue
+                cp "$file" release/
+                found=1
+              done
+            done
+            [ "$found" = 1 ] || echo "::warning::nothing from the '$dir' build - it is left out of this release"
+          }
+          # 늘: 메이커 앱 셋(Windows 단일 exe · 설치 exe · 안드로이드 APK). 작은 판: 그 위에 APK · 포터블 zip(+ SHA256SUMS).
+          # 전체: 그 위에 설치 exe · 견본 DLC(등불 연대기 .htpack). (웹 연표 Tauri · 웹 zip은 2026-10-15 웹 연표 종료로 뺌)
+          must=("HistoryTimeline-$APP_VERSION-windows-x64-portable.zip" "HistoryTimeline-$APP_VERSION-arm64.apk" "HistoryTimelineMaker-$APP_VERSION-windows-x64.exe" "HistoryTimelineMaker-$APP_VERSION-arm64.apk")
+          notes=()
+          take maker '*.exe'
+          take maker-android '*.apk'
+          if [ "$FULL" = true ]; then
+            must+=("HistoryTimeline-$APP_VERSION-windows-x64-setup.exe")
+            take windows "HistoryTimeline-$APP_VERSION-windows-x64-setup.exe" "HistoryTimeline-$APP_VERSION-windows-x64-portable.zip"
+            take android "HistoryTimeline-$APP_VERSION-arm64.apk"
+            # the sample DLC: the lantern world sample (samples/sample-lantern.json packed as .htpack by build-showcase.mjs - the base pack of
+            # its own store) - to add to any timeline app, the HistoryArchive module included, or to open in the DLC maker
+            must+=("HistoryTimeline-$APP_VERSION-sample-lantern.htpack")
+            cp dl/showcase/lantern/base.htpack "release/HistoryTimeline-$APP_VERSION-sample-lantern.htpack"
+            notes+=(--scope=full --showcase=dl/showcase/showcase.json)
+          else
+            take windows "HistoryTimeline-$APP_VERSION-windows-x64-portable.zip"
+            take android "HistoryTimeline-$APP_VERSION-arm64.apk"
+            notes+=(--scope=light)
+          fi
+          for file in "${must[@]}"; do
+            [ -f "release/$file" ] || { echo "::error::missing $file"; exit 1; }
+          done
+          (cd release && sha256sum -- * > SHA256SUMS.txt && cat SHA256SUMS.txt)
+          # 지난 게시 판(초안이 아닌 릴리즈의 태그) — 안내 글의 '이번 판의 변경'이 그 뒤의 커밋만 적는다. 못 읽으면 notes.mjs가 git 태그로 정한다.
+          released=$(gh api "repos/$GITHUB_REPOSITORY/releases?per_page=100" --jq '[.[] | select(.draft | not) | .tag_name] | join(",")' || true)
+          node prototype/scripts/release/notes.mjs --dir=release --version="$APP_VERSION" --out=release-notes.md \
+            --sha="$GITHUB_SHA" --repo="$GITHUB_REPOSITORY" --signature=dl/android/SIGNATURE.txt --released="$released" --apk-seed="$ANDROID_SEED" "${notes[@]}"
+          cat release-notes.md
+          ls -la release
+      - name: 게시(이미 있는 태그 · 릴리즈는 덮어쓰지 않음)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            echo "::error::Release $TAG already exists - it is never replaced. Raise the version (package.json + prototype/app/pubspec.yaml)."
+            exit 1
+          fi
+          if [ "$GITHUB_REF_TYPE" != tag ] && gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$TAG" > /dev/null 2>&1; then
+            echo "::error::Tag $TAG already exists - it is never moved. Raise the version (package.json + prototype/app/pubspec.yaml)."
+            exit 1
+          fi
+          gh release create "$TAG" release/* --target "$GITHUB_SHA" --prerelease \
+            --title "역사 연표 $APP_VERSION — 독립형 연표 앱 시험판" --notes-file release-notes.md

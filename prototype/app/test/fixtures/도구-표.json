@@ -1,0 +1,2687 @@
+{
+ "설명": "표 보기 검사용 견본 — prototype/results/compat/moonwake-layout3.json에서 뽑았다. items = {\"op\":\"table\"}이 돌려줄 줄, entities = {\"op\":\"entities\"}가 돌려줄 항목 기록. 기록은 표가 읽는 칸만 남기고 미리 푼 값(x_…)과 긴 목록은 뺐다(견본을 작게).",
+ "items": [
+  {
+   "kind": "culture",
+   "uid": "moonwake-chronicle/culture-coast",
+   "name": "유리항 매듭토기 문화",
+   "when": "기원전 1400년 ~ 기원전 750년",
+   "start": -1772485200,
+   "end": -1430611200,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/myth-semi",
+   "name": "안개 문지기국",
+   "when": "기원전 1030년 ~ 기원전 710년",
+   "start": -1577880000,
+   "end": -1409572800,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/myth-legendary",
+   "name": "두 달의 궁정",
+   "when": "기원전 960년 ~ 기원전 650년",
+   "start": -1541062800,
+   "end": -1378015200,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/myth-disputed",
+   "name": "빈 종 왕국",
+   "when": "기원전 890년 ~ 기원전 590년",
+   "start": -1504245600,
+   "end": -1346457600,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "epoch",
+   "uid": "moonwake-chronicle/epoch-6",
+   "name": "흑염 전쟁 시대",
+   "when": "720년 ~ 960년",
+   "start": -657450000,
+   "end": -531219600,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-coast-6",
+   "name": "은륜 제국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-obsidian-6",
+   "name": "아홉굴 서약왕국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 1,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-canopy-6",
+   "name": "녹음다리 서약왕국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 2,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-steppe-6",
+   "name": "먼바람 서약왕국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 3,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-mirror-6",
+   "name": "맹세턱 서약왕국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 4,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-delta-6",
+   "name": "회백둑 서약왕국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 5,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-frost-6",
+   "name": "빙종곶 서약왕국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 6,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-sky-6",
+   "name": "별돛 서약왕국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 7,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-root-6",
+   "name": "청균정 서약왕국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 8,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-dusk-6",
+   "name": "붉은갈대 서약왕국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 9,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-magnet-6",
+   "name": "울림못 서약왕국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 10,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/p-outer-6",
+   "name": "검푸른문 서약왕국",
+   "when": "720년 ~ 960년",
+   "start": -657437760,
+   "end": -531208800,
+   "track": 11,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/shifting-isle",
+   "name": "푸른닻 섬국",
+   "when": "740년 ~ 946년",
+   "start": -646918560,
+   "end": -538571520,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/client-0",
+   "name": "별목 조공국",
+   "when": "742년 ~ 894년",
+   "start": -645865920,
+   "end": -565920000,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/client-1",
+   "name": "흰계단 봉국",
+   "when": "747년 ~ 897년",
+   "start": -643236480,
+   "end": -564341760,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/client-3",
+   "name": "잔닻 종속국",
+   "when": "757년 ~ 903년",
+   "start": -637976160,
+   "end": -561188160,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/client-4",
+   "name": "흰등 보호국",
+   "when": "762년 ~ 906년",
+   "start": -635346720,
+   "end": -559609920,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/client-5",
+   "name": "새고리 위성국",
+   "when": "767년 ~ 909년",
+   "start": -632717280,
+   "end": -558031680,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-coast-6-0",
+   "name": "은결 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-obsidian-6-0",
+   "name": "돌새 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-canopy-6-0",
+   "name": "잎울 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-steppe-6-0",
+   "name": "바람쇠 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-mirror-6-0",
+   "name": "사경 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-delta-6-0",
+   "name": "갈빛 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-frost-6-0",
+   "name": "눈고리 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-sky-6-0",
+   "name": "깃새 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-root-6-0",
+   "name": "실온 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-dusk-6-0",
+   "name": "잔물 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-magnet-6-0",
+   "name": "침울 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-outer-6-0",
+   "name": "별여울 디세나",
+   "when": "768년 ~ 803년",
+   "start": -632203920,
+   "end": -613795320,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/client-6",
+   "name": "검은 인장 정부",
+   "when": "772년 ~ 912년",
+   "start": -630087840,
+   "end": -556454880,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/overseas",
+   "name": "뜬닻 조공항",
+   "when": "776년 ~ 940년",
+   "start": -627984000,
+   "end": -541728000,
+   "track": 7,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/client-7",
+   "name": "월편 신탁령",
+   "when": "777년 ~ 915년",
+   "start": -627456960,
+   "end": -554876640,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-3-2",
+   "name": "별목 법정 · 증언 보존 규칙의 확정",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/client-6-charter",
+   "name": "검은 인장 정부 서약의 성립",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-3-2",
+   "name": "잔화문 치유소 · 공동 돌봄 기금의 설치",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 1,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-3-2",
+   "name": "새순문 항로 · 구조선의 귀환",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 2,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-3-2",
+   "name": "말귀샘 시장 · 통행 증표의 교환",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 3,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-3-2",
+   "name": "일곱우물 숲길 · 빛 차단 울타리의 완공",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 4,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-3-2",
+   "name": "갈대성 회당 · 선택 장례 규약의 채택",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 5,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-3-2",
+   "name": "얼음귀 민회 · 거주자 의결권의 확대",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 6,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-3-2",
+   "name": "구름턱 공방 · 노동 시간표의 개정",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 7,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-3-2",
+   "name": "고요뿌리 문서고 · 기록 열람일의 제정",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 8,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-3-2",
+   "name": "물문턱 공동 창고 · 공개 장부가 채택되다",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 9,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-3-2",
+   "name": "자석문 성문 · 포로 교환의 완료",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 10,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-3-2",
+   "name": "긴꼬리 관문 · 공동 서명 관례의 탄생",
+   "when": "780년",
+   "start": -625880160,
+   "end": -625880160,
+   "track": 11,
+   "importance": 2
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/client-8",
+   "name": "소금끝 속령",
+   "when": "782년 ~ 918년",
+   "start": -624827520,
+   "end": -553298400,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-4-0",
+   "name": "흰계단 관문 · 사절의 두 인장",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/client-7-charter",
+   "name": "월편 신탁령 서약의 성립",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-4-0",
+   "name": "아홉굴 갱도 · 울림을 잃은 광맥",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-4-0",
+   "name": "녹음다리 학교 · 금지된 노래의 채록",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 2,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-4-0",
+   "name": "먼바람 봉인실 · 봉인의 가느다란 균열",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 3,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-4-0",
+   "name": "맹세턱 우물 · 거꾸로 흐른 물시계",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 4,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-4-0",
+   "name": "회백둑 기억고 · 돌려받지 못한 기억",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 5,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-4-0",
+   "name": "빙종곶 나루 · 돌아오지 않는 나침반",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 6,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-4-0",
+   "name": "별돛 절벽 · 사라진 길의 재출현",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 7,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-4-0",
+   "name": "청균정 다리 · 경계석의 밤 이동",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 8,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-4-0",
+   "name": "붉은갈대 습원 · 빛을 잃은 물새",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 9,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-4-0",
+   "name": "울림못 극장 · 가면 없는 첫 공연",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 10,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-4-0",
+   "name": "검푸른문 망루 · 용병 급료의 중단",
+   "when": "785년",
+   "start": -623249280,
+   "end": -623249280,
+   "track": 11,
+   "importance": 1
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/client-9",
+   "name": "무음항 군정구",
+   "when": "787년 ~ 921년",
+   "start": -622198080,
+   "end": -551720160,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-4-1",
+   "name": "흰계단 관문 · 문서 진위의 대조",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/client-8-charter",
+   "name": "소금끝 속령 서약의 성립",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-4-1",
+   "name": "아홉굴 갱도 · 폐갱의 생물 조사",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-4-1",
+   "name": "녹음다리 학교 · 두 문자 교본의 편찬",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 2,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-4-1",
+   "name": "먼바람 봉인실 · 네 이름의 공동 의식",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 3,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-4-1",
+   "name": "맹세턱 우물 · 사라진 하루의 측정",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 4,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-4-1",
+   "name": "회백둑 기억고 · 회수 의식의 실패",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 5,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-4-1",
+   "name": "빙종곶 나루 · 표류 일지의 발견",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 6,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-4-1",
+   "name": "별돛 절벽 · 귀환자 명부의 작성",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 7,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-4-1",
+   "name": "청균정 다리 · 양안 주민의 표결",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 8,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-4-1",
+   "name": "붉은갈대 습원 · 둥지 이동의 관측",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 9,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-4-1",
+   "name": "울림못 극장 · 왕의 역을 둘러싼 논쟁",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 10,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-4-1",
+   "name": "검푸른문 망루 · 무장 창고의 봉쇄",
+   "when": "790년",
+   "start": -620619840,
+   "end": -620619840,
+   "track": 11,
+   "importance": 1
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/client-10",
+   "name": "붉은 돛 군벌",
+   "when": "792년 ~ 924년",
+   "start": -619568640,
+   "end": -550143360,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-4-2",
+   "name": "흰계단 관문 · 공동 서명 관례의 탄생",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/client-9-charter",
+   "name": "무음항 군정구 서약의 성립",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-4-2",
+   "name": "아홉굴 갱도 · 휴광 구역의 지정",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 1,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-4-2",
+   "name": "녹음다리 학교 · 공동 배움터의 개방",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 2,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-4-2",
+   "name": "먼바람 봉인실 · 분산 봉인의 정착",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 3,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-4-2",
+   "name": "맹세턱 우물 · 시간 부채의 상환",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 4,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-4-2",
+   "name": "회백둑 기억고 · 기억 반환권의 성립",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 5,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-4-2",
+   "name": "빙종곶 나루 · 안전 항로의 공표",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 6,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-4-2",
+   "name": "별돛 절벽 · 겹친 주거권의 조정",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 7,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-4-2",
+   "name": "청균정 다리 · 공동 관리 구간의 설치",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 8,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-4-2",
+   "name": "붉은갈대 습원 · 번식지의 임시 폐쇄",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 9,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-4-2",
+   "name": "울림못 극장 · 시민 합창의 초연",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 10,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-4-2",
+   "name": "검푸른문 망루 · 경계대의 주민 편입",
+   "when": "795년",
+   "start": -617990400,
+   "end": -617990400,
+   "track": 11,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-5-0",
+   "name": "파도문 망루 · 용병 급료의 중단",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-5-0",
+   "name": "탄루 수로 · 물길의 봉쇄",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-5-0",
+   "name": "뿌리종 법정 · 죽은 증인의 출석",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 2,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-5-0",
+   "name": "황금풀 치유소 · 잠을 잃은 병자들",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 3,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-5-0",
+   "name": "사금등 항로 · 빈 배의 입항",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 4,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-5-0",
+   "name": "세갈래 시장 · 이중 관세의 충돌",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 5,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-5-0",
+   "name": "눈문 숲길 · 잠들지 않는 나무",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 6,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-5-0",
+   "name": "깃문 회당 · 서로 다른 장례의 충돌",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 7,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-5-0",
+   "name": "깊은눈 민회 · 빠진 이름의 청원",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 8,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-5-0",
+   "name": "잔별섬 공방 · 부러진 도구의 봉기",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 9,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-5-0",
+   "name": "검은바늘 문서고 · 지워진 세금 명부",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 10,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-5-0",
+   "name": "돌아온별 공동 창고 · 재고 장부가 사라지다",
+   "when": "799년",
+   "start": -615886560,
+   "end": -615886560,
+   "track": 11,
+   "importance": 1
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-2",
+   "name": "잎울 시엘",
+   "when": "800년 ~ 896년",
+   "start": -615373200,
+   "end": -564881040,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-6",
+   "name": "눈고리 우셀",
+   "when": "800년 ~ 896년",
+   "start": -615373200,
+   "end": -564881040,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-8",
+   "name": "실온 네루",
+   "when": "미정 ~ 896년",
+   "start": -615373200,
+   "end": -564881040,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/client-10-charter",
+   "name": "붉은 돛 군벌 서약의 성립",
+   "when": "800년",
+   "start": -615360960,
+   "end": -615360960,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "period",
+   "uid": "moonwake-chronicle/client-12",
+   "name": "거울관 왕국",
+   "when": "802년 ~ 930년",
+   "start": -614308320,
+   "end": -546986880,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-5-1",
+   "name": "파도문 망루 · 무장 창고의 봉쇄",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-5-1",
+   "name": "탄루 수로 · 상류와 하류의 공동 조사",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-5-1",
+   "name": "뿌리종 법정 · 기억 증언의 재심",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 2,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-5-1",
+   "name": "황금풀 치유소 · 꿈 교대의 첫 실험",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 3,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-5-1",
+   "name": "사금등 항로 · 침묵 신호의 해독",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 4,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-5-1",
+   "name": "세갈래 시장 · 공동 저울 회담",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 5,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-5-1",
+   "name": "눈문 숲길 · 밤빛의 원인 조사",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 6,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-5-1",
+   "name": "깃문 회당 · 기억 보관자의 선언",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 7,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-5-1",
+   "name": "깊은눈 민회 · 방청석의 점거",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 8,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-5-1",
+   "name": "잔별섬 공방 · 공방 평의회의 중재",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 9,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-5-1",
+   "name": "검은바늘 문서고 · 필사관들의 증언",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 10,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-5-1",
+   "name": "돌아온별 공동 창고 · 주민 계량단이 구성되다",
+   "when": "804년",
+   "start": -613257120,
+   "end": -613257120,
+   "track": 11,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/client-11-charter",
+   "name": "일곱등 도시국 서약의 성립",
+   "when": "805년",
+   "start": -612730080,
+   "end": -612730080,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-3",
+   "name": "바람쇠 오룬",
+   "when": "806년 ~ 896년",
+   "start": -612217440,
+   "end": -564881040,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-1",
+   "name": "돌새 다론",
+   "when": "807년 ~ 881년",
+   "start": -611691480,
+   "end": -572770440,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-0",
+   "name": "은결 베루",
+   "when": "808년 ~ 896년",
+   "start": -611165520,
+   "end": -564881040,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-unknown",
+   "name": "첫 흑염의 발견",
+   "when": "808년",
+   "start": -611153280,
+   "end": -611153280,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-5-2",
+   "name": "파도문 망루 · 경계대의 주민 편입",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-5-2",
+   "name": "탄루 수로 · 물 배분표의 개정",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 1,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-5-2",
+   "name": "뿌리종 법정 · 증언 보존 규칙의 확정",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 2,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-5-2",
+   "name": "황금풀 치유소 · 공동 돌봄 기금의 설치",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 3,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-5-2",
+   "name": "사금등 항로 · 구조선의 귀환",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 4,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-5-2",
+   "name": "세갈래 시장 · 통행 증표의 교환",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 5,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-5-2",
+   "name": "눈문 숲길 · 빛 차단 울타리의 완공",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 6,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-5-2",
+   "name": "깃문 회당 · 선택 장례 규약의 채택",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 7,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-5-2",
+   "name": "깊은눈 민회 · 거주자 의결권의 확대",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 8,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-5-2",
+   "name": "잔별섬 공방 · 노동 시간표의 개정",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 9,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-5-2",
+   "name": "검은바늘 문서고 · 기록 열람일의 제정",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 10,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-5-2",
+   "name": "돌아온별 공동 창고 · 공개 장부가 채택되다",
+   "when": "809년",
+   "start": -610626240,
+   "end": -610626240,
+   "track": 11,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/client-12-charter",
+   "name": "거울관 왕국 서약의 성립",
+   "when": "810년",
+   "start": -610100640,
+   "end": -610100640,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-6-0",
+   "name": "유리항 공동 창고 · 재고 장부가 사라지다",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-6-0",
+   "name": "검은망치 성문 · 야간 경계대의 실종",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-6-0",
+   "name": "높은잎 관문 · 사절의 두 인장",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 2,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-6-0",
+   "name": "종울벌 갱도 · 울림을 잃은 광맥",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 3,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-6-0",
+   "name": "거울샘 학교 · 금지된 노래의 채록",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 4,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-6-0",
+   "name": "재물목 봉인실 · 봉인의 가느다란 균열",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 5,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-6-0",
+   "name": "흰숨항 우물 · 거꾸로 흐른 물시계",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 6,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-6-0",
+   "name": "뜬닻 기억고 · 돌려받지 못한 기억",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 7,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-6-0",
+   "name": "꿈실굴 나루 · 돌아오지 않는 나침반",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 8,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-6-0",
+   "name": "노을못 절벽 · 사라진 길의 재출현",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 9,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-6-0",
+   "name": "쇠나침 다리 · 경계석의 밤 이동",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 10,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-6-0",
+   "name": "먼빛항 습원 · 빛을 잃은 물새",
+   "when": "814년",
+   "start": -607996800,
+   "end": -607996800,
+   "track": 11,
+   "importance": 1
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-coast-6-1",
+   "name": "은결 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-obsidian-6-1",
+   "name": "돌새 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-canopy-6-1",
+   "name": "잎울 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-steppe-6-1",
+   "name": "바람쇠 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-mirror-6-1",
+   "name": "사경 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-delta-6-1",
+   "name": "갈빛 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-frost-6-1",
+   "name": "눈고리 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-sky-6-1",
+   "name": "깃새 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-root-6-1",
+   "name": "실온 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-dusk-6-1",
+   "name": "잔물 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-magnet-6-1",
+   "name": "침울 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/f-outer-6-1",
+   "name": "별여울 보세나",
+   "when": "816년 ~ 851년",
+   "start": -606957840,
+   "end": -588549240,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-4",
+   "name": "사경 레하",
+   "when": "816년 ~ 887년",
+   "start": -606957840,
+   "end": -569614680,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-11",
+   "name": "별여울 아루",
+   "when": "816년 ~ 미정",
+   "start": -606957840,
+   "end": -564881040,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "scope",
+   "uid": "moonwake-chronicle/scope-warlords",
+   "name": "빈 왕좌의 할거",
+   "when": "818년 ~ 930년",
+   "start": -605905920,
+   "end": -546998400,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-6-1",
+   "name": "유리항 공동 창고 · 주민 계량단이 구성되다",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-6-1",
+   "name": "검은망치 성문 · 피난 회랑의 확보",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-6-1",
+   "name": "높은잎 관문 · 문서 진위의 대조",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 2,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-6-1",
+   "name": "종울벌 갱도 · 폐갱의 생물 조사",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 3,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-6-1",
+   "name": "거울샘 학교 · 두 문자 교본의 편찬",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 4,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-6-1",
+   "name": "재물목 봉인실 · 네 이름의 공동 의식",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 5,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-6-1",
+   "name": "흰숨항 우물 · 사라진 하루의 측정",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 6,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-6-1",
+   "name": "뜬닻 기억고 · 회수 의식의 실패",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 7,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-6-1",
+   "name": "꿈실굴 나루 · 표류 일지의 발견",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 8,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-6-1",
+   "name": "노을못 절벽 · 귀환자 명부의 작성",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 9,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-6-1",
+   "name": "쇠나침 다리 · 양안 주민의 표결",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 10,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-6-1",
+   "name": "먼빛항 습원 · 둥지 이동의 관측",
+   "when": "819년",
+   "start": -605367360,
+   "end": -605367360,
+   "track": 11,
+   "importance": 1
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-10",
+   "name": "침울 보엔",
+   "when": "820년 ~ 893년",
+   "start": -604854000,
+   "end": -566458920,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-black-salt-war",
+   "name": "흑염 전쟁",
+   "when": "820년",
+   "start": -604841760,
+   "end": -575388000,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-7",
+   "name": "깃새 티아",
+   "when": "822년 ~ 885년",
+   "start": -603802080,
+   "end": -570666600,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-6-2",
+   "name": "유리항 공동 창고 · 공개 장부가 채택되다",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-6-2",
+   "name": "검은망치 성문 · 포로 교환의 완료",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 1,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-6-2",
+   "name": "높은잎 관문 · 공동 서명 관례의 탄생",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 2,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-6-2",
+   "name": "종울벌 갱도 · 휴광 구역의 지정",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 3,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-6-2",
+   "name": "거울샘 학교 · 공동 배움터의 개방",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 4,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-6-2",
+   "name": "재물목 봉인실 · 분산 봉인의 정착",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 5,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-6-2",
+   "name": "흰숨항 우물 · 시간 부채의 상환",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 6,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-6-2",
+   "name": "뜬닻 기억고 · 기억 반환권의 성립",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 7,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-6-2",
+   "name": "꿈실굴 나루 · 안전 항로의 공표",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 8,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-6-2",
+   "name": "노을못 절벽 · 겹친 주거권의 조정",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 9,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-6-2",
+   "name": "쇠나침 다리 · 공동 관리 구간의 설치",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 10,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-6-2",
+   "name": "먼빛항 습원 · 번식지의 임시 폐쇄",
+   "when": "823년",
+   "start": -603263520,
+   "end": -603263520,
+   "track": 11,
+   "importance": 2
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-9",
+   "name": "잔물 헤란",
+   "when": "824년 ~ 896년",
+   "start": -602750160,
+   "end": -564881040,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign",
+   "name": "별목 봉쇄",
+   "when": "824년",
+   "start": -602737920,
+   "end": -594848160,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-capital",
+   "name": "별목 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-0",
+   "name": "별목 봉쇄 · 전달자 체포",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-capital",
+   "name": "잔화문 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 1,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-capital",
+   "name": "새순문 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 2,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-capital",
+   "name": "말귀샘 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 3,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-capital",
+   "name": "일곱우물 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 4,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-capital",
+   "name": "갈대성 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 5,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-capital",
+   "name": "얼음귀 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 6,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-capital",
+   "name": "구름턱 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 7,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-capital",
+   "name": "고요뿌리 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 8,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-capital",
+   "name": "물문턱 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 9,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-capital",
+   "name": "자석문 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 10,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-capital",
+   "name": "긴꼬리 천도 · 흑염",
+   "when": "825년",
+   "start": -602210880,
+   "end": -602210880,
+   "track": 11,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-1",
+   "name": "별목 봉쇄 · 성문 폐쇄",
+   "when": "826년",
+   "start": -601685280,
+   "end": -601685280,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-2",
+   "name": "별목 봉쇄 · 피난민 도착",
+   "when": "827년",
+   "start": -601159680,
+   "end": -601159680,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "treaty",
+   "uid": "moonwake-chronicle/p-coast-6-treaty-1",
+   "name": "흰계단 휴전",
+   "when": "827년 5월 12일",
+   "start": -600971040,
+   "end": -575388000,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-7-0",
+   "name": "별목 습원 · 빛을 잃은 물새",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-3",
+   "name": "별목 봉쇄 · 우회로 발견",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-7-0",
+   "name": "잔화문 극장 · 가면 없는 첫 공연",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-7-0",
+   "name": "새순문 망루 · 용병 급료의 중단",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 2,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-7-0",
+   "name": "말귀샘 수로 · 물길의 봉쇄",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 3,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-7-0",
+   "name": "일곱우물 법정 · 죽은 증인의 출석",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 4,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-7-0",
+   "name": "갈대성 치유소 · 잠을 잃은 병자들",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 5,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-7-0",
+   "name": "얼음귀 항로 · 빈 배의 입항",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 6,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-7-0",
+   "name": "구름턱 시장 · 이중 관세의 충돌",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 7,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-7-0",
+   "name": "고요뿌리 숲길 · 잠들지 않는 나무",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 8,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-7-0",
+   "name": "물문턱 회당 · 서로 다른 장례의 충돌",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 9,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-7-0",
+   "name": "자석문 민회 · 빠진 이름의 청원",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 10,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-7-0",
+   "name": "긴꼬리 공방 · 부러진 도구의 봉기",
+   "when": "828년",
+   "start": -600634080,
+   "end": -600634080,
+   "track": 11,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-4",
+   "name": "별목 봉쇄 · 회랑 합의",
+   "when": "829년",
+   "start": -600107040,
+   "end": -600107040,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-campaign",
+   "name": "잔화문 공방전",
+   "when": "829년",
+   "start": -600107040,
+   "end": -592218720,
+   "track": 1,
+   "importance": 3
+  },
+  {
+   "kind": "figure",
+   "uid": "moonwake-chronicle/hero-5",
+   "name": "갈빛 메온",
+   "when": "830년 ~ 896년",
+   "start": -599594400,
+   "end": -564881040,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-5",
+   "name": "별목 봉쇄 · 보급선 충돌",
+   "when": "830년",
+   "start": -599581440,
+   "end": -599581440,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-campaign-0",
+   "name": "잔화문 공방전 · 전달자 체포",
+   "when": "830년",
+   "start": -599581440,
+   "end": -599581440,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "treaty",
+   "uid": "moonwake-chronicle/p-coast-6-treaty-2",
+   "name": "세 불빛 동맹",
+   "when": "830년 5월 12일",
+   "start": -599392800,
+   "end": -586958400,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-6",
+   "name": "별목 봉쇄 · 야간 구조",
+   "when": "831년",
+   "start": -599055840,
+   "end": -599055840,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-campaign-1",
+   "name": "잔화문 공방전 · 성문 폐쇄",
+   "when": "831년",
+   "start": -599055840,
+   "end": -599055840,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-7",
+   "name": "별목 봉쇄 · 장부 압수",
+   "when": "832년",
+   "start": -598530240,
+   "end": -598530240,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-campaign-2",
+   "name": "잔화문 공방전 · 피난민 도착",
+   "when": "832년",
+   "start": -598530240,
+   "end": -598530240,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-7-1",
+   "name": "별목 습원 · 둥지 이동의 관측",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-8",
+   "name": "별목 봉쇄 · 증언 공개",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-7-1",
+   "name": "잔화문 극장 · 왕의 역을 둘러싼 논쟁",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-campaign-3",
+   "name": "잔화문 공방전 · 우회로 발견",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-chronicle-7-1",
+   "name": "새순문 망루 · 무장 창고의 봉쇄",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 2,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-steppe-6-chronicle-7-1",
+   "name": "말귀샘 수로 · 상류와 하류의 공동 조사",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 3,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-mirror-6-chronicle-7-1",
+   "name": "일곱우물 법정 · 기억 증언의 재심",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 4,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-delta-6-chronicle-7-1",
+   "name": "갈대성 치유소 · 꿈 교대의 첫 실험",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 5,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-frost-6-chronicle-7-1",
+   "name": "얼음귀 항로 · 침묵 신호의 해독",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 6,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-sky-6-chronicle-7-1",
+   "name": "구름턱 시장 · 공동 저울 회담",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 7,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-root-6-chronicle-7-1",
+   "name": "고요뿌리 숲길 · 밤빛의 원인 조사",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 8,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-dusk-6-chronicle-7-1",
+   "name": "물문턱 회당 · 기억 보관자의 선언",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 9,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-magnet-6-chronicle-7-1",
+   "name": "자석문 민회 · 방청석의 점거",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 10,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-outer-6-chronicle-7-1",
+   "name": "긴꼬리 공방 · 공방 평의회의 중재",
+   "when": "833년",
+   "start": -598003200,
+   "end": -598003200,
+   "track": 11,
+   "importance": 1
+  },
+  {
+   "kind": "treaty",
+   "uid": "moonwake-chronicle/p-coast-6-treaty-3",
+   "name": "꿈실 불가침",
+   "when": "833년 5월 12일",
+   "start": -597814560,
+   "end": -585380160,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-9",
+   "name": "별목 봉쇄 · 무기고 인계",
+   "when": "834년",
+   "start": -597477600,
+   "end": -597477600,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-campaign-4",
+   "name": "잔화문 공방전 · 회랑 합의",
+   "when": "834년",
+   "start": -597477600,
+   "end": -597477600,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-campaign",
+   "name": "수관 회랑",
+   "when": "834년",
+   "start": -597477600,
+   "end": -589587840,
+   "track": 2,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-10",
+   "name": "별목 봉쇄 · 포로 교환",
+   "when": "835년",
+   "start": -596952000,
+   "end": -596952000,
+   "track": 0,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-campaign-5",
+   "name": "잔화문 공방전 · 보급선 충돌",
+   "when": "835년",
+   "start": -596952000,
+   "end": -596952000,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-campaign-0",
+   "name": "수관 회랑 · 전달자 체포",
+   "when": "835년",
+   "start": -596952000,
+   "end": -596952000,
+   "track": 2,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-campaign-11",
+   "name": "별목 봉쇄 · 귀환 명부 확정",
+   "when": "836년",
+   "start": -596426400,
+   "end": -596426400,
+   "track": 0,
+   "importance": 2
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-coast-6-disputed-date",
+   "name": "돌려받는 밤의 첫 의식",
+   "when": "836년",
+   "start": -596426400,
+   "end": -596426400,
+   "track": 0,
+   "importance": 3
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-obsidian-6-campaign-6",
+   "name": "잔화문 공방전 · 야간 구조",
+   "when": "836년",
+   "start": -596426400,
+   "end": -596426400,
+   "track": 1,
+   "importance": 1
+  },
+  {
+   "kind": "event",
+   "uid": "moonwake-chronicle/p-canopy-6-campaign-1",
+   "name": "수관 회랑 · 성문 폐쇄",
+   "when": "836년",
+   "start": -596426400,
+   "end": -596426400,
+   "track": 2,
+   "importance": 1
+  }
+ ],
+ "entities": [
+  {
+   "uid": "moonwake-chronicle/myth-semi",
+   "kind": "period",
+   "json": "{\"id\":\"myth-semi\",\"track\":\"mw-mirror\",\"name\":\"안개 문지기국\",\"start\":-1030,\"end\":-710,\"certainty\":\"estimated\",\"startRange\":[-1060,-1000],\"historicity\":\"semi\",\"historicityNote\":\"성채 유적은 있지만 군주 이야기는 후대 노래로만 전한다.\",\"description\":\"실재성과 연대의 확실성은 별개의 문제임을 보여 주는 월흔해 내부의 논쟁.\",\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"moonwake-chronicle/myth-semi\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":-710,\"spanMin\":-1060,\"spanMax\":-710,\"colorAuto\":true,\"color\":\"#bbacc8\",\"peopleId\":null,\"peoplePath\":[],\"singleHost\":false}"
+  },
+  {
+   "uid": "moonwake-chronicle/myth-legendary",
+   "kind": "period",
+   "json": "{\"id\":\"myth-legendary\",\"track\":\"mw-mirror\",\"name\":\"두 달의 궁정\",\"start\":-960,\"end\":-650,\"certainty\":\"legend\",\"startRange\":[-990,-930],\"historicity\":\"legendary\",\"historicityNote\":\"달이 사람과 맹약했다는 창세가에만 등장한다.\",\"description\":\"실재성과 연대의 확실성은 별개의 문제임을 보여 주는 월흔해 내부의 논쟁.\",\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"moonwake-chronicle/myth-legendary\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":-650,\"spanMin\":-990,\"spanMax\":-650,\"colorAuto\":true,\"color\":\"#b6c398\",\"peopleId\":null,\"peoplePath\":[],\"singleHost\":false}"
+  },
+  {
+   "uid": "moonwake-chronicle/myth-disputed",
+   "kind": "period",
+   "json": "{\"id\":\"myth-disputed\",\"track\":\"mw-mirror\",\"name\":\"빈 종 왕국\",\"start\":-890,\"end\":-590,\"certainty\":\"estimated\",\"startRange\":[-920,-860],\"historicity\":\"disputed\",\"historicityNote\":\"도시 하나를 국가로 볼 수 있는지를 두고 학계가 갈린다.\",\"description\":\"실재성과 연대의 확실성은 별개의 문제임을 보여 주는 월흔해 내부의 논쟁.\",\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"moonwake-chronicle/myth-disputed\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":-590,\"spanMin\":-920,\"spanMax\":-590,\"colorAuto\":true,\"color\":\"#d1a9b9\",\"peopleId\":null,\"peoplePath\":[],\"singleHost\":false}"
+  },
+  {
+   "uid": "moonwake-chronicle/p-coast-6-unknown",
+   "kind": "event",
+   "json": "{\"id\":\"p-coast-6-unknown\",\"track\":\"mw-coast\",\"title\":\"첫 흑염의 발견\",\"start\":808,\"startUnknown\":true,\"category\":\"mw-magic\",\"importance\":3,\"polity\":\"p-coast-6\",\"alternatives\":[{\"start\":804,\"label\":\"광부 구술설\"},{\"start\":815,\"label\":\"왕실 실험실설\"}],\"debate\":\"발견과 대량 생산의 시작을 구별해야 한다.\",\"description\":\"흑염이 전쟁 전에 있었는지는 확실하지만 발견 연도는 모른다.\",\"itemKind\":\"event\",\"kind\":\"event\",\"uid\":\"moonwake-chronicle/p-coast-6-unknown\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":808,\"certainty\":\"accepted\",\"spanMin\":804,\"spanMax\":815,\"color\":\"#bbacc8\",\"polityUid\":\"moonwake-chronicle/p-coast-6\",\"polityName\":\"은륜 제국\",\"polityColor\":\"#abb3c9\",\"shared\":false}"
+  },
+  {
+   "uid": "moonwake-chronicle/culture-coast",
+   "kind": "culture",
+   "json": "{\"id\":\"culture-coast\",\"track\":\"mw-coast\",\"name\":\"유리항 매듭토기 문화\",\"start\":-1400,\"end\":-750,\"certainty\":\"estimated\",\"startRange\":[-1550,-1350],\"alternatives\":[{\"start\":-1490,\"label\":\"깊은 층위설\",\"end\":-810,\"source\":\"가상 발굴 보고서 『매듭 아래』\"}],\"people\":\"mw-people-coast\",\"color\":\"#a0bcc5\",\"description\":\"매듭 모양 토기에 식량과 기억의 공동 소유 흔적이 남았다.\",\"kind\":\"period\",\"polityKind\":\"culture\",\"itemKind\":\"culture\",\"uid\":\"moonwake-chronicle/culture-coast\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":-750,\"spanMin\":-1550,\"spanMax\":-750,\"peopleId\":\"mw-people-coast\",\"peopleName\":\"해민\",\"peopleColor\":\"#a0bcc5\",\"peoplePath\":[{\"id\":\"mw-folk\",\"name\":\"월흔해의 백성\",\"parent\":\"\",\"color\":\"#dab195\",\"description\":\"생김새보다 공동의 권리와 기억을 중심으로 분류한다.\",\"wiki\":\"\",\"order\":1000,\"seq\":0,\"auto\":false,\"parentId\":null,\"path\":[\"mw-folk\"],\"depth\":0,\"children\":[\"mw-species-0\",\"mw-species-1\",\"mw-species-2\",\"mw-species-3\",\"mw-species-4\",\"mw-species-5\",\"mw-species-6\",\"mw-species-7\",\"mw-species-8\",\"mw-species-9\"]},{\"id\":\"mw-species-0\",\"name\":\"등불사람\",\"parent\":\"mw-folk\",\"color\":\"#a0bcc5\",\"description\":\"등불사람의 생활은 지방에 따라 다르며 혈통만으로 소속을 결정하지 않는다.\",\"wiki\":\"\",\"order\":1001,\"seq\":1,\"auto\":false,\"parentId\":\"mw-folk\",\"path\":[\"mw-folk\",\"mw-species-0\"],\"depth\":1,\"children\":[\"mw-people-coast\",\"mw-people-delta\"]},{\"id\":\"mw-people-coast\",\"name\":\"해민\",\"parent\":\"mw-species-0\",\"color\":\"#a0bcc5\",\"description\":\"기억을 팔아 진 빚도 후손에게 상속되는지를 두고 항구와 왕실이 다툰다.\",\"wiki\":\"== 해민 ==\\n등불사람에 속하는 생활 공동체. 파도가 지나간 자리에 사람의 기억이 결정으로 남는다.\\n기억을 팔아 진 빚도 후손에게 상속되는지를 두고 항구와 왕실이 다툰다.\\n다른 종족 출신이라도 공동체에 참여할 수 있어 민족·가문·국적은 일치하지 않는다.\",\"order\":1011,\"seq\":11,\"auto\":false,\"parentId\":\"mw-species-0\",\"path\":[\"mw-folk\",\"mw-species-0\",\"mw-people-coast\"],\"depth\":2,\"children\":[]}],\"singleHost\":false,\"successorNames\":[\"p-coast-0\"],\"wiki\":\"== 유리항 매듭토기 문화 ==\\n매듭 모양 토기에 식량과 기억의 공동 소유 흔적이 남았다.\\n[[월흔해 안내서/구성요소 길잡이]]에서 관련 표현을 찾아볼 수 있다.\"}"
+  },
+  {
+   "uid": "moonwake-chronicle/epoch-6",
+   "kind": "epoch",
+   "json": "{\"id\":\"epoch-6\",\"name\":\"흑염 전쟁 시대\",\"start\":720,\"end\":960,\"color\":\"#abb3c9\",\"note\":\"기억을 돌려 달라는 봉기와 검은 소금의 확산이 열두 땅을 전쟁으로 끌어들였다.\",\"alternatives\":[{\"start\":708,\"label\":\"꿈실 학파의 긴 전쟁설\",\"end\":968,\"source\":\"가상 문헌 『돌려받지 못한 밤』\"},{\"label\":\"전쟁을 하나의 시대로 묶지 않는 견해\",\"note\":\"평화로운 지방의 생활사는 단절되지 않았다고 본다.\"}],\"kind\":\"epoch\",\"itemKind\":\"epoch\",\"uid\":\"moonwake-chronicle/epoch-6\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":960,\"trackName\":\"\",\"wiki\":\"== 흑염 전쟁 시대 ==\\n기억을 돌려 달라는 봉기와 검은 소금의 확산이 열두 땅을 전쟁으로 끌어들였다.\\n연대의 경계는 국가·왕조·생활사의 경계와 반드시 일치하지 않는다.\"}"
+  },
+  {
+   "uid": "moonwake-chronicle/f-coast-6-0",
+   "kind": "figure",
+   "json": "{\"id\":\"f-coast-6-0\",\"track\":\"mw-coast\",\"name\":\"은결 디세나\",\"aka\":[\"유리항의 길잡이\"],\"role\":\"탐험가\",\"birth\":746,\"death\":815,\"start\":768,\"end\":803,\"service\":[{\"polity\":\"p-coast-6\",\"office\":\"항로 조사관\",\"start\":768,\"end\":803}],\"house\":\"h-coast-0\",\"importance\":3,\"description\":\"기억염의 사용이 주민 생활에 남긴 문제를 다루었다. 기억을 팔아 진 빚도 후손에게 상속되는지를 두고 항구와 왕실이 다툰다.\",\"tags\":[\"기억염\",\"지방 기록\"],\"source\":\"가상 문헌 『유리항 인명록』\",\"kind\":\"figure\",\"itemKind\":\"figure\",\"uid\":\"moonwake-chronicle/f-coast-6-0\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"startAuto\":false,\"endAuto\":false,\"endY\":803,\"certainty\":\"accepted\",\"spanMin\":746,\"spanMax\":815,\"polityUid\":\"moonwake-chronicle/p-coast-6\",\"polityName\":\"은륜 제국\",\"polityColor\":\"#abb3c9\",\"color\":\"#abb3c9\",\"houseId\":\"h-coast-0\",\"houseName\":\"은결 본가\",\"houseColor\":\"#a0bcc5\"}"
+  },
+  {
+   "uid": "moonwake-chronicle/f-obsidian-6-0",
+   "kind": "figure",
+   "json": "{\"id\":\"f-obsidian-6-0\",\"track\":\"mw-obsidian\",\"name\":\"돌새 디세나\",\"aka\":[\"검은망치의 길잡이\"],\"role\":\"탐험가\",\"birth\":746,\"death\":815,\"start\":768,\"end\":803,\"service\":[{\"polity\":\"p-obsidian-6\",\"office\":\"항로 조사관\",\"start\":768,\"end\":803}],\"house\":\"h-obsidian-0\",\"importance\":3,\"description\":\"잔화석의 사용이 주민 생활에 남긴 문제를 다루었다. 광부의 노동 시간을 왕실의 화산 봉인 의무와 교환한다.\",\"tags\":[\"잔화석\",\"지방 기록\"],\"source\":\"가상 문헌 『검은망치 인명록』\",\"kind\":\"figure\",\"itemKind\":\"figure\",\"uid\":\"moonwake-chronicle/f-obsidian-6-0\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"startAuto\":false,\"endAuto\":false,\"endY\":803,\"certainty\":\"accepted\",\"spanMin\":746,\"spanMax\":815,\"polityUid\":\"moonwake-chronicle/p-obsidian-6\",\"polityName\":\"아홉굴 서약왕국\",\"polityColor\":\"#bbacc8\",\"color\":\"#bbacc8\",\"houseId\":\"h-obsidian-0\",\"houseName\":\"돌새 본가\",\"houseColor\":\"#bba395\"}"
+  },
+  {
+   "uid": "moonwake-chronicle/f-canopy-6-0",
+   "kind": "figure",
+   "json": "{\"id\":\"f-canopy-6-0\",\"track\":\"mw-canopy\",\"name\":\"잎울 디세나\",\"aka\":[\"높은잎의 길잡이\"],\"role\":\"탐험가\",\"birth\":746,\"death\":815,\"start\":768,\"end\":803,\"service\":[{\"polity\":\"p-canopy-6\",\"office\":\"항로 조사관\",\"start\":768,\"end\":803}],\"house\":\"h-canopy-0\",\"importance\":3,\"description\":\"빛나무의 사용이 주민 생활에 남긴 문제를 다루었다. 오래 산 나무의 증언과 살아 있는 주민의 동의 중 무엇이 우선인지 논쟁한다.\",\"tags\":[\"빛나무\",\"지방 기록\"],\"source\":\"가상 문헌 『높은잎 인명록』\",\"kind\":\"figure\",\"itemKind\":\"figure\",\"uid\":\"moonwake-chronicle/f-canopy-6-0\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"startAuto\":false,\"endAuto\":false,\"endY\":803,\"certainty\":\"accepted\",\"spanMin\":746,\"spanMax\":815,\"polityUid\":\"moonwake-chronicle/p-canopy-6\",\"polityName\":\"녹음다리 서약왕국\",\"polityColor\":\"#b6c398\",\"color\":\"#b6c398\",\"houseId\":\"h-canopy-0\",\"houseName\":\"잎울 본가\",\"houseColor\":\"#9dbea8\"}"
+  },
+  {
+   "uid": "moonwake-chronicle/p-coast-6-chronicle-3-2",
+   "kind": "event",
+   "json": "{\"id\":\"p-coast-6-chronicle-3-2\",\"track\":\"mw-coast\",\"title\":\"별목 법정 · 증언 보존 규칙의 확정\",\"start\":780,\"category\":\"politics\",\"importance\":2,\"polity\":\"p-coast-6\",\"description\":\"기억은 중요한 증거이지만 반대신문 없는 판결의 유일한 근거로 삼지 않기로 했다. 기억염의 관리에 적용된 흰계단 서약왕국의 지방 기록이다.\",\"itemKind\":\"event\",\"kind\":\"event\",\"uid\":\"moonwake-chronicle/p-coast-6-chronicle-3-2\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":780,\"certainty\":\"accepted\",\"spanMin\":780,\"spanMax\":780,\"color\":\"#abb3c9\",\"polityUid\":\"moonwake-chronicle/p-coast-6\",\"polityName\":\"은륜 제국\",\"polityColor\":\"#abb3c9\",\"shared\":false}"
+  },
+  {
+   "uid": "moonwake-chronicle/client-6-charter",
+   "kind": "event",
+   "json": "{\"id\":\"client-6-charter\",\"track\":\"mw-coast\",\"title\":\"검은 인장 정부 서약의 성립\",\"start\":780,\"category\":\"diplomacy\",\"importance\":3,\"polity\":\"client-6\",\"description\":\"왕실이 직접 고른 대리인이 민회의 이름을 사용했다.\",\"itemKind\":\"event\",\"kind\":\"event\",\"uid\":\"moonwake-chronicle/client-6-charter\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":780,\"certainty\":\"accepted\",\"spanMin\":780,\"spanMax\":780,\"color\":\"#9dbea8\",\"polityUid\":\"moonwake-chronicle/client-6\",\"polityName\":\"검은 인장 정부\",\"polityColor\":\"#abb3c9\",\"shared\":false}"
+  },
+  {
+   "uid": "moonwake-chronicle/p-obsidian-6-chronicle-3-2",
+   "kind": "event",
+   "json": "{\"id\":\"p-obsidian-6-chronicle-3-2\",\"track\":\"mw-obsidian\",\"title\":\"잔화문 치유소 · 공동 돌봄 기금의 설치\",\"start\":780,\"category\":\"society\",\"importance\":2,\"polity\":\"p-obsidian-6\",\"description\":\"가공장 이익의 일부가 치료와 장기 관찰에 쓰이도록 했다. 잔화석의 관리에 적용된 아홉굴 서약왕국의 지방 기록이다.\",\"itemKind\":\"event\",\"kind\":\"event\",\"uid\":\"moonwake-chronicle/p-obsidian-6-chronicle-3-2\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":780,\"certainty\":\"accepted\",\"spanMin\":780,\"spanMax\":780,\"color\":\"#d7c18e\",\"polityUid\":\"moonwake-chronicle/p-obsidian-6\",\"polityName\":\"아홉굴 서약왕국\",\"polityColor\":\"#bbacc8\",\"shared\":false}"
+  },
+  {
+   "uid": "moonwake-chronicle/scope-warlords",
+   "kind": "scope",
+   "json": "{\"id\":\"scope-warlords\",\"track\":\"mw-coast\",\"name\":\"빈 왕좌의 할거\",\"label\":\"할거\",\"start\":818,\"end\":930,\"host\":{\"$ref\":\"moonwake-chronicle/p-coast-6\",\"name\":\"은륜 제국\"},\"color\":\"#d4a39b\",\"description\":\"제국이 남아 있을 때 명목상 왕을 받든 군벌과 대리정부의 묶음.\",\"kind\":\"scope\",\"itemKind\":\"scope\",\"uid\":\"moonwake-chronicle/scope-warlords\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"hostRef\":\"p-coast-6\",\"epochRef\":null,\"epoch\":null,\"warnings\":[],\"default\":false,\"endY\":930,\"trackName\":\"유리해안\",\"afterHost\":false,\"wiki\":\"== 빈 왕좌의 할거 ==\\n제국이 남아 있을 때 명목상 왕을 받든 군벌과 대리정부의 묶음.\\n[[월흔해 안내서/구성요소 길잡이]]에서 관련 표현을 찾아볼 수 있다.\"}"
+  },
+  {
+   "uid": "moonwake-chronicle/p-coast-6-treaty-1",
+   "kind": "treaty",
+   "json": "{\"id\":\"p-coast-6-treaty-1\",\"track\":\"mw-coast\",\"title\":\"흰계단 휴전\",\"start\":827.358904109589,\"startAt\":\"827-05-12\",\"end\":876,\"category\":\"diplomacy\",\"importance\":3,\"polity\":\"p-coast-6\",\"description\":\"흑염 전쟁과 기억 권리 분쟁을 해결하는 과정에서 맺은 조약. 서명한 인물을 누르면 생애와 활동 기록으로 이어진다.\",\"treaty\":{\"formal\":\"흰계단 휴전에 관한 공동 인장 원문\",\"type\":\"armistice\",\"ratified\":827.5041095890411,\"ratifiedAt\":\"827-07-04\",\"effective\":828,\"effectiveAt\":\"828-01-01\",\"endReason\":\"superseded\",\"place\":\"흰계단 공용 회당\",\"languages\":[\"등불말\",\"울림말\",\"나이테글\"],\"parties\":[{\"track\":\"mw-coast\",\"polity\":\"p-coast-6\",\"side\":1,\"role\":\"교섭 제안국\",\"signatories\":[{\"name\":\"은결 베루\",\"title\":\"인장을 내려놓은 군주\"}]},{\"track\":\"mw-obsidian\",\"polity\":\"p-obsidian-6\",\"side\":2,\"role\":\"교섭 참가국\",\"signatories\":[{\"name\":\"돌새 다론\",\"title\":\"광부 출신 사절\"}]}],\"articles\":[{\"no\":\"제1조\",\"title\":\"경계와 거주\",\"tag\":\"territory\",\"text\":\"강물이나 하늘길이 움직여도 기존 거주자를 즉시 추방하지 않는다. 공동 조사를 마칠 때까지 양측의 생활권을 보장한다.\"},{\"no\":\"제2조\",\"title\":\"기억의 배상\",\"tag\":\"indemnity\",\"text\":\"반환할 수 없는 기억은 가족의 기억으로 대신 징수하지 않는다. 당사자가 정한 회복 지원과 생계 보상으로 책임을 진다.\"},{\"no\":\"제3조\",\"title\":\"공동 통상\",\"tag\":\"trade\",\"text\":\"기억이 든 짐과 빈 용기의 관세를 구별하고 동일한 짐에 두 번 세금을 매기지 않는다.\"},{\"no\":\"제4조\",\"title\":\"법정의 관할\",\"tag\":\"extraterritorial\",\"text\":\"상인의 출신만으로 현지 법정의 관할을 배제하지 않는다. 공동 심리에는 피해 주민의 대리인이 참여한다.\"},{\"no\":\"제5조\",\"title\":\"군사와 회랑\",\"tag\":\"military\",\"text\":\"부상자·피난민·구조선은 군량과 분리해 이동시킨다. 회랑 폐쇄는 공동 위원회의 공개 의결을 거친다.\"},{\"no\":\"제6조\",\"title\":\"서로의 승인\",\"tag\":\"recognition\",\"text\":\"다른 나라의 인장을 승인해도 그 나라의 모든 왕위 주장을 승인한 것으로 보지 않는다.\"},{\"no\":\"제7조\",\"title\":\"기록의 보존\",\"tag\":\"other\",\"text\":\"모든 언어의 정본을 함께 보관하며 번역 충돌이 생기면 원문과 이견을 동시에 공개한다.\"}]},\"itemKind\":\"treaty\",\"kind\":\"event\",\"uid\":\"moonwake-chronicle/p-coast-6-treaty-1\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":876,\"certainty\":\"accepted\",\"spanMin\":827.358904109589,\"spanMax\":876,\"color\":\"#9dbea8\",\"polityUid\":\"moonwake-chronicle/p-coast-6\",\"polityName\":\"은륜 제국\",\"polityColor\":\"#abb3c9\",\"shared\":true,\"sharedWith\":[\"아홉굴 서약왕국\"]}"
+  },
+  {
+   "uid": "moonwake-chronicle/p-coast-6-treaty-2",
+   "kind": "treaty",
+   "json": "{\"id\":\"p-coast-6-treaty-2\",\"track\":\"mw-coast\",\"title\":\"세 불빛 동맹\",\"start\":830.358904109589,\"startAt\":\"830-05-12\",\"end\":854,\"category\":\"diplomacy\",\"importance\":3,\"polity\":\"p-coast-6\",\"description\":\"흑염 전쟁과 기억 권리 분쟁을 해결하는 과정에서 맺은 조약. 서명한 인물을 누르면 생애와 활동 기록으로 이어진다.\",\"treaty\":{\"formal\":\"세 불빛 동맹에 관한 공동 인장 원문\",\"type\":\"alliance\",\"ratified\":830.5041095890411,\"ratifiedAt\":\"830-07-04\",\"effective\":831,\"effectiveAt\":\"831-01-01\",\"endReason\":\"expired\",\"place\":\"흰계단 공용 회당\",\"languages\":[\"등불말\",\"울림말\",\"나이테글\"],\"parties\":[{\"track\":\"mw-coast\",\"polity\":\"p-coast-6\",\"role\":\"교섭 제안국\",\"signatories\":[{\"name\":\"은결 베루\",\"title\":\"인장을 내려놓은 군주\"}]},{\"track\":\"mw-obsidian\",\"polity\":\"p-obsidian-6\",\"role\":\"교섭 참가국\",\"signatories\":[{\"name\":\"돌새 다론\",\"title\":\"광부 출신 사절\"}]},{\"track\":\"mw-canopy\",\"polity\":\"p-canopy-6\",\"role\":\"교섭 참가국\",\"signatories\":[{\"name\":\"잎울 시엘\",\"title\":\"나이테 사서\"}]},{\"track\":\"mw-steppe\",\"polity\":\"p-steppe-6\",\"role\":\"교섭 참가국\",\"signatories\":[{\"name\":\"바람쇠 오룬\",\"title\":\"이동권 대표\"}]}],\"articles\":[{\"no\":\"제1조\",\"title\":\"경계와 거주\",\"tag\":\"territory\",\"text\":\"강물이나 하늘길이 움직여도 기존 거주자를 즉시 추방하지 않는다. 공동 조사를 마칠 때까지 양측의 생활권을 보장한다.\"},{\"no\":\"제2조\",\"title\":\"기억의 배상\",\"tag\":\"indemnity\",\"text\":\"반환할 수 없는 기억은 가족의 기억으로 대신 징수하지 않는다. 당사자가 정한 회복 지원과 생계 보상으로 책임을 진다.\"},{\"no\":\"제3조\",\"title\":\"공동 통상\",\"tag\":\"trade\",\"text\":\"기억이 든 짐과 빈 용기의 관세를 구별하고 동일한 짐에 두 번 세금을 매기지 않는다.\"},{\"no\":\"제4조\",\"title\":\"법정의 관할\",\"tag\":\"extraterritorial\",\"text\":\"상인의 출신만으로 현지 법정의 관할을 배제하지 않는다. 공동 심리에는 피해 주민의 대리인이 참여한다.\"},{\"no\":\"제5조\",\"title\":\"군사와 회랑\",\"tag\":\"military\",\"text\":\"부상자·피난민·구조선은 군량과 분리해 이동시킨다. 회랑 폐쇄는 공동 위원회의 공개 의결을 거친다.\"},{\"no\":\"제6조\",\"title\":\"서로의 승인\",\"tag\":\"recognition\",\"text\":\"다른 나라의 인장을 승인해도 그 나라의 모든 왕위 주장을 승인한 것으로 보지 않는다.\"},{\"no\":\"제7조\",\"title\":\"기록의 보존\",\"tag\":\"other\",\"text\":\"모든 언어의 정본을 함께 보관하며 번역 충돌이 생기면 원문과 이견을 동시에 공개한다.\"}]},\"itemKind\":\"treaty\",\"kind\":\"event\",\"uid\":\"moonwake-chronicle/p-coast-6-treaty-2\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":854,\"certainty\":\"accepted\",\"spanMin\":830.358904109589,\"spanMax\":854,\"color\":\"#9dbea8\",\"polityUid\":\"moonwake-chronicle/p-coast-6\",\"polityName\":\"은륜 제국\",\"polityColor\":\"#abb3c9\",\"shared\":true,\"sharedWith\":[\"아홉굴 서약왕국\",\"녹음다리 서약왕국\",\"먼바람 서약왕국\"]}"
+  },
+  {
+   "uid": "moonwake-chronicle/p-coast-6-treaty-3",
+   "kind": "treaty",
+   "json": "{\"id\":\"p-coast-6-treaty-3\",\"track\":\"mw-coast\",\"title\":\"꿈실 불가침\",\"start\":833.358904109589,\"startAt\":\"833-05-12\",\"end\":857,\"category\":\"diplomacy\",\"importance\":3,\"polity\":\"p-coast-6\",\"description\":\"흑염 전쟁과 기억 권리 분쟁을 해결하는 과정에서 맺은 조약. 서명한 인물을 누르면 생애와 활동 기록으로 이어진다.\",\"treaty\":{\"formal\":\"꿈실 불가침에 관한 공동 인장 원문\",\"type\":\"nonaggression\",\"ratified\":833.5041095890411,\"ratifiedAt\":\"833-07-04\",\"effective\":834,\"effectiveAt\":\"834-01-01\",\"endReason\":\"abrogated\",\"place\":\"흰계단 공용 회당\",\"languages\":[\"등불말\",\"울림말\",\"나이테글\"],\"parties\":[{\"track\":\"mw-coast\",\"polity\":\"p-coast-6\",\"side\":1,\"role\":\"교섭 제안국\",\"signatories\":[{\"name\":\"은결 베루\",\"title\":\"인장을 내려놓은 군주\"}]},{\"track\":\"mw-obsidian\",\"polity\":\"p-obsidian-6\",\"side\":2,\"role\":\"교섭 참가국\",\"signatories\":[{\"name\":\"돌새 다론\",\"title\":\"광부 출신 사절\"}]}],\"articles\":[{\"no\":\"제1조\",\"title\":\"경계와 거주\",\"tag\":\"territory\",\"text\":\"강물이나 하늘길이 움직여도 기존 거주자를 즉시 추방하지 않는다. 공동 조사를 마칠 때까지 양측의 생활권을 보장한다.\"},{\"no\":\"제2조\",\"title\":\"기억의 배상\",\"tag\":\"indemnity\",\"text\":\"반환할 수 없는 기억은 가족의 기억으로 대신 징수하지 않는다. 당사자가 정한 회복 지원과 생계 보상으로 책임을 진다.\"},{\"no\":\"제3조\",\"title\":\"공동 통상\",\"tag\":\"trade\",\"text\":\"기억이 든 짐과 빈 용기의 관세를 구별하고 동일한 짐에 두 번 세금을 매기지 않는다.\"},{\"no\":\"제4조\",\"title\":\"법정의 관할\",\"tag\":\"extraterritorial\",\"text\":\"상인의 출신만으로 현지 법정의 관할을 배제하지 않는다. 공동 심리에는 피해 주민의 대리인이 참여한다.\"},{\"no\":\"제5조\",\"title\":\"군사와 회랑\",\"tag\":\"military\",\"text\":\"부상자·피난민·구조선은 군량과 분리해 이동시킨다. 회랑 폐쇄는 공동 위원회의 공개 의결을 거친다.\"},{\"no\":\"제6조\",\"title\":\"서로의 승인\",\"tag\":\"recognition\",\"text\":\"다른 나라의 인장을 승인해도 그 나라의 모든 왕위 주장을 승인한 것으로 보지 않는다.\"},{\"no\":\"제7조\",\"title\":\"기록의 보존\",\"tag\":\"other\",\"text\":\"모든 언어의 정본을 함께 보관하며 번역 충돌이 생기면 원문과 이견을 동시에 공개한다.\"}]},\"itemKind\":\"treaty\",\"kind\":\"event\",\"uid\":\"moonwake-chronicle/p-coast-6-treaty-3\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"endY\":857,\"certainty\":\"accepted\",\"spanMin\":833.358904109589,\"spanMax\":857,\"color\":\"#9dbea8\",\"polityUid\":\"moonwake-chronicle/p-coast-6\",\"polityName\":\"은륜 제국\",\"polityColor\":\"#abb3c9\",\"shared\":true,\"sharedWith\":[\"아홉굴 서약왕국\"]}"
+  }
+ ]
+}

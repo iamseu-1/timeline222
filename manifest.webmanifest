@@ -1,0 +1,24 @@
+{
+  "name": "역사 연표",
+  "short_name": "역사 연표",
+  "description": "동아시아사를 한눈에 보는 연표. DLC로 다른 지역·주제를 더할 수 있습니다.",
+  "lang": "ko",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "연표", "url": "index.html", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ],
+  "file_handlers": [
+    { "action": "index.html", "accept": { "application/x-htpack": [".htpack"] } }
+  ]
+}

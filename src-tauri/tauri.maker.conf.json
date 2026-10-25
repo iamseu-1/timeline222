@@ -1,0 +1,25 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "HistoryTimelineMaker",
+  "mainBinaryName": "HistoryTimelineMaker",
+  "identifier": "com.historytimeline.maker",
+  "build": {
+    "frontendDist": "../dist/maker"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "DLC 메이커 — 역사 연표",
+        "url": "dlc-maker.html",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 900,
+        "minHeight": 600,
+        "resizable": true,
+        "fullscreen": false,
+        "dragDropEnabled": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,348 @@
+{
+ "note": "lens-export-check.mjs가 sample-ranks에서 뜬 렌즈 자료(웹 HEAD) — 손으로 고치지 않는다",
+ "themes": "{\"list\":[{\"id\":\"system\",\"name\":\"체제\",\"color\":\"#abb3c9\",\"order\":0},{\"id\":\"faction\",\"name\":\"붕당\",\"color\":\"#d4a39b\",\"order\":1},{\"id\":\"law\",\"name\":\"법률\",\"color\":\"#bba395\",\"order\":2},{\"id\":\"election\",\"name\":\"선거제도\",\"color\":\"#a0bcc5\",\"order\":3},{\"id\":\"ideology\",\"name\":\"이념\",\"color\":\"#bbacc8\",\"order\":4},{\"id\":\"military\",\"name\":\"군사제도\",\"color\":\"#b6c398\",\"order\":5},{\"id\":\"tax\",\"name\":\"조세제도\",\"color\":\"#d7c18e\",\"order\":6},{\"id\":\"selection\",\"name\":\"선발제도\",\"color\":\"#9dbea8\",\"order\":7}],\"x_lens\":{\"slot\":[\"rank-hill\",\"rank-river\"],\"themes\":[{\"id\":\"system\",\"hint\":\"나라의 짜임\",\"has\":1,\"v\":1},{\"id\":\"faction\",\"hint\":\"집권한 단체\",\"has\":0},{\"id\":\"law\",\"hint\":\"법 · 법전\",\"has\":0},{\"id\":\"election\",\"hint\":\"뽑는 방법\",\"has\":0},{\"id\":\"ideology\",\"hint\":\"기준 이념\",\"has\":0},{\"id\":\"military\",\"hint\":\"병제\",\"has\":0},{\"id\":\"tax\",\"hint\":\"세금 거두는 법\",\"has\":0},{\"id\":\"selection\",\"hint\":\"관리 뽑는 법\",\"has\":0}]}}",
+ "tracks": [
+  {
+   "key": "rank-hill",
+   "leader": 1,
+   "rows": 2
+  },
+  {
+   "key": "rank-river",
+   "leader": 1,
+   "rows": 3
+  }
+ ],
+ "variants": [
+  {
+   "key": "theme:system",
+   "kind": 4,
+   "uid": "system",
+   "name": "체제",
+   "hides": 33
+  }
+ ],
+ "cells": [
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/bawi",
+   "lane": 0,
+   "start": -983524320,
+   "end": -867817440,
+   "name": "공",
+   "style": 402686976,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/bawi",
+   "lane": 0,
+   "start": -867817440,
+   "end": -752107680,
+   "name": "왕",
+   "style": 402720004,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/bawi",
+   "lane": 0,
+   "start": -752107680,
+   "end": -667955520,
+   "name": "황제",
+   "style": 402752772,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/bawi",
+   "lane": 1,
+   "start": -983524320,
+   "end": -951968160,
+   "name": "바위 첫 임금",
+   "style": 536903680,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/bawi",
+   "lane": 1,
+   "start": -951968160,
+   "end": -909892800,
+   "name": "바위 둘째 임금",
+   "style": 536952836,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/bawi",
+   "lane": 1,
+   "start": -909892800,
+   "end": -867817440,
+   "name": "바위 셋째 임금",
+   "style": 536969220,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/bawi",
+   "lane": 1,
+   "start": -867817440,
+   "end": -820480320,
+   "name": "바위 넷째 임금",
+   "style": 537018372,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/bawi",
+   "lane": 1,
+   "start": -820480320,
+   "end": -752107680,
+   "name": "바위 다섯째 임금",
+   "style": 537034756,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/bawi",
+   "lane": 1,
+   "start": -752107680,
+   "end": -710032320,
+   "name": "바위 여섯째 임금",
+   "style": 537083908,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/bawi",
+   "lane": 1,
+   "start": -710032320,
+   "end": -667955520,
+   "name": "바위 일곱째 임금",
+   "style": 537100292,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/saemmul",
+   "lane": 0,
+   "start": -667955520,
+   "end": -562764960,
+   "name": "왕",
+   "style": 402687232,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/saemmul",
+   "lane": 1,
+   "start": -667955520,
+   "end": -620619840,
+   "name": "샘물 첫 임금",
+   "style": 536903680,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/saemmul",
+   "lane": 1,
+   "start": -620619840,
+   "end": -562764960,
+   "name": "샘물 둘째 임금",
+   "style": 536952836,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/ikki",
+   "lane": 0,
+   "start": -957227040,
+   "end": -878335200,
+   "name": "후",
+   "style": 402686720,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/ikki",
+   "lane": 0,
+   "start": -878335200,
+   "end": -799441920,
+   "name": "공작",
+   "style": 402719748,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/ikki",
+   "lane": 0,
+   "start": -799441920,
+   "end": -720550080,
+   "name": "국왕",
+   "style": 402752772,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/ikki",
+   "lane": 1,
+   "start": -957227040,
+   "end": -915151680,
+   "name": "이끼 첫 우두",
+   "style": 536903680,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/ikki",
+   "lane": 1,
+   "start": -915151680,
+   "end": -878335200,
+   "name": "이끼 둘째 우두",
+   "style": 536952836,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/ikki",
+   "lane": 1,
+   "start": -878335200,
+   "end": -836259840,
+   "name": "이끼 셋째 우두",
+   "style": 536969220,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/ikki",
+   "lane": 1,
+   "start": -836259840,
+   "end": -799441920,
+   "name": "이끼 넷째 우두",
+   "style": 537018372,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/ikki",
+   "lane": 1,
+   "start": -799441920,
+   "end": -720550080,
+   "name": "이끼 다섯째 우두",
+   "style": 537034756,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/yeoul",
+   "lane": 0,
+   "start": -930929760,
+   "end": -773144640,
+   "name": "왕",
+   "style": 402687232,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/morae",
+   "lane": 0,
+   "start": -878335200,
+   "end": -815221440,
+   "name": "우두머리",
+   "style": 402686720,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/morae",
+   "lane": 0,
+   "start": -815221440,
+   "end": -694252800,
+   "name": "큰머리",
+   "style": 402720004,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/morae",
+   "lane": 1,
+   "start": -878335200,
+   "end": -815221440,
+   "name": "모래 첫 우두머리",
+   "style": 536903680,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/morae",
+   "lane": 1,
+   "start": -815221440,
+   "end": -757366560,
+   "name": "모래 둘째 우두머리",
+   "style": 536952836,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/morae",
+   "lane": 1,
+   "start": -757366560,
+   "end": -694252800,
+   "name": "모래 셋째 우두머리",
+   "style": 536969220,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/deulkkot",
+   "lane": 0,
+   "start": -762626880,
+   "end": -741588480,
+   "name": "대공",
+   "style": 402686976,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/deulkkot",
+   "lane": 0,
+   "start": -741588480,
+   "end": -667955520,
+   "name": "대통령",
+   "style": 402718980,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/deulkkot",
+   "lane": 1,
+   "start": -762626880,
+   "end": -741588480,
+   "name": "들꽃 대공",
+   "style": 536903680,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/deulkkot",
+   "lane": 1,
+   "start": -741588480,
+   "end": -699513120,
+   "name": "들꽃 첫 대통령",
+   "style": 536952836,
+   "color": 0
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-ranks/deulkkot",
+   "lane": 1,
+   "start": -699513120,
+   "end": -667955520,
+   "name": "들꽃 둘째 대통령",
+   "style": 536969220,
+   "color": 0
+  }
+ ],
+ "items": []
+}

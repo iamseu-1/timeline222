@@ -1,0 +1,585 @@
+{
+ "note": "lens-export-check.mjs가 sample-lens에서 뜬 렌즈 자료(웹 HEAD) — 손으로 고치지 않는다",
+ "themes": "{\"list\":[{\"id\":\"system\",\"name\":\"체제\",\"color\":\"#abb3c9\",\"order\":0},{\"id\":\"faction\",\"name\":\"붕당\",\"color\":\"#d4a39b\",\"order\":1},{\"id\":\"law\",\"name\":\"법률\",\"color\":\"#bba395\",\"order\":2},{\"id\":\"election\",\"name\":\"선거제도\",\"color\":\"#a0bcc5\",\"order\":3},{\"id\":\"ideology\",\"name\":\"이념\",\"color\":\"#bbacc8\",\"order\":4},{\"id\":\"military\",\"name\":\"군사제도\",\"color\":\"#b6c398\",\"order\":5},{\"id\":\"tax\",\"name\":\"조세제도\",\"color\":\"#d7c18e\",\"order\":6},{\"id\":\"selection\",\"name\":\"선발제도\",\"color\":\"#9dbea8\",\"order\":7},{\"id\":\"guild\",\"name\":\"길드 제도\",\"color\":\"#c8b193\",\"order\":8}],\"x_lens\":{\"slot\":[\"sample-ln-a\",\"sample-ln-b\"],\"themes\":[{\"id\":\"system\",\"hint\":\"나라의 짜임\",\"has\":1,\"v\":1},{\"id\":\"faction\",\"hint\":\"집권한 단체\",\"has\":1,\"v\":1,\"ev\":[\"sample-lens/ln-e-vote2\"]},{\"id\":\"law\",\"hint\":\"법 · 법전\",\"has\":1,\"v\":1,\"sw\":{\"t\":\"법률의 갈래 — 같은 색은 나라 너머 같은 갈래\",\"l\":[[\"두루 법전\",10793399]]},\"ev\":[\"sample-lens/ln-e-enact\",\"sample-lens/ln-e-amend\",\"sample-lens/ln-e-repeal\"]},{\"id\":\"election\",\"hint\":\"뽑는 방법\",\"has\":1,\"v\":1,\"ev\":[\"sample-lens/ln-e-vote1\",\"sample-lens/ln-e-vote2\"]},{\"id\":\"ideology\",\"hint\":\"기준 이념\",\"has\":1,\"v\":1},{\"id\":\"military\",\"hint\":\"병제\",\"has\":1,\"v\":1,\"sw\":{\"t\":\"군사제도의 갈래 — 같은 색은 나라 너머 같은 갈래\",\"l\":[[\"고르게 뽑는 군\",14332309]]}},{\"id\":\"tax\",\"hint\":\"세금 거두는 법\",\"has\":1,\"v\":1,\"sw\":{\"t\":\"조세제도의 갈래 — 같은 색은 나라 너머 같은 갈래\",\"l\":[[\"고르게 나눔\",10793399]]},\"ev\":[\"sample-lens/ln-e-repeal\"]},{\"id\":\"selection\",\"hint\":\"관리 뽑는 법\",\"has\":1,\"v\":1,\"sw\":{\"t\":\"선발제도의 갈래 — 같은 색은 나라 너머 같은 갈래\",\"l\":[[\"시험 뽑기\",10337960]]},\"ev\":[\"sample-lens/ln-e-exam\"]},{\"id\":\"guild\",\"hint\":\"경제\",\"has\":1,\"v\":1,\"ev\":[\"sample-lens/ln-e-guild\"]}]}}",
+ "tracks": [
+  {
+   "key": "sample-ln-a",
+   "leader": 0,
+   "rows": 1
+  },
+  {
+   "key": "sample-ln-b",
+   "leader": 0,
+   "rows": 1
+  }
+ ],
+ "variants": [
+  {
+   "key": "theme:system",
+   "kind": 4,
+   "uid": "system",
+   "name": "체제",
+   "hides": 0
+  },
+  {
+   "key": "theme:faction",
+   "kind": 4,
+   "uid": "faction",
+   "name": "붕당",
+   "hides": 0
+  },
+  {
+   "key": "theme:law",
+   "kind": 4,
+   "uid": "law",
+   "name": "법률",
+   "hides": 0
+  },
+  {
+   "key": "theme:election",
+   "kind": 4,
+   "uid": "election",
+   "name": "선거제도",
+   "hides": 0
+  },
+  {
+   "key": "theme:ideology",
+   "kind": 4,
+   "uid": "ideology",
+   "name": "이념",
+   "hides": 0
+  },
+  {
+   "key": "theme:military",
+   "kind": 4,
+   "uid": "military",
+   "name": "군사제도",
+   "hides": 0
+  },
+  {
+   "key": "theme:tax",
+   "kind": 4,
+   "uid": "tax",
+   "name": "조세제도",
+   "hides": 0
+  },
+  {
+   "key": "theme:selection",
+   "kind": 4,
+   "uid": "selection",
+   "name": "선발제도",
+   "hides": 0
+  },
+  {
+   "key": "theme:guild",
+   "kind": 4,
+   "uid": "guild",
+   "name": "길드 제도",
+   "hides": 0
+  }
+ ],
+ "cells": [
+  {
+   "variant": "theme:system",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -720550080,
+   "end": -615360960,
+   "name": "왕정",
+   "style": 134250496,
+   "color": 11252681
+  },
+  {
+   "variant": "theme:system",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -615360960,
+   "end": -510170400,
+   "name": "의회 왕정",
+   "style": 134283268,
+   "color": 11252681
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -720550080,
+   "end": -589062240,
+   "name": "한 무리 독점",
+   "style": 134250496,
+   "color": 13935515
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -589062240,
+   "end": -510170400,
+   "name": "번갈아 집권",
+   "style": 134283268,
+   "color": 13935515
+  },
+  {
+   "variant": "theme:law",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -720550080,
+   "end": -636399360,
+   "name": "옛 법전",
+   "style": 134250496,
+   "color": 10793399
+  },
+  {
+   "variant": "theme:law",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -636399360,
+   "end": -510170400,
+   "name": "새 법전",
+   "style": 134283268,
+   "color": 10793399
+  },
+  {
+   "variant": "theme:election",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -667955520,
+   "end": -604841760,
+   "name": "추대",
+   "style": 134250496,
+   "color": 10534085
+  },
+  {
+   "variant": "theme:election",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -604841760,
+   "end": -562764960,
+   "name": "재산 선거",
+   "style": 134283268,
+   "color": 10534085
+  },
+  {
+   "variant": "theme:election",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -562764960,
+   "end": -510170400,
+   "name": "모두 선거",
+   "style": 134316036,
+   "color": 10534085
+  },
+  {
+   "variant": "theme:ideology",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -720550080,
+   "end": -657437760,
+   "name": "별 섬김",
+   "style": 134250496,
+   "color": 12299464
+  },
+  {
+   "variant": "theme:ideology",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -657437760,
+   "end": -573284160,
+   "name": "두 길 가르침",
+   "style": 134283270,
+   "color": 12299464
+  },
+  {
+   "variant": "theme:ideology",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -573284160,
+   "end": -510170400,
+   "name": "너른 배움",
+   "style": 134316037,
+   "color": 12299464
+  },
+  {
+   "variant": "theme:military",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -720550080,
+   "end": -673214400,
+   "name": "마을 군",
+   "style": 134250496,
+   "color": 14332309
+  },
+  {
+   "variant": "theme:military",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -673214400,
+   "end": -578543040,
+   "name": "고르게 뽑는 군",
+   "style": 134283268,
+   "color": 14332309
+  },
+  {
+   "variant": "theme:military",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -578543040,
+   "end": -510170400,
+   "name": "모은 군",
+   "style": 134316036,
+   "color": 14332309
+  },
+  {
+   "variant": "theme:tax",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -714240000,
+   "end": -620619840,
+   "name": "밭 나눔 법",
+   "style": 134250496,
+   "color": 10793399
+  },
+  {
+   "variant": "theme:tax",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -620619840,
+   "end": -560135520,
+   "name": "두 철 거둠 법",
+   "style": 134283268,
+   "color": 10793399
+  },
+  {
+   "variant": "theme:tax",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -560135520,
+   "end": -510170400,
+   "name": "돈 거둠 법",
+   "style": 134316036,
+   "color": 10793399
+  },
+  {
+   "variant": "theme:tax",
+   "period": "sample-lens/ln-mul",
+   "lane": 0,
+   "start": -694252800,
+   "end": -667955520,
+   "name": "옛 공물",
+   "style": 134250496,
+   "color": 10793399
+  },
+  {
+   "variant": "theme:tax",
+   "period": "sample-lens/ln-mul",
+   "lane": 0,
+   "start": -667955520,
+   "end": -583803360,
+   "name": "밭 나눔 법",
+   "style": 134283268,
+   "color": 10793399
+  },
+  {
+   "variant": "theme:tax",
+   "period": "sample-lens/ln-mul",
+   "lane": 0,
+   "start": -583803360,
+   "end": -515429280,
+   "name": "두 철 거둠 법",
+   "style": 134316036,
+   "color": 10793399
+  },
+  {
+   "variant": "theme:selection",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -720550080,
+   "end": -646918560,
+   "name": "천거",
+   "style": 134250496,
+   "color": 10337960
+  },
+  {
+   "variant": "theme:selection",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -646918560,
+   "end": -510170400,
+   "name": "시험 뽑기",
+   "style": 134283268,
+   "color": 10337960
+  },
+  {
+   "variant": "theme:selection",
+   "period": "sample-lens/ln-mul",
+   "lane": 0,
+   "start": -615360960,
+   "end": -515429280,
+   "name": "시험 뽑기",
+   "style": 134250496,
+   "color": 10337960
+  },
+  {
+   "variant": "theme:guild",
+   "period": "sample-lens/ln-sol",
+   "lane": 0,
+   "start": -625880160,
+   "end": -510170400,
+   "name": "장인 모임",
+   "style": 134250496,
+   "color": 13152659
+  }
+ ],
+ "items": [
+  {
+   "variant": "theme:system",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 1,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-system"
+  },
+  {
+   "variant": "theme:system",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 2,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-system"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 1,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-faction"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 2,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-faction"
+  },
+  {
+   "variant": "theme:law",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 1,
+   "name": "두루 법전",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-law"
+  },
+  {
+   "variant": "theme:law",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 2,
+   "name": "두루 법전",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-law"
+  },
+  {
+   "variant": "theme:election",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 1,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-election"
+  },
+  {
+   "variant": "theme:election",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 2,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-election"
+  },
+  {
+   "variant": "theme:election",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 3,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-election"
+  },
+  {
+   "variant": "theme:ideology",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 1,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-ideology"
+  },
+  {
+   "variant": "theme:ideology",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 2,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-ideology"
+  },
+  {
+   "variant": "theme:ideology",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 3,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-ideology"
+  },
+  {
+   "variant": "theme:military",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 1,
+   "name": "고르게 뽑는 군",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-military"
+  },
+  {
+   "variant": "theme:military",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 2,
+   "name": "고르게 뽑는 군",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-military"
+  },
+  {
+   "variant": "theme:military",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 3,
+   "name": "고르게 뽑는 군",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-military"
+  },
+  {
+   "variant": "theme:tax",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 1,
+   "name": "고르게 나눔",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-tax"
+  },
+  {
+   "variant": "theme:tax",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 2,
+   "name": "고르게 나눔",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-tax"
+  },
+  {
+   "variant": "theme:tax",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 3,
+   "name": "고르게 나눔",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-tax"
+  },
+  {
+   "variant": "theme:tax",
+   "ref": "sample-lens/ln-mul",
+   "b": 0,
+   "c": 1,
+   "name": "고르게 나눔",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-tax-mul"
+  },
+  {
+   "variant": "theme:tax",
+   "ref": "sample-lens/ln-mul",
+   "b": 0,
+   "c": 2,
+   "name": "고르게 나눔",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-tax-mul"
+  },
+  {
+   "variant": "theme:tax",
+   "ref": "sample-lens/ln-mul",
+   "b": 0,
+   "c": 3,
+   "name": "고르게 나눔",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-tax-mul"
+  },
+  {
+   "variant": "theme:selection",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 1,
+   "name": "시험 뽑기",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-selection"
+  },
+  {
+   "variant": "theme:selection",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 2,
+   "name": "시험 뽑기",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-selection"
+  },
+  {
+   "variant": "theme:selection",
+   "ref": "sample-lens/ln-mul",
+   "b": 0,
+   "c": 1,
+   "name": "시험 뽑기",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-selection-mul"
+  },
+  {
+   "variant": "theme:guild",
+   "ref": "sample-lens/ln-sol",
+   "b": 0,
+   "c": 1,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-lens/ln-i-guild"
+  }
+ ]
+}
