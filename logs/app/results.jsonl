@@ -1,0 +1,8 @@
+{"id":"engine-build","label":"엔진 dll(cargo build --locked --release)","kind":"plain","state":"started","at":"2026-10-25T16:04:56.597Z"}
+{"id":"engine-build","label":"엔진 dll(cargo build --locked --release)","kind":"plain","state":"done","code":0,"seconds":604,"at":"2026-10-25T16:15:00.135Z"}
+{"id":"pub-get","label":"app-get(flutter pub get)","kind":"plain","state":"started","at":"2026-10-25T16:15:00.335Z"}
+{"id":"pub-get","label":"app-get(flutter pub get)","kind":"plain","state":"done","code":0,"seconds":2,"at":"2026-10-25T16:15:02.219Z"}
+{"id":"analyze","label":"분석(dart analyze --fatal-infos lib test)","kind":"analyze","state":"started","at":"2026-10-25T16:15:02.415Z"}
+{"id":"analyze","label":"분석(dart analyze --fatal-infos lib test)","kind":"analyze","state":"done","code":0,"seconds":26,"at":"2026-10-25T16:15:28.678Z"}
+{"id":"flutter-test","label":"flutter test(전부)","kind":"flutter-test","state":"started","at":"2026-10-25T16:15:29.005Z"}
+{"id":"flutter-test","label":"flutter test(전부)","kind":"flutter-test","state":"done","code":0,"seconds":303,"at":"2026-10-25T16:20:31.167Z"}
