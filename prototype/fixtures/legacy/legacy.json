@@ -1,0 +1,9 @@
+{
+  "note": "이음 검사용 옛 파일 묶음(리메이크 5단계 과제 0 · 설계 7절) — 형식 1 · 2 · 3 × 장치별 작은 파일. 이름은 모두 가상. scripts/check-format4.mjs ⑥이 읽어 옛 → 4 → 옛 왕복과 모델 지킴, 그리고 파일이 정말 그 형식 판인지를 봅니다",
+  "files": [
+    { "path": "f1-partof.json", "formatVersion": 1, "devices": ["소속 글 하나", "소속 기간", "시대 구분(공통 · 트랙)", "기관", "왕조", "승계", "지도자 칸", "도읍"] },
+    { "path": "f2-nest.json", "formatVersion": 2, "devices": ["접기 갈래 넷(nest true · 비움 · false · 둘)", "구성국 member", "동군연합 union", "종속 종류만(상대 없음)", "봉국 kind", "시대 kind era + 실재성", "대범위", "가문 · 국성", "인물", "시기 구분"],
+      "knownChanges": [{ "id": "p-fief", "why": "다른 트랙(ta)의 상국을 섬기는 봉국 kind 하나 — 설계 3-8 '옛 모습이 바뀌는 곳': 관계를 비운 소속은 종류에서 빌린 관계를 적고, 상위의 트랙 조건을 빼므로 옛 → 4 → 옛 뒤에는 접힘(상국 띠에 이름표)" }] },
+    { "path": "f3-groups.json", "formatVersion": 3, "devices": ["단체 faction · party · 비움", "연합 coalition", "정권 regime", "집권 power", "앞선 단체 from", "간지 설정 yearCycle", "문화권 spheres · tracks[].sphere"] }
+  ]
+}

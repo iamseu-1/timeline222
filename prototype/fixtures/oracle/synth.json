@@ -1,0 +1,99 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "id": "synth-world",
+  "name": "합성 세계 — 검사 자료",
+  "version": "1.0.0",
+  "author": "검사 자료",
+  "description": "모델 갈래(인물의 자동 활동 막대 · 사람 잇기의 찾기 실패 · 자동 성씨 · 대범위 기간 짐작 · 자동 주제)를 밟는 가상 자료. 모든 이름은 지어낸 것입니다.",
+  "requires": [],
+  "tracks": [
+    { "id": "north", "name": "북녘", "order": 1 },
+    { "id": "south", "name": "남녘", "order": 2 },
+    { "id": "east", "name": "동녘", "order": 3 },
+    { "id": "west", "name": "서녘", "order": 4 }
+  ],
+  "categories": [],
+  "peoples": [{ "id": "pe-a", "name": "가상인" }],
+  "epochs": [{ "id": "ep-a", "name": "가상 시대", "start": 100, "end": 300 }],
+  "periods": [
+    {
+      "id": "p-a", "track": "north", "name": "가나 왕국", "start": 100, "end": 300, "people": "가상인",
+      "leaders": [
+        { "name": "가왕", "start": 100, "end": 150 },
+        { "name": "나왕", "start": 150, "end": 200, "parents": [{ "who": "진짜 아비" }], "accession": { "kin": "son" } },
+        { "name": "다왕", "start": 200, "end": 220, "person": "f-king" },
+        { "name": "다왕", "start": 220, "end": 240, "person": "f-king", "accession": { "kin": "son" } },
+        { "name": "라왕", "start": 240, "end": 260, "person": "없는나라:없는왕" },
+        { "name": "마왕", "start": 260, "end": 300, "person": "같은이름" }
+      ]
+    },
+    { "id": "p-b", "track": "north", "name": "다라 공국", "start": 120, "end": 280 },
+    { "id": "p-c", "track": "north", "name": "마바 후국", "start": 150, "end": 250, "leaders": [{ "name": "겹친왕", "start": 150, "end": 200 }] },
+    { "id": "p-d", "track": "north", "name": "사아 성국", "start": 200, "end": 290, "leaders": [{ "name": "겹친왕", "start": 210, "end": 260 }] },
+    { "id": "p-s1", "track": "south", "name": "남쪽 나라", "start": 100, "end": 400 },
+    { "id": "p-e", "track": "east", "name": "에자 나라", "start": 150, "end": 260 },
+    { "id": "p-f", "track": "east", "name": "바사 나라", "start": 300, "end": 350 },
+    { "id": "p-hide", "track": "south", "name": "숨길 나라", "start": 50, "end": 90 },
+    { "id": "p-w0", "track": "west", "name": "서녘 옛 나라", "start": 150, "end": 220 },
+    { "id": "p-w1", "track": "west", "name": "서가 왕국", "start": 220, "end": 320, "succeeds": [{ "from": "서녘 옛 나라", "type": "partial" }] },
+    { "id": "p-w2", "track": "west", "name": "서나 공국", "start": 220, "end": 300, "succeeds": [{ "from": "서녘 옛 나라", "type": "direct" }] },
+    { "id": "p-w3", "track": "west", "name": "서녘 소국 셋", "start": 220, "end": 224 },
+    { "id": "p-w4", "track": "west", "name": "서녘 소국 넷", "start": 220, "end": 225 },
+    { "id": "p-w5", "track": "west", "name": "서녘 소국 다섯", "start": 220, "end": 226 },
+    { "id": "p-w6", "track": "west", "name": "서녘 소국 여섯", "start": 220, "end": 227 },
+    { "id": "p-w7", "track": "west", "name": "서녘 소국 일곱", "start": 220, "end": 228 },
+    { "id": "p-w8", "track": "west", "name": "서녘 소국 여덟", "start": 220, "end": 229 },
+    { "id": "p-w9", "track": "west", "name": "서녘 소국 아홉", "start": 220, "end": 230 }
+  ],
+  "cultures": [
+    { "id": "c-a", "track": "west", "name": "갑돌 문화", "start": 50, "end": 120, "successors": ["을돌 문화"] },
+    { "id": "c-b", "track": "west", "name": "을돌 문화", "start": 100, "end": 150, "successors": ["서녘 옛 나라"] },
+    { "id": "c-c", "track": "west", "name": "병돌 문화", "start": 120, "end": 215, "successors": ["서가 왕국", "서나 공국"] }
+  ],
+  "organs": [
+    { "id": "o-a", "track": "west", "name": "가상 상관 거리", "start": 230, "end": 280, "host": "서가 왕국", "scale": "zone" },
+    { "id": "o-b", "track": "west", "name": "가상 조차지", "start": 250, "end": 300, "host": "서가 왕국", "scale": "zone" },
+    { "id": "o-c", "track": "west", "name": "가상 관청", "start": 240, "end": 290, "host": "서가 왕국", "scale": "agency" }
+  ],
+  "events": [
+    { "id": "e-a", "track": "north", "title": "가상 사건 하나", "start": 150, "end": 160, "theme": ["없는 주제"] },
+    { "id": "e-b", "track": "north", "title": "숨길 사건", "start": 170 },
+    { "id": "e-c", "track": "north", "title": "고칠 조약", "start": 180, "treaty": { "parties": [{ "polity": "가나 왕국" }] } },
+    { "id": "e-d", "track": "north", "title": "세기 시작 점 사건", "start": 190 },
+    { "id": "e-e", "track": "north", "title": "이설 고칠 사건", "start": 175, "end": 178 }
+  ],
+  "figures": [
+    { "id": "f-auto", "track": "north", "name": "자동 인물", "birth": 120, "death": 180 },
+    { "id": "f-auto2", "track": "north", "name": "자동 미정", "start": "미정", "startHint": 200, "end": "미정", "endHint": 250 },
+    { "id": "f-none", "track": "south", "name": "막대 없음", "birth": 900, "death": 950 },
+    { "id": "f-dup1", "track": "north", "name": "같은이름", "birth": 110, "death": 170 },
+    { "id": "f-dup2", "track": "north", "name": "같은이름", "birth": 115, "death": 175 },
+    { "id": "f-real", "track": "north", "name": "진짜 아비", "birth": 100, "death": 160 },
+    { "id": "f-king", "track": "north", "name": "다왕", "birth": 180, "death": 245 },
+    { "id": "f-self", "track": "north", "name": "자기부모", "birth": 130, "death": 190, "parents": [{ "who": "자기부모" }] },
+    { "id": "f-cyc1", "track": "north", "name": "고리갑", "birth": 130, "death": 190, "parents": [{ "who": "고리을" }] },
+    { "id": "f-cyc2", "track": "north", "name": "고리을", "birth": 130, "death": 190, "parents": [{ "who": "고리갑" }] },
+    { "id": "f-miss", "track": "north", "name": "외톨이", "birth": 140, "death": 200, "parents": [{ "who": "없는 사람" }] },
+    { "id": "f-amb", "track": "north", "name": "모호한 자식", "birth": 150, "death": 210, "parents": [{ "who": "같은이름" }] },
+    { "id": "f-east", "track": "east", "name": "겹친 자식", "birth": 220, "death": 280, "parents": [{ "who": "겹친왕" }] },
+    { "id": "f-hide", "track": "north", "name": "숨길 인물", "birth": 160, "death": 200 },
+    { "id": "f-organ", "track": "west", "name": "관청 사람", "birth": 225, "death": 290, "service": [{ "polity": "가상 관청", "office": "관리", "start": 245, "end": 260 }] }
+  ],
+  "houses": [{ "id": "h-a", "name": "가씨", "surname": "가" }],
+  "scopes": [
+    { "id": "s-epoch", "track": "north", "epoch": "가상 시대", "members": ["p-b"] },
+    { "id": "s-nofound", "track": "north", "epoch": "없는 시대", "members": ["p-c", "p-d"] },
+    { "id": "s-drop", "track": "north", "name": "빠질 그릇", "members": ["없는 나라"] },
+    { "id": "s-warn", "track": "north", "name": "알림 그릇", "start": 120, "end": 200, "host": "없는 본국", "members": ["p-b", "p-s1"] },
+    { "id": "s-host", "track": "north", "name": "다른 줄 본국", "start": 150, "end": 250, "host": "south:남쪽 나라", "members": ["p-c"] },
+    { "id": "s-hm", "track": "north", "name": "본국도 구성", "start": 150, "end": 200, "host": "p-c", "members": ["p-c", "p-d"] }
+  ],
+  "institutions": [
+    { "id": "in-a", "theme": "새 제도 주제", "track": "north", "polity": "가나 왕국", "spans": [{ "name": "첫 칸", "start": 100, "end": 200 }] },
+    { "id": "in-b", "theme": "system", "track": "north", "polity": "없는 나라", "spans": [{ "name": "홀로 칸", "start": 120, "end": 180 }] }
+  ],
+  "groups": [
+    { "id": "g-a", "track": "north", "name": "가상 무리", "type": "faction", "start": 120, "end": 250, "within": "가나 왕국", "people": ["같은이름", "자동 인물"] }
+  ]
+}

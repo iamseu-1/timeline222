@@ -1,0 +1,10 @@
+{
+  "note": "형식 4 가상 팩 다섯(../)을 일부러 틀리게 한 파일 다섯(리메이크 5단계 과제 8 — 메이커 검사 창). scripts/maker-check-check.mjs가 메이커가 여는 길 그대로(다리 HT.F4.down → 작업본 → 정규화) 작업본으로 만들어 검사 창에 오를 줄의 수 · 글을 봅니다. 다리가 열 때 이미 빼는 것(모르는 종류 · 없는 출처 · 고리)은 작업본에 남지 않으므로 그 알림이 작업본의 f4notes로 창에 오르는지와, 객체 폼에서 같은 실수를 했을 때 창이 잡는지를 함께 봅니다. 이름은 모두 가상. 이 폴더는 check-format4 ⑨(../list.json)가 읽지 않습니다",
+  "files": [
+    { "path": "f4-crowns.json", "wrong": "모르는 종류(o-forge type citadel — 다리 알림) · 모르는 그리는 자리(o-north display floating — 다리 알림) · 모르는 정통성 · 범위 밖 중요도(o-coral — 정규화 경고)" },
+    { "path": "f4-office.json", "wrong": "없는 출처 — 빌림의 객체가 없음(o-faith ← o-nobody — 다리가 뺌) · 있는 객체의 없는 직위 줄(o-emp ← o-khan/재상 — 다리가 뺌) · 실권의 상대가 없음(o-khan power over o-ghost — 검사 창의 확인할 것)" },
+    { "path": "f4-liege.json", "wrong": "고리 빌림 — 둘이 서로(o-duke ↔ o-baek) · 자기 자신(o-grand/대공의 재상 — 다리가 뺌 · 폼에서 다시 적으면 검사 창의 경고)" },
+    { "path": "f4-sphere.json", "wrong": "상대 없는 실권 — over 없음(o-khan — 정규화 경고) · 없는 상대(o-emp over o-nowhere — 확인할 것) · 자기 자신(o-city over o-city — 경고)" },
+    { "path": "f4-federation.json", "wrong": "종류에 안 맞는 칸 — 띠로 그리는 시대(e-band)에 지도자 칸 · 실권(그리지 않음) · 사람의 칸 생몰(o-out — 저장 때 빠짐) · 시대 그릇의 칸 label(o-m03 — 저장 때 빠짐) · 으뜸 둘(o-m06 within main 둘)" }
+  ]
+}

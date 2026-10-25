@@ -1,0 +1,194 @@
+{
+ "note": "갈래 D2(원어 병기 · 글꼴)의 앱 고정 자료 — prototype/app/test/fixtures/names-display.mjs가 지금 내보내기 모듈로 지었다. 가상 이름(고증 아님).",
+ "entities": [
+  {
+   "uid": "d2-names/haeon",
+   "kind": "period",
+   "json": "{\"id\":\"haeon\",\"track\":\"d2w\",\"name\":\"해온국\",\"start\":1420,\"end\":1500,\"leaders\":[{\"name\":\"바다 임금\",\"start\":1420,\"names\":[{\"text\":\"海王\",\"lang\":\"lzh\",\"kind\":\"native\"},{\"text\":\"Bada Imgeum\",\"kind\":\"roman\"}],\"ordinal\":1},{\"name\":\"물빛 임금\",\"start\":1460,\"ordinal\":2}],\"capitals\":[{\"city\":\"바닷골\",\"start\":1420,\"placeId\":\"pl-sea\",\"docName\":\"pl-sea\",\"role\":\"main\",\"name\":\"바닷골\",\"endY\":1500,\"endYAt\":null}],\"color\":\"#adc2b8\",\"description\":\"확인용 가상 나라 — 이름이 넷(원어 · 로마자 · 옛 이름 · 약칭).\",\"names\":[{\"text\":\"海溫國\",\"lang\":\"lzh\",\"kind\":\"native\"},{\"text\":\"Haeon-guk\",\"lang\":\"ko-Latn\",\"kind\":\"roman\"},{\"text\":\"溫羅\",\"lang\":\"lzh\",\"kind\":\"former\",\"start\":1420,\"end\":1449},{\"text\":\"海溫\",\"lang\":\"lzh\",\"kind\":\"short\"}],\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"d2-names/haeon\",\"packId\":\"d2-names\",\"packName\":\"확인용 가상 세계(원어)\",\"endY\":1500,\"certainty\":\"accepted\",\"spanMin\":1420,\"spanMax\":1500,\"peopleId\":null,\"peoplePath\":[],\"members\":[],\"hosts\":[],\"dynasties\":[],\"singleHost\":false,\"successors\":[],\"predecessors\":[],\"servedBy\":[{\"figure\":{\"$ref\":\"d2-names/f-sol\",\"name\":\"솔빛\"},\"service\":{\"polity\":{\"$ref\":\"d2-names/haeon\",\"name\":\"해온국\"},\"polityUid\":\"d2-names/haeon\",\"polityName\":\"해온국\",\"track\":\"d2w\",\"color\":\"#adc2b8\",\"office\":\"기록관\",\"note\":\"\",\"given\":false,\"from\":1430,\"to\":1480,\"auto\":false,\"start\":1430,\"endY\":1480,\"shown\":true}}],\"x_cellBounds\":{\"leader:0\":[-289272960,-246670560],\"leader:1\":[-268234560,-246670560],\"capital:0\":[-289272960,-246670560]},\"x_served\":[{\"uid\":\"d2-names/f-sol\",\"name\":\"솔빛\",\"color\":\"#adc2b8\",\"when\":\"1430년 ~ 1480년\",\"role\":\"학자\",\"office\":\"기록관\",\"span\":[-284012640,-257715360]}],\"x_names\":{\"main\":[{\"text\":\"海溫國\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"},{\"text\":\"Haeon-guk\",\"lang\":\"ko-Latn\",\"tag\":\"로마자 · 한국어 로마자\"}],\"other\":[{\"text\":\"溫羅\",\"lang\":\"lzh\",\"tag\":\"옛 이름 · 한문 · 1420년 ~ 1449년\"},{\"text\":\"海溫\",\"lang\":\"lzh\",\"tag\":\"약칭 · 한문\"}]},\"x_nameHead\":{\"first\":{\"text\":\"海溫國\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"},\"second\":{\"text\":\"Haeon-guk\",\"lang\":\"ko-Latn\",\"langName\":\"한국어 로마자\",\"kind\":\"로마자\"},\"rest\":[{\"text\":\"溫羅\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"옛 이름\",\"when\":\"1420년 ~ 1449년\"},{\"text\":\"海溫\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"약칭\"}]},\"x_cellNames\":{\"leader:0\":{\"main\":[{\"text\":\"海王\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"},{\"text\":\"Bada Imgeum\",\"tag\":\"로마자\"}]}},\"x_cellNameHead\":{\"leader:0\":{\"first\":{\"text\":\"海王\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"},\"second\":{\"text\":\"Bada Imgeum\",\"kind\":\"로마자\"}}},\"x_lineage\":{\"leader:0\":{\"line\":0,\"kinAt\":[\"kin:polity:d2-names/haeon\",0]},\"leader:1\":{\"from\":{\"name\":\"바다 임금\",\"uid\":\"d2-names/haeon\",\"ref\":\"leader:0\",\"polity\":\"해온국\"},\"fromAuto\":1,\"line\":0,\"kinAt\":[\"kin:polity:d2-names/haeon\",1]}},\"x_head\":[{\"role\":\"track\",\"text\":\"가상 세계\"},{\"role\":\"name\",\"text\":\"해온국\",\"uid\":\"d2-names/haeon\"}],\"x_cellPlaces\":{\"capital:0\":{\"name\":\"바닷골\",\"uid\":\"place:pl-sea\",\"names\":{\"main\":[{\"text\":\"海谷\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"},{\"text\":\"Badatgol\",\"lang\":\"ko-Latn\",\"tag\":\"로마자 · 한국어 로마자\"}]},\"head\":{\"first\":{\"text\":\"海谷\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"},\"second\":{\"text\":\"Badatgol\",\"lang\":\"ko-Latn\",\"langName\":\"한국어 로마자\",\"kind\":\"로마자\"}}}},\"x_find\":{\"hay\":\"가상 세계 海溫國 haeon-guk 溫羅 海溫\",\"cells\":{\"leader:0\":\"바다 임금 海王 bada imgeum\",\"leader:1\":\"물빛 임금\",\"capital:0\":\"바닷골 바닷골 海谷 badatgol\"}},\"x_metro\":{\"range\":\"1420년 ~ 1500년\",\"end\":\"1500\",\"when\":[\"1420년 ~ 1500년\"]}}"
+  },
+  {
+   "uid": "d2-names/moon",
+   "kind": "period",
+   "json": "{\"id\":\"moon\",\"track\":\"d2w\",\"name\":\"달 왕국\",\"start\":520,\"end\":680,\"color\":\"#afb9ca\",\"names\":[{\"text\":\"قمر\",\"lang\":\"ar\",\"kind\":\"native\"},{\"text\":\"Qamar\",\"kind\":\"roman\"}],\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"d2-names/moon\",\"packId\":\"d2-names\",\"packName\":\"확인용 가상 세계(원어)\",\"endY\":680,\"certainty\":\"accepted\",\"spanMin\":520,\"spanMax\":680,\"peopleId\":null,\"peoplePath\":[],\"members\":[],\"hosts\":[],\"dynasties\":[],\"singleHost\":false,\"successors\":[],\"predecessors\":[],\"servedBy\":[],\"x_names\":{\"main\":[{\"text\":\"قمر\",\"lang\":\"ar\",\"tag\":\"원어 · 아랍어\"},{\"text\":\"Qamar\",\"tag\":\"로마자\"}]},\"x_nameHead\":{\"first\":{\"text\":\"قمر\",\"lang\":\"ar\",\"langName\":\"아랍어\",\"kind\":\"원어\"},\"second\":{\"text\":\"Qamar\",\"kind\":\"로마자\"}},\"x_find\":{\"hay\":\"가상 세계 قمر qamar\"}}"
+  },
+  {
+   "uid": "d2-names/byeol",
+   "kind": "period",
+   "json": "{\"id\":\"byeol\",\"track\":\"d2w\",\"name\":\"별바다\",\"start\":540,\"end\":700,\"color\":\"#c6b3be\",\"names\":[{\"text\":\"󱨀󱨁󱨂󱨃\",\"lang\":\"x-byeol\",\"kind\":\"native\"},{\"text\":\"Yelna Oru\",\"kind\":\"roman\"}],\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"d2-names/byeol\",\"packId\":\"d2-names\",\"packName\":\"확인용 가상 세계(원어)\",\"endY\":700,\"certainty\":\"accepted\",\"spanMin\":540,\"spanMax\":700,\"peopleId\":null,\"peoplePath\":[],\"members\":[],\"hosts\":[],\"dynasties\":[],\"singleHost\":false,\"successors\":[],\"predecessors\":[],\"servedBy\":[],\"x_names\":{\"main\":[{\"text\":\"󱨀󱨁󱨂󱨃\",\"lang\":\"x-byeol\",\"tag\":\"원어 · x-byeol\"},{\"text\":\"Yelna Oru\",\"tag\":\"로마자\"}]},\"x_nameHead\":{\"first\":{\"text\":\"󱨀󱨁󱨂󱨃\",\"lang\":\"x-byeol\",\"langName\":\"x-byeol\",\"kind\":\"원어\",\"mw\":[989696,989697,989698,989699]},\"second\":{\"text\":\"Yelna Oru\",\"kind\":\"로마자\"}},\"x_find\":{\"hay\":\"가상 세계 󱨀󱨁󱨂󱨃 yelna oru\"}}"
+  },
+  {
+   "uid": "d2-names/rock",
+   "kind": "period",
+   "json": "{\"id\":\"rock\",\"track\":\"d2w\",\"name\":\"돌샘국\",\"start\":600,\"end\":780,\"color\":\"#c1c8b2\",\"names\":[{\"text\":\"𥑮泉國\",\"lang\":\"lzh\",\"kind\":\"native\"},{\"text\":\"Dolsaem\",\"kind\":\"roman\"}],\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"d2-names/rock\",\"packId\":\"d2-names\",\"packName\":\"확인용 가상 세계(원어)\",\"endY\":780,\"certainty\":\"accepted\",\"spanMin\":600,\"spanMax\":780,\"peopleId\":null,\"peoplePath\":[],\"members\":[],\"hosts\":[],\"dynasties\":[],\"singleHost\":false,\"successors\":[],\"predecessors\":[],\"servedBy\":[],\"x_names\":{\"main\":[{\"text\":\"𥑮泉國\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"},{\"text\":\"Dolsaem\",\"tag\":\"로마자\"}]},\"x_nameHead\":{\"first\":{\"text\":\"𥑮泉國\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\",\"mw\":[152686]},\"second\":{\"text\":\"Dolsaem\",\"kind\":\"로마자\"}},\"x_find\":{\"hay\":\"가상 세계 𥑮泉國 dolsaem\"}}"
+  },
+  {
+   "uid": "d2-names/long",
+   "kind": "period",
+   "json": "{\"id\":\"long\",\"track\":\"d2w\",\"name\":\"달빛 강 연합 왕국\",\"start\":1400,\"end\":1480,\"color\":\"#b8b1c8\",\"names\":[{\"text\":\"月光江聯合王國\",\"lang\":\"lzh\",\"kind\":\"native\"}],\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"d2-names/long\",\"packId\":\"d2-names\",\"packName\":\"확인용 가상 세계(원어)\",\"endY\":1480,\"certainty\":\"accepted\",\"spanMin\":1400,\"spanMax\":1480,\"peopleId\":null,\"peoplePath\":[],\"members\":[],\"hosts\":[],\"dynasties\":[],\"singleHost\":false,\"successors\":[],\"predecessors\":[],\"servedBy\":[],\"x_eventStat\":{\"count\":1,\"span\":[-284012640,-284012640]},\"x_names\":{\"main\":[{\"text\":\"月光江聯合王國\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"}]},\"x_nameHead\":{\"first\":{\"text\":\"月光江聯合王國\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"}},\"x_find\":{\"hay\":\"가상 세계 月光江聯合王國\"}}"
+  },
+  {
+   "uid": "d2-names/ev-move",
+   "kind": "event",
+   "json": "{\"id\":\"ev-move\",\"track\":\"d2w\",\"title\":\"바닷골 천도\",\"start\":1430,\"category\":\"politics\",\"importance\":2,\"place\":\"pl-sea\",\"names\":[{\"text\":\"海谷遷都\",\"lang\":\"lzh\",\"kind\":\"native\"}],\"itemKind\":\"event\",\"kind\":\"event\",\"uid\":\"d2-names/ev-move\",\"packId\":\"d2-names\",\"packName\":\"확인용 가상 세계(원어)\",\"endY\":1430,\"certainty\":\"accepted\",\"spanMin\":1430,\"spanMax\":1430,\"color\":\"#abb3c9\",\"polityUid\":\"d2-names/long\",\"polityName\":\"달빛 강 연합 왕국\",\"polityColor\":\"#b8b1c8\",\"placements\":[{\"track\":\"d2w\",\"polityUid\":\"d2-names/long\",\"polityName\":\"달빛 강 연합 왕국\",\"polityColor\":\"#b8b1c8\"}],\"shared\":false,\"x_names\":{\"main\":[{\"text\":\"海谷遷都\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"}]},\"x_nameHead\":{\"first\":{\"text\":\"海谷遷都\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"}},\"x_place\":{\"name\":\"바닷골\",\"uid\":\"place:pl-sea\",\"names\":{\"main\":[{\"text\":\"海谷\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"},{\"text\":\"Badatgol\",\"lang\":\"ko-Latn\",\"tag\":\"로마자 · 한국어 로마자\"}]},\"head\":{\"first\":{\"text\":\"海谷\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"},\"second\":{\"text\":\"Badatgol\",\"lang\":\"ko-Latn\",\"langName\":\"한국어 로마자\",\"kind\":\"로마자\"}}},\"x_find\":{\"hay\":\"가상 세계 海谷遷都 pl-sea\"}}"
+  },
+  {
+   "uid": "d2-names/f-sol",
+   "kind": "figure",
+   "json": "{\"id\":\"f-sol\",\"track\":\"d2w\",\"name\":\"솔빛\",\"role\":\"학자\",\"birth\":1430,\"death\":1480,\"service\":[{\"polity\":\"해온국\",\"office\":\"기록관\"}],\"importance\":2,\"names\":[{\"text\":\"松光\",\"lang\":\"lzh\",\"kind\":\"native\"},{\"text\":\"Solbit\",\"kind\":\"roman\"}],\"kind\":\"figure\",\"itemKind\":\"figure\",\"uid\":\"d2-names/f-sol\",\"packId\":\"d2-names\",\"packName\":\"확인용 가상 세계(원어)\",\"startAuto\":true,\"start\":1430,\"endAuto\":true,\"endY\":1480,\"certainty\":\"accepted\",\"spanMin\":1430,\"spanMax\":1480,\"events\":[],\"services\":[{\"polity\":{\"$ref\":\"d2-names/haeon\",\"name\":\"해온국\"},\"polityUid\":\"d2-names/haeon\",\"polityName\":\"해온국\",\"track\":\"d2w\",\"color\":\"#adc2b8\",\"office\":\"기록관\",\"note\":\"\",\"given\":false,\"from\":1430,\"to\":1480,\"auto\":false,\"start\":1430,\"endY\":1480,\"shown\":true}],\"polityUid\":\"d2-names/haeon\",\"polityName\":\"해온국\",\"polityColor\":\"#adc2b8\",\"color\":\"#adc2b8\",\"x_services\":[{\"name\":\"해온국\",\"when\":\"1430년 ~ 1480년\",\"span\":[-284012640,-257715360],\"uid\":\"d2-names/haeon\",\"office\":\"기록관\"}],\"x_rulers\":[{\"uid\":\"d2-names/haeon\",\"name\":\"해온국\",\"ref\":\"leader:0\",\"label\":\"바다 임금\",\"when\":\"1420년\"},{\"uid\":\"d2-names/haeon\",\"name\":\"해온국\",\"ref\":\"leader:1\",\"label\":\"물빛 임금\",\"when\":\"1460년\"}],\"x_spots\":[{\"uid\":\"d2-names/haeon\",\"start\":-284012640,\"end\":-257715360}],\"x_names\":{\"main\":[{\"text\":\"松光\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"},{\"text\":\"Solbit\",\"tag\":\"로마자\"}]},\"x_nameHead\":{\"first\":{\"text\":\"松光\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"},\"second\":{\"text\":\"Solbit\",\"kind\":\"로마자\"}},\"x_find\":{\"hay\":\"학자 가상 세계 해온국 기록관 松光 solbit\"}}"
+  },
+  {
+   "uid": "d2-names/f-wave",
+   "kind": "figure",
+   "json": "{\"id\":\"f-wave\",\"track\":\"d2w\",\"name\":\"물결\",\"lineageOnly\":true,\"aka\":[\"물결 어른\"],\"birth\":1380,\"death\":1450,\"description\":\"확인용 가상 계보 인물.\",\"names\":[{\"text\":\"波\",\"lang\":\"lzh\",\"kind\":\"native\"},{\"text\":\"Mulgyeol\",\"kind\":\"roman\"},{\"text\":\"小波\",\"kind\":\"former\"}],\"kind\":\"figure\",\"itemKind\":\"figure\",\"uid\":\"d2-names/f-wave\",\"packId\":\"d2-names\",\"packName\":\"확인용 가상 세계(원어)\",\"spanMin\":1380,\"spanMax\":1450,\"certainty\":\"accepted\",\"events\":[],\"polityColor\":null,\"polityName\":null,\"polityUid\":null,\"color\":\"#a7b4bf\",\"x_names\":{\"main\":[{\"text\":\"波\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"},{\"text\":\"Mulgyeol\",\"tag\":\"로마자\"}],\"other\":[{\"text\":\"小波\",\"tag\":\"옛 이름\"}]},\"x_nameHead\":{\"first\":{\"text\":\"波\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"},\"second\":{\"text\":\"Mulgyeol\",\"kind\":\"로마자\"},\"rest\":[{\"text\":\"小波\",\"kind\":\"옛 이름\"}]},\"x_find\":{\"hay\":\"물결 어른 가상 세계 波 mulgyeol 小波\",\"sub\":\"계보 전용\"}}"
+  },
+  {
+   "uid": "house:h-sea",
+   "kind": "house",
+   "json": "{\"id\":\"h-sea\",\"uid\":\"house:h-sea\",\"itemKind\":\"house\",\"name\":\"바다 가문\",\"surname\":\"sn-sea\",\"seat\":\"\",\"parent\":\"\",\"founder\":\"\",\"color\":\"#c8b193\",\"description\":\"\",\"wiki\":\"\",\"names\":[{\"text\":\"海氏\",\"lang\":\"lzh\",\"kind\":\"native\"}],\"track\":\"\",\"people\":\"\",\"tags\":[],\"packId\":\"d2-names\",\"packName\":\"확인용 가상 세계(원어)\",\"auto\":false,\"seq\":0,\"members\":[],\"parentId\":null,\"path\":[\"h-sea\"],\"depth\":0,\"children\":[],\"surnameId\":\"sn-sea\",\"lineageCount\":0,\"kinCount\":0,\"trackAuto\":\"\",\"trackFrom\":\"\",\"trackMore\":0,\"peopleAuto\":\"\",\"peopleFrom\":\"\",\"seatFrom\":\"\",\"surnameFrom\":\"\",\"x_path\":[{\"uid\":\"house:h-sea\",\"name\":\"바다 가문\",\"color\":\"#c8b193\"}],\"x_names\":{\"main\":[{\"text\":\"海氏\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"}]},\"x_nameHead\":{\"first\":{\"text\":\"海氏\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"}},\"x_surnameHead\":{\"first\":{\"text\":\"海\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"},\"second\":{\"text\":\"Bada\",\"kind\":\"로마자\"},\"rest\":[{\"text\":\"大海\",\"kind\":\"옛 이름\"}]},\"x_surname\":{\"uid\":\"surname:sn-sea\",\"name\":\"바다\",\"names\":{\"main\":[{\"text\":\"海\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"},{\"text\":\"Bada\",\"tag\":\"로마자\"}],\"other\":[{\"text\":\"大海\",\"tag\":\"옛 이름\"}]}},\"x_head\":[{\"role\":\"surname\",\"text\":\"바다\",\"uid\":\"surname:sn-sea\"},{\"role\":\"name\",\"text\":\"바다 가문\",\"uid\":\"house:h-sea\"}],\"x_find\":{\"hay\":\"sn-sea 海氏 海 bada 大海\"}}"
+  },
+  {
+   "uid": "place:pl-sea",
+   "kind": "place",
+   "json": "{\"id\":\"pl-sea\",\"uid\":\"place:pl-sea\",\"itemKind\":\"place\",\"name\":\"바닷골\",\"names\":[{\"text\":\"海谷\",\"lang\":\"lzh\",\"kind\":\"native\"},{\"text\":\"Badatgol\",\"lang\":\"ko-Latn\",\"kind\":\"roman\"}],\"at\":null,\"parent\":\"\",\"note\":\"\",\"description\":\"\",\"wiki\":\"\",\"packId\":\"d2-names\",\"packName\":\"확인용 가상 세계(원어)\",\"auto\":false,\"seq\":0,\"uses\":[{\"role\":\"capital\",\"item\":{\"$ref\":\"d2-names/haeon\",\"name\":\"해온국\"},\"ref\":\"capital:0\",\"start\":1420,\"end\":1500,\"as\":\"\"},{\"role\":\"event\",\"item\":{\"$ref\":\"d2-names/ev-move\",\"name\":\"바닷골 천도\"},\"start\":1430,\"end\":1430}],\"parentId\":null,\"path\":[\"pl-sea\"],\"children\":[],\"x_names\":{\"main\":[{\"text\":\"海谷\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"},{\"text\":\"Badatgol\",\"lang\":\"ko-Latn\",\"tag\":\"로마자 · 한국어 로마자\"}]},\"x_nameHead\":{\"first\":{\"text\":\"海谷\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"},\"second\":{\"text\":\"Badatgol\",\"lang\":\"ko-Latn\",\"langName\":\"한국어 로마자\",\"kind\":\"로마자\"}},\"x_uses\":[{\"role\":\"capital\",\"uid\":\"d2-names/haeon\",\"ref\":\"capital:0\",\"name\":\"해온국\",\"when\":\"1420년 ~ 1500년\"},{\"role\":\"event\",\"uid\":\"d2-names/ev-move\",\"name\":\"바닷골 천도\",\"when\":\"1430년\"}]}"
+  },
+  {
+   "uid": "surname:sn-sea",
+   "kind": "surname",
+   "json": "{\"id\":\"sn-sea\",\"uid\":\"surname:sn-sea\",\"itemKind\":\"surname\",\"name\":\"바다\",\"names\":[{\"text\":\"海\",\"lang\":\"lzh\",\"kind\":\"native\"},{\"text\":\"Bada\",\"kind\":\"roman\"},{\"text\":\"大海\",\"kind\":\"former\"}],\"description\":\"확인용 가상 성씨.\",\"wiki\":\"\",\"packId\":\"d2-names\",\"packName\":\"확인용 가상 세계(원어)\",\"auto\":false,\"houses\":[\"h-sea\"],\"x_names\":{\"main\":[{\"text\":\"海\",\"lang\":\"lzh\",\"tag\":\"원어 · 한문\"},{\"text\":\"Bada\",\"tag\":\"로마자\"}],\"other\":[{\"text\":\"大海\",\"tag\":\"옛 이름\"}]},\"x_nameHead\":{\"first\":{\"text\":\"海\",\"lang\":\"lzh\",\"langName\":\"한문\",\"kind\":\"원어\"},\"second\":{\"text\":\"Bada\",\"kind\":\"로마자\"},\"rest\":[{\"text\":\"大海\",\"kind\":\"옛 이름\"}]},\"x_houses\":[{\"uid\":\"house:h-sea\",\"name\":\"바다 가문\",\"color\":\"#c8b193\"}]}"
+  }
+ ],
+ "rowLabels": [
+  {
+   "period": "d2-names/moon",
+   "track": 0,
+   "row": 0,
+   "kind": 0,
+   "name": "달 왕국",
+   "years": "520–680",
+   "color": 11516362,
+   "start": -762626880,
+   "end": -678474720,
+   "cap": 0,
+   "member": 0,
+   "lanes": [],
+   "orig": [
+    {
+     "text": "قمر",
+     "mb": [
+      1602,
+      1605,
+      1585
+     ]
+    },
+    {
+     "text": "Qamar"
+    }
+   ]
+  },
+  {
+   "period": "d2-names/rtl",
+   "track": 0,
+   "row": 1,
+   "kind": 0,
+   "name": "قمر",
+   "years": "520–680",
+   "color": 13418413,
+   "start": -762626880,
+   "end": -678474720,
+   "cap": 0,
+   "member": 0,
+   "lanes": []
+  },
+  {
+   "period": "d2-names/byeol",
+   "track": 0,
+   "row": 2,
+   "kind": 0,
+   "name": "별바다",
+   "years": "540–700",
+   "color": 13022142,
+   "start": -752107680,
+   "end": -667955520,
+   "cap": 0,
+   "member": 0,
+   "lanes": [],
+   "orig": [
+    {
+     "text": "󱨀󱨁󱨂󱨃",
+     "mb": [
+      989696,
+      989697,
+      989698,
+      989699
+     ]
+    },
+    {
+     "text": "Yelna Oru"
+    }
+   ]
+  },
+  {
+   "period": "d2-names/rock",
+   "track": 0,
+   "row": 3,
+   "kind": 0,
+   "name": "돌샘국",
+   "years": "600–780",
+   "color": 12699826,
+   "start": -720550080,
+   "end": -625880160,
+   "cap": 0,
+   "member": 0,
+   "lanes": [],
+   "orig": [
+    {
+     "text": "𥑮泉國",
+     "mb": [
+      152686
+     ]
+    },
+    {
+     "text": "Dolsaem"
+    }
+   ]
+  },
+  {
+   "period": "d2-names/long",
+   "track": 0,
+   "row": 4,
+   "kind": 0,
+   "name": "달빛 강 연합 왕국",
+   "years": "1400–1480",
+   "color": 12104136,
+   "start": -299790720,
+   "end": -257715360,
+   "cap": 0,
+   "member": 0,
+   "lanes": [],
+   "orig": [
+    {
+     "text": "月光江聯合王國"
+    }
+   ]
+  },
+  {
+   "period": "d2-names/haeon",
+   "track": 0,
+   "row": 5,
+   "kind": 0,
+   "name": "해온국",
+   "years": "1420–1500",
+   "color": 11387576,
+   "start": -289272960,
+   "end": -247196160,
+   "cap": 1,
+   "member": 0,
+   "lanes": [],
+   "orig": [
+    {
+     "text": "海溫國"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,304 @@
+{
+ "legacy": {
+  "epochs": [],
+  "events": [
+   {
+    "figures": [
+     "은 하림"
+    ],
+    "id": "ev-union",
+    "name": "왕관 여섯이 한 몸에",
+    "polity": "설령 왕국",
+    "start": 1444,
+    "track": "seolryeong"
+   },
+   {
+    "name": "빙원 맹약",
+    "polity": "o-seol",
+    "start": 1420,
+    "track": "seolryeong"
+   }
+  ],
+  "figures": [
+   {
+    "description": "혼인 · 상속 · 선출 · 정복으로 왕관 여섯을 한 몸에 모은 사람",
+    "end": 1455,
+    "house": "은씨",
+    "id": "ps-harim",
+    "importance": 3,
+    "name": "은 하림",
+    "role": "군주",
+    "start": 1402,
+    "track": "seolryeong"
+   }
+  ],
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "houses": [
+   {
+    "id": "h-eun",
+    "name": "은씨",
+    "surname": "은"
+   }
+  ],
+  "id": "f4-crowns",
+  "name": "형식 4 가상 팩 — 한 사람의 왕관 여섯(사람 객체)",
+  "periods": [
+   {
+    "end": 1560,
+    "house": "은씨",
+    "id": "o-seol",
+    "leaders": [
+     {
+      "end": 1420,
+      "name": "눈결왕",
+      "start": 1395
+     },
+     {
+      "accession": {
+       "how": "inherit"
+      },
+      "end": 1455,
+      "name": "하림",
+      "person": "ps-harim",
+      "start": 1420
+     },
+     {
+      "end": 1489,
+      "name": "서리왕",
+      "start": 1455
+     }
+    ],
+    "name": "설령 왕국",
+    "start": 1290,
+    "track": "seolryeong"
+   },
+   {
+    "end": 1500,
+    "id": "o-north",
+    "leaders": [
+     {
+      "end": 1431,
+      "name": "타르칸",
+      "start": 1398
+     },
+     {
+      "end": 1470,
+      "name": "보르칸",
+      "start": 1431
+     }
+    ],
+    "name": "북설 칸국",
+    "start": 1300,
+    "track": "seolryeong"
+   },
+   {
+    "end": 1600,
+    "id": "o-baek",
+    "kind": "fief",
+    "leaders": [
+     {
+      "end": 1420,
+      "name": "운결공",
+      "start": 1402
+     },
+     {
+      "accession": {
+       "how": "marriage"
+      },
+      "end": 1455,
+      "name": "하림",
+      "person": "ps-harim",
+      "start": 1420
+     },
+     {
+      "end": 1480,
+      "name": "세린공",
+      "start": 1455
+     }
+    ],
+    "name": "백사 공국",
+    "start": 1350,
+    "track": "baeksa"
+   },
+   {
+    "end": 1521,
+    "id": "o-forge",
+    "leaders": [
+     {
+      "end": 1433,
+      "name": "시장 다온",
+      "start": 1401
+     },
+     {
+      "end": 1462,
+      "name": "시장 벨로",
+      "start": 1433
+     }
+    ],
+    "name": "도가니 자유시",
+    "start": 1366,
+    "track": "baeksa",
+    "type": "city"
+   },
+   {
+    "end": 1540,
+    "id": "o-coral",
+    "leaders": [
+     {
+      "end": 1431,
+      "name": "파도왕",
+      "start": 1410
+     },
+     {
+      "accession": {
+       "how": "inherit"
+      },
+      "end": 1455,
+      "name": "하림",
+      "person": "ps-harim",
+      "start": 1431
+     },
+     {
+      "end": 1490,
+      "name": "물결왕",
+      "start": 1455
+     }
+    ],
+    "name": "산호 열도국",
+    "start": 1340,
+    "track": "baeksa"
+   },
+   {
+    "end": 1520,
+    "id": "o-cheong",
+    "kind": "fief",
+    "leaders": [
+     {
+      "end": 1438,
+      "name": "온 결",
+      "start": 1402
+     },
+     {
+      "accession": {
+       "how": "elected"
+      },
+      "end": 1455,
+      "name": "하림",
+      "person": "ps-harim",
+      "start": 1438
+     },
+     {
+      "end": 1490,
+      "name": "온 서리",
+      "start": 1455
+     }
+    ],
+    "name": "청림 후국",
+    "start": 1300,
+    "track": "cheongnim"
+   },
+   {
+    "end": 1500,
+    "id": "o-jeok",
+    "kind": "fief",
+    "leaders": [
+     {
+      "end": 1420,
+      "name": "붉은바위백",
+      "start": 1399
+     },
+     {
+      "end": 1455,
+      "name": "하림",
+      "person": "ps-harim",
+      "start": 1420
+     },
+     {
+      "end": 1481,
+      "name": "잿골백",
+      "start": 1455
+     }
+    ],
+    "name": "적석 변경백령",
+    "start": 1360,
+    "track": "cheongnim"
+   },
+   {
+    "end": 1641,
+    "id": "o-seohae",
+    "kind": "prefecture",
+    "leaders": [
+     {
+      "end": 1444,
+      "name": "등대장",
+      "start": 1402
+     },
+     {
+      "accession": {
+       "how": "conquest"
+      },
+      "end": 1455,
+      "name": "하림",
+      "person": "ps-harim",
+      "start": 1444
+     },
+     {
+      "end": 1479,
+      "name": "탑주 란",
+      "start": 1455
+     }
+    ],
+    "name": "서해 백탑령",
+    "partOf": [
+     {
+      "end": 1455,
+      "polity": "o-seol",
+      "relation": "colony",
+      "start": 1444
+     }
+    ],
+    "start": 1402,
+    "track": "cheongnim"
+   }
+  ],
+  "spheres": [
+   {
+    "id": "frost-ridge",
+    "name": "설령 빙원권",
+    "order": 1
+   },
+   {
+    "id": "prism-strait",
+    "name": "백사 해협권",
+    "order": 2
+   },
+   {
+    "id": "jade-canopy",
+    "name": "청림 수해권",
+    "order": 3
+   }
+  ],
+  "tracks": [
+   {
+    "id": "seolryeong",
+    "name": "설령",
+    "sphere": "frost-ridge"
+   },
+   {
+    "id": "baeksa",
+    "name": "백사만",
+    "sphere": "prism-strait"
+   },
+   {
+    "id": "cheongnim",
+    "name": "청림",
+    "sphere": "jade-canopy"
+   }
+  ],
+  "version": "1.0.0"
+ },
+ "notes": [],
+ "errors": [],
+ "warnings": []
+}

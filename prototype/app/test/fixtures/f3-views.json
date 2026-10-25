@@ -1,0 +1,72 @@
+[
+ {
+  "uid": "sample-views/sv-sol",
+  "kind": "period",
+  "json": "{\"id\":\"sv-sol\",\"track\":\"sv-east\",\"name\":\"솔빛 왕국\",\"start\":280,\"end\":610,\"leaders\":[{\"name\":\"첫솔\",\"start\":280,\"end\":330,\"ordinal\":1},{\"name\":\"둘솔\",\"start\":330,\"end\":402,\"ordinal\":2},{\"name\":\"셋솔\",\"start\":402,\"end\":610,\"ordinal\":3}],\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"sample-views/sv-sol\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":610,\"certainty\":\"accepted\",\"spanMin\":280,\"spanMax\":610,\"colorAuto\":true,\"color\":\"#c8b193\",\"peopleId\":null,\"peoplePath\":[],\"members\":[],\"hosts\":[],\"dynasties\":[],\"singleHost\":false,\"successors\":[],\"predecessors\":[],\"servedBy\":[],\"x_cellBounds\":{\"leader:0\":[-888854400,-862557120],\"leader:1\":[-862557120,-824688000],\"leader:2\":[-824688000,-714765600]},\"x_eventStat\":{\"count\":1,\"span\":[-850986720,-850986720]},\"x_lineage\":{\"leader:1\":{\"from\":{\"name\":\"첫솔\",\"uid\":\"sample-views/sv-sol\",\"ref\":\"leader:0\",\"polity\":\"솔빛 왕국\"},\"fromAuto\":1},\"leader:2\":{\"from\":{\"name\":\"둘솔\",\"uid\":\"sample-views/sv-sol\",\"ref\":\"leader:1\",\"polity\":\"솔빛 왕국\"},\"fromAuto\":1}},\"x_find\":{\"hay\":\"샘플 동녘 들판\",\"cells\":{\"leader:0\":\"첫솔\",\"leader:1\":\"둘솔\",\"leader:2\":\"셋솔\"}}}"
+ },
+ {
+  "uid": "sample-views/sv-reed",
+  "kind": "period",
+  "json": "{\"id\":\"sv-reed\",\"track\":\"sv-east\",\"name\":\"갈대 나라\",\"start\":450,\"end\":720,\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"sample-views/sv-reed\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":720,\"certainty\":\"accepted\",\"spanMin\":450,\"spanMax\":720,\"colorAuto\":true,\"color\":\"#9dbea8\",\"peopleId\":null,\"peoplePath\":[],\"members\":[],\"hosts\":[],\"dynasties\":[],\"singleHost\":false,\"successors\":[],\"predecessors\":[],\"servedBy\":[],\"x_find\":{\"hay\":\"샘플 동녘 들판\"}}"
+ },
+ {
+  "uid": "sample-views/sv-wave",
+  "kind": "period",
+  "json": "{\"id\":\"sv-wave\",\"track\":\"sv-west\",\"name\":\"물결 연맹\",\"start\":260,\"end\":540,\"kind\":\"period\",\"polityKind\":\"federation\",\"itemKind\":\"period\",\"uid\":\"sample-views/sv-wave\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":540,\"certainty\":\"accepted\",\"spanMin\":260,\"spanMax\":540,\"colorAuto\":true,\"color\":\"#c8b193\",\"peopleId\":null,\"peoplePath\":[],\"members\":[],\"hosts\":[],\"dynasties\":[],\"singleHost\":false,\"successors\":[{\"from\":{\"$ref\":\"sample-views/sv-wave\",\"name\":\"물결 연맹\"},\"to\":{\"$ref\":\"sample-views/sv-sail\",\"name\":\"흰 돛 왕국\"},\"type\":\"direct\",\"note\":\"\"}],\"predecessors\":[],\"servedBy\":[],\"x_eventStat\":{\"count\":1,\"span\":[-849408480,-849408480]},\"x_succ\":{\"post\":[{\"uid\":\"sample-views/sv-sail\",\"name\":\"흰 돛 왕국\",\"color\":\"#9dbea8\",\"when\":\"540년 ~ 800년\",\"type\":\"direct\"}]},\"x_find\":{\"hay\":\"샘플 서녘 바다 연맹\"}}"
+ },
+ {
+  "uid": "sample-views/sv-sail",
+  "kind": "period",
+  "json": "{\"id\":\"sv-sail\",\"track\":\"sv-west\",\"name\":\"흰 돛 왕국\",\"start\":540,\"end\":800,\"succeeds\":[{\"from\":\"물결 연맹\",\"type\":\"direct\"}],\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"sample-views/sv-sail\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":800,\"certainty\":\"accepted\",\"spanMin\":540,\"spanMax\":800,\"colorAuto\":true,\"color\":\"#9dbea8\",\"peopleId\":null,\"peoplePath\":[],\"members\":[],\"hosts\":[],\"dynasties\":[],\"singleHost\":false,\"successors\":[],\"predecessors\":[{\"from\":{\"$ref\":\"sample-views/sv-wave\",\"name\":\"물결 연맹\"},\"to\":{\"$ref\":\"sample-views/sv-sail\",\"name\":\"흰 돛 왕국\"},\"type\":\"direct\",\"note\":\"\"}],\"servedBy\":[],\"x_eventStat\":{\"count\":1,\"span\":[-719498880,-719498880]},\"x_succ\":{\"pre\":[{\"uid\":\"sample-views/sv-wave\",\"name\":\"물결 연맹\",\"color\":\"#c8b193\",\"when\":\"260년 ~ 540년\",\"type\":\"direct\"}]},\"x_find\":{\"hay\":\"샘플 서녘 바다\"}}"
+ },
+ {
+  "uid": "sample-views/sv-pass",
+  "kind": "period",
+  "json": "{\"id\":\"sv-pass\",\"track\":\"sv-south\",\"name\":\"높은 고개 나라\",\"start\":310,\"end\":590,\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"sample-views/sv-pass\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":590,\"certainty\":\"accepted\",\"spanMin\":310,\"spanMax\":590,\"colorAuto\":true,\"color\":\"#c8b193\",\"peopleId\":null,\"peoplePath\":[],\"members\":[],\"hosts\":[],\"dynasties\":[],\"singleHost\":false,\"successors\":[],\"predecessors\":[],\"servedBy\":[],\"x_eventStat\":{\"count\":1,\"span\":[-846252000,-846252000]},\"x_find\":{\"hay\":\"샘플 마루 산맥\"}}"
+ },
+ {
+  "uid": "sample-views/sv-tower",
+  "kind": "period",
+  "json": "{\"id\":\"sv-tower\",\"track\":\"sv-south\",\"name\":\"돌탑 왕국\",\"start\":470,\"end\":760,\"polityKind\":\"state\",\"itemKind\":\"period\",\"kind\":\"period\",\"uid\":\"sample-views/sv-tower\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":760,\"certainty\":\"accepted\",\"spanMin\":470,\"spanMax\":760,\"colorAuto\":true,\"color\":\"#9dbea8\",\"peopleId\":null,\"peoplePath\":[],\"members\":[],\"hosts\":[],\"dynasties\":[],\"singleHost\":false,\"successors\":[],\"predecessors\":[],\"servedBy\":[],\"x_find\":{\"hay\":\"샘플 마루 산맥\"}}"
+ },
+ {
+  "uid": "sample-views/sv-e-wall",
+  "kind": "event",
+  "json": "{\"id\":\"sv-e-wall\",\"track\":\"sv-east\",\"title\":\"들판 둑 쌓기\",\"start\":352,\"category\":\"society\",\"importance\":2,\"polity\":\"솔빛 왕국\",\"itemKind\":\"event\",\"kind\":\"event\",\"uid\":\"sample-views/sv-e-wall\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":352,\"certainty\":\"accepted\",\"spanMin\":352,\"spanMax\":352,\"color\":\"#d7c18e\",\"polityUid\":\"sample-views/sv-sol\",\"polityName\":\"솔빛 왕국\",\"polityColor\":\"#c8b193\",\"placements\":[{\"track\":\"sv-east\",\"polityUid\":\"sample-views/sv-sol\",\"polityName\":\"솔빛 왕국\",\"polityColor\":\"#c8b193\"}],\"shared\":false,\"x_find\":{\"hay\":\"샘플 동녘 들판\"}}"
+ },
+ {
+  "uid": "sample-views/sv-e-fleet",
+  "kind": "event",
+  "json": "{\"id\":\"sv-e-fleet\",\"track\":\"sv-west\",\"title\":\"연맹 선단 출범\",\"start\":355,\"category\":\"politics\",\"importance\":2,\"polity\":\"물결 연맹\",\"itemKind\":\"event\",\"kind\":\"event\",\"uid\":\"sample-views/sv-e-fleet\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":355,\"certainty\":\"accepted\",\"spanMin\":355,\"spanMax\":355,\"color\":\"#abb3c9\",\"polityUid\":\"sample-views/sv-wave\",\"polityName\":\"물결 연맹\",\"polityColor\":\"#c8b193\",\"placements\":[{\"track\":\"sv-west\",\"polityUid\":\"sample-views/sv-wave\",\"polityName\":\"물결 연맹\",\"polityColor\":\"#c8b193\"}],\"shared\":false,\"x_find\":{\"hay\":\"샘플 서녘 바다\"}}"
+ },
+ {
+  "uid": "sample-views/sv-e-road",
+  "kind": "event",
+  "json": "{\"id\":\"sv-e-road\",\"track\":\"sv-south\",\"title\":\"고갯길 개통\",\"start\":361,\"category\":\"society\",\"importance\":2,\"polity\":\"높은 고개 나라\",\"itemKind\":\"event\",\"kind\":\"event\",\"uid\":\"sample-views/sv-e-road\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":361,\"certainty\":\"accepted\",\"spanMin\":361,\"spanMax\":361,\"color\":\"#d7c18e\",\"polityUid\":\"sample-views/sv-pass\",\"polityName\":\"높은 고개 나라\",\"polityColor\":\"#c8b193\",\"placements\":[{\"track\":\"sv-south\",\"polityUid\":\"sample-views/sv-pass\",\"polityName\":\"높은 고개 나라\",\"polityColor\":\"#c8b193\"}],\"shared\":false,\"x_find\":{\"hay\":\"샘플 마루 산맥\"}}"
+ },
+ {
+  "uid": "sample-views/sv-e-trade",
+  "kind": "event",
+  "json": "{\"id\":\"sv-e-trade\",\"track\":\"sv-west\",\"title\":\"세 땅 교역 약정\",\"start\":602,\"category\":\"diplomacy\",\"importance\":3,\"polity\":\"흰 돛 왕국\",\"itemKind\":\"event\",\"kind\":\"event\",\"uid\":\"sample-views/sv-e-trade\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":602,\"certainty\":\"accepted\",\"spanMin\":602,\"spanMax\":602,\"color\":\"#9dbea8\",\"polityUid\":\"sample-views/sv-sail\",\"polityName\":\"흰 돛 왕국\",\"polityColor\":\"#9dbea8\",\"placements\":[{\"track\":\"sv-west\",\"polityUid\":\"sample-views/sv-sail\",\"polityName\":\"흰 돛 왕국\",\"polityColor\":\"#9dbea8\"}],\"shared\":false,\"x_find\":{\"hay\":\"샘플 서녘 바다\"}}"
+ },
+ {
+  "uid": "sample-views/ep-sv-three",
+  "kind": "epoch",
+  "json": "{\"id\":\"ep-sv-three\",\"name\":\"세 땅 시대\",\"start\":300,\"end\":520,\"color\":\"#d7c18e\",\"note\":\"샘플용 공통 시대 구분.\",\"kind\":\"epoch\",\"itemKind\":\"epoch\",\"uid\":\"sample-views/ep-sv-three\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":520,\"trackName\":\"\",\"x_find\":{\"hay\":\"샘플용 공통 시대 구분.\"}}"
+ },
+ {
+  "uid": "themes",
+  "kind": "themes",
+  "json": "{\"list\":[{\"id\":\"system\",\"name\":\"체제\",\"color\":\"#abb3c9\",\"order\":0},{\"id\":\"faction\",\"name\":\"붕당\",\"color\":\"#d4a39b\",\"order\":1},{\"id\":\"law\",\"name\":\"법률\",\"color\":\"#bba395\",\"order\":2},{\"id\":\"election\",\"name\":\"선거제도\",\"color\":\"#a0bcc5\",\"order\":3},{\"id\":\"ideology\",\"name\":\"이념\",\"color\":\"#bbacc8\",\"order\":4},{\"id\":\"military\",\"name\":\"군사제도\",\"color\":\"#b6c398\",\"order\":5},{\"id\":\"tax\",\"name\":\"조세제도\",\"color\":\"#d7c18e\",\"order\":6},{\"id\":\"selection\",\"name\":\"선발제도\",\"color\":\"#9dbea8\",\"order\":7}]}"
+ },
+ {
+  "uid": "view:v-three-lands",
+  "kind": "view",
+  "json": "{\"id\":\"v-three-lands\",\"name\":\"세 땅 같은 시기 견주기\",\"members\":[{\"$ref\":\"sample-views/sv-sol\",\"name\":\"솔빛 왕국\"},{\"$ref\":\"sample-views/sv-wave\",\"name\":\"물결 연맹\"},{\"$ref\":\"sample-views/sv-pass\",\"name\":\"높은 고개 나라\"}],\"start\":300,\"end\":520,\"settings\":{\"density\":1,\"show\":{\"leaders\":true,\"figures\":false,\"eras\":false}},\"color\":\"#d7c18e\",\"description\":\"세 트랙에 흩어진 세 나라를 한 판에 모읍니다. 같은 해가 같은 세로선에 놓여 둑 · 선단 · 고갯길이 거의 같은 때였음이 바로 보입니다.\",\"note\":\"켜면 300 ~ 520년으로 갑니다.\",\"kind\":\"view\",\"itemKind\":\"view\",\"uid\":\"view:v-three-lands\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"memberRefs\":[{\"track\":\"sv-east\",\"polity\":\"솔빛 왕국\"},{\"track\":\"sv-west\",\"polity\":\"물결 연맹\"},\"높은 고개 나라\"],\"warnings\":[],\"tracks\":[\"sv-east\",\"sv-west\",\"sv-south\"],\"endY\":520,\"wiki\":\"== 이 판 ==\\n세 트랙의 나라를 한 화면에 붙여 같은 시기를 견줍니다. 구성 나라는 적은 차례대로입니다.\",\"x_members\":[{\"uid\":\"sample-views/sv-sol\",\"name\":\"솔빛 왕국\",\"color\":\"#c8b193\"},{\"uid\":\"sample-views/sv-wave\",\"name\":\"물결 연맹\",\"color\":\"#c8b193\"},{\"uid\":\"sample-views/sv-pass\",\"name\":\"높은 고개 나라\",\"color\":\"#c8b193\"}],\"x_span\":[-878335200,-762626880]}"
+ },
+ {
+  "uid": "view:v-16og913",
+  "kind": "view",
+  "json": "{\"id\":\"v-16og913\",\"name\":\"바다 건너 교역 상대\",\"members\":[{\"$ref\":\"sample-views/sv-sail\",\"name\":\"흰 돛 왕국\"},{\"$ref\":\"sample-views/sv-tower\",\"name\":\"돌탑 왕국\"},{\"$ref\":\"sample-views/sv-reed\",\"name\":\"갈대 나라\"}],\"settings\":{\"density\":-1,\"lens\":\"조세제도\"},\"description\":\"기간을 적지 않은 판 — 켜도 보던 시대 그대로 모으기만 합니다.\",\"kind\":\"view\",\"itemKind\":\"view\",\"uid\":\"view:v-16og913\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"memberRefs\":[\"흰 돛 왕국\",\"돌탑 왕국\",\"갈대 나라\"],\"warnings\":[],\"tracks\":[\"sv-west\",\"sv-south\",\"sv-east\"],\"colorAuto\":true,\"color\":\"#bba395\",\"x_members\":[{\"uid\":\"sample-views/sv-sail\",\"name\":\"흰 돛 왕국\",\"color\":\"#9dbea8\"},{\"uid\":\"sample-views/sv-tower\",\"name\":\"돌탑 왕국\",\"color\":\"#9dbea8\"},{\"uid\":\"sample-views/sv-reed\",\"name\":\"갈대 나라\",\"color\":\"#9dbea8\"}]}"
+ }
+]

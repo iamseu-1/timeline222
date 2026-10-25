@@ -1,0 +1,239 @@
+{
+ "source": {
+  "scene.js": "f34dbd14695b",
+  "render.js": "88ae7d054e8c"
+ },
+ "bottom": 1058,
+ "rows": [
+  {
+   "y": 134,
+   "yBand": 147,
+   "h": 20,
+   "depth": 0,
+   "laneY": null,
+   "items": [
+    "고려",
+    "조선"
+   ]
+  },
+  {
+   "y": 178,
+   "yBand": 191,
+   "h": 20,
+   "depth": 0,
+   "laneY": null,
+   "items": [
+    "금",
+    "원",
+    "명"
+   ]
+  },
+  {
+   "y": 216,
+   "yBand": 229,
+   "h": 20,
+   "depth": 0,
+   "laneY": null,
+   "items": [
+    "남송",
+    "청"
+   ]
+  },
+  {
+   "y": 284,
+   "yBand": 297,
+   "h": 20,
+   "depth": 1,
+   "laneY": null,
+   "items": [
+    "조정"
+   ]
+  },
+  {
+   "y": 322,
+   "yBand": 335,
+   "h": 20,
+   "depth": 1,
+   "laneY": null,
+   "items": [
+    "남조"
+   ]
+  },
+  {
+   "y": 360,
+   "yBand": 373,
+   "h": 32,
+   "depth": 1,
+   "laneY": null,
+   "items": [
+    "가마쿠라 막부",
+    "무로마치 막부",
+    "에도 막부"
+   ]
+  },
+  {
+   "y": 432,
+   "yBand": 445,
+   "h": 20,
+   "depth": 2,
+   "laneY": null,
+   "items": [
+    "다케다"
+   ]
+  },
+  {
+   "y": 470,
+   "yBand": 483,
+   "h": 20,
+   "depth": 2,
+   "laneY": null,
+   "items": [
+    "고호조"
+   ]
+  },
+  {
+   "y": 508,
+   "yBand": 521,
+   "h": 20,
+   "depth": 2,
+   "laneY": null,
+   "items": [
+    "오다",
+    "도요토미 정권"
+   ]
+  },
+  {
+   "y": 635,
+   "yBand": 648,
+   "h": 20,
+   "depth": 0,
+   "laneY": 670,
+   "items": [
+    "아바스 칼리파국"
+   ]
+  },
+  {
+   "y": 687,
+   "yBand": 700,
+   "h": 20,
+   "depth": 0,
+   "laneY": 722,
+   "items": [
+    "맘루크 술탄국"
+   ]
+  },
+  {
+   "y": 739,
+   "yBand": 752,
+   "h": 20,
+   "depth": 0,
+   "laneY": 774,
+   "items": [
+    "오스만"
+   ]
+  },
+  {
+   "y": 830,
+   "yBand": 843,
+   "h": 20,
+   "depth": 1,
+   "laneY": null,
+   "items": [
+    "보헤미아 왕국"
+   ]
+  },
+  {
+   "y": 868,
+   "yBand": 881,
+   "h": 20,
+   "depth": 1,
+   "laneY": null,
+   "items": [
+    "오스트리아"
+   ]
+  },
+  {
+   "y": 906,
+   "yBand": 919,
+   "h": 20,
+   "depth": 1,
+   "laneY": null,
+   "items": [
+    "뤼베크"
+   ]
+  },
+  {
+   "y": 955,
+   "yBand": 968,
+   "h": 20,
+   "depth": 0,
+   "laneY": null,
+   "items": [
+    "프랑스 왕국"
+   ]
+  },
+  {
+   "y": 993,
+   "yBand": 1006,
+   "h": 32,
+   "depth": 0,
+   "laneY": null,
+   "items": [
+    "로마 교단"
+   ]
+  }
+ ],
+ "containers": [
+  {
+   "n": "전국 시대",
+   "depth": 1,
+   "yTop": 410,
+   "yBottom": 553,
+   "rows": 3
+  },
+  {
+   "n": "일본",
+   "depth": 0,
+   "yTop": 260,
+   "yBottom": 564,
+   "rows": 6
+  },
+  {
+   "n": "신성 로마",
+   "depth": 0,
+   "yTop": 806,
+   "yBottom": 951,
+   "rows": 3
+  }
+ ],
+ "cultures": [
+  {
+   "n": "동아시아",
+   "y0": 134,
+   "y1": 568,
+   "closed": false,
+   "rowY": null
+  },
+  {
+   "n": "초원",
+   "y0": 583,
+   "y1": 626,
+   "closed": true,
+   "rowY": 597
+  },
+  {
+   "n": "이슬람",
+   "y0": 635,
+   "y1": 791,
+   "closed": false,
+   "rowY": null
+  },
+  {
+   "n": "라틴 유럽",
+   "y0": 806,
+   "y1": 1043,
+   "closed": false,
+   "rowY": null
+  }
+ ]
+}

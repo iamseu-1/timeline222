@@ -1,0 +1,66 @@
+# DLC 메이커 안드로이드 APK(Tauri — prototype/scripts/release/build-maker-android.sh).
+#   release.yml이 부르고(workflow_call — 판을 넘김, 지은 APK는 같은 실행의 'maker-android' 꾸러미로 게시 작업에 감),
+#   master에 껍데기(src-tauri) · 플랫폼 경계(js/platform.js) · 짓는 스크립트 · 이 파일이 바뀌어 밀리면 따로 지어 봅니다(게시 없음 — 릴리즈 전에 미리 확인).
+#   손으로: Actions → maker-android → Run workflow.
+# 2026-10-14 감독 지시 "모바일도 만들어야 해"(DLC 메이커를 휴대폰 앱으로도) — 판의 크기와 상관없이 늘 짓고 늘 게시합니다(release.yml 머리글).
+name: maker-android
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: "판(package.json의 version)"
+        type: string
+        required: true
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - "src-tauri/**"
+      - "js/platform.js"
+      - "prototype/scripts/release/build-maker-android.sh"
+      - ".github/workflows/maker-android.yml"
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: "22"
+  NDK_VERSION: "28.2.13676358"
+
+jobs:
+  apk:
+    name: DLC 메이커 (안드로이드 · Tauri)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - id: v
+        name: 판
+        env:
+          GIVEN: ${{ inputs.version }}
+        run: echo "version=${GIVEN:-$(node -p "require('./package.json').version")}" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: android-actions/setup-android@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+      - name: NDK
+        run: sdkmanager "ndk;$NDK_VERSION"
+      - name: APK(arm64 · 디버그 키 서명)
+        run: bash prototype/scripts/release/build-maker-android.sh "out/maker-android/HistoryTimelineMaker-${{ steps.v.outputs.version }}-arm64.apk"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: maker-android
+          path: out/maker-android/
+          if-no-files-found: error
+          retention-days: 30

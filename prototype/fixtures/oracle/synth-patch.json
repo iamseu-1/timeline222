@@ -1,0 +1,33 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "id": "synth-patch",
+  "name": "합성 학설 — 패치 검사 자료",
+  "version": "1.0.0",
+  "author": "검사 자료",
+  "description": "합성 세계(synth-world)를 고치는 가상 학설 패치 — 모델의 패치 갈래를 밟는다. 모든 이름은 지어낸 것입니다.",
+  "requires": [],
+  "tracks": [],
+  "patches": [
+    { "target": "synth-world/e-a", "set": { "title": "고친 가상 사건", "start": "2세기", "end": "2세기 말" }, "note": "세기로 고침" },
+    { "target": "synth-world/e-b", "hide": true },
+    { "target": "synth-world/p-b", "set": { "kind": "vassal", "partOf": "가나 왕국" }, "note": "종류를 고침" },
+    { "target": "synth-world/p-c", "set": { "treaty": { "parties": [{ "polity": "가나 왕국" }] } } },
+    { "target": "synth-world/p-d", "set": { "law": { "name": "가상 법" } } },
+    { "target": "synth-world/p-a", "set": { "alternatives": [{ "label": "다른 설", "start": 90, "birth": 80 }, { "label": "글만 있는 견해" }, { "label": "끝만 적은 설", "end": 280 }] } },
+    { "target": "synth-world/f-real", "set": { "alternatives": [{ "label": "생년 이설", "birth": 95 }] } },
+    { "target": "synth-world/in-a", "set": { "theme": ["주제갑", "주제을"] } },
+    { "target": "synth-world/g-a", "set": { "name": "고친 가상 무리" } },
+    { "target": "synth-world/e-c", "set": { "theme": ["system"], "law": { "name": "사건의 법" } } },
+    { "target": "synth-world/없는것", "set": { "title": "닿지 않음" } },
+    { "target": "synth-world/p-s1", "set": { "start": "3세기", "end": "4세기 말" } },
+    { "target": "synth-world/e-e", "set": { "alternatives": [{ "label": "끝만 적은 사건 설", "end": 179 }, { "label": "시작 있는 사건 설", "start": 176 }] } },
+    { "target": "synth-world/p-e", "set": { "treaty": { "parties": [{ "polity": "가나 왕국" }] }, "law": { "name": "버릴 법" }, "election": { "name": "버릴 선거" }, "theme": ["주제갑"], "name": "고친 에자 나라" }, "note": "규격은 버리고 이름만" },
+    { "target": "synth-world/e-d", "set": { "start": "3세기" }, "note": "끝 없는 점 사건의 세기 시작" },
+    { "target": "synth-world/p-f", "set": { "ongoing": true }, "note": "진행 중으로" },
+    { "target": "synth-world/f-miss", "set": { "start": "2세기", "end": 199 }, "note": "인물의 시작 · 끝" },
+    { "target": "synth-world/in-b", "set": { "theme": [] }, "note": "빈 주제 목록 — 대상의 주제 그대로" },
+    { "target": "synth-world/p-hide", "hide": true },
+    { "target": "synth-world/f-hide", "hide": true }
+  ]
+}

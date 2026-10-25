@@ -1,0 +1,10 @@
+{
+  "note": "형식 4 가상 팩 다섯(리메이크 5단계 과제 0) — 세계사 장면 다섯(docs/목업-세계사-장면-다섯.md)과 같은 꼴로 '형식 4 더하기' 절의 새 칸(사람 객체 · offices[].from · power[].over · epochs[].sphere · yearCycles · importance)을 씁니다. 이름은 모두 가상. scripts/check-format4.mjs ⑦이 읽어 (가) 정규화가 오류 없이 되고 (나) 다리로 내린 옛 꼴이 expected/<id>.legacy.json과 같은지를 봅니다. 과제 1이 새 칸을 읽게 되면 expected를 다시 뽑아(--write-expected) 달라진 곳을 보고 적습니다",
+  "files": [
+    { "path": "f4-crowns.json", "scene": 1, "new": ["type person", "cells[].person → 사람 객체", "importance"] },
+    { "path": "f4-federation.json", "scene": 2, "new": ["importance", "within + people(줄 안 묶음)"] },
+    { "path": "f4-office.json", "scene": 3, "new": ["offices[].from", "power[].over", "cells[].status"] },
+    { "path": "f4-liege.json", "scene": 4, "new": ["type person", "partOf 둘(기간 있음)"] },
+    { "path": "f4-sphere.json", "scene": 5, "new": ["epochs[].sphere", "yearCycles", "yearCycle(전체)"] }
+  ]
+}
