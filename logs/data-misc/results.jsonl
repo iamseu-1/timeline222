@@ -1,0 +1,22 @@
+{"id":"calendar","label":"달력 표 뜨기(warm-calendar)","kind":"plain","state":"started","at":"2026-10-25T05:10:43.097Z"}
+{"id":"calendar","label":"달력 표 뜨기(warm-calendar)","kind":"plain","state":"done","code":0,"seconds":12,"at":"2026-10-25T05:10:55.637Z"}
+{"id":"f4-same-check","label":"f4-same-check(형식 4 사본 = 원본 배치)","kind":"lines","state":"started","at":"2026-10-25T05:10:55.687Z"}
+{"id":"f4-same-check","label":"f4-same-check(형식 4 사본 = 원본 배치)","kind":"lines","state":"done","code":0,"seconds":56,"at":"2026-10-25T05:11:52.001Z"}
+{"id":"remake3-same-check","label":"remake3-same-check(스키마 4가 더한 것 빼면 같음)","kind":"r3same","state":"skipped","note":"기록 없는 공개 저장소의 부모 없는 검사 커밋 — 기준 커밋(그 스크립트를 처음 더한 커밋의 부모)이 없음 · 이 PC 공식 검사로","at":"2026-10-25T05:11:52.051Z"}
+{"id":"check-format4","label":"check-format4","kind":"plain","state":"started","at":"2026-10-25T05:11:52.097Z"}
+{"id":"check-format4","label":"check-format4","kind":"plain","state":"done","code":0,"seconds":0,"at":"2026-10-25T05:11:52.767Z"}
+{"id":"calendar-cache-check","label":"calendar-cache-check(잘라 낸 표 = 바로 뜬 표)","kind":"plain","state":"started","at":"2026-10-25T05:11:52.815Z"}
+{"id":"calendar-cache-check","label":"calendar-cache-check(잘라 낸 표 = 바로 뜬 표)","kind":"plain","state":"done","code":0,"seconds":46,"at":"2026-10-25T05:12:38.887Z"}
+{"id":"add-dlc-tomb-check","label":"add-dlc-tomb-check(묘비 규칙)","kind":"plain","state":"started","at":"2026-10-25T05:12:38.932Z"}
+{"id":"add-dlc-tomb-check","label":"add-dlc-tomb-check(묘비 규칙)","kind":"plain","state":"done","code":0,"seconds":3,"at":"2026-10-25T05:12:41.262Z"}
+{"id":"dev-smoke","label":"dev-smoke(웹 · 메이커 빠른 검사)","kind":"plain","state":"started","at":"2026-10-25T05:12:41.309Z"}
+{"id":"dev-smoke","label":"dev-smoke(웹 · 메이커 빠른 검사)","kind":"plain","state":"done","code":0,"seconds":6,"at":"2026-10-25T05:12:48.024Z"}
+{"id":"maker-check-check","label":"maker-check-check(메이커 검사 창)","kind":"plain","state":"started","at":"2026-10-25T05:12:48.074Z"}
+{"id":"maker-check-check","label":"maker-check-check(메이커 검사 창)","kind":"plain","state":"done","code":0,"seconds":0,"at":"2026-10-25T05:12:48.202Z"}
+{"id":"maker-paste-check","label":"maker-paste-check --node(브라우저 단계 빼고)","kind":"plain","state":"started","at":"2026-10-25T05:12:48.246Z"}
+{"id":"maker-paste-check","label":"maker-paste-check --node(브라우저 단계 빼고)","kind":"plain","state":"done","code":0,"seconds":0,"at":"2026-10-25T05:12:48.479Z"}
+{"id":"maker-save-check","label":"maker-save-check(메이커 저장 왕복)","kind":"plain","state":"missing","note":"이 가지에 scripts/maker-save-check.mjs 없음","at":"2026-10-25T05:12:48.527Z"}
+{"id":"maker-f4-check","label":"maker-f4-check(메이커 다리)","kind":"plain","state":"missing","note":"이 가지에 scripts/maker-f4-check.mjs 없음","at":"2026-10-25T05:12:48.571Z"}
+{"id":"entity-id-check","label":"entity-id-check(항목ID가 길마다 같음)","kind":"plain","state":"missing","note":"이 가지에 prototype/scripts/entity-id-check.mjs 없음","at":"2026-10-25T05:12:48.616Z"}
+{"id":"window-check","label":"window-check(연표 창구)","kind":"plain","state":"missing","note":"이 가지에 prototype/scripts/window-check.mjs 없음","at":"2026-10-25T05:12:48.662Z"}
+{"id":"schema4-old-store-check","label":"schema4-old-store-check","kind":"plain","state":"skipped","note":"이 PC 전용 자료(배포본 0.0.4의 옛 Windows archive-tool.exe · 판 3 저장소)","at":"2026-10-25T05:12:48.713Z"}

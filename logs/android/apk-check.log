@@ -1,0 +1,25 @@
+# 시작 2026-10-25 14:12:56 KST · APK 확인(디버그 키 서명 · arm64 · 엔진 .so)
+# 명령 bash /home/runner/work/_temp/ht-bin/android-check.sh
+APK build/app/outputs/flutter-apk/app-release.apk — 47369250바이트 · build-tools 37.0.0
+--- 서명(apksigner verify --print-certs)
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v3.2 scheme (APK Signature Scheme v3.2): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+--- aapt2 dump badging
+package: name='local.archive.archive_prototype' versionCode='15' versionName='0.0.4' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+targetSdkVersion:'36'
+launchable-activity: name='local.archive.archive_prototype.MainActivity'  label='' icon=''
+native-code: 'arm64-v8a' 'armeabi-v7a' 'x86_64'
+--- APK 안의 엔진 .so
+ 11010952  1981-01-01 01:01   lib/arm64-v8a/libapp.so
+ 11391224  1981-01-01 01:01   lib/arm64-v8a/libarchive_engine.so
+   131248  1981-01-01 01:01   lib/arm64-v8a/libdartjni.so
+ 11747864  1981-01-01 01:01   lib/arm64-v8a/libflutter.so
+  6386696  1981-01-01 01:01   lib/arm64-v8a/libpdfium.so
+--- 매니페스트의 링크 받기 · 묻기(알림)
+(scheme 없음)
+APK 확인 — 서명 · arm64 · 엔진 .so 모두 맞음
+# 끝 2026-10-25 14:12:57 KST · 끝 코드 0 · 1초

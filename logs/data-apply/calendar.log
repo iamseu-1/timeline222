@@ -1,0 +1,4 @@
+# 시작 2026-10-25 14:10:48 KST · 달력 표 뜨기(warm-calendar)
+# 명령 node prototype/scripts/warm-calendar.mjs
+달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · hebrew · ethiopic · coptic · indian · 12.4초
+# 끝 2026-10-25 14:11:00 KST · 끝 코드 0 · 12초

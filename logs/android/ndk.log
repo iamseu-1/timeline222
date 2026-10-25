@@ -1,0 +1,15 @@
+# 시작 2026-10-25 14:05:21 KST · NDK 28.2.13676358 받기(sdkmanager)
+# 명령 bash -c 
+  sdkmanager "ndk;$NDK_VERSION" | tr "\r" "\n" | grep -vE "^\[[= ]*\] +[0-9]+%"
+  d="${ANDROID_HOME:-$ANDROID_SDK_ROOT}/ndk/$NDK_VERSION"
+  if [ -x "$d/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang" ]; then echo "NDK 자리 $d"; else echo "NDK가 없습니다: $d"; exit 1; fi
+WARNING: The SDK Manager CLI tool (sdkmanager) is deprecated. Use Android CLI instead.
+The 'android' binary can also be found in the cmdline-tools directory, and 'android sdk' is the replacement for 'sdkmanager'.
+To learn more about the Android CLI and how to use it, see the documentation (https://d.android.com/tools/agents/android-cli)
+
+Loading package information...                                                  
+Loading local repository...                                                     
+
+
+NDK 자리 /usr/local/lib/android/sdk/ndk/28.2.13676358
+# 끝 2026-10-25 14:05:38 KST · 끝 코드 0 · 17초

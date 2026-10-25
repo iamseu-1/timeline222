@@ -1,0 +1,4 @@
+{"id":"calendar","label":"달력 표 뜨기(warm-calendar)","kind":"plain","state":"started","at":"2026-10-25T05:10:48.136Z"}
+{"id":"calendar","label":"달력 표 뜨기(warm-calendar)","kind":"plain","state":"done","code":0,"seconds":12,"at":"2026-10-25T05:11:00.627Z"}
+{"id":"apply-check","label":"apply-check(모든 조합 · KTL 빼고)","kind":"plain","state":"started","at":"2026-10-25T05:11:00.676Z"}
+{"id":"apply-check","label":"apply-check(모든 조합 · KTL 빼고)","kind":"plain","state":"done","code":0,"seconds":1402,"at":"2026-10-25T05:34:22.670Z"}

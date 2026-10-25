@@ -1,0 +1,330 @@
+# 시작 2026-10-25 14:05:20 KST · cargo test(lib · bin + 파일 21개)
+# 명령 cargo test --locked --release --no-fail-fast --manifest-path prototype/engine/Cargo.toml --lib --bins --test boards --test build --test echo --test glyph --test htlayout --test lay_frame --test lay_m_axis --test lay_m_calendar --test lay_m_entities --test lay_m_hangs --test lay_m_links --test lay_m_persons --test lay_m_scopes --test lay_m_variants --test lay_out --test lay_rows --test layout_static --test names --test queries --test tiles --test year_cycle
+    Updating crates.io index
+   Compiling archive_engine v0.1.0 (/home/runner/work/timeline222/timeline222/prototype/engine)
+    Finished `release` profile [optimized] target(s) in 15m 53s
+     Running unittests src/lib.rs (prototype/engine/target/release/deps/archive_engine-87a2266926cf0583)
+
+running 52 tests
+test bandref::tests::띠_번호_칸은_구역과_조건으로_정해진다 ... ok
+test builder::tests::대표_덩어리는_look과_딱지와_든_띠까지_품는다 ... ok
+test builder::tests::대표는_중요도_큰_순_번호_작은_순으로_넷만_남는다 ... ok
+test builder::tests::칸을_합치면_넣는_순서와_상관없이_같은_대표가_남는다 ... ok
+test filter::tests::빈_거르개와_없는_거르개는_모두_거르지_않는다 ... ok
+test filter::tests::번호_목록은_오름차순에_중복이_없다 ... ok
+test filter::tests::잘못된_거르개는_까닭과_함께_실패한다 ... ok
+test generate::tests::띠_아래_탭과_바탕_문화_이름은_줄_높이에만_더해진다 ... ok
+test generate::tests::시기와_지위와_인물과_예속은_아래_단을_밀어낸다 ... ok
+test generate::tests::줄_쌓기는_모두_켠_2판의_자리와_같다 ... ok
+test lay::cal::tests::every_solar_intl_calendar_has_a_guess ... ok
+test lay::cal::tests::month_days_reads_both_letter_kinds ... ok
+test lay::export::tests::run_one_takes_the_fault_left_by_a_module ... ok
+test lay::m::axis::tests::pack_lanes_matches_find_index ... ok
+test lay::m::calendar::tests::overlap_is_half_open_and_one_month_counts ... ok
+test lay::m::bands::tests::historicity_follows_core_js ... ok
+test lay::m::kit::tests::lod_and_style_follow_strips_mjs ... ok
+test lay::web::alts::tests::alt_span_fills_from_base ... ok
+test levels::tests::가늘기_등급은_두_픽셀_규칙을_따른다 ... ok
+test lay::web::words::tests::historicity_follows_core_js ... ok
+test levels::tests::기원전의_통_번호는_내림한다 ... ok
+test levels::tests::나눗수를_줄이면_짧은_칸이_성긴_단계에서_빠진다 ... ok
+test levels::tests::손잡이를_건드리지_않으면_칸의_등급은_예전과_한_값도_다르지_않다 ... ok
+test levels::tests::어느_분이든_제_타일_범위_안에_있다 ... ok
+test lay::m::axis::tests::cell_to_now_follows_core_js ... ok
+test packs::tests::a_calendar_read_failure_is_not_a_broken_table ... ok
+test levels::tests::통_너비는_단계마다_네_배 ... ok
+test levels::tests::타일은_통_256개를_양_끝_포함으로_덮는다 ... ok
+test packs::tests::versions_compare_by_parts_like_add_dlc ... ok
+test patch::tests::notes_name_tracks_by_key ... ok
+test patch::tests::needs_list_reads_one_part_and_falls_back_to_the_whole_text ... ok
+test patch::tests::place_added_keeps_board_tracks_after_every_regular_track ... ok
+test patch::tests::hidden_item_candidates_do_not_scan_the_item_table ... ok
+test patch::tests::row_lookups_do_not_scan_the_row_table ... ok
+test patch::tests::strip_firsts_take_the_smallest_strip_per_class ... ok
+test patch::tests::touched_chunks_take_the_edge_chunks_of_each_block ... ok
+test patch::tests::event_hay_lookups_do_not_scan_the_event_table ... ok
+test path_tests::write_path_compares_like_with_like ... ok
+test query::tests::내보내는_칸은_따옴표로_감싸고_따옴표는_겹쳐_쓴다 ... ok
+test query::tests::칸의_곁글은_띠_이름과_단_이름을_잇는다 ... ok
+test query::tests::때_글은_날짜_글을_먼저_쓰고_없으면_연도로_적는다 ... ok
+test query::tests::분을_해로_바꾸는_길은_기원전에서도_맞는다 ... ok
+test span::tests::경계_분에서_시작하는_것은_뒤_칸의_것이다 ... ok
+test span::tests::기간_사건은_끝이_덮는_단위의_끝까지다 ... ok
+test span::tests::날짜_산수는_서로의_되돌림이다 ... ok
+test span::tests::날짜까지_적은_사건은_그날을_기준으로_잰다 ... ok
+test span::tests::날짜를_모르는_사건은_어디에도_걸치지_않는다 ... ok
+test span::tests::넓혀_거를_때의_여유는_가장_긴_단위보다_길다 ... ok
+test span::tests::분까지_적은_사건은_적힌_그대로_한_점이다 ... ok
+test span::tests::연도만_적은_사건은_그해_한가운데_한_점이다 ... ok
+test span::tests::정밀도가_덮는_단위는_해_달_날_시다 ... ok
+test patch::tests::older_ddl_matches_the_schema ... ok
+
+test result: ok. 52 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running unittests src/main.rs (prototype/engine/target/release/deps/archive_tool-457cb35e2d7bddf9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/boards.rs (prototype/engine/target/release/deps/boards-d36baf35ca165176)
+
+running 3 tests
+test 판_트랙과_변형이_layout에_실린다 ... ok
+test 판을_켜면_줄이_판으로_모이고_판_안의_선은_오그라들지_않는다 ... ok
+test 판이_없으면_답은_예전과_같다 ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+
+     Running tests/build.rs (prototype/engine/target/release/deps/build-35cff4ab7f8b628b)
+
+running 11 tests
+test iso_time_reads_the_clock_and_the_zone ... ok
+test a_layout_without_track_prints_is_not_built_as_a_seed ... ok
+test a_store_without_the_table_answers_none ... ok
+test stage_two_east_asia_ktl ... ok
+test a_zone_other_than_seoul_builds_like_node ... ok
+test stage_two_nest_f4_at_f4 ... ok
+test stage_one_matches_node_and_builds_the_same_store ... ok
+test the_command_needs_the_table_and_a_zone ... ok
+test stage_two_synth_patch ... ok
+test stage_two_east_asia_dep ... ok
+test stage_two_lantern has been running for over 60 seconds
+test stage_two_lantern ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 81.90s
+
+     Running tests/echo.rs (prototype/engine/target/release/deps/echo-d9b323f07272dde9)
+
+running 22 tests
+test 겹치는_조명은_한_구간으로_합쳐진다 ... ok
+test 경계_해만_적은_사건은_앞뒤_칸_가운데_한쪽에만_든다 ... ok
+test 경계_분에서_시작하는_것은_뒤_칸에만_든다 ... ok
+test 띠_안_칸의_참조_번호는_style에서_읽는다 ... ok
+test 메아리도_같은_달력_단위로_잰다 ... ok
+test 메아리는_같은_시기_다른_나라의_사건이다 ... ok
+test 메아리를_끄면_제_것만_센다 ... ok
+test 메아리의_잘못된_입력은_한국어로_거절한다 ... ok
+test 소속을_펼쳐_둔_동안에는_소속_딱지를_붙이지_않는다 ... ok
+test 상국_띠에_숨은_소속의_사건에는_소속_이름이_붙는다 ... ok
+test 분을_소수_꼴로_물어도_답이_같다 ... ok
+test 숨은_속국을_조명하면_그_속국의_사건이_제_것으로_나온다 ... ok
+test 없는_정권_이름의_이_시기의_사건은_빈_결과다 ... ok
+test 없는_항목_기록은_한국어_까닭으로_거절한다 ... ok
+test 여러_자리에_놓인_사건은_밑동의_항목_기록을_쓴다 ... ok
+test 여러_자리에_놓인_사건은_한_번만_나온다 ... ok
+test 이_시기의_사건은_정권_이름으로도_묻는다 ... ok
+test 연도만_적은_기간_사건은_끝난_해의_남은_날까지_걸친다 ... ok
+test 제_것은_조명의_띠에서_그_구간에_걸린_사건이다 ... ok
+test 조명의_띠는_번호로도_이름으로도_준다 ... ok
+test 하위_사건은_부모_줄의_포함_수로_센다 ... ok
+test 한_줄에_속국이_둘이면_그때의_속국_이름이_붙는다 ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.20s
+
+     Running tests/glyph.rs (prototype/engine/target/release/deps/glyph-5a23f71b44729762)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/htlayout.rs (prototype/engine/target/release/deps/htlayout-b650eeffc43b20ca)
+
+running 7 tests
+test 깨지거나_잘리거나_종류가_틀린_배치는_웹과_같은_글로_거절하고_저장소를_남기지_않는다 ... ok
+test 원본_없이_넣으면_original이_null이고_pack_keys와_pack_info가_남는다 ... ok
+test archive_tool의_가져오기_점검_꺼내기_명령 ... ok
+test htlayout으로_지은_저장소는_같은_json으로_지은_저장소와_같다 ... ok
+test 지금_저장소를_주면_그_저장소의_원본을_옮겨_싣는다 ... ok
+test 조합_대조는_다섯_경우로_갈린다 ... ok
+test archive_import는_잠금을_잡지_않아_가져오는_동안에도_archive_call이_답한다 ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.30s
+
+     Running tests/lay_frame.rs (prototype/engine/target/release/deps/lay_frame-fc873c57bcc13387)
+
+running 6 tests
+test cell_bound_faults_when_bounds_are_not_a_map ... ok
+test for_of_walks_like_js ... ok
+test has_takes_sets_and_maps ... ok
+test try_finally_keeps_the_original_reason ... ok
+test pack_version_is_trimmed_like_js ... ok
+test notes_come_back_with_the_layout ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests/lay_m_axis.rs (prototype/engine/target/release/deps/lay_m_axis-efaf53e1c5bc2c86)
+
+running 2 tests
+test axis_contribute_bytes_match_node ... ok
+test axis_contribute_matches_node ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.34s
+
+     Running tests/lay_m_calendar.rs (prototype/engine/target/release/deps/lay_m_calendar-efd119f3d1426216)
+
+running 5 tests
+test calendar_refuses_missing_table_and_skips_a_table_outside_the_data ... ok
+test the_clip_mark_comes_from_the_list_and_is_not_given_to_other_fixtures ... ok
+test calendar_clips_only_the_front_when_the_table_still_reaches_the_data_end ... ok
+test calendar_clips_to_the_table_instead_of_refusing ... ok
+test calendar_contribute_matches_node ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.57s
+
+     Running tests/lay_m_entities.rs (prototype/engine/target/release/deps/lay_m_entities-7e0dcdec44f58fa3)
+
+running 15 tests
+test dynasty_without_host_is_an_error ... ok
+test brief_without_target_is_an_error ... ok
+test entities_13a_bands_events_cells_match_node ... ok
+test entities_13b_people_houses_match_node ... ok
+test entities_chunk_kinds_cover_all_records ... ok
+test group_digits_match_web ... ok
+test entities_13c_kin_lineage_match_node ... ok
+test kin_collect_chunks_match_node ... ok
+test house_and_seat_shapes_are_errors ... ok
+test kin_split_and_join_match_node ... ok
+test entities_13d_groups_lens_rest_match_node ... ok
+test to_fixed1_matches_web ... ok
+test kin_line_without_person_is_an_error ... ok
+test small_kin_limit_passes_the_final_checks ... ok
+test entities_contribute_matches_node ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.18s
+
+     Running tests/lay_m_hangs.rs (prototype/engine/target/release/deps/lay_m_hangs-1236b8d15c72c3d4)
+
+running 1 test
+test hangs_contribute_matches_node ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.39s
+
+     Running tests/lay_m_links.rs (prototype/engine/target/release/deps/lay_m_links-3bf0bbf04c41dd71)
+
+running 1 test
+test links_contribute_matches_node ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.43s
+
+     Running tests/lay_m_persons.rs (prototype/engine/target/release/deps/lay_m_persons-4816934ead8fb8ee)
+
+running 2 tests
+test sphere_lines_keep_the_module_order_when_both_kinds_are_on ... ok
+test persons_contribute_matches_node ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+
+     Running tests/lay_m_scopes.rs (prototype/engine/target/release/deps/lay_m_scopes-9010620e6352511e)
+
+running 1 test
+test scopes_contribute_matches_node ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+
+     Running tests/lay_m_variants.rs (prototype/engine/target/release/deps/lay_m_variants-2d4b86866fec139c)
+
+running 1 test
+test variants_contribute_matches_node ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.22s
+
+     Running tests/lay_out.rs (prototype/engine/target/release/deps/lay_out-b5641544cfedb432)
+
+running 5 tests
+test common_checks_refuse_like_js ... ok
+test unported_modules_are_refused ... ok
+test json_text_is_compared_by_bytes ... ok
+test shared_seed_restores_maps_and_sets_and_refuses_refs ... ok
+test export_prefix_matches_node ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.05s
+
+     Running tests/lay_rows.rs (prototype/engine/target/release/deps/lay_rows-b9f12fcd84ec5dd3)
+
+running 8 tests
+test board_without_rows_is_an_error ... ok
+test board_shape_faults_are_errors ... ok
+test layout_faults_become_errors ... ok
+test fixtures_reach_the_layout_branches ... ok
+test laid_releases_the_graph ... ok
+test relayout_is_idempotent ... ok
+test laid_matches_node ... ok
+test variants_leave_the_layout_as_a_full_relayout_would ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.66s
+
+     Running tests/layout_static.rs (prototype/engine/target/release/deps/layout_static-805535759f0d5374)
+
+running 4 tests
+test tracks_know_their_sphere_position ... ok
+test row_flags_are_unpacked_like_the_app_did ... ok
+test scope_pad_is_split_into_head_foot_and_hung ... ok
+test variant_rows_carry_the_same_split_and_scopes_tell_what_contains_them ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+     Running tests/names.rs (prototype/engine/target/release/deps/names-f625a121eb5a9935)
+
+running 5 tests
+test names_info_is_empty_for_old_stores ... ok
+test font_data_reads_the_kept_original ... ok
+test ffi_answers_both_ops ... ok
+test font_data_without_original_says_why ... ok
+test names_info_lists_packs_with_names_and_fonts ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+     Running tests/queries.rs (prototype/engine/target/release/deps/queries-6b7d84f4953318e4)
+
+running 15 tests
+test 같은_해_보기는_트랙마다_띠와_칸과_사건을_묶는다 ... ok
+test 그때에_걸친_것은_정권_먼저_칸_다음_가까운_사건이다 ... ok
+test 검색은_나눠_받아도_빠짐없이_이어진다 ... ok
+test 같은_해_보기의_form은_열이_없는_옛_저장소에서_0이다 ... ok
+test 번호와_이름을_서로_바꾼다 ... ok
+test 범례는_지금_자료에_쓰인_것만_알린다 ... ok
+test 이_시기의_사건은_중요도_큰_순이고_나눠_받을_수_있다 ... ok
+test 옛_검색은_그대로고_kinds를_주면_이름까지_찾는다 ... ok
+test 이름_묶음을_번호로_한_번에_바꾼다 ... ok
+test 이름_표는_사건을_빼고_넣을_때_펴_둔다 ... ok
+test 칸_목록은_시작_순이고_없는_띠는_까닭과_함께_거절한다 ... ok
+test 직위_줄_더_칸은_범례와_연도_검색에_보이지_않는다 ... ok
+test 표는_시작_순_트랙_순이고_정권을_함께_담을_수_있다 ... ok
+test 표를_내보낸_파일은_bom과_crlf로_쓰고_이미_있는_파일은_덮어쓰지_않는다 ... ok
+test 항목_기록은_있는_것만_입력_순서로_준다 ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.34s
+
+     Running tests/tiles.rs (prototype/engine/target/release/deps/tiles-66017d1fd65cd497)
+
+running 16 tests
+test 같은_요청은_언제나_같은_바이트를_돌려준다 ... ok
+test 구역_표는_종류와_열_수와_자리를_적고_자리마다_그_구역의_자료가_있다 ... ok
+test 경계를_가로지르는_띠는_양쪽_타일에_잘린_표시와_함께_하나씩_있다 ... ok
+test 모르는_구역은_건너뛰고_모자란_열은_0으로_읽는다 ... ok
+test 긴_기간_사건은_볼_만큼_긴_단계에서만_막대로_나온다 ... ok
+test 알려진_한계_45일보다_짧은_기간_사건은_시작_시각의_점으로만_나온다 ... ok
+test 빈_타일과_잘못된_요청 ... ok
+test 이미_만든_저장소는_색인만_다시_만들면_같은_바이트를_색인에서만_읽는다 ... ok
+test 일반_구역은_타일_범위로_잘리고_걸친_줄_묶음마다_실린다 ... ok
+test 띠의_form은_0이_아닌_띠가_든_타일에만_열_10으로_실리고_나머지는_바이트_그대로다 ... ok
+test 촘촘한_단계의_사건은_제목까지_덮는_색인만_훑어_얻는다 ... ok
+test 대표의_제목은_미리_만든_단계와_그_자리에서_세는_단계에서_똑같이_온다 ... ok
+test 화면이_부르는_연결부는_같은_바이트를_돌려주고_실패하면_까닭을_남긴다 ... ok
+test 자료집을_끄면_그_자료집의_사건과_띠와_칸이_빠진다 ... ok
+test 통마다_대표는_중요도_큰_순_번호_작은_순의_앞_넷이다 ... ok
+test 어느_단계에서_모아도_개수의_합이_날짜_있는_사건_수와_같고_대표에_중복이_없다 ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.72s
+
+     Running tests/year_cycle.rs (prototype/engine/target/release/deps/year_cycle-519320c6886c46c0)
+
+running 3 tests
+test 설정이_없으면_순환_열쇠를_만들지_않는다 ... ok
+test 끈_설정과_다음_자료집의_순환을_차례대로_보존한다 ... ok
+test 이름과_첫해와_줄제목을_싣되_기존_조회와_타일은_그대로다 ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+
+# 끝 2026-10-25 14:23:02 KST · 끝 코드 0 · 1062초

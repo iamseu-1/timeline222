@@ -1,0 +1,8 @@
+{"id":"calendar","label":"달력 표 뜨기(warm-calendar)","kind":"plain","state":"started","at":"2026-10-25T05:04:14.902Z"}
+{"id":"calendar","label":"달력 표 뜨기(warm-calendar)","kind":"plain","state":"done","code":0,"seconds":13,"at":"2026-10-25T05:04:27.293Z"}
+{"id":"oracle","label":"정답지 뽑기(layout-oracle)","kind":"lines","state":"started","at":"2026-10-25T05:04:27.341Z"}
+{"id":"oracle","label":"정답지 뽑기(layout-oracle)","kind":"lines","state":"done","code":0,"seconds":64,"at":"2026-10-25T05:05:31.605Z"}
+{"id":"cargo-main","label":"cargo test(파일 22개)","kind":"cargo-test","state":"started","at":"2026-10-25T05:05:31.735Z"}
+{"id":"cargo-main","label":"cargo test(파일 22개)","kind":"cargo-test","state":"done","code":0,"seconds":1360,"at":"2026-10-25T05:28:11.831Z"}
+{"id":"cargo-add_pack-p2","label":"cargo test --test add_pack(조각 3/3)","kind":"cargo-test","state":"started","at":"2026-10-25T05:28:11.859Z"}
+{"id":"cargo-add_pack-p2","label":"cargo test --test add_pack(조각 3/3)","kind":"cargo-test","state":"done","code":0,"seconds":467,"at":"2026-10-25T05:35:58.281Z"}

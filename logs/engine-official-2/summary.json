@@ -1,0 +1,202 @@
+{
+ "job": "engine-official-2",
+ "title": "엔진 공식 검사 나눔 2",
+ "tools": {
+  "job": "engine-official-2",
+  "runner": "ubuntu24 20261023.334.3",
+  "os": "Linux 6.17.0-1022-azure",
+  "cpus": 4,
+  "memGB": 15.6,
+  "node": "v24.22.1",
+  "icu": "78.3",
+  "tz": "2026e",
+  "unicode": "17.0",
+  "timeZone": "Asia/Seoul",
+  "sliceIcu": "78.3",
+  "icuMatch": true,
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "sha": "75673c1efcdb6f89fcedb1c2ab16afc52d018c8d"
+ },
+ "minutes": 32,
+ "checks": [
+  {
+   "id": "calendar",
+   "label": "달력 표 뜨기(warm-calendar)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.2,
+   "note": "달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · hebrew · ethiopic · coptic · indian · 12.3초",
+   "result": "통과"
+  },
+  {
+   "id": "oracle",
+   "label": "정답지 뽑기(layout-oracle)",
+   "kind": "lines",
+   "code": 0,
+   "minutes": 1.1,
+   "counts": {
+    "뽑음": 31,
+    "건너뜀": 2
+   },
+   "failed": [],
+   "note": "뽑음 synth-lens@f4 — norm-0.json · prep.json · rows.json · upto-lens.json · pre-tracks.json · pre-tracks.shared.json · upto-tracks.json · pre-axis.json · pre-axis.shared.json · upto-axis.json · pre-bands.json · pre-bands.shared.json · upto-bands.json · pre-strips.json · pre-strips.shared.json · upto-s",
+   "result": "통과"
+  },
+  {
+   "id": "cargo-main",
+   "label": "cargo test(파일 22개)",
+   "kind": "cargo-test",
+   "code": 0,
+   "minutes": 22.7,
+   "counts": {
+    "실행본": 22,
+    "통과": 123,
+    "실패": 0,
+    "무시": 2
+   },
+   "targets": {
+    "tests/apply_scale.rs": {
+     "passed": 0,
+     "failed": 0,
+     "ignored": 1
+    },
+    "tests/correctness.rs": {
+     "passed": 9,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/filter.rs": {
+     "passed": 12,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/import.rs": {
+     "passed": 11,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_golden.rs": {
+     "passed": 2,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_m_bands.rs": {
+     "passed": 2,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_m_docs.rs": {
+     "passed": 3,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_m_events.rs": {
+     "passed": 2,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_m_labels.rs": {
+     "passed": 1,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_m_metro.rs": {
+     "passed": 2,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_m_power.rs": {
+     "passed": 4,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_m_strips.rs": {
+     "passed": 4,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_model.rs": {
+     "passed": 8,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_reach.rs": {
+     "passed": 3,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_same.rs": {
+     "passed": 6,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/lay_scope.rs": {
+     "passed": 11,
+     "failed": 0,
+     "ignored": 1
+    },
+    "tests/lens.rs": {
+     "passed": 8,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/old_calendar.rs": {
+     "passed": 2,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/rowkeys.rs": {
+     "passed": 15,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/schema4.rs": {
+     "passed": 4,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/spheres.rs": {
+     "passed": 4,
+     "failed": 0,
+     "ignored": 0
+    },
+    "tests/write_tx.rs": {
+     "passed": 10,
+     "failed": 0,
+     "ignored": 0
+    }
+   },
+   "failed": [],
+   "crashed": [],
+   "notes": [],
+   "note": "test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.97s",
+   "result": "통과"
+  },
+  {
+   "id": "cargo-add_pack-p2",
+   "label": "cargo test --test add_pack(조각 3/3)",
+   "kind": "cargo-test",
+   "code": 0,
+   "minutes": 7.8,
+   "counts": {
+    "실행본": 1,
+    "통과": 21,
+    "실패": 0,
+    "무시": 2
+   },
+   "targets": {
+    "tests/add_pack.rs": {
+     "passed": 21,
+     "failed": 0,
+     "ignored": 2
+    }
+   },
+   "failed": [],
+   "crashed": [],
+   "notes": [],
+   "note": "test result: ok. 21 passed; 0 failed; 2 ignored; 0 measured; 46 filtered out; finished in 359.87s",
+   "result": "통과"
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+{
+ "job": "data-build",
+ "runner": "ubuntu24 20261023.334.3",
+ "os": "Linux 6.17.0-1022-azure",
+ "cpus": 4,
+ "memGB": 15.6,
+ "node": "v24.22.1",
+ "icu": "78.3",
+ "tz": "2026e",
+ "unicode": "17.0",
+ "timeZone": "Asia/Seoul",
+ "sliceIcu": "78.3",
+ "icuMatch": true,
+ "sha": "75673c1efcdb6f89fcedb1c2ab16afc52d018c8d"
+}

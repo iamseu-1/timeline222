@@ -1,0 +1,10 @@
+# 시작 2026-10-25 14:32:52 KST · cargo test --doc
+# 명령 cargo test --locked --release --no-fail-fast --manifest-path prototype/engine/Cargo.toml --doc
+    Finished `release` profile [optimized] target(s) in 0.04s
+   Doc-tests archive_engine
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+# 끝 2026-10-25 14:32:53 KST · 끝 코드 0 · 1초

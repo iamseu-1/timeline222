@@ -1,0 +1,45 @@
+# 시작 2026-10-25 14:28:11 KST · cargo test --test add_pack(조각 3/3)
+# 명령 bash /home/runner/work/_temp/ht-bin/cargo-part.sh add_pack 2 3
+   Compiling archive_engine v0.1.0 (/home/runner/work/timeline222/timeline222/prototype/engine)
+    Finished `release` profile [optimized] target(s) in 1m 46s
+     Running tests/add_pack.rs (prototype/engine/target/release/deps/add_pack-02472e3df64eedab)
+조각 3/3 — 시험 23개: a_failing_touch_falls_back_to_all a_lower_version_does_not_replace_the_kept_one a_part_layout_without_a_needed_track_widens_instead_of_writing a_real_out_of_range_date_is_refused_with_code_range a_store_from_other_rules_lays_out_whole_once a_touched_key_outside_the_layout_is_left_out an_unreadable_original_in_another_store_is_refused_as_broken broken_originals_are_refused_as_broken format4_links_rewrite_the_held_and_borrowing_tracks lantern_walk_1 old_dlc_files_go_in_as_they_are rust_a_kept_pack_can_be_deleted_from_the_shelf rust_lantern_walk_0 rust_synth_walk_0 rust_synth_walk_3 rust_synth_walk_6 sub_plans_apply_like_full_builds_on_the_scenes synth_walk_2 synth_walk_5 the_calendar_table_survives_add_and_remove the_same_version_with_other_bytes_is_replaced_and_told timing_app_like_adds_for_ktl two_days_later_the_store_day_is_used
+    Finished `release` profile [optimized] target(s) in 0.02s
+     Running tests/add_pack.rs (prototype/engine/target/release/deps/add_pack-02472e3df64eedab)
+
+running 23 tests
+test a_part_layout_without_a_needed_track_widens_instead_of_writing ... ok
+test a_real_out_of_range_date_is_refused_with_code_range ... ok
+test a_failing_touch_falls_back_to_all ... ok
+test an_unreadable_original_in_another_store_is_refused_as_broken ... ok
+test a_touched_key_outside_the_layout_is_left_out ... ok
+test broken_originals_are_refused_as_broken ... ok
+test lantern_walk_1 ... ignored, 긴 검사 — 등불 둘째 판(cargo test --release --locked --test add_pack -- --ignored lantern --nocapture)
+test format4_links_rewrite_the_held_and_borrowing_tracks ... ok
+test a_lower_version_does_not_replace_the_kept_one ... ok
+test rust_a_kept_pack_can_be_deleted_from_the_shelf ... ok
+test a_store_from_other_rules_lays_out_whole_once has been running for over 60 seconds
+test a_store_from_other_rules_lays_out_whole_once ... ok
+test old_dlc_files_go_in_as_they_are has been running for over 60 seconds
+test rust_lantern_walk_0 has been running for over 60 seconds
+test rust_synth_walk_0 has been running for over 60 seconds
+test rust_synth_walk_0 ... ok
+test rust_synth_walk_3 ... ok
+test rust_synth_walk_6 has been running for over 60 seconds
+test rust_synth_walk_6 ... ok
+test sub_plans_apply_like_full_builds_on_the_scenes has been running for over 60 seconds
+test synth_walk_2 has been running for over 60 seconds
+test synth_walk_2 ... ok
+test synth_walk_5 has been running for over 60 seconds
+test synth_walk_5 ... ok
+test the_calendar_table_survives_add_and_remove ... ok
+test sub_plans_apply_like_full_builds_on_the_scenes ... ok
+test timing_app_like_adds_for_ktl ... ignored, 손으로 재는 시간(감독 PC의 KoreanTimeLine이 있을 때 · 공식 설정 · 한가할 때)
+test the_same_version_with_other_bytes_is_replaced_and_told ... ok
+test two_days_later_the_store_day_is_used ... ok
+test old_dlc_files_go_in_as_they_are ... ok
+test rust_lantern_walk_0 ... ok
+
+test result: ok. 21 passed; 0 failed; 2 ignored; 0 measured; 46 filtered out; finished in 359.87s
+
+# 끝 2026-10-25 14:35:58 KST · 끝 코드 0 · 467초

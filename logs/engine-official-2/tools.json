@@ -1,0 +1,17 @@
+{
+ "job": "engine-official-2",
+ "runner": "ubuntu24 20261023.334.3",
+ "os": "Linux 6.17.0-1022-azure",
+ "cpus": 4,
+ "memGB": 15.6,
+ "node": "v24.22.1",
+ "icu": "78.3",
+ "tz": "2026e",
+ "unicode": "17.0",
+ "timeZone": "Asia/Seoul",
+ "sliceIcu": "78.3",
+ "icuMatch": true,
+ "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+ "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+ "sha": "75673c1efcdb6f89fcedb1c2ab16afc52d018c8d"
+}
