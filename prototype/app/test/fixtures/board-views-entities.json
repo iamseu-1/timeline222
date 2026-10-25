@@ -1,0 +1,22 @@
+[
+ {
+  "json": "{\"key\":\"view:v-three-lands\",\"name\":\"세 땅 같은 시기 견주기\",\"color\":\"#d7c18e\",\"temp\":0,\"label\":\"집합 보기 · 트랙 3 · 나라 3\",\"present\":3,\"presentTracks\":3,\"start\":300,\"end\":520,\"view\":\"view:v-three-lands\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"members\":[{\"uid\":\"sample-views/sv-sol\",\"name\":\"솔빛 왕국\",\"color\":\"#c8b193\",\"track\":\"sv-east\",\"trackName\":\"샘플 동녘 들판\"},{\"uid\":\"sample-views/sv-wave\",\"name\":\"물결 연맹\",\"color\":\"#c8b193\",\"track\":\"sv-west\",\"trackName\":\"샘플 서녘 바다\"},{\"uid\":\"sample-views/sv-pass\",\"name\":\"높은 고개 나라\",\"color\":\"#c8b193\",\"track\":\"sv-south\",\"trackName\":\"샘플 마루 산맥\"}],\"tracks\":3,\"missing\":0}",
+  "kind": "board",
+  "uid": "board:view:v-three-lands"
+ },
+ {
+  "json": "{\"key\":\"view:v-16og913\",\"name\":\"바다 건너 교역 상대\",\"color\":\"#bba395\",\"temp\":0,\"label\":\"집합 보기 · 트랙 3 · 나라 3\",\"present\":3,\"presentTracks\":3,\"view\":\"view:v-16og913\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"members\":[{\"uid\":\"sample-views/sv-sail\",\"name\":\"흰 돛 왕국\",\"color\":\"#9dbea8\",\"track\":\"sv-west\",\"trackName\":\"샘플 서녘 바다\"},{\"uid\":\"sample-views/sv-tower\",\"name\":\"돌탑 왕국\",\"color\":\"#9dbea8\",\"track\":\"sv-south\",\"trackName\":\"샘플 마루 산맥\"},{\"uid\":\"sample-views/sv-reed\",\"name\":\"갈대 나라\",\"color\":\"#9dbea8\",\"track\":\"sv-east\",\"trackName\":\"샘플 동녘 들판\"}],\"tracks\":3,\"missing\":0}",
+  "kind": "board",
+  "uid": "board:view:v-16og913"
+ },
+ {
+  "json": "{\"key\":\"view:epoch:sample-views/ep-sv-three\",\"name\":\"세 땅 시대\",\"color\":\"#d7c18e\",\"temp\":1,\"label\":\"집합 보기 · 트랙 3 · 나라 5\",\"present\":5,\"presentTracks\":3,\"start\":300,\"end\":520,\"epoch\":\"sample-views/ep-sv-three\",\"epochTrack\":\"\",\"scoped\":0,\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"members\":[{\"uid\":\"sample-views/sv-sol\",\"name\":\"솔빛 왕국\",\"color\":\"#c8b193\",\"track\":\"sv-east\",\"trackName\":\"샘플 동녘 들판\"},{\"uid\":\"sample-views/sv-reed\",\"name\":\"갈대 나라\",\"color\":\"#9dbea8\",\"track\":\"sv-east\",\"trackName\":\"샘플 동녘 들판\"},{\"uid\":\"sample-views/sv-wave\",\"name\":\"물결 연맹\",\"color\":\"#c8b193\",\"track\":\"sv-west\",\"trackName\":\"샘플 서녘 바다\"},{\"uid\":\"sample-views/sv-pass\",\"name\":\"높은 고개 나라\",\"color\":\"#c8b193\",\"track\":\"sv-south\",\"trackName\":\"샘플 마루 산맥\"},{\"uid\":\"sample-views/sv-tower\",\"name\":\"돌탑 왕국\",\"color\":\"#9dbea8\",\"track\":\"sv-south\",\"trackName\":\"샘플 마루 산맥\"}],\"tracks\":3,\"missing\":0}",
+  "kind": "board",
+  "uid": "board:view:epoch:sample-views/ep-sv-three"
+ },
+ {
+  "json": "{\"id\":\"ep-sv-three\",\"name\":\"세 땅 시대\",\"start\":300,\"end\":520,\"color\":\"#d7c18e\",\"note\":\"샘플용 공통 시대 구분.\",\"kind\":\"epoch\",\"itemKind\":\"epoch\",\"uid\":\"sample-views/ep-sv-three\",\"packId\":\"sample-views\",\"packName\":\"샘플: 모아 보기 판 — 멀리 떨어진 나라를 한 화면에\",\"endY\":520,\"trackName\":\"\",\"x_find\":{\"hay\":\"샘플용 공통 시대 구분.\"}}",
+  "kind": "epoch",
+  "uid": "sample-views/ep-sv-three"
+ }
+]

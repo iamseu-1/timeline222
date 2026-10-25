@@ -1,0 +1,12 @@
+[
+ {
+  "uid": "moonwake-chronicle/hero-edge",
+  "kind": "figure",
+  "json": "{\"id\":\"hero-edge\",\"track\":\"mw-coast\",\"name\":\"들물 노아\",\"aka\":[\"빈 등대\"],\"role\":\"\",\"death\":902,\"start\":830,\"end\":890,\"endY\":890,\"startAuto\":true,\"endAuto\":true,\"startUnknown\":false,\"endUnknown\":false,\"certainty\":\"accepted\",\"importance\":1,\"description\":\"\",\"kind\":\"figure\",\"itemKind\":\"figure\",\"uid\":\"moonwake-chronicle/hero-edge\",\"packId\":\"moonwake-chronicle\",\"packName\":\"월흔해 연대기 — 부서진 달과 열두 땅\",\"spanMin\":830,\"spanMax\":902,\"tags\":[\"기억염\",\"귀환선\"],\"color\":\"#c8b193\",\"source\":\"들물 구전집\",\"houseId\":\"h-coast-1\",\"houseName\":\"은결 물결가\",\"houseColor\":\"#bba395\",\"services\":[{\"polityName\":\"잃은 항구 회의\",\"office\":\"기록 지킴이\",\"given\":false,\"auto\":true,\"from\":830,\"to\":860,\"start\":830,\"endY\":860,\"shown\":false},{\"polity\":{\"$ref\":\"moonwake-chronicle/p-obsidian-6\",\"name\":\"검은유리 회랑국\"},\"polityUid\":\"moonwake-chronicle/p-obsidian-6\",\"polityName\":\"검은유리 회랑국\",\"track\":\"mw-obsidian\",\"office\":\"초빙 기록자\",\"note\":\"한 해만 머물렀다\",\"given\":false,\"auto\":false,\"from\":860,\"to\":890,\"start\":860,\"endY\":890,\"shown\":false}],\"x_services\":[{\"name\":\"잃은 항구 회의\",\"when\":\"830년 ~ 860년\",\"span\":[-609520320,-593756640],\"office\":\"기록 지킴이\",\"auto\":1,\"missing\":1},{\"name\":\"검은유리 회랑국\",\"when\":\"860년 ~ 890년\",\"span\":[-593756640,-577977120],\"uid\":\"moonwake-chronicle/p-obsidian-6\",\"office\":\"초빙 기록자\",\"track\":\"검은유리\",\"note\":\"한 해만 머물렀다\"}]}"
+ },
+ {
+  "uid": "house:h-edge",
+  "kind": "house",
+  "json": "{\"id\":\"h-edge\",\"uid\":\"house:h-edge\",\"itemKind\":\"house\",\"name\":\"들물가\",\"surname\":\"\",\"seat\":\"\",\"parent\":\"\",\"founder\":\"\",\"color\":\"#c8b193\",\"description\":\"\",\"packId\":\"\",\"packName\":\"\",\"auto\":true,\"seq\":0,\"members\":[],\"parentId\":null,\"path\":[\"h-edge\"],\"depth\":0,\"children\":[]}"
+ }
+]

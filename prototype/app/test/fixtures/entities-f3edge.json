@@ -1,0 +1,12 @@
+[
+ {
+  "uid": "가상견본/e-water",
+  "kind": "event",
+  "json": "{\"id\":\"e-water\",\"uid\":\"가상견본/e-water\",\"kind\":\"event\",\"itemKind\":\"event\",\"title\":\"물길 나눔\",\"start\":700,\"track\":\"mw-coast\",\"category\":\"diplomacy\",\"description\":\"물길을 셋으로 나누기로 했다.\",\"packName\":\"형식 3 가장자리 견본\",\"importance\":2,\"theme\":[\"law\",\"물길\"],\"themeRefs\":[{\"ref\":\"law\",\"id\":\"law\",\"name\":\"법률\",\"color\":\"#bba395\",\"auto\":false},{\"ref\":\"물길\",\"id\":\"theme-x\",\"name\":\"물길\",\"color\":\"#a0bcc5\",\"auto\":true}],\"law\":{\"name\":\"솔나라 물길법\",\"act\":\"enact\",\"articles\":[\"제1조 물길은 모두의 것이다.\"]},\"election\":{\"office\":\"물길 지기\",\"results\":[{\"who\":\"솔 바람\",\"votes\":1200,\"won\":true},{\"who\":\"갈마 해\",\"votes\":800}]},\"x_names\":{\"main\":[{\"text\":\"Mulgil Nanum\",\"lang\":\"ko-Latn\",\"tag\":\"로마자 · 한국어 로마자\"}]},\"x_place\":{\"name\":\"갈대 나루\",\"uid\":\"place:pl-reed\",\"up\":[\"갈대 고을\"]},\"x_law\":{\"name\":\"솔나라 물길법\",\"act\":\"enact\",\"actName\":\"제정\",\"articles\":[\"제1조 물길은 모두의 것이다.\"]},\"x_election\":{\"office\":\"물길 지기\",\"results\":[{\"who\":{\"name\":\"솔 바람\",\"uid\":\"가상견본/f-baram\"},\"votes\":1200,\"won\":1},{\"who\":\"갈마 해\",\"votes\":800}]},\"x_groups\":[{\"uid\":\"가상견본/gr-water\",\"name\":\"물길회\",\"color\":\"#a0bcc5\",\"typeName\":\"세력\"}]}"
+ },
+ {
+  "uid": "가상견본/p-sol",
+  "kind": "period",
+  "json": "{\"id\":\"p-sol\",\"uid\":\"가상견본/p-sol\",\"kind\":\"period\",\"itemKind\":\"period\",\"polityKind\":\"state\",\"name\":\"솔나라\",\"start\":600,\"end\":1000,\"endY\":1000,\"track\":\"mw-coast\",\"color\":\"#b6c398\",\"packName\":\"형식 3 가장자리 견본\",\"x_names\":{\"main\":[{\"text\":\"Solnara\",\"lang\":\"ko-Latn\",\"tag\":\"로마자 · 한국어 로마자\"}],\"other\":[{\"text\":\"옛 솔골\",\"tag\":\"옛 이름 · 600년 ~ 700년\"}]},\"x_scopes\":[{\"uid\":\"가상견본/s-river\",\"name\":\"세 물길 땅\",\"color\":\"#a0bcc5\",\"label\":\"문화권\"}],\"x_groupLinks\":[{\"uid\":\"가상견본/gr-east\",\"name\":\"동녘파\",\"color\":\"#d4a39b\",\"role\":\"within\",\"typeName\":\"붕당·파벌\"},{\"uid\":\"가상견본/gr-league\",\"name\":\"세 물길 연합\",\"color\":\"#9dbea8\",\"role\":\"member\",\"typeName\":\"연합·동맹\"}],\"x_institutions\":[{\"uid\":\"가상견본/in-tax\",\"name\":\"솔나라 · 조세제도\",\"theme\":\"tax\",\"themeName\":\"조세제도\",\"family\":\"고르게 나눔\",\"color\":\"#a4b1b7\"}],\"x_dynasties\":[{\"uid\":\"가상견본/d-sol\",\"name\":\"솔 왕조\",\"color\":\"#b6c398\",\"when\":\"600년 ~ 800년\"}]}"
+ }
+]

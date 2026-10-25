@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>DLC 메이커 — 역사 연표</title>
+  <meta name="theme-color" content="#ffffff">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/viewer.css">
+  <link rel="stylesheet" href="css/maker.css">
+</head>
+<!-- DLC 메이커: 연표(index.html)와 같은 화면(js/viewer.js)이 늘 수정 모드로 뜨고, 둘레에 작업실(js/maker-shell.js — 메뉴 줄 · 도구 줄 · 왼쪽 · 오른쪽 · 아래 창 · 상태 줄)이 붙습니다.
+     연표와 다른 곳: data-app="make" · 메이커 줄과 그 창들(DLC 정보 · 바탕 자료 · 붙여넣기 · 검사 · 고친 것) · 독의 ＋추가 · 오른쪽 편집 창(#editPane) · 문서 편집기(#wikiEditor) -->
+<body data-app="make" class="mk-shell">
+  <div class="app">
+    <!-- 작업실 (docs/구상-메이커-팩.md 3-1): 메뉴 줄 · 도구 줄 · 왼쪽 · 가운데 탭 · 연표(#stage) · 오른쪽 · 아래 창 · 상태 줄 · 처음 화면 — 틀은 js/maker-shell.js -->
+    <header class="mk-menubar" id="mkMenubar">
+      <span class="mk-logo">DLC 메이커</span>
+      <nav class="mk-menus" id="mkMenus" aria-label="메뉴"></nav>
+      <span class="spacer"></span>
+      <button id="mkDoc" class="mk-doc" type="button" title="팩 정보 — 이름 · 표지 · 태그 · 관계 · 판 기록"><b id="mkName"></b><span id="mkVer" class="ver"></span></button>
+      <span id="mkSaved" class="mk-saved" role="status"></span>
+    </header>
+    <div class="mk-tools" id="mkTools" role="toolbar" aria-label="도구">
+      <button type="button" class="tb is-icon" data-cmd="undo" aria-label="되돌리기">↶</button>
+      <button type="button" class="tb is-icon" data-cmd="redo" aria-label="다시 하기">↷</button>
+      <span class="sep" aria-hidden="true"></span>
+      <button type="button" class="tb is-fill" data-add="period">＋ 객체</button>
+      <button type="button" class="tb is-fill" data-add="event">＋ 사건</button>
+      <button type="button" class="tb is-fill" data-add="figure">＋ 사람</button>
+      <button id="addPeriodBtn" type="button" class="tb is-fill" aria-haspopup="menu" title="항목 추가">＋ 더 ▾</button>
+      <span class="sep" aria-hidden="true"></span>
+      <button type="button" class="tb" data-cmd="duplicate">복제</button>
+      <button type="button" class="tb" data-cmd="bulk">한꺼번에 고치기</button>
+      <button type="button" class="tb" data-cmd="paste-table" title="표 계산 프로그램에서 복사한 표로 사건 · 시대를 한꺼번에 넣습니다">붙여넣기</button>
+      <div class="search mk-find" role="search">
+        <input id="searchInput" type="search" autocomplete="off" aria-label="항목 찾기" hidden>
+        <button type="button" class="tb mk-palette-open" data-cmd="find" title="이름 · 연도 · 날짜 · 간지로 찾기 (Ctrl+K · /)">명령·항목 찾기 <kbd>Ctrl K</kbd></button>
+        <div id="searchResults" class="search-results" hidden></div>
+      </div>
+      <span class="spacer"></span>
+      <span id="mkAlert" class="mk-alert" role="status" hidden></span>
+      <button id="mkDrift" class="mk-alert mk-drift" type="button" aria-haspopup="dialog" hidden></button>
+      <button id="mkCheckBtn" type="button" class="tb mk-check" data-cmd="check">검사</button>
+      <button id="mkChanges" type="button" class="tb mk-changes" data-cmd="changes"></button>
+      <button id="mkReflect" type="button" class="tb is-primary" data-cmd="reflect" title="검사한 뒤 판을 올려, 연표에 설치된 같은 DLC를 덮어씁니다 (Ctrl+E)">반영</button>
+      <button id="mkFile" type="button" class="tb" data-cmd="export" title="지금 작업본을 팩 파일(.htpack)로 내려받습니다 (Ctrl+Shift+E)">파일로</button>
+      <button type="button" class="tb" data-cmd="to-timeline" title="본 프로그램(연표 앱)에서 미리보기 — 반영하지 않은 작업본도 그대로 · 서재는 그대로">연표로 ↗</button>
+    </div>
+    <aside class="mk-left" id="mkLeft" aria-label="구조 · 불러온 팩">
+      <div class="mk-ltabs" role="tablist">
+        <button type="button" role="tab" data-ltab="tree" id="mkTabTree">구조</button>
+        <button type="button" role="tab" data-ltab="packs" id="mkTabPacks">불러온 팩 <small id="mkRefCount"></small></button>
+      </div>
+      <div class="mk-lpanel" data-lpanel="tree" role="tabpanel" aria-labelledby="mkTabTree">
+        <label class="mk-filter"><input id="mkTreeFind" type="search" autocomplete="off" aria-label="이 DLC에서 찾기 · 걸러 보기 — 이름 · 연도"></label>
+        <div id="mkTree" class="mk-tree" role="tree" aria-label="구조"></div>
+      </div>
+      <div class="mk-lpanel" data-lpanel="packs" role="tabpanel" aria-labelledby="mkTabPacks" hidden><div id="mkPacks" class="mk-packs"></div></div>
+      <div class="mk-grip is-left" data-grip="left" title="끌어서 폭 조절 · 두 번 누르면 기본 폭" aria-hidden="true"></div>
+    </aside>
+    <div class="mk-ctabs" id="mkCTabs" role="tablist" aria-label="가운데">
+      <button type="button" class="mk-side-btn" data-cmd="toggle-left" aria-label="왼쪽 창 (Ctrl+B)" title="왼쪽 창 (Ctrl+B)">◧</button>
+      <button type="button" role="tab" data-ctab="timeline">연표</button>
+      <button type="button" role="tab" data-ctab="table">표</button>
+      <button type="button" role="tab" data-ctab="wiki">문서</button>
+      <span class="spacer"></span>
+      <span class="dock-range" id="viewRange" title="지금 보고 있는 시기"></span>
+    </div>
+    <!-- 옛 독의 단추: viewer.js가 묶는 자리(필터 · 메뉴 · DLC 관리 · 사건 추가)만 숨겨 남김 — 작업실에서는 메뉴 줄 · 보기 메뉴가 부릅니다 -->
+    <div hidden>
+      <button id="filterToggle" type="button" aria-expanded="false" aria-controls="filterbar">필터</button>
+      <button id="menuBtn" type="button">⋯</button>
+      <button id="addEventBtn" type="button">＋ 사건 추가</button>
+      <button id="dlcBtn" type="button">🧩 DLC 관리</button>
+    </div>
+
+    <div class="status-pill" id="statusPill" hidden><span id="measureInfo" class="measure-info" hidden></span></div>
+    <p id="packSummary" hidden></p>
+    <button id="zenExit" class="zen-exit" type="button" hidden title="창 다시 보이기 (Z)">☰</button>
+    <div id="ctxMenu" class="ctx-menu" role="menu" hidden></div>
+
+    <div class="filterbar" id="filterbar">
+      <div class="filter-group"><span class="filter-title">트랙</span><div id="trackChips" class="chips"></div><button id="foldAllBtn" class="btn btn-sm" type="button" title="모든 트랙을 접거나 펼칩니다 (A)">모두 접기</button></div>
+      <div class="filter-group"><span class="filter-title">분류</span><div id="categoryChips" class="chips"></div></div>
+      <div class="filter-group" id="kindGroup" hidden><span class="filter-title">종류</span><div id="kindChips" class="chips"></div></div>
+      <div class="filter-group" id="historicityGroup" hidden><span class="filter-title">실재성</span><div id="historicityChips" class="chips"></div></div>
+      <div class="filter-group" id="scopeGroup" hidden title="누르면 모아 보기를 켜고 끕니다 — 구성 정권이 한 가지로 모임"><span class="filter-title">대범위</span><div id="scopeChips" class="chips"></div></div>
+      <!-- 표시 체크: 무엇을 켜고 끄는지에 따라 세 묶음 (띠 안 · 날짜 칸 · 선·견해) -->
+      <div class="filter-shows">
+        <div class="filter-group filter-show" role="group" aria-label="띠 안에 보이는 것">
+          <span class="filter-title">띠 안</span>
+          <label class="check" title="띠 맨 위에 왕조 칸을 보여 줍니다 (왕조를 적은 나라만)"><input id="dynastyToggle" type="checkbox" checked> 왕조</label>
+          <label class="check" title="띠 위쪽에 지도자 칸을 보여 줍니다"><input id="leaderToggle" type="checkbox" checked> 지도자</label>
+          <select id="leaderLabelSelect" aria-label="지도자 표기" title="지도자 칸에 묘호·시호·이름 중 무엇을 적을지"></select>
+          <label class="check" title="지도자 이름 앞에 '4대'처럼 대수를 붙입니다"><input id="ordinalToggle" type="checkbox"> 대수</label>
+          <label class="check" title="지도자 칸 아래에 내각 칸을 보여 줍니다"><input id="cabinetToggle" type="checkbox" checked> 내각</label>
+          <label class="check" title="띠 안 지도자 칸 위에 후대 학계의 시기 구분(체계마다 얇은 줄)을 보여 줍니다 — 날짜 칸의 '시대 구분'과는 다른 것입니다. '빽빽하게' · '조감'에서는 숨습니다"><input id="phaseToggle" type="checkbox" checked> 시기</label>
+          <label class="check" title="지위(공 · 왕 · 황제 …)가 바뀐 나라는 띠 안 지도자 칸 위에 지위 단을, 지위가 하나뿐인 나라는 책갈피 탭에 작은 딱지를 보여 줍니다. '빽빽하게' · '조감'에서는 지위 단이 숨습니다"><input id="rankToggle" type="checkbox" checked> 지위</label>
+          <label class="check" title="띠 안 지도자 칸 위에 그때 집권한 단체와 실권을 쥔 집단의 칸을, 띠 위 탭 줄에 연합의 겹 탭을 보여 줍니다 (단체를 적은 나라만). '빽빽하게' · '조감'에서는 칸이 숨습니다"><input id="groupToggle" type="checkbox" checked> 단체</label>
+          <label class="check" title="띠 안, 기간 막대 아래에 그 나라에서 활동한 인물의 활동 막대를 보여 줍니다 (중요도 필터를 따름)"><input id="figureToggle" type="checkbox" checked> 인물</label>
+          <label class="check" title="지도자 칸 아래쪽에 그 지도자의 가문 색 줄을 긋습니다 (같은 가문이 이어지는 동안 한 줄)"><input id="houseToggle" type="checkbox"> 가문</label>
+        </div>
+        <div class="filter-group filter-show" role="group" aria-label="맨 위 날짜 칸에 보이는 것">
+          <span class="filter-title">날짜 칸</span>
+          <label class="check" title="맨 위 날짜 칸에 간지(육십갑자) 줄을 보여 줍니다"><input id="ganjiToggle" type="checkbox" checked> 간지</label>
+          <label class="check" title="맨 위 날짜 칸에 연호 묶음 줄을 보여 줍니다 (묶음 이름을 누르면 나라별로 펼침)"><input id="eraToggle" type="checkbox" checked> 연호</label>
+          <label class="check" title="맨 위 날짜 칸에 도읍 묶음 줄을 보여 줍니다 (묶음 이름을 누르면 나라별로 펼침)"><input id="capToggle" type="checkbox" checked> 도읍</label>
+          <label class="check" title="맨 위 날짜 칸에 나라별 시대 구분 띠를 보여 줍니다"><input id="epochToggle" type="checkbox" checked> 시대 구분</label>
+        </div>
+        <div class="filter-group filter-show" role="group" aria-label="선과 다른 견해">
+          <span class="filter-title">선·견해</span>
+          <label class="check" title="건국·멸망 네모를 잇는 승계선(직접 실선 · 간접 점선)을 보여 줍니다"><input id="linkToggle" type="checkbox" checked> 승계선</label>
+          <label class="check" title="연맹의 구성국·종속국·조직체를 상위 정권과 잇는 세로 점선을 보여 줍니다"><input id="partToggle" type="checkbox" checked> 소속선</label>
+          <label class="check" title="학자·사료마다 다른 연대를 함께 표시합니다 — 사건 · 시대의 점선 표식, 칸의 유령 구분선(칸을 누르면 그 이설 기간도)"><input id="altToggle" type="checkbox" checked> 이설</label>
+          <label class="check" title="칸(지도자 · 내각 · 연호 · 도읍 · 왕조 · 시기 · 지위)이나 인물을 골라 그 기간이 조명될 때, 그때 있던 타국의 띠도 그 기간만큼은 흐리지 않고 조명과 같은 짙기로 칠하며, 그 시기 타국의 사건도 밝게 남깁니다 (창에는 나라별 목록)"><input id="spotEchoToggle" type="checkbox"> 같은 시기를 타국에도</label>
+        </div>
+      </div>
+      <div class="filter-group filter-options">
+        <select id="importanceSelect" aria-label="중요도 필터">
+          <option value="1">모든 사건</option>
+          <option value="2">보통 이상</option>
+          <option value="3">중요 사건만</option>
+        </select>
+        <span class="filter-sub">관점</span>
+        <select id="lensSelect" aria-label="관점" title="같은 사건을 어느 나라의 이름으로 보여 줄지 고릅니다">
+          <option value="">기본</option>
+          <option value="local">나라마다 제 이름</option>
+        </select>
+        <select id="densitySelect" aria-label="띠 밀도" title="정권 띠의 높이와 글자 크기 — 조감은 줄을 띠 하나 높이로 줄여 모든 나라를 한눈에 (V)">
+          <option value="-1">넉넉하게</option>
+          <option value="0" selected>자동</option>
+          <option value="1">빽빽하게</option>
+          <option value="2">조감</option>
+        </select>
+        <span class="filter-sub">조감</span>
+        <select id="birdShapeSelect" aria-label="조감 모양" title="조감에서 띠 안에 남길 것 — 이름과 사건 점(기본) · 이름만 · 띠와 선만(가장 낮게 · 이름은 띠에 올리면)">
+          <option value="a" selected>이름 + 점</option>
+          <option value="b">이름만</option>
+          <option value="c">띠 · 선만</option>
+        </select>
+        <label class="check" title="가로로 많이 축소하면(보기 폭 2,600년 이상 — 사건 이름이 모두 꺼지는 넓이) 저절로 조감으로, 다시 확대하면 고른 밀도로 돌아옵니다. 조감을 ↕ · V로 풀면 다시 확대할 때까지 쉽니다"><input id="birdAutoToggle" type="checkbox"> 축소하면 조감</label>
+        <span class="tool-sep"></span>
+        <button id="yearBtn" class="btn btn-sm" type="button" title="한 해에 여러 나라에서 무슨 일이 있었는지 봅니다 (Y)" data-icon="pin">같은 해</button>
+        <button id="measureBtn" class="btn btn-sm" type="button" aria-pressed="false" title="드래그해서 두 시점 사이 기간을 잽니다 — 가까이 확대하면 개월·일까지 (R)" data-icon="ruler">기간 재기</button>
+        <button id="tableBtn" class="btn btn-sm" type="button" title="표 (T)" data-icon="table">표</button>
+        <button id="imageBtn" class="btn btn-sm" type="button" title="이미지 · 인쇄 (P)" data-icon="image">이미지 · 인쇄</button>
+        <button id="legendBtn" class="btn btn-sm" type="button" aria-pressed="false" title="띠·점·선 모양이 뜻하는 것 (L)" data-icon="help">범례</button>
+      </div>
+    </div>
+
+    <main class="stage" id="stage">
+      <div id="timeline" class="timeline-host"></div>
+      <aside id="legend" class="legend" hidden aria-label="범례"></aside>
+
+      <div class="zoom-controls" role="group" aria-label="확대/축소">
+        <button class="icon-btn" data-zoom="in" type="button" title="확대 (+)" aria-label="확대" data-icon="plus"></button>
+        <button class="icon-btn" data-zoom="out" type="button" title="축소 (-)" aria-label="축소" data-icon="minus"></button>
+        <button class="icon-btn" data-zoom="fit" type="button" title="전체 보기 (0)" aria-label="전체 보기" data-icon="expand"></button>
+        <button class="icon-btn" id="birdBtn" data-zoom="bird" type="button" aria-pressed="false" title="조감 (V)" aria-label="조감" data-icon="bird"></button>
+      </div>
+
+      <!-- 위키 문서 -->
+      <section id="wikiPane" class="wiki-pane" hidden aria-label="위키 문서" data-fp-scope>
+        <div class="wiki-head">
+          <button id="wikiBack" class="icon-btn" type="button" data-wiki-act="back" title="이전 문서">←</button>
+          <div class="wiki-titles"><h2 id="wikiTitle"></h2><span id="wikiMeta" class="wiki-meta"></span></div>
+          <button id="wikiGoto" class="btn btn-sm" type="button" data-wiki-act="goto" title="연표에서 이 항목으로" data-icon="zoom-in">연표에서</button>
+          <button id="wikiEdit" class="btn btn-sm" type="button" data-wiki-act="edit">✎ 편집</button>
+          <button class="icon-btn" type="button" data-wiki-act="close" aria-label="닫기">✕</button>
+        </div>
+        <div id="wikiSubs" class="wiki-subs" hidden></div>
+        <div id="wikiBody" class="wiki-body">
+          <nav id="wikiToc" class="wiki-toc wk"></nav>
+          <article id="wikiArticle" class="wiki-article wk"></article>
+        </div>
+        <div id="wikiEditor" class="wiki-editor" hidden>
+          <div class="wiki-toolbar" id="wikiToolbar">
+            <span class="wiki-toolbar-insert" id="wikiInsertBar"></span>
+            <span class="spacer"></span>
+            <button type="button" class="btn btn-sm" data-wiki-act="item-edit" title="연도·지도자 등 항목 자체를 고칩니다">항목 수정</button>
+            <button type="button" class="btn btn-sm" data-wiki-act="cancel">취소</button>
+            <button type="button" class="btn btn-sm btn-primary" data-wiki-act="save" title="Ctrl+S">저장</button>
+          </div>
+          <div class="wiki-edit-split">
+            <textarea id="wikiText" class="wiki-src" spellcheck="false" aria-label="문서 본문 (나무위키 문법 — [[ 를 치면 이름 자동 완성, Ctrl+S 저장)"></textarea>
+            <div id="wikiPreview" class="wiki-article wk wiki-live"></div>
+          </div>
+        </div>
+      </section>
+      <div id="mkCenter" class="mk-center" hidden></div>
+    </main>
+    <aside class="mk-right" id="mkRight" aria-label="속성">
+      <div id="mkProps" class="mk-props"></div>
+      <aside id="detail" class="detail" hidden aria-live="polite"></aside>
+      <!-- 편집 창: 오른쪽 창(#mkRight)에 붙은 막지 않는 창(상세 자리 — 편집 중에는 상세 대신). 폭은 오른쪽 창 가장자리 · 넓게/좁게 ·
+           제목 줄을 끌어 떼어 내면 떠 있는 창(모서리로 크기 조절 · 다시 붙이기). 틀은 js/maker.js, 폼을 채우고 저장하는 것은 js/viewer.js -->
+      <aside id="editPane" class="edit-pane is-docked" hidden aria-label="편집 창" data-fp-scope>
+        <form id="editorForm" class="ep-form" novalidate>
+          <div class="ep-head" data-pane-drag>
+            <h2 id="editorTitle">사건 추가</h2>
+            <button type="button" class="mk-btn" data-pane="paste-all" hidden title="칸 채우기 답을 통째로 붙여넣어 이 시대의 칸을 한 번에 채웁니다 (답을 복사해 메이커에서 Ctrl+V도 됩니다)">통째 붙여넣기</button>
+            <button type="button" class="mk-btn" data-pane="kin" hidden aria-haspopup="menu" title="승계표 · 세계표 (저장된 것으로 — 세계표 창 안에서 사람을 더하고 고칩니다)">계보</button>
+            <button type="button" class="mk-btn" data-pane="wide">넓게</button>
+            <button type="button" class="mk-btn" data-pane="dock" hidden title="떠 있는 편집 창을 다시 오른쪽에 붙입니다">다시 붙이기</button>
+            <button type="button" class="icon-btn" data-pane="close" aria-label="닫기" title="닫기 (Esc)">✕</button>
+          </div>
+          <div class="ep-body">
+            <p id="editorNote" class="editor-note" hidden></p>
+            <div id="editorFields" class="form-grid"></div>
+            <ul id="editorProblems" class="problems" hidden></ul>
+          </div>
+          <div class="ep-foot">
+            <button type="button" class="btn" data-pane="close">닫기</button>
+            <span class="spacer"></span>
+            <button class="btn btn-primary" id="editorSave" value="save" title="저장하면 연표에 바로 보입니다 (Ctrl+S)">저장</button>
+          </div>
+        </form>
+        <div class="ep-corner" data-pane-corner title="끌어서 크기 조절" aria-hidden="true"></div>
+      </aside>
+      <div class="mk-grip is-right" data-grip="right" title="끌어서 폭 조절 · 두 번 누르면 기본 폭" aria-hidden="true"></div>
+    </aside>
+    <section class="mk-bottom" id="mkBottom" aria-label="아래 창" hidden>
+      <div class="mk-btabs" role="tablist">
+        <button type="button" role="tab" data-btab="problems">문제 <b id="mkProbN"></b></button>
+        <button type="button" role="tab" data-btab="changes">고친 것 <b id="mkChgN"></b></button>
+        <button type="button" role="tab" data-btab="history">작업 기록</button>
+        <button type="button" role="tab" data-btab="autosave">자동 저장 기록</button>
+        <span class="spacer"></span>
+        <button type="button" class="mk-x" data-cmd="toggle-bottom" aria-label="아래 창 닫기 (Ctrl+J)" title="아래 창 닫기 (Ctrl+J)">✕</button>
+      </div>
+      <div id="mkBottomBody" class="mk-bbody"></div>
+      <div class="mk-grip is-bottom" data-grip="bottom" title="끌어서 높이 조절 · 두 번 누르면 기본 높이" aria-hidden="true"></div>
+    </section>
+    <footer class="mk-status" id="mkStatus"></footer>
+    <div id="mkStart" class="mk-start" hidden></div>
+
+    <!-- 메이커: 바탕 자료 (떠 있는 창 — 막지 않음. 제목 줄을 끌어 옮기고 모서리를 끌어 크기 조절, 자리 · 크기는 기억) -->
+    <section id="mkBaseWin" class="mk-win" hidden aria-label="바탕 자료">
+      <div class="mk-win-head" data-win-drag title="제목 줄을 끌어 옮깁니다">
+        <h2>바탕 자료</h2>
+        <div id="mkBaseTabs" class="mk-tabs" role="tablist" aria-label="바탕 자료의 종류"></div>
+        <button class="icon-btn" type="button" data-win-close aria-label="닫기" title="닫기 (Esc)">✕</button>
+      </div>
+      <div id="mkBaseBody" class="mk-win-body"></div>
+      <div class="mk-win-corner" data-win-corner title="끌어서 크기 조절" aria-hidden="true"></div>
+    </section>
+
+  </div>
+
+  <!-- 메이커: 표 붙여넣기 (사건 · 시대) -->
+  <dialog id="mkPasteDialog">
+    <form id="mkPasteForm" class="dlg" method="dialog">
+      <div class="dlg-head"><h2>표 붙여넣기</h2><button class="icon-btn" value="cancel" formnovalidate aria-label="닫기">✕</button></div>
+      <div class="dlg-body">
+        <p class="lead">표 계산 프로그램에서 표를 복사해 붙여넣거나 CSV 글을 붙여넣으세요. <b>첫 줄은 머리글</b>이어야 하고, 넣은 것은 고치는 DLC에 한꺼번에 들어갑니다.</p>
+        <div class="mk-paste-kind">
+          <label class="check"><input type="radio" name="kind" value="event" checked> 사건</label>
+          <label class="check"><input type="radio" name="kind" value="period"> 시대</label>
+          <span class="spacer"></span>
+          <button class="btn btn-sm" type="button" id="mkPasteHead" title="고른 종류의 머리글 줄을 맨 위에 넣습니다">머리글 줄 넣기</button>
+        </div>
+        <p id="mkPasteHint" class="hint"></p>
+        <textarea name="text" rows="9" spellcheck="false" aria-label="붙여넣을 표"></textarea>
+        <div id="mkPastePreview" class="mk-paste-preview"></div>
+      </div>
+      <div class="dlg-foot">
+        <button class="btn" value="cancel" formnovalidate>취소</button>
+        <button class="btn btn-primary" value="add" id="mkPasteAdd" disabled>넣기</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- 메이커: 셋 가운데 고르기 — 반영하지 않은 고침이 있는데 다른 DLC로 바꿀 때 · 편집 창에 저장하지 않은 고침이 있는데 다른 항목으로 가거나 닫을 때 (글은 js/maker.js의 ask) -->
+  <dialog id="mkAskDialog">
+    <form class="dlg" method="dialog">
+      <div class="dlg-head"><h2 id="mkAskTitle">확인</h2></div>
+      <div class="dlg-body"><p id="mkAskText" class="lead"></p></div>
+      <div class="dlg-foot">
+        <button class="btn" value="cancel">취소</button>
+        <span class="spacer"></span>
+        <button class="btn btn-danger" value="no" id="mkAskNo"></button>
+        <button class="btn btn-primary" value="yes" id="mkAskYes"></button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- DLC 관리 -->
+  <dialog id="dlcDialog" class="dlc-dialog">
+    <div class="dlg">
+      <div class="dlg-head"><h2>DLC 관리</h2><button class="icon-btn" data-close aria-label="닫기">✕</button></div>
+      <div class="dlg-body" id="dlcBody"></div>
+    </div>
+  </dialog>
+
+  <!-- 표로 보기 -->
+  <dialog id="tableDialog" class="dlc-dialog">
+    <div class="dlg">
+      <div class="dlg-head"><h2>표</h2><button class="icon-btn" data-close aria-label="닫기">✕</button></div>
+      <div class="dlg-body" id="tableBody"></div>
+      <div class="dlg-foot">
+        <label class="check"><input id="tableRangeOnly" type="checkbox"> 지금 보이는 시기만</label>
+        <label class="check"><input id="tablePeriods" type="checkbox"> 시대 · 인물도 포함</label>
+        <span class="spacer"></span>
+        <button class="btn" id="csvBtn" type="button" data-icon="download">CSV로 내보내기</button>
+        <button class="btn" data-close type="button">닫기</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 이미지·인쇄 -->
+  <dialog id="imageDialog">
+    <div class="dlg">
+      <div class="dlg-head"><h2>이미지 · 인쇄</h2><button class="icon-btn" data-close aria-label="닫기">✕</button></div>
+      <div class="dlg-body">
+        <p class="lead">지금 보고 있는 시기와 필터 그대로, 모든 트랙을 한 장에 담아 그림으로 만듭니다.</p>
+        <div class="form-grid">
+          <label class="field"><span>가로 크기</span><select id="imgWidth"><option value="1200">1200px</option><option value="1800" selected>1800px</option><option value="2600">2600px (고화질)</option><option value="3600">3600px (인쇄용)</option></select></label>
+          <label class="field"><span>제목 <small>(그림 위에 적힙니다)</small></span><input id="imgTitle" maxlength="60"></label>
+        </div>
+      </div>
+      <div class="dlg-foot">
+        <button class="btn" id="printBtn" type="button" data-icon="printer">인쇄</button>
+        <span class="spacer"></span>
+        <button class="btn" id="svgBtn" type="button">SVG 저장</button>
+        <button class="btn btn-primary" id="pngBtn" type="button">PNG 저장</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="dropOverlay" class="drop-overlay" hidden><div>📦 여기에 놓으면 DLC를 설치합니다 (배경으로 함께 보입니다)</div></div>
+
+  <script src="js/calendar.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/wiki.js"></script>
+  <script src="js/platform.js"></script>
+  <script src="js/fieldpop.js"></script>
+  <script src="js/form-keys.js"></script>
+  <script src="js/packfile.js"></script>
+  <script src="packs/east-asia/pack.js"></script>
+  <script src="packs/east-asia/korea-1.js"></script>
+  <script src="packs/east-asia/korea-2.js"></script>
+  <script src="packs/east-asia/china-1.js"></script>
+  <script src="packs/east-asia/china-2.js"></script>
+  <script src="packs/east-asia/japan.js"></script>
+  <script src="packs/east-asia/vietnam.js"></script>
+  <script src="packs/east-asia/north.js"></script>
+  <script src="packs/east-asia/relations.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/kin-view.js"></script>
+  <script src="js/maker.js"></script>
+  <script src="js/maker-history.js"></script>
+  <script src="js/maker-grid.js"></script>
+  <script src="js/maker-paste.js"></script>
+  <script src="js/maker-drag.js"></script>
+  <script src="js/maker-blocks.js"></script>
+  <script src="js/maker-find.js"></script>
+  <script src="js/maker-shell.js"></script>
+  <script src="js/maker-kin.js"></script>
+  <script src="js/maker-check.js"></script>
+  <script src="js/views-ui.js"></script>
+  <script src="js/group-tree.js"></script>
+  <script src="js/maker-images.js"></script>
+  <script src="js/maker-templates.js"></script>
+  <script src="js/viewer.js"></script>
+  <script src="js/lens-ui.js"></script>
+</body>
+</html>

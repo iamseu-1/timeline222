@@ -1,0 +1,12 @@
+[
+ {
+  "uid": "가상견본/f-baram",
+  "kind": "figure",
+  "json": "{\"id\":\"f-baram\",\"uid\":\"가상견본/f-baram\",\"kind\":\"figure\",\"itemKind\":\"figure\",\"name\":\"솔 바람\",\"role\":\"왕\",\"track\":\"mw-coast\",\"start\":625,\"end\":690,\"endY\":690,\"birth\":610,\"death\":690,\"packName\":\"형식 3 가장자리 견본\",\"x_names\":{\"main\":[{\"text\":\"Sol Baram\",\"lang\":\"ko-Latn\",\"tag\":\"로마자 · 한국어 로마자\"}]},\"x_leaders\":[{\"uid\":\"가상견본/p-f3\",\"name\":\"솔나라\",\"ref\":\"leader:1\",\"label\":\"솔 바람\"}],\"x_person\":{\"ruled\":[{\"uid\":\"가상견본/p-f3\",\"ref\":\"leader:1\",\"name\":\"솔나라\",\"label\":\"솔 바람\",\"when\":\"640년 ~ 680년\"},{\"uid\":\"가상견본/p-gal\",\"ref\":\"leader:3\",\"name\":\"갈마국\",\"label\":\"바람 왕\",\"when\":\"690년\"}],\"parents\":[{\"name\":\"솔 바위\",\"uid\":\"가상견본/p-f3\",\"ref\":\"leader:0\",\"polity\":\"솔나라\",\"as\":\"부\"},{\"name\":\"나루 달\",\"uid\":\"가상견본/f-dal\",\"as\":\"모\",\"certainty\":\"estimated\"}],\"spouses\":[{\"name\":\"갈마 이슬\",\"uid\":\"가상견본/f-iseul\",\"when\":\"640년 ~ 670년\"}],\"children\":[{\"name\":\"솔 새벽\",\"uid\":\"가상견본/p-f3\",\"ref\":\"leader:2\",\"polity\":\"솔나라\"},{\"name\":\"솔 들\",\"uid\":\"가상견본/f-deul\",\"as\":\"양자\"}],\"groups\":[{\"uid\":\"가상견본/gr-east\",\"name\":\"동녘파\"}]}}"
+ },
+ {
+  "uid": "house:h-solbawi",
+  "kind": "house",
+  "json": "{\"id\":\"h-solbawi\",\"uid\":\"house:h-solbawi\",\"itemKind\":\"house\",\"name\":\"솔바위 가문\",\"surname\":\"sn-sol\",\"seat\":\"푸른 벼랑\",\"color\":\"#b6c398\",\"packName\":\"형식 3 가장자리 견본\",\"surnameId\":\"sn-sol\",\"x_names\":{\"main\":[{\"text\":\"Solbawi\",\"lang\":\"ko-Latn\",\"tag\":\"로마자 · 한국어 로마자\"}]},\"x_surname\":{\"uid\":\"surname:sn-sol\",\"name\":\"솔\",\"names\":{\"main\":[{\"text\":\"Sol\",\"lang\":\"ko-Latn\",\"tag\":\"로마자 · 한국어 로마자\"}],\"other\":[{\"text\":\"率\",\"tag\":\"한자\"}]}}}"
+ }
+]

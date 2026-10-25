@@ -1,0 +1,12 @@
+.tools/
+data/
+results/
+target/
+app/build/
+app/assets/seed/
+app/.dart_tool/
+app/.flutter-plugins-dependencies
+app/android/local.properties
+app/android/.gradle/
+app/android/app/src/main/jniLibs/
+app/windows/flutter/ephemeral/

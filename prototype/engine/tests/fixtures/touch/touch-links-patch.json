@@ -1,0 +1,25 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "id": "touch-links-patch",
+  "name": "닿는 트랙 시험 — 쥔 쪽 · 빌림 출처를 고치는 패치",
+  "version": "1.0.0",
+  "description": "리메이크 3단계 저장소 걸음 8의 넓이 검사 자료. touch-links의 쥔 나라 둘(이름 · 색)과 빌림 출처(이름 · 지도자 칸)만 고친다 — 실권 상대 · 빌린 쪽은 건드리지 않는다. 이름은 모두 지어낸 것입니다.",
+  "requires": [],
+  "tracks": [],
+  "patches": [
+    { "target": "touch-links/o-hold", "set": { "name": "고친 쥔 나라", "color": "#336699" } },
+    { "target": "touch-links/o-hold2", "set": { "color": "#996633" } },
+    {
+      "target": "touch-links/o-src",
+      "set": {
+        "name": "고친 원천 나라",
+        "leaders": [
+          { "name": "고친 원천왕 하나", "start": 700, "end": 740 },
+          { "name": "고친 원천왕 둘", "start": 740, "end": 830 },
+          { "name": "고친 원천왕 셋", "start": 830, "end": 900 }
+        ]
+      }
+    }
+  ]
+}

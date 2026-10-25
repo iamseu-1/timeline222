@@ -1,0 +1,349 @@
+{
+ "note": "lens-export-check.mjs가 sample-power에서 뜬 렌즈 자료(웹 HEAD) — 손으로 고치지 않는다",
+ "themes": "{\"list\":[{\"id\":\"system\",\"name\":\"체제\",\"color\":\"#abb3c9\",\"order\":0},{\"id\":\"faction\",\"name\":\"붕당\",\"color\":\"#d4a39b\",\"order\":1},{\"id\":\"law\",\"name\":\"법률\",\"color\":\"#bba395\",\"order\":2},{\"id\":\"election\",\"name\":\"선거제도\",\"color\":\"#a0bcc5\",\"order\":3},{\"id\":\"ideology\",\"name\":\"이념\",\"color\":\"#bbacc8\",\"order\":4},{\"id\":\"military\",\"name\":\"군사제도\",\"color\":\"#b6c398\",\"order\":5},{\"id\":\"tax\",\"name\":\"조세제도\",\"color\":\"#d7c18e\",\"order\":6},{\"id\":\"selection\",\"name\":\"선발제도\",\"color\":\"#9dbea8\",\"order\":7}],\"x_lens\":{\"slot\":[\"sample-gr-pwa\"],\"themes\":[{\"id\":\"system\",\"hint\":\"나라의 짜임\",\"has\":0},{\"id\":\"faction\",\"hint\":\"집권한 단체\",\"has\":1,\"v\":1,\"sw\":{\"t\":\"붕당 — 칸 색은 집권한 단체의 색 · 두 색은 연정\",\"l\":[[\"들 무리\",13152659],[\"솔 무리\",13935515],[\"물 무리\",14139790],[\"새벽 무리\",12299464],[\"노을 무리\",13740473],[\"너른 무리\",10337960],[\"곧은 무리\",12297109]]}},{\"id\":\"law\",\"hint\":\"법 · 법전\",\"has\":0},{\"id\":\"election\",\"hint\":\"뽑는 방법\",\"has\":0},{\"id\":\"ideology\",\"hint\":\"기준 이념\",\"has\":0},{\"id\":\"military\",\"hint\":\"병제\",\"has\":0},{\"id\":\"tax\",\"hint\":\"세금 거두는 법\",\"has\":0},{\"id\":\"selection\",\"hint\":\"관리 뽑는 법\",\"has\":0}]}}",
+ "tracks": [
+  {
+   "key": "sample-gr-pwa",
+   "leader": 1,
+   "rows": 2
+  },
+  {
+   "key": "sample-gr-pwb",
+   "leader": 1,
+   "rows": 3
+  }
+ ],
+ "variants": [
+  {
+   "key": "theme:faction",
+   "kind": 4,
+   "uid": "faction",
+   "name": "붕당",
+   "hides": 22
+  }
+ ],
+ "cells": [
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -247196160,
+   "end": -226159200,
+   "name": "첫 가람왕",
+   "style": 536903680,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -226159200,
+   "end": -207750240,
+   "name": "둘째 가람왕",
+   "style": 536952836,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -207750240,
+   "end": -189341280,
+   "name": "셋째 가람왕",
+   "style": 536969220,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -189341280,
+   "end": -163044000,
+   "name": "넷째 가람왕",
+   "style": 537018372,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -163044000,
+   "end": -142005600,
+   "name": "다섯째 가람왕",
+   "style": 537034756,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -142005600,
+   "end": -127280160,
+   "name": "여섯째 가람왕",
+   "style": 537083908,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -127280160,
+   "end": -102034080,
+   "name": "일곱째 가람왕",
+   "style": 537100292,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -102034080,
+   "end": -89411040,
+   "name": "여덟째 가람왕",
+   "style": 537149444,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -89411040,
+   "end": -71529120,
+   "name": "어린 임금",
+   "style": 1610907652,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -71529120,
+   "end": -63639360,
+   "name": "열째 가람왕",
+   "style": 1610956804,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -63639360,
+   "end": -56276640,
+   "name": "열한째 가람왕",
+   "style": 1610973188,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 2,
+   "start": -56276640,
+   "end": -38393280,
+   "name": "늦은 임금",
+   "style": 537280516,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 0,
+   "start": -220898880,
+   "end": -213009120,
+   "name": "들\t들 무리",
+   "style": 268468256,
+   "color": 13152659
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 0,
+   "start": -205120800,
+   "end": -184082400,
+   "name": "솔\t솔 무리",
+   "style": 268501028,
+   "color": 13935515
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 0,
+   "start": -184082400,
+   "end": -168302880,
+   "name": "물\t물 무리",
+   "style": 268533796,
+   "color": 14139790
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 0,
+   "start": -168302880,
+   "end": -152524800,
+   "name": "솔\t솔 무리",
+   "style": 268566564,
+   "color": 13935515
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 0,
+   "start": -152524800,
+   "end": -127280160,
+   "name": "물\t물 무리",
+   "style": 268599332,
+   "color": 14139790
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 0,
+   "start": -127280160,
+   "end": -110449440,
+   "name": "물·새\t물 무리 · 새벽 무리",
+   "style": 268632100,
+   "color": 14139790
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 0,
+   "start": -110449440,
+   "end": -102034080,
+   "name": "새·노\t새벽 무리 · 노을 무리",
+   "style": 268664868,
+   "color": 12299464
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 0,
+   "start": -102034080,
+   "end": -96773760,
+   "name": "새·노·너\t새벽 무리 · 노을 무리 · 너른 무리",
+   "style": 268697636,
+   "color": 12299464
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 0,
+   "start": -96773760,
+   "end": -63113760,
+   "name": "새\t새벽 무리",
+   "style": 268730404,
+   "color": 12299464
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-power/pw-garam",
+   "lane": 0,
+   "start": -63113760,
+   "end": -51016320,
+   "name": "너\t너른 무리",
+   "style": 268763172,
+   "color": 10337960
+  }
+ ],
+ "items": [
+  {
+   "variant": "theme:faction",
+   "ref": "sample-power/pw-garam",
+   "b": 0,
+   "c": 1,
+   "name": "",
+   "color": 0,
+   "d": 1,
+   "text2": "sample-power/pw-deul\tc8b193"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-power/pw-garam",
+   "b": 0,
+   "c": 2,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-power/pw-sol"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-power/pw-garam",
+   "b": 0,
+   "c": 3,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-power/pw-mul"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-power/pw-garam",
+   "b": 0,
+   "c": 4,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-power/pw-sol"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-power/pw-garam",
+   "b": 0,
+   "c": 5,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-power/pw-mul"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-power/pw-garam",
+   "b": 0,
+   "c": 6,
+   "name": "",
+   "color": 12299464,
+   "d": 0,
+   "text2": "sample-power/pw-mul\td7c18e,bbacc8"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-power/pw-garam",
+   "b": 0,
+   "c": 7,
+   "name": "",
+   "color": 13740473,
+   "d": 0,
+   "text2": "sample-power/pw-saebyeok\tbbacc8,d1a9b9"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-power/pw-garam",
+   "b": 0,
+   "c": 8,
+   "name": "",
+   "color": 13740473,
+   "d": 0,
+   "text2": "sample-power/pw-saebyeok\tbbacc8,d1a9b9,9dbea8"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-power/pw-garam",
+   "b": 0,
+   "c": 9,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-power/pw-saebyeok"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-power/pw-garam",
+   "b": 0,
+   "c": 10,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-power/pw-neoreun"
+  }
+ ]
+}

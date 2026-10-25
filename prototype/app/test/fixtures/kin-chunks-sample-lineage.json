@@ -1,0 +1,25 @@
+{
+ "limit": 3,
+ "records": [
+  {
+   "uid": "kin:h-lin-sol",
+   "kind": "kin",
+   "json": "{\"v\":1,\"uid\":\"kin:h-lin-sol\",\"n\":4,\"gens\":1,\"par\":[-1,-1,-1,-1],\"size\":[1,1,1,1],\"gen\":[0,0,0,0],\"bits\":[33,33,130,130],\"edge\":[0,0,0,0],\"branch\":[0,0,0,0],\"color\":[1,1,0,0],\"color2\":[],\"name\":[\"어느 임금\",\"다음 임금\",\"미상\",\"미상\"],\"sub\":[\"580~600\",\"600~640\",\"\",\"\"],\"key\":[\"c:sample-lineage/lin-gap|leader:5\",\"c:sample-lineage/lin-gap|leader:6\",\"f:sample-lineage/f-lin-wind^1\",\"c:sample-lineage/lin-gap|leader:0^0\"],\"extra\":[],\"colors\":[\"\",\"#c8b193\"],\"branches\":[{\"uid\":\"house:h-lin-sol\",\"name\":\"솔 가문\",\"color\":\"#bbacc8\",\"at\":5,\"up\":-1},{\"uid\":\"house:h-lin-wind\",\"name\":\"바람 가문\",\"color\":\"#a0bcc5\",\"at\":-1,\"up\":0}],\"cells\":{\"sample-lineage/lin-gap|leader:5\":0,\"sample-lineage/lin-gap|leader:6\":1},\"stubs\":{\"2\":{\"key\":\"kin:h-lin-sol#f:sample-lineage/f-lin-wind^1\",\"n\":2},\"3\":{\"key\":\"kin:h-lin-sol#c:sample-lineage/lin-gap|leader:0^0\",\"n\":4}},\"warnings\":[\"덩어리 kin:h-lin-sol의 마디 4개가 상한 3을 넘지만 뗄 하위 나무가 없어 나누지 않았습니다.\",\"덩어리 kin:h-lin-sol의 마디 4개가 상한 3을 넘지만 뗄 하위 나무가 없어 나누지 않았습니다.\",\"덩어리 kin:h-lin-sol의 마디 4개가 상한 3을 넘지만 뗄 하위 나무가 없어 나누지 않았습니다.\"]}"
+  },
+  {
+   "uid": "kin:h-lin-sol#f:sample-lineage/f-lin-wind^1",
+   "kind": "kin",
+   "json": "{\"v\":1,\"uid\":\"kin:h-lin-sol#f:sample-lineage/f-lin-wind^1\",\"n\":2,\"gens\":2,\"par\":[-1,0],\"size\":[2,1],\"gen\":[0,1],\"bits\":[2,297],\"edge\":[0,0],\"branch\":[0,1],\"color\":[0,1],\"color2\":[0,1],\"name\":[\"미상\",\"바람 임금\"],\"sub\":[\"\",\"5대 · 560~580\"],\"key\":[\"f:sample-lineage/f-lin-wind^1\",\"f:sample-lineage/f-lin-wind\"],\"extra\":[],\"colors\":[\"\",\"#c8b193\"],\"branches\":[{\"uid\":\"house:h-lin-sol\",\"name\":\"솔 가문\",\"color\":\"#bbacc8\",\"at\":5,\"up\":-1},{\"uid\":\"house:h-lin-wind\",\"name\":\"바람 가문\",\"color\":\"#a0bcc5\",\"at\":-1,\"up\":0}],\"cells\":{\"sample-lineage/lin-eul|leader:1\":1,\"sample-lineage/lin-gap|leader:4\":1},\"stubs\":{},\"warnings\":[],\"root\":{\"uid\":\"kin:h-lin-sol\",\"at\":2,\"up\":\"kin:h-lin-sol\",\"upAt\":2},\"extraFar\":[{\"from\":\"c:sample-lineage/lin-gap|leader:0\",\"fromAt\":5,\"to\":1,\"kind\":6,\"gen\":3},{\"from\":\"c:sample-lineage/lin-gap|leader:1\",\"fromAt\":6,\"to\":1,\"kind\":1,\"gen\":1}]}"
+  },
+  {
+   "uid": "kin:h-lin-sol#c:sample-lineage/lin-gap|leader:0^0",
+   "kind": "kin",
+   "json": "{\"v\":1,\"uid\":\"kin:h-lin-sol#c:sample-lineage/lin-gap|leader:0^0\",\"n\":2,\"gens\":2,\"par\":[-1,0],\"size\":[2,1],\"gen\":[0,1],\"bits\":[2,161],\"edge\":[0,0],\"branch\":[0,0],\"color\":[0,1],\"color2\":[],\"name\":[\"미상\",\"첫 임금\"],\"sub\":[\"\",\"1대 · 500~530\"],\"key\":[\"c:sample-lineage/lin-gap|leader:0^0\",\"c:sample-lineage/lin-gap|leader:0\"],\"extra\":[],\"colors\":[\"\",\"#c8b193\"],\"branches\":[{\"uid\":\"house:h-lin-sol\",\"name\":\"솔 가문\",\"color\":\"#bbacc8\",\"at\":5,\"up\":-1},{\"uid\":\"house:h-lin-wind\",\"name\":\"바람 가문\",\"color\":\"#a0bcc5\",\"at\":-1,\"up\":0}],\"cells\":{},\"stubs\":{\"1\":{\"key\":\"kin:h-lin-sol#c:sample-lineage/lin-gap|leader:0\",\"n\":3}},\"warnings\":[],\"root\":{\"uid\":\"kin:h-lin-sol\",\"at\":4,\"up\":\"kin:h-lin-sol\",\"upAt\":3}}"
+  },
+  {
+   "uid": "kin:h-lin-sol#c:sample-lineage/lin-gap|leader:0",
+   "kind": "kin",
+   "json": "{\"v\":1,\"uid\":\"kin:h-lin-sol#c:sample-lineage/lin-gap|leader:0\",\"n\":3,\"gens\":3,\"par\":[-1,0,0],\"size\":[3,1,1],\"gen\":[1,2,2],\"bits\":[33,33,33],\"edge\":[0,0,0],\"branch\":[0,0,0],\"color\":[1,1,1],\"color2\":[],\"name\":[\"첫 임금\",\"둘째 임금\",\"셋째 임금\"],\"sub\":[\"1대 · 500~530\",\"2대 · 530~545\",\"3대 · 545~552\"],\"key\":[\"c:sample-lineage/lin-gap|leader:0\",\"c:sample-lineage/lin-gap|leader:1\",\"c:sample-lineage/lin-gap|leader:2\"],\"extra\":[],\"colors\":[\"\",\"#c8b193\"],\"branches\":[{\"uid\":\"house:h-lin-sol\",\"name\":\"솔 가문\",\"color\":\"#bbacc8\",\"at\":5,\"up\":-1},{\"uid\":\"house:h-lin-wind\",\"name\":\"바람 가문\",\"color\":\"#a0bcc5\",\"at\":-1,\"up\":0}],\"cells\":{\"sample-lineage/lin-gap|leader:0\":0,\"sample-lineage/lin-gap|leader:1\":1,\"sample-lineage/lin-gap|leader:3\":1,\"sample-lineage/lin-gap|leader:2\":2},\"stubs\":{},\"warnings\":[],\"root\":{\"uid\":\"kin:h-lin-sol\",\"at\":5,\"up\":\"kin:h-lin-sol#c:sample-lineage/lin-gap|leader:0^0\",\"upAt\":1}}"
+  }
+ ]
+}

@@ -1,0 +1,66 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "id": "shelf-chain",
+  "name": "선반 시험 — 승계 사슬",
+  "version": "1.0.0",
+  "author": "검사 자료",
+  "description": "견본 등불(sample-lantern)에 얹는 덧팩 — 하연 트랙에 그릇 하나(큰 승계 사슬 등불 왕국 → … → 공화국과 낱 사슬 넷)와 그 구성원 줄 밑에 깔리는 바탕 문화 셋(선반에 숨는 구성원 밑 · 다시 지은 줄로 가는 구성원 밑 · 두 구성원 밑에 두 줄로)을 더한다. 서고 선반(상위 다섯만 제 줄)의 엔진 변형 시험 자료(리메이크 4단계 선반 갈래). 모든 이름은 지어낸 것입니다.",
+  "requires": [],
+  "tracks": [
+    {
+      "id": "hayeon",
+      "name": "하연",
+      "color": "#d7c18e",
+      "order": 20,
+      "sphere": "ember-basin"
+    }
+  ],
+  "scopes": [
+    {
+      "id": "shelf-chain",
+      "name": "선반 시험 — 승계 사슬",
+      "track": "hayeon",
+      "members": [
+        "p-lantern",
+        "p-prefecture",
+        "p-revival",
+        "p-union",
+        "p-republic",
+        "p-upper",
+        "p-lower",
+        "p-blackwater",
+        "p-namgang"
+      ]
+    }
+  ],
+  "cultures": [
+    {
+      "id": "c-blackwater-kiln",
+      "track": "hayeon",
+      "name": "검은물 가마 문화",
+      "start": 980,
+      "end": 1031,
+      "successors": ["검은물 의병"],
+      "description": "검은물 상류의 가마터 문화(지어낸 것) — 승계국 검은물 의병이 선반에 숨으면 함께 숨는다."
+    },
+    {
+      "id": "c-upper-mound",
+      "track": "hayeon",
+      "name": "윗물 고분 문화",
+      "start": 360,
+      "end": 412,
+      "successors": ["윗물국"],
+      "description": "윗물 둔덕의 고분 문화(지어낸 것) — 승계국 윗물국을 따라 선반이 다시 지은 줄로 간다."
+    },
+    {
+      "id": "c-fork-reed",
+      "track": "hayeon",
+      "name": "갈래물 갈대 문화",
+      "start": 300,
+      "end": 412,
+      "successors": ["윗물국", "아랫물국"],
+      "description": "강이 갈라지는 곳의 갈대 문화(지어낸 것) — 두 승계국 줄 밑에 두 조각으로 깔린다."
+    }
+  ]
+}

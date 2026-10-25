@@ -1,0 +1,185 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 4,
+  "id": "f4-liege",
+  "name": "형식 4 가상 팩 — 영지마다 다른 주군(공국 객체 · 같은 사람 · 두 주군)",
+  "version": "1.0.0",
+  "spheres": [
+    {
+      "id": "jade-canopy",
+      "name": "청림 수해권",
+      "order": 1
+    },
+    {
+      "id": "prism-strait",
+      "name": "백사 해협권",
+      "order": 2
+    }
+  ],
+  "tracks": [
+    {
+      "id": "cheongnim",
+      "name": "청림",
+      "sphere": "jade-canopy"
+    },
+    {
+      "id": "baeksa",
+      "name": "백사만",
+      "sphere": "prism-strait"
+    }
+  ],
+  "houses": [
+    {
+      "id": "h-on",
+      "name": "온씨",
+      "surname": "온"
+    }
+  ],
+  "objects": [
+    {
+      "id": "ps-seoha",
+      "type": "person",
+      "track": "cheongnim",
+      "name": "온 서하",
+      "start": 1121,
+      "end": 1166,
+      "house": "온씨"
+    },
+    {
+      "id": "o-king",
+      "name": "청림 왕국",
+      "track": "cheongnim",
+      "start": 1031,
+      "end": 1402,
+      "house": "온씨",
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "온 담원",
+              "start": 1090,
+              "end": 1121
+            },
+            {
+              "name": "온 서하",
+              "start": 1121,
+              "end": 1166,
+              "person": "ps-seoha"
+            },
+            {
+              "name": "온 바람",
+              "start": 1166,
+              "end": 1203
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-grand",
+      "name": "수해 대공국",
+      "track": "cheongnim",
+      "start": 1000,
+      "end": 1402,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "수해 대공 벨로",
+              "start": 1077,
+              "end": 1118
+            },
+            {
+              "name": "수해 대공 카시안",
+              "start": 1118,
+              "end": 1160
+            },
+            {
+              "name": "수해 대공 네로",
+              "start": 1160,
+              "end": 1204
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-duke",
+      "type": "principality",
+      "name": "갈대 공국",
+      "track": "cheongnim",
+      "start": 1050,
+      "end": 1300,
+      "partOf": [
+        {
+          "of": "o-grand",
+          "relation": "fief"
+        },
+        {
+          "of": "o-baek",
+          "relation": "tributary",
+          "start": 1170,
+          "end": 1240
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "세린공",
+              "start": 1090,
+              "end": 1121
+            },
+            {
+              "name": "온 서하",
+              "start": 1121,
+              "end": 1166,
+              "person": "ps-seoha"
+            },
+            {
+              "name": "무령공",
+              "start": 1166,
+              "end": 1210
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-baek",
+      "type": "principality",
+      "name": "백사 공국",
+      "track": "baeksa",
+      "start": 1100,
+      "end": 1400,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "운결공",
+              "start": 1150,
+              "end": 1190
+            },
+            {
+              "name": "세린공",
+              "start": 1190,
+              "end": 1230
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "track": "cheongnim",
+      "polity": "o-king",
+      "name": "갈대 공위 상속",
+      "start": 1121
+    }
+  ]
+}

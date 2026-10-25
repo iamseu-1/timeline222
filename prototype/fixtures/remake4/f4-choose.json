@@ -1,0 +1,366 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 4,
+  "id": "f4-choose",
+  "name": "형식 4 가상 팩 — 4단계 감독 고름(꼬리표 끝 · 대립 · 흰 사슬 · 서고 흠)",
+  "version": "1.0.0",
+  "description": "리메이크 4단계 고르기 판의 G6 · G5-9b 장면을 형식 4로 옮긴 시험 자료(prototype/scripts/remake4-shots.mjs 장면 f4-choose · f4-choose-pick · f4-choose-closed). 하연 왕국(왕조 둘 · 지위 둘 · 지도자) · 종류 갈래마다의 꼬리표(군벌 · 회사 · 단체 · 교단 · 집단) · 대립 정부 · 동맹 · 섬긴 띠(받침 카드) · 구성원 넷의 그릇(둘째 줄). 이름은 모두 가상.",
+  "spheres": [
+    {
+      "id": "ember-basin",
+      "name": "등불 분지권",
+      "order": 1
+    }
+  ],
+  "tracks": [
+    {
+      "id": "hayeon",
+      "name": "하연",
+      "sphere": "ember-basin"
+    }
+  ],
+  "objects": [
+    {
+      "id": "o-hayeon",
+      "name": "하연 왕국",
+      "track": "hayeon",
+      "start": 1100,
+      "end": 1400,
+      "importance": 3,
+      "ranks": [
+        {
+          "name": "왕",
+          "end": 1318
+        },
+        {
+          "name": "황제",
+          "start": 1318,
+          "note": "서 하늘의 칭제"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "온 하람",
+              "start": 1188,
+              "end": 1221
+            },
+            {
+              "name": "온 서윤",
+              "start": 1221,
+              "end": 1249
+            },
+            {
+              "name": "온 다결",
+              "start": 1249,
+              "end": 1270
+            },
+            {
+              "name": "온 이솔",
+              "start": 1270,
+              "end": 1290
+            },
+            {
+              "name": "서 무진",
+              "start": 1290,
+              "end": 1318
+            },
+            {
+              "name": "서 하늘",
+              "start": 1318,
+              "end": 1350
+            },
+            {
+              "name": "서 란",
+              "start": 1350,
+              "end": 1385
+            },
+            {
+              "name": "서 세린",
+              "start": 1385,
+              "end": 1400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-west",
+      "type": "government",
+      "name": "서하연 조정",
+      "track": "hayeon",
+      "start": 1296,
+      "end": 1338,
+      "status": "rival",
+      "description": "서씨 즉위에 맞서 온씨 왕족이 서쪽에 세운 대립 조정"
+    },
+    {
+      "id": "o-reed",
+      "type": "principality",
+      "name": "갈대 공국",
+      "track": "hayeon",
+      "start": 1205,
+      "end": 1375,
+      "partOf": [
+        {
+          "of": "o-hayeon",
+          "relation": "vassal"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "갈대공 벨로",
+              "start": 1205,
+              "end": 1252
+            },
+            {
+              "name": "갈대공 다온",
+              "start": 1252,
+              "end": 1301
+            },
+            {
+              "name": "갈대공 진",
+              "start": 1301,
+              "end": 1375
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-league",
+      "type": "league",
+      "name": "분지 상인 동맹",
+      "track": "hayeon",
+      "start": 1240,
+      "end": 1380
+    },
+    {
+      "id": "o-faith",
+      "type": "faith",
+      "name": "등불 교단",
+      "track": "hayeon",
+      "start": 1205,
+      "end": 1420,
+      "importance": 2,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "대등좌 하윤",
+              "start": 1205,
+              "end": 1262
+            },
+            {
+              "name": "대등좌 무령",
+              "start": 1262,
+              "end": 1330
+            },
+            {
+              "name": "대등좌 해온",
+              "start": 1330,
+              "end": 1420
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-era",
+      "type": "era",
+      "name": "남곡 할거",
+      "label": "할거",
+      "track": "hayeon",
+      "start": 1210,
+      "end": 1360,
+      "default": true,
+      "color": "#dab195",
+      "description": "하연 왕국의 남쪽 골짜기를 나눠 쥔 무리들 — 켜면 하연 왕국 아래 폴더에 모인다"
+    },
+    {
+      "id": "o-red",
+      "type": "warlord",
+      "name": "붉은솔 군벌",
+      "track": "hayeon",
+      "start": 1262,
+      "end": 1331,
+      "within": [
+        {
+          "of": "o-era"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "붉은솔 무강",
+              "start": 1262,
+              "end": 1297
+            },
+            {
+              "name": "붉은솔 하진",
+              "start": 1297,
+              "end": 1331
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-guild",
+      "type": "company",
+      "name": "은등 상단",
+      "track": "hayeon",
+      "start": 1214,
+      "end": 1356,
+      "within": [
+        {
+          "of": "o-era"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "행수 다온",
+              "start": 1214,
+              "end": 1252
+            },
+            {
+              "name": "행수 벨로",
+              "start": 1252,
+              "end": 1290
+            },
+            {
+              "name": "행수 세린",
+              "start": 1290,
+              "end": 1330
+            },
+            {
+              "name": "행수 란",
+              "start": 1330,
+              "end": 1356
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-cult",
+      "type": "organization",
+      "name": "그믐 결사",
+      "track": "hayeon",
+      "start": 1236,
+      "end": 1349,
+      "within": [
+        {
+          "of": "o-era"
+        }
+      ]
+    },
+    {
+      "id": "o-wolf",
+      "type": "group",
+      "name": "모래늑대 무리",
+      "track": "hayeon",
+      "start": 1225,
+      "end": 1310,
+      "within": [
+        {
+          "of": "o-era"
+        }
+      ]
+    }
+  ],
+  "dynasties": [
+    {
+      "id": "d-on",
+      "track": "hayeon",
+      "name": "온씨 왕조",
+      "start": 1100,
+      "end": 1290,
+      "polities": [
+        {
+          "polity": "o-hayeon"
+        }
+      ]
+    },
+    {
+      "id": "d-seo",
+      "track": "hayeon",
+      "name": "서씨 왕조",
+      "start": 1290,
+      "end": 1400,
+      "polities": [
+        {
+          "polity": "o-hayeon"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "track": "hayeon",
+      "polity": "o-hayeon",
+      "name": "등불 천도",
+      "start": 1236,
+      "importance": 2
+    },
+    {
+      "track": "hayeon",
+      "polity": "o-hayeon",
+      "name": "서씨 즉위",
+      "start": 1290
+    },
+    {
+      "track": "hayeon",
+      "polity": "o-west",
+      "name": "두 임금",
+      "start": 1296
+    },
+    {
+      "track": "hayeon",
+      "polity": "o-red",
+      "name": "남곡 점령",
+      "start": 1279
+    },
+    {
+      "track": "hayeon",
+      "polity": "o-guild",
+      "name": "은등 어음",
+      "start": 1301
+    },
+    {
+      "track": "hayeon",
+      "polity": "o-cult",
+      "name": "그믐 맹세",
+      "start": 1236
+    },
+    {
+      "track": "hayeon",
+      "polity": "o-wolf",
+      "name": "남하",
+      "start": 1252
+    },
+    {
+      "track": "hayeon",
+      "polity": "o-faith",
+      "name": "등불 공의회",
+      "start": 1340
+    },
+    {
+      "track": "hayeon",
+      "polity": "o-reed",
+      "name": "갈대 서약",
+      "start": 1230
+    }
+  ]
+}

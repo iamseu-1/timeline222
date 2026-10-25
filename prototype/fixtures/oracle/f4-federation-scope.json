@@ -1,0 +1,241 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 4,
+  "id": "f4-federation-scope",
+  "name": "형식 4 가상 팩 — 구성원 많은 연방(중요도 · 줄 안 묶음)",
+  "version": "1.0.0",
+  "spheres": [
+    {
+      "id": "crimson-canyon",
+      "name": "적석 협곡권",
+      "order": 1
+    }
+  ],
+  "tracks": [
+    {
+      "id": "jeokseok",
+      "name": "적석",
+      "sphere": "crimson-canyon"
+    }
+  ],
+  "peoples": [
+    {
+      "id": "pp-up",
+      "name": "상류 협곡인",
+      "track": "jeokseok"
+    },
+    {
+      "id": "pp-mid",
+      "name": "중류 협곡인",
+      "track": "jeokseok"
+    },
+    {
+      "id": "pp-down",
+      "name": "하류 협곡인",
+      "track": "jeokseok"
+    }
+  ],
+  "objects": [
+    {
+      "id": "o-fed",
+      "type": "federation",
+      "name": "적석 제후 연방",
+      "track": "jeokseok",
+      "start": 1150,
+      "end": 1650,
+      "importance": 3,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "선출 황제 하나",
+              "start": 1150,
+              "end": 1210
+            },
+            {
+              "name": "선출 황제 둘",
+              "start": 1210,
+              "end": 1273
+            },
+            {
+              "name": "선출 황제 셋",
+              "start": 1273,
+              "end": 1350
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-m01",
+      "type": "principality",
+      "name": "붉은바위 백령",
+      "start": 1160,
+      "end": 1520,
+      "within": [
+        "s-fed"
+      ],
+      "people": "상류 협곡인",
+      "importance": 2
+    },
+    {
+      "id": "o-m02",
+      "type": "principality",
+      "name": "매골 후국",
+      "start": 1170,
+      "end": 1400,
+      "within": [
+        "s-fed"
+      ],
+      "people": "상류 협곡인",
+      "importance": 1
+    },
+    {
+      "id": "o-m03",
+      "type": "city",
+      "name": "돌못 자유시",
+      "start": 1200,
+      "end": 1600,
+      "within": [
+        "s-fed"
+      ],
+      "people": "상류 협곡인"
+    },
+    {
+      "id": "o-m04",
+      "type": "faith",
+      "name": "잿골 수도원령",
+      "start": 1180,
+      "end": 1500,
+      "within": [
+        "s-fed"
+      ],
+      "people": "중류 협곡인",
+      "importance": 1
+    },
+    {
+      "id": "o-m05",
+      "type": "order",
+      "name": "범바위 기사령",
+      "start": 1220,
+      "end": 1480,
+      "within": [
+        "s-fed"
+      ],
+      "people": "중류 협곡인",
+      "importance": 2
+    },
+    {
+      "id": "o-m06",
+      "type": "principality",
+      "name": "쇠여울 변경백령",
+      "start": 1190,
+      "end": 1650,
+      "within": [
+        "s-fed"
+      ],
+      "people": "중류 협곡인",
+      "importance": 3
+    },
+    {
+      "id": "o-m07",
+      "type": "city",
+      "name": "모래목 자유시",
+      "start": 1240,
+      "end": 1600,
+      "within": [
+        "s-fed"
+      ],
+      "people": "중류 협곡인"
+    },
+    {
+      "id": "o-m08",
+      "type": "principality",
+      "name": "검은내 백령",
+      "start": 1210,
+      "end": 1390,
+      "within": [
+        "s-fed"
+      ],
+      "people": "하류 협곡인"
+    },
+    {
+      "id": "o-m09",
+      "type": "principality",
+      "name": "흰여울 후국",
+      "start": 1260,
+      "end": 1650,
+      "within": [
+        "s-fed"
+      ],
+      "people": "하류 협곡인",
+      "importance": 2
+    },
+    {
+      "id": "o-m10",
+      "type": "city",
+      "name": "솔고개 자유시",
+      "start": 1300,
+      "end": 1650,
+      "within": [
+        "s-fed"
+      ],
+      "people": "하류 협곡인"
+    },
+    {
+      "id": "o-m11",
+      "type": "faith",
+      "name": "구름터 수도원령",
+      "start": 1230,
+      "end": 1520,
+      "within": [
+        "s-fed"
+      ],
+      "people": "하류 협곡인"
+    },
+    {
+      "id": "o-m12",
+      "type": "principality",
+      "name": "달못 백령",
+      "start": 1330,
+      "end": 1650,
+      "within": [
+        "s-fed"
+      ],
+      "people": "하류 협곡인",
+      "importance": 1
+    },
+    {
+      "id": "o-out",
+      "name": "협곡 바깥 왕국",
+      "track": "jeokseok",
+      "start": 1180,
+      "end": 1520
+    },
+    {
+      "id": "s-fed",
+      "type": "era",
+      "name": "적석 연방 영지들",
+      "track": "jeokseok",
+      "start": 1150,
+      "end": 1650
+    }
+  ],
+  "events": [
+    {
+      "id": "ev-gap",
+      "track": "jeokseok",
+      "polity": "적석 제후 연방",
+      "name": "대공위",
+      "start": 1250,
+      "end": 1273
+    },
+    {
+      "track": "jeokseok",
+      "polity": "o-out",
+      "name": "연방 가입 거부",
+      "start": 1290
+    }
+  ]
+}
