@@ -1,0 +1,57 @@
+# 시작 2026-10-25 11:28:34 KST · f4-same-check(형식 4 사본 = 원본 배치)
+# 명령 node prototype/scripts/f4-same-check.mjs
+같음 lantern — ①=②
+같음 east-asia — ①=② · ①=③
+건너뜀 east-asia+ktl — 선택 자료의 파일이 없습니다: /home/runner/work/timeline222/timeline222/D:/Timeline/KoreanTimeLine-v1.0.5.htpack
+같음 east-asia+move — ①=② · ①=③
+같음 east-asia+nest — ①=② · ①=③
+같음 east-asia+dep — ①=② · ①=③
+같음 east-asia+d7 — ①=② · ①=③
+같음 east-asia+sphere — ①=② · ①=③
+같음 nest-f4 — ①=②
+같음 synth — ①=②
+같음 synth+patch — ①=②
+알려진 차이 synth-lay — ①≠② 12곳(알려진 차이 — 기록과 같음)
+    (참고) 까닭: 올림이 nest:true(상위 하나 · 기간 없는 소속 — 접힘이 기본)를 뺌(js/core.js HT.F4.project P1 nest 최소화) · 종속 kind(tributary)를 국가 + 관계로 옮김(P2 — 찾을 글의 종류 낱말과 띠 look 비트(종속 갈래 표시)도 따라 바뀜 · 띠 form의 관계 칸(5 ~ 9비트 — 옛 종속 kind의 관계만 실음: 조공 1 → 0, 리메이크 3단계 과제 3)도 따라 바뀜) · 대범위 구성원을 이름 → 객체 id로(P4) — project한 입력의 배치와 구조로 같음(과제 X 합성 자료 — 숨은 고을 · 옮김 접힌 나라 · 물가 나라 · 옮김 모임)
+    (참고) ①≠② upto-lens.json · entities.11.json.hosts.0.nest: true ≠ null
+    (참고) ①≠② upto-lens.json · entities.11.json.partOf: [{"polity":"가람 왕국","nest":true}] ≠ "가람 왕국"
+    (참고) ①≠② upto-lens.json · entities.12.json.x_partOf.members.2.kind: "조공·책봉국" ≠ "국가"
+    (참고) ①≠② upto-lens.json · entities.13.json.polityKind: "tributary" ≠ "state"
+    (참고) ①≠② upto-lens.json · entities.13.json.x_find.hay: "바다 조공·책봉국 바다 나라" ≠ "바다 바다 나라"
+    (참고) ①≠② upto-lens.json · entities.49.json.hosts.0.nest: true ≠ null
+    (참고) ①≠② upto-lens.json · entities.49.json.partOf: [{"polity":"옮김 으뜸 나라","nest":true}] ≠ "옮김 으뜸 나라"
+    (참고) ①≠② upto-lens.json · entities.288.json.memberRefs.0: "옮김 앞 나라" ≠ "p-mv-p"
+    (참고) ①≠② upto-lens.json · entities.288.json.memberRefs.1: "옮김 뒤 나라" ≠ "p-mv-a"
+    (참고) ①≠② upto-lens.json · entities.288.json.memberRefs.2: "옮김 접힌 나라" ≠ "p-mv-x"
+    (참고) ①≠② upto-lens.json · periods.4.form: 33 ≠ 1
+    (참고) ①≠② upto-lens.json · periods.4.look: 526369 ≠ 524320
+같음 synth-lens — ①=②
+같음 f4-crowns — ①=②
+같음 f4-office3 — ①=②
+같음 f4-sphere — ①=②
+알려진 차이 f4-federation — ①≠② 36곳(알려진 차이 — 기록과 같음)
+    (참고) 까닭: 올림이 옛 제후국(fief)의 소속 줄을 그릇(within)과 섬김(partOf · 관계 fief) 두 줄로 올려, 이미 형식 4인 원본을 한 번 왕복하면 섬김 줄이 생김(항목 기록의 관계 · 접기와 소속선(구역 22)의 관계 글 text2 — 띠 · 칸 · 줄은 같음). 메이커 첫 저장의 표류와 같은 갈래 — 5단계 잔여 과제 2
+    (참고) ①≠② upto-lens.json · entities.5.json.x_partOf.members.0.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.5.json.x_partOf.members.1.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.5.json.x_partOf.members.3.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.5.json.x_partOf.members.5.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.5.json.x_partOf.members.9.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.5.json.x_partOf.members.11.rels: (없음) ≠ ["봉국·제후국"]
+    (참고) ①≠② upto-lens.json · entities.6.json.hosts.0.nest: null ≠ true
+    (참고) ①≠② upto-lens.json · entities.6.json.hosts.0.relation: "" ≠ "fief"
+    (참고) ①≠② upto-lens.json · entities.6.json.partOf: "o-fed" ≠ [{"polity":"o-fed","relation":"fief","nest":true}]
+    (참고) ①≠② upto-lens.json · entities.6.json.x_partOf.hosts.0.rel: (없음) ≠ "봉국·제후국"
+    (참고) ①≠② upto-lens.json · entities.7.json.hosts.0.nest: null ≠ true
+    (참고) ①≠② upto-lens.json · entities.7.json.hosts.0.relation: "" ≠ "fief"
+    (참고) ①≠② upto-lens.json · entities.7.json.partOf: "o-fed" ≠ [{"polity":"o-fed","relation":"fief","nest":true}]
+    (참고) ①≠② upto-lens.json · entities.7.json.x_partOf.hosts.0.rel: (없음) ≠ "봉국·제후국"
+    (참고) ①≠② upto-lens.json · entities.11.json.hosts.0.nest: null ≠ true
+    (참고) ①≠② upto-lens.json · entities.11.json.hosts.0.relation: "" ≠ "fief"
+    (참고) ①≠② upto-lens.json · entities.11.json.partOf: "o-fed" ≠ [{"polity":"o-fed","relation":"fief","nest":true}]
+    (참고) ①≠② upto-lens.json · entities.11.json.x_partOf.hosts.0.rel: (없음) ≠ "봉국·제후국"
+    (참고) ①≠② upto-lens.json · entities.13.json.hosts.0.nest: null ≠ true
+    (참고) ①≠② upto-lens.json · entities.13.json.hosts.0.relation: "" ≠ "fief"
+같음 f4-liege — ①=②
+같음 synth-calclip — ①=②
+f4-same-check(자료 18 · 같음 16 · 알려진 차이 synth-lay, f4-federation · 다름 없음)
+# 끝 2026-10-25 11:29:21 KST · 끝 코드 0 · 47초

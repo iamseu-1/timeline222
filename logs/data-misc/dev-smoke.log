@@ -1,0 +1,8 @@
+# 시작 2026-10-25 11:30:01 KST · dev-smoke(웹 · 메이커 빠른 검사)
+# 명령 node scripts/dev-smoke.mjs
+(기본팩)  east-asia-base  오류 0 · 경고 0
+sample-lantern.json  lantern-chronicle  오류 0 · 경고 0 · 왕복 같음 · 0e21ccc780
+모델: 트랙 11 · 시대 135 · 사건 281 · 시대 구분 21 · 민족 41 {"houses":19,"figures":61,"scopes":3} · b3a73ba683
+모델(형식 1인 팩만 — 새 견본을 뺀 기준값): 97d170e155
+문제 없음
+# 끝 2026-10-25 11:30:08 KST · 끝 코드 0 · 7초

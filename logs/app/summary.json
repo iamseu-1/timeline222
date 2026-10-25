@@ -1,0 +1,105 @@
+{
+ "job": "app",
+ "title": "앱 검사(Windows)",
+ "tools": {
+  "job": "app",
+  "runner": "win25-vs2026 20261021.278.1",
+  "os": "Windows_NT 10.0.26100",
+  "cpus": 4,
+  "memGB": 16,
+  "node": "v24.22.1",
+  "icu": "78.3",
+  "tz": "2026e",
+  "unicode": "17.0",
+  "timeZone": "Asia/Seoul",
+  "sliceIcu": "78.3",
+  "icuMatch": true,
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "flutter": "Flutter 3.47.5 • channel stable • https://github.com/flutter/flutter.git",
+  "dart": "Dart SDK version: 3.13.4",
+  "fonts": [
+   "cambria.ttc",
+   "cambriab.ttf",
+   "cambriai.ttf",
+   "cambriaz.ttf",
+   "malgun.ttf",
+   "malgunbd.ttf",
+   "malgunsl.ttf"
+  ],
+  "sha": "2fa1d7f90cd579de724dfbf64759acefa9a08813"
+ },
+ "minutes": 18.9,
+ "checks": [
+  {
+   "id": "engine-build",
+   "label": "엔진 dll(cargo build --locked --release)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 10.7,
+   "note": "Finished `release` profile [optimized] target(s) in 10m 43s",
+   "result": "통과"
+  },
+  {
+   "id": "pub-get",
+   "label": "app-get(flutter pub get)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.2,
+   "note": "Try `flutter pub outdated` for more information.",
+   "result": "통과"
+  },
+  {
+   "id": "analyze",
+   "label": "분석(dart analyze --fatal-infos lib test)",
+   "kind": "analyze",
+   "code": 0,
+   "minutes": 0.5,
+   "counts": {
+    "오류": 0,
+    "경고": 0,
+    "알림": 0
+   },
+   "failed": [],
+   "note": "No issues found!",
+   "result": "통과"
+  },
+  {
+   "id": "flutter-test",
+   "label": "flutter test(전부)",
+   "kind": "flutter-test",
+   "code": 0,
+   "minutes": 4.6,
+   "counts": {
+    "통과": 1787,
+    "실패": 0,
+    "건너뜀": 112
+   },
+   "failed": [],
+   "fontSuspectFiles": [
+    "test/axis_paint_test.dart",
+    "test/cleartype_compare_test.dart",
+    "test/cleartype_menu_test.dart",
+    "test/cleartype_paint_test.dart",
+    "test/cleartype_test.dart",
+    "test/doc_figure_test.dart",
+    "test/doc_window_test.dart",
+    "test/export_image_test.dart",
+    "test/export_svg_test.dart",
+    "test/glyph_atlas_lcd_test.dart",
+    "test/group_tree_shot_test.dart",
+    "test/metro_card_test.dart",
+    "test/minibars_test.dart",
+    "test/mock/board_test.dart",
+    "test/mock/parity_test.dart",
+    "test/mock/svg_lite_test.dart",
+    "test/motion_meter_test.dart",
+    "test/profile_layers_test.dart",
+    "test/render_scene_test.dart",
+    "test/theme_lens_shot_test.dart"
+   ],
+   "note": "04:16 +1787 ~112: All tests passed!",
+   "result": "통과"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+# 시작 2026-10-25 11:49:54 KST · cargo test --test add_pack(조각 1/3)
+# 명령 bash /home/runner/work/_temp/ht-bin/cargo-part.sh add_pack 0 3
+   Compiling archive_engine v0.1.0 (/home/runner/work/timeline222/timeline222/prototype/engine)
+    Finished `release` profile [optimized] target(s) in 1m 47s
+     Running tests/add_pack.rs (prototype/engine/target/release/deps/add_pack-02472e3df64eedab)
+조각 1/3 — 시험 23개: a_board_missing_from_the_new_layout_is_left_out_of_s_and_removed a_guessed_key_missing_from_the_layout_widens_to_all a_maker_layout_on_real_data_is_taken_or_refused_cleanly a_part_that_needs_untouched_tracks_mid_write_retries_whole a_schema3_store_is_rewritten_to_schema4_by_its_first_add_or_remove a_store_printed_under_old_rules_rewrites_every_track_once an_add_leaves_no_thread_caches_behind another_store_and_the_kept_shelf_give_their_originals failures_leave_the_store_as_it_was lantern_takes_f4_crowns_in_out_and_in_again lantern_walk_2 prefer_given_lets_a_lower_preview_version_in rust_a_pack_without_its_original_can_be_filled_or_removed rust_lantern_walk_long rust_synth_walk_1 rust_synth_walk_4 stores_from_the_node_path_take_add_pack_next synth_walk_0 synth_walk_3 synth_walk_6 the_real_layouter_cuts_the_part_like_sub_plan the_walks_mix_every_kind_of_step timing_of_reading_versions_and_apply_for_ktl
+    Finished `release` profile [optimized] target(s) in 0.02s
+     Running tests/add_pack.rs (prototype/engine/target/release/deps/add_pack-02472e3df64eedab)
+
+running 23 tests
+test a_maker_layout_on_real_data_is_taken_or_refused_cleanly ... ok
+test a_guessed_key_missing_from_the_layout_widens_to_all ... ok
+test a_board_missing_from_the_new_layout_is_left_out_of_s_and_removed ... ok
+test an_add_leaves_no_thread_caches_behind ... ok
+test a_store_printed_under_old_rules_rewrites_every_track_once ... ok
+test a_part_that_needs_untouched_tracks_mid_write_retries_whole ... ok
+test failures_leave_the_store_as_it_was ... ok
+test lantern_walk_2 ... ignored, 긴 검사 — 등불 셋째 판(cargo test --release --locked --test add_pack -- --ignored lantern --nocapture)
+test a_schema3_store_is_rewritten_to_schema4_by_its_first_add_or_remove has been running for over 60 seconds
+test another_store_and_the_kept_shelf_give_their_originals ... ok
+test prefer_given_lets_a_lower_preview_version_in ... ok
+test rust_lantern_walk_long ... ignored, 긴 검사 — 실제 틈 등불 세 걸음(cargo test --release --locked --test add_pack -- --ignored lantern --nocapture)
+test lantern_takes_f4_crowns_in_out_and_in_again has been running for over 60 seconds
+test rust_a_pack_without_its_original_can_be_filled_or_removed has been running for over 60 seconds
+test rust_synth_walk_1 has been running for over 60 seconds
+test rust_synth_walk_1 ... ok
+test rust_a_pack_without_its_original_can_be_filled_or_removed ... ok
+test rust_synth_walk_4 ... ok
+test stores_from_the_node_path_take_add_pack_next has been running for over 60 seconds
+test stores_from_the_node_path_take_add_pack_next ... ok
+test synth_walk_0 has been running for over 60 seconds
+test synth_walk_0 ... ok
+test synth_walk_3 ... ok
+test the_real_layouter_cuts_the_part_like_sub_plan ... ok
+test the_walks_mix_every_kind_of_step ... ok
+test timing_of_reading_versions_and_apply_for_ktl ... ignored, 손으로 재는 시간(감독 PC의 KoreanTimeLine이 있을 때)
+test synth_walk_6 ... ok
+test lantern_takes_f4_crowns_in_out_and_in_again ... ok
+test a_schema3_store_is_rewritten_to_schema4_by_its_first_add_or_remove ... ok
+
+test result: ok. 20 passed; 0 failed; 3 ignored; 0 measured; 46 filtered out; finished in 572.92s
+
+# 끝 2026-10-25 12:01:15 KST · 끝 코드 0 · 681초

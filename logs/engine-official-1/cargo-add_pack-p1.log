@@ -1,0 +1,41 @@
+# 시작 2026-10-25 11:43:48 KST · cargo test --test add_pack(조각 2/3)
+# 명령 bash /home/runner/work/_temp/ht-bin/cargo-part.sh add_pack 1 3
+   Compiling archive_engine v0.1.0 (/home/runner/work/timeline222/timeline222/prototype/engine)
+    Finished `release` profile [optimized] target(s) in 1m 27s
+     Running tests/add_pack.rs (prototype/engine/target/release/deps/add_pack-02472e3df64eedab)
+조각 2/3 — 시험 23개: a_board_that_comes_or_goes_widens_to_its_member_tracks a_kept_pack_can_be_deleted_from_the_shelf a_pack_without_its_original_can_be_filled_or_removed a_part_whose_fill_misses_an_outer_row_retries_whole a_shelf_holding_a_higher_version_of_a_held_pack_is_not_lost a_store_without_the_calendar_table_is_refused an_outside_layout_clears_the_rules_so_the_next_add_is_whole another_store_left_mid_write_is_rolled_back_and_read format4_fixture_packs_go_in_out_and_in_again lantern_walk_0 layout_failures_become_refusals_with_details removing_a_pack_with_pictures_on_copies_gives_the_same_bytes rust_another_store_and_the_kept_shelf_give_their_originals rust_old_dlc_files_go_in_as_they_are rust_synth_walk_2 rust_synth_walk_5 strips_of_kept_tracks_are_renumbered_like_a_full_build synth_walk_1 synth_walk_4 the_answer_keeps_the_contract_on_scope_skips_and_range the_same_step_on_copies_gives_the_same_bytes tiles_before_first_pos_keep_their_bytes track_prints_from_the_flow_match_a_full_build
+    Finished `release` profile [optimized] target(s) in 0.02s
+     Running tests/add_pack.rs (prototype/engine/target/release/deps/add_pack-02472e3df64eedab)
+
+running 23 tests
+test a_kept_pack_can_be_deleted_from_the_shelf ... ok
+test a_shelf_holding_a_higher_version_of_a_held_pack_is_not_lost ... ok
+test a_store_without_the_calendar_table_is_refused ... ok
+test a_part_whose_fill_misses_an_outer_row_retries_whole ... ok
+test an_outside_layout_clears_the_rules_so_the_next_add_is_whole ... ok
+test another_store_left_mid_write_is_rolled_back_and_read ... ok
+test a_pack_without_its_original_can_be_filled_or_removed ... ok
+test layout_failures_become_refusals_with_details ... ok
+test removing_a_pack_with_pictures_on_copies_gives_the_same_bytes ... ok
+test a_board_that_comes_or_goes_widens_to_its_member_tracks has been running for over 60 seconds
+test rust_another_store_and_the_kept_shelf_give_their_originals ... ok
+test format4_fixture_packs_go_in_out_and_in_again has been running for over 60 seconds
+test lantern_walk_0 has been running for over 60 seconds
+test rust_old_dlc_files_go_in_as_they_are has been running for over 60 seconds
+test a_board_that_comes_or_goes_widens_to_its_member_tracks ... ok
+test lantern_walk_0 ... ok
+test rust_old_dlc_files_go_in_as_they_are ... ok
+test rust_synth_walk_2 ... ok
+test rust_synth_walk_5 ... ok
+test strips_of_kept_tracks_are_renumbered_like_a_full_build ... ok
+test the_answer_keeps_the_contract_on_scope_skips_and_range ... ok
+test the_same_step_on_copies_gives_the_same_bytes ... ok
+test synth_walk_1 ... ok
+test track_prints_from_the_flow_match_a_full_build ... ok
+test synth_walk_4 ... ok
+test tiles_before_first_pos_keep_their_bytes ... ok
+test format4_fixture_packs_go_in_out_and_in_again ... ok
+
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 46 filtered out; finished in 511.29s
+
+# 끝 2026-10-25 11:53:47 KST · 끝 코드 0 · 599초

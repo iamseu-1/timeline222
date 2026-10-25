@@ -1,0 +1,10 @@
+{"id":"calendar","label":"달력 표 뜨기(warm-calendar)","kind":"plain","state":"started","at":"2026-10-25T02:23:31.418Z"}
+{"id":"calendar","label":"달력 표 뜨기(warm-calendar)","kind":"plain","state":"done","code":0,"seconds":8,"at":"2026-10-25T02:23:39.791Z"}
+{"id":"oracle","label":"정답지 뽑기(layout-oracle)","kind":"lines","state":"started","at":"2026-10-25T02:23:39.830Z"}
+{"id":"oracle","label":"정답지 뽑기(layout-oracle)","kind":"lines","state":"done","code":0,"seconds":46,"at":"2026-10-25T02:24:25.020Z"}
+{"id":"cargo-main","label":"cargo test(lib · bin + 파일 20개)","kind":"cargo-test","state":"started","at":"2026-10-25T02:24:25.138Z"}
+{"id":"cargo-main","label":"cargo test(lib · bin + 파일 20개)","kind":"cargo-test","state":"done","code":0,"seconds":1163,"at":"2026-10-25T02:43:48.598Z"}
+{"id":"cargo-add_pack-p1","label":"cargo test --test add_pack(조각 2/3)","kind":"cargo-test","state":"started","at":"2026-10-25T02:43:48.622Z"}
+{"id":"cargo-add_pack-p1","label":"cargo test --test add_pack(조각 2/3)","kind":"cargo-test","state":"done","code":0,"seconds":599,"at":"2026-10-25T02:53:47.880Z"}
+{"id":"cargo-doc","label":"cargo test --doc","kind":"cargo-test","state":"started","at":"2026-10-25T02:53:47.906Z"}
+{"id":"cargo-doc","label":"cargo test --doc","kind":"cargo-test","state":"done","code":0,"seconds":1,"at":"2026-10-25T02:53:48.538Z"}

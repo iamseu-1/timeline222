@@ -1,0 +1,4 @@
+# 시작 2026-10-25 11:29:21 KST · check-format4
+# 명령 node scripts/check-format4.mjs
+형식 4 검사 통과 — 단위 133 · 실제 팩 기본팩 east-asia-base(84) · 견본 sample-lantern.json(141) · 옛 파일 묶음 f1-partof.json(판 1 · 객체 8) · f2-nest.json(판 2 · 객체 16) · f3-groups.json(판 3 · 객체 8) · 형식 4 가상 팩 f4-crowns.json(띠 8 · 알림 0) · f4-federation.json(띠 14 · 알림 0) · f4-office.json(띠 4 · 알림 0) · f4-liege.json(띠 4 · 알림 0) · f4-sphere.json(띠 5 · 알림 0)
+# 끝 2026-10-25 11:29:22 KST · 끝 코드 0 · 1초

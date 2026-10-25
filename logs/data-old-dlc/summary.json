@@ -1,0 +1,44 @@
+{
+ "job": "data-old-dlc",
+ "title": "자료 검사 old-dlc",
+ "tools": {
+  "job": "data-old-dlc",
+  "runner": "ubuntu24 20261023.334.3",
+  "os": "Linux 6.17.0-1022-azure",
+  "cpus": 4,
+  "memGB": 15.6,
+  "node": "v24.22.1",
+  "icu": "78.3",
+  "tz": "2026e",
+  "unicode": "17.0",
+  "timeZone": "Asia/Seoul",
+  "sliceIcu": "78.3",
+  "icuMatch": true,
+  "sha": "2fa1d7f90cd579de724dfbf64759acefa9a08813"
+ },
+ "minutes": 3.5,
+ "checks": [
+  {
+   "id": "calendar",
+   "label": "달력 표 뜨기(warm-calendar)",
+   "kind": "plain",
+   "code": 0,
+   "minutes": 0.1,
+   "note": "달력 표를 떠 두었습니다: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500~2500년 · ICU 78.3 · dangi · chinese · islamic · umalqura · persian · 7.1초",
+   "result": "통과"
+  },
+  {
+   "id": "old-dlc-check",
+   "label": "old-dlc-check(묶음 걷기 · --jobs=4)",
+   "kind": "lines",
+   "code": 0,
+   "minutes": 3.3,
+   "counts": {
+    "건너뜀": 3
+   },
+   "failed": [],
+   "note": "모두 같음 — 옛 DLC 묶음을 넣고 빼도 통째 짓기와 같습니다.",
+   "result": "통과"
+  }
+ ]
+}

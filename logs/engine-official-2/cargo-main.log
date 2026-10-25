@@ -1,0 +1,379 @@
+# 시작 2026-10-25 11:24:22 KST · cargo test(파일 22개)
+# 명령 cargo test --locked --release --no-fail-fast --manifest-path prototype/engine/Cargo.toml --test apply_scale --test correctness --test filter --test import --test lay_golden --test lay_m_bands --test lay_m_docs --test lay_m_events --test lay_m_labels --test lay_m_metro --test lay_m_power --test lay_m_strips --test lay_model --test lay_reach --test lay_same --test lay_scope --test lens --test prints --test rowkeys --test schema4 --test variants --test write_tx
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded adler2 v2.0.1
+  Downloaded bitflags v2.13.2
+  Downloaded itoa v1.0.18
+  Downloaded serde v1.0.229
+  Downloaded memchr v2.8.3
+  Downloaded regex v1.13.1
+  Downloaded typenum v1.20.1
+  Downloaded fallible-iterator v0.3.0
+  Downloaded digest v0.10.7
+  Downloaded cc v1.4.7
+  Downloaded flate2 v1.1.10
+  Downloaded serde_core v1.0.229
+  Downloaded sha2 v0.10.9
+  Downloaded rusqlite v0.37.0
+  Downloaded pkg-config v0.3.34
+  Downloaded aho-corasick v1.1.5
+  Downloaded serde_derive v1.0.229
+  Downloaded hashlink v0.10.0
+  Downloaded regex-automata v0.4.18
+  Downloaded regex-syntax v0.8.11
+  Downloaded block-buffer v0.10.4
+  Downloaded cfg-if v1.0.5
+  Downloaded foldhash v0.1.5
+  Downloaded miniz_oxide v0.9.1
+  Downloaded hashbrown v0.15.5
+  Downloaded version_check v0.9.5
+  Downloaded cpufeatures v0.2.17
+  Downloaded crypto-common v0.1.7
+  Downloaded find-msvc-tools v0.1.13
+  Downloaded simd-adler32 v0.3.10
+  Downloaded zlib-rs v0.6.8
+  Downloaded fallible-streaming-iterator v0.1.9
+  Downloaded proc-macro2 v1.0.107
+  Downloaded zmij v1.0.23
+  Downloaded shlex v2.0.1
+  Downloaded vcpkg v0.2.15
+  Downloaded quote v1.0.47
+  Downloaded generic-array v0.14.7
+  Downloaded crc32fast v1.5.2
+  Downloaded syn v3.0.6
+  Downloaded serde_json v1.0.151
+  Downloaded smallvec v1.16.1
+  Downloaded unicode-ident v1.0.26
+  Downloaded libsqlite3-sys v0.35.0
+   Compiling version_check v0.9.5
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling find-msvc-tools v0.1.13
+   Compiling generic-array v0.14.7
+   Compiling shlex v2.0.1
+   Compiling typenum v1.20.1
+   Compiling cc v1.4.7
+   Compiling vcpkg v0.2.15
+   Compiling memchr v2.8.3
+   Compiling serde_core v1.0.229
+   Compiling pkg-config v0.3.34
+   Compiling crc32fast v1.5.2
+   Compiling cfg-if v1.0.5
+   Compiling foldhash v0.1.5
+   Compiling zmij v1.0.23
+   Compiling hashbrown v0.15.5
+   Compiling libsqlite3-sys v0.35.0
+   Compiling syn v3.0.6
+   Compiling aho-corasick v1.1.5
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling serde_json v1.0.151
+   Compiling simd-adler32 v0.3.10
+   Compiling regex-syntax v0.8.11
+   Compiling serde v1.0.229
+   Compiling adler2 v2.0.1
+   Compiling miniz_oxide v0.9.1
+   Compiling regex-automata v0.4.18
+   Compiling digest v0.10.7
+   Compiling serde_derive v1.0.229
+   Compiling hashlink v0.10.0
+   Compiling fallible-iterator v0.3.0
+   Compiling fallible-streaming-iterator v0.1.9
+   Compiling cpufeatures v0.2.17
+   Compiling smallvec v1.16.1
+   Compiling bitflags v2.13.2
+   Compiling itoa v1.0.18
+   Compiling sha2 v0.10.9
+   Compiling flate2 v1.1.10
+   Compiling regex v1.13.1
+   Compiling rusqlite v0.37.0
+   Compiling archive_engine v0.1.0 (/home/runner/work/timeline222/timeline222/prototype/engine)
+warning: function `rekey_all` is never used
+   --> tests/write_tx.rs:402:4
+    |
+402 | fn rekey_all(tx: &rusqlite::Transaction) -> archive_engine::Result<()> {
+    |    ^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `archive_engine` (test "write_tx") generated 1 warning
+    Finished `release` profile [optimized] target(s) in 16m 36s
+     Running tests/apply_scale.rs (prototype/engine/target/release/deps/apply_scale-88f035de9534c110)
+
+running 1 test
+test apply_write_time_follows_the_changed_track_not_the_store ... ignored, 손으로 돌림 — 100만 저장소를 짓는다(수 분 · 수백 MB)
+
+test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/correctness.rs (prototype/engine/target/release/deps/correctness-116e62a5e570b003)
+
+running 9 tests
+test scratch_kinds_cover_every_test ... ok
+test rows_near는_띠_사건_긴_기간을_모으고_끈_자료집은_뺀다 ... ok
+test 긴_기간_색인에는_45일_넘는_사건만_있고_가늘기_등급이_맞다 ... ok
+test 범위_검색_목록은_전수_계산과_같고_저장소는_읽기_전용이다 ... ok
+test 스키마_3의_새_열은_layout_3판으로_돌아온다 ... ok
+test 요약은_사건을_시작_통에_한_번만_세고_대표는_중요도_순_앞_넷이다 ... ok
+test 줄_이름_후보는_줄마다_시작_순으로_온다 ... ok
+test 항목_기록은_넣은_글자_그대로_돌아오고_없는_이름은_거절한다 ... ok
+test 이미_있는_저장소와_옛_스키마는_거절한다 ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
+
+     Running tests/filter.rs (prototype/engine/target/release/deps/filter-6c2ace76cabb1a74)
+
+running 12 tests
+test 대범위_칩과_간지_해는_거르기와_따로_논다 ... ok
+test 거른_뒤_빈_줄은_가까운_쪽에도_먼_쪽에도_없다 ... ok
+test 분류를_끄면_그_분류의_사건만_빠지고_알약이_다시_센다 ... ok
+test 거르개가_없거나_비면_답은_바이트까지_그대로다 ... ok
+test 빠진_사건의_기간_막대도_함께_빠진다 ... ok
+test 잘못된_거르개는_까닭과_함께_실패한다 ... ok
+test 실재성을_끄면_그_띠가_빠진다 ... ok
+test 조회_명령도_같은_거르개를_받는다 ... ok
+test 종류를_끄면_그_띠와_딸린_사건이_함께_빠진다 ... ok
+test 중요도_문턱은_사건과_인물_막대에_함께_걸린다 ... ok
+test 줄_이름_후보도_거른_뒤의_자료로_정해진다 ... ok
+test 트랙을_끄면_그_트랙의_줄이_통째로_빠진다 ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.94s
+
+     Running tests/import.rs (prototype/engine/target/release/deps/import-0f9722ad665f12a6)
+
+running 11 tests
+test 기간이_뒤집힌_문화권_단위_줄은_그_줄을_말하며_거절한다 ... ok
+test 겹쳐_깔린_띠와_겹친_단의_칸도_받아들인다 ... ok
+test 새_열은_그대로_들어가고_빠진_열쇠는_기본값이_된다 ... ok
+test 배치를_가져오면_트랙_줄_띠_칸_사건이_전체_줄_번호로_들어간다 ... ok
+test 얹은_dlc의_글자_id가_열쇠로_남아_다시_지어도_같은_dlc를_알아본다 ... ok
+test 일반_항목의_가리킴과_가늘기_등급 ... ok
+test 스키마_4_띠의_form과_문화권_단위_줄을_배치_그대로_적는다 ... ok
+test 장면의_항목_기록은_겉_열쇠_판_기록까지_배열_차례_그대로_ord가_난다 ... ok
+test 항목_기록은_배열의_넣은_차례와_json_지문을_적는다 ... ok
+test 저장소는_지은_날을_메타에_적는다_배치의_now가_있으면_그_글_그대로 ... ok
+test 없는_띠를_가리키는_칸이나_없는_줄의_사건은_거절하고_저장소를_남기지_않는다 ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.59s
+
+     Running tests/lay_golden.rs (prototype/engine/target/release/deps/lay_golden-caa5e4e7a5f5b56c)
+
+running 2 tests
+test a_calendar_only_change_still_guards_the_rest ... ok
+test lay_output_matches_the_golden ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.97s
+
+     Running tests/lay_m_bands.rs (prototype/engine/target/release/deps/lay_m_bands-81a05b4ffe73aebf)
+
+running 2 tests
+test bands_contribute_bytes_match_node ... ok
+test bands_contribute_matches_node ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.36s
+
+     Running tests/lay_m_docs.rs (prototype/engine/target/release/deps/lay_m_docs-23bda7ade6d4b537)
+
+running 3 tests
+test docs_refuses_lone_surrogate_text ... ok
+test docs_contribute_matches_node ... ok
+test docs_late_matches_node ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.74s
+
+     Running tests/lay_m_events.rs (prototype/engine/target/release/deps/lay_m_events-e0eb3aec71fd189c)
+
+running 2 tests
+test events_rail_levels_match_node_bytes ... ok
+test events_contribute_matches_node ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.38s
+
+     Running tests/lay_m_labels.rs (prototype/engine/target/release/deps/lay_m_labels-a1d334793122b0a9)
+
+running 1 test
+test labels_contribute_matches_node ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s
+
+     Running tests/lay_m_metro.rs (prototype/engine/target/release/deps/lay_m_metro-c434e099796c63ee)
+
+running 2 tests
+test metro_contribute_matches_node ... ok
+test metro_late_matches_node ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.75s
+
+     Running tests/lay_m_power.rs (prototype/engine/target/release/deps/lay_m_power-1206336371ee30c6)
+
+running 4 tests
+test power_line_past_the_date_range_is_left_out ... ok
+test folded_rows_not_a_set_is_an_error ... ok
+test power_contribute_matches_node ... ok
+test power_late_matches_node ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.75s
+
+     Running tests/lay_m_strips.rs (prototype/engine/target/release/deps/lay_m_strips-7948312b09f200a0)
+
+running 4 tests
+test borrowed_cells_not_a_list_is_an_error ... ok
+test strips_without_band_of_is_an_error ... ok
+test strips_contribute_bytes_match_node ... ok
+test strips_contribute_matches_node ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.36s
+
+     Running tests/lay_model.rs (prototype/engine/target/release/deps/lay_model-8bdfcf5fcad57007)
+
+running 7 tests
+test figure_range_is_now_ported ... ok
+test describe_in_model_warning_is_now_ported_and_released ... ok
+test synth_fixtures_reach_the_model_branches ... ok
+test would_throw_spots_become_errors ... ok
+test cell_bounds_match_node_vectors ... ok
+test prepared_releases_the_model_graph ... ok
+test prepared_matches_node ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.33s
+
+     Running tests/lay_reach.rs (prototype/engine/target/release/deps/lay_reach-bea00a4ed75f458d)
+
+running 3 tests
+test boards_dropped_notes_match_node ... ok
+test synth_fixtures_reach_the_unreached_branches ... ok
+test lens_on_rows_match_node ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.36s
+
+     Running tests/lay_same.rs (prototype/engine/target/release/deps/lay_same-cd3651ff66fdf3a9)
+
+running 6 tests
+test json_text_under_json_key_is_parsed ... ok
+test key_order_is_ignored_but_array_order_is_not ... ok
+test limit_caps_the_report ... ok
+test missing_and_extra_keys_are_reported_with_path ... ok
+test numbers_are_read_to_the_last_bit ... ok
+test numbers_compare_by_value ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/lay_scope.rs (prototype/engine/target/release/deps/lay_scope-a2fc2397080088b6)
+
+running 12 tests
+test ktl_touches_its_track_and_the_succession_end ... ok
+test timing_east_asia_ktl ... ignored
+test rules_constant_is_fresh ... ok
+test scope_tracks_drops_missing_boards_only ... ok
+test touched_scope_hands_its_prepared_context_to_export ... ok
+test width_board_flips ... ok
+test width_format4_links ... ok
+test width_fixture_add_remove ... ok
+test width_big_combo ... ok
+test scope_tracks_is_sub_plan_of_all ... ok
+test width_version_change ... ok
+test width_probe_dlcs has been running for over 60 seconds
+test width_probe_dlcs ... ok
+
+test result: ok. 11 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 83.16s
+
+     Running tests/lens.rs (prototype/engine/target/release/deps/lens-6cde7cdedad9094a)
+
+running 8 tests
+test 거르개로_끈_것은_관점_이름에도_실리지_않는다 ... ok
+test 모르는_관점은_한국어_까닭으로_거절한다 ... ok
+test 나라마다_제_이름은_그_항목이_놓인_트랙의_이름이다 ... ok
+test 수를_소수_꼴로_물어도_답이_같다 ... ok
+test 윗물의_관점은_제_줄의_사건에_붙는다 ... ok
+test 트랙을_고른_관점은_어느_자리에서나_그_나라의_이름을_쓴다 ... ok
+test 이름이_하나도_없는_관점은_빈_결과다 ... ok
+test 이름_표가_없는_옛_저장소도_같은_답을_준다 ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+
+     Running tests/prints.rs (prototype/engine/target/release/deps/prints-69b2f90f573713b4)
+
+running 17 tests
+test 남의_트랙을_가리키는_uid와_줄 ... ok
+test 다른_dlc가_트랙을_더해도_제_트랙의_지문은_그대로다 ... ok
+test 띠의_form만_바꾸면_그_트랙만_다시_쓴다 ... ok
+test 바깥_가림의_내용은_저장소의_원소_하나만_가리킨다 ... ok
+test 문화권_단위_줄만_다르면_트랙_지문은_그대로이고_온_판_지문만_바뀐다 ... ok
+test 순번과_자리만_밀린_배치는_지문과_가리킴이_같다 ... ok
+test 색만_바꾼_판은_그_트랙과_가리는_판만_다시_쓰고_지문이_없으면_다_다시_쓴다 ... ok
+test 남의_트랙을_가리는_변형도_지문에_담고_가리는_트랙을_적는다 ... ok
+test 조합마다_문화권_단위_줄이_달라_온_판_지문이_갈린다 ... ok
+test 트랙에_얹으면_그_트랙과_온_판의_지문이_바뀐다 ... ok
+test 자료집을_더하면_얹힌_트랙과_가리키던_트랙을_다시_쓴다 ... ok
+test 하위_배치는_s_밖_변형과_가림을_내용으로_싣는다 ... ok
+test 자료집을_빼면_사라진_트랙과_가리키던_트랙을_다시_쓴다 ... ok
+test 조합_대조는_다른_dlc를_조용히_지우지_않는다 ... ok
+test 판_변형만_바뀌면_가려진_트랙은_다시_쓰지_않는다 ... ok
+test 하위_배치는_고른_트랙만_제_순번으로 ... ok
+test 하위_배치의_지문은_통째_배치의_그_트랙_지문과_같다 ... ok
+
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.67s
+
+     Running tests/rowkeys.rs (prototype/engine/target/release/deps/rowkeys-8d36966bf1117f12)
+
+running 15 tests
+test fresh_store_is_identity ... ok
+test rekey_keeps_children_consistent ... ok
+test outward_turns_keys_into_positions ... ok
+test rekey_moves_rtrees_with_their_tables ... ok
+test rekey_moves_variant_references ... ok
+test rekey_overlapping_move_and_errors ... ok
+test canon_queries_leak_no_numbers ... ok
+test rekey_preserves_content_by_position ... ok
+test scrambled_keys_answer_the_same_layout_and_tiles ... ok
+test scrambled_keys_keep_variant_row_order ... ok
+test scrambled_keys_give_the_same_query_bytes ... ok
+test store_opens_split_keys ... ok
+test scrambled_keys_answer_the_same_queries ... ok
+test scrambled_keys_keep_variants_groups_and_labels ... ok
+test scrambled_keys_give_the_same_bytes ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 21.25s
+
+     Running tests/schema4.rs (prototype/engine/target/release/deps/schema4-b3c247be5626e2de)
+
+running 4 tests
+test 지은_form과_문화권_단위_줄이_layout_same_year_타일로_돌아온다 ... ok
+test 판_글자_3_3_1_4_4_1은_열리고_그_밖은_다시_만들어야로_거절된다 ... ok
+test 스키마_4의_모양은_계약_1_1_그대로이고_고쳐_쓴_옛_저장소와_열_차례가_같다 ... ok
+test 옛_판_저장소를_새_엔진이_읽으면_새_값을_지운_저장소와_답이_같다 ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 15.48s
+
+     Running tests/variants.rs (prototype/engine/target/release/deps/variants-3f47ef22f401eb6b)
+
+running 8 tests
+test layout이_변형의_목록과_쌓는_차례를_함께_준다 ... ok
+test 거르개와_함께_쓸_수_있다 ... ok
+test rows_near는_떠난_줄을_비었다고_답하고_도착_줄을_답한다 ... ok
+test 변형을_주지_않으면_답은_예전과_같다 ... ok
+test 소속을_펼치면_속국의_띠와_칸과_사건과_항목이_새_줄로_온다 ... ok
+test 줄_이름은_켠_변형의_줄에만_있다 ... ok
+test 잘못된_변형은_까닭과_함께_실패한다 ... ok
+test 이사한_띠는_도착_줄의_묶음_타일에_실린다 ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests/write_tx.rs (prototype/engine/target/release/deps/write_tx-152dbdcd6394c1e8)
+
+running 10 tests
+test commit_뒤_다시_열다_패닉해도_다시_열기_실패로_알리고_잠금은_멀쩡하다 ... ok
+test 빈_걸음의_쓰기는_commit되고_다시_연_저장소에서_보인다 ... ok
+test commit_뒤_다시_열지_못하면_저장소를_닫고_그렇다고_따로_알린다 ... ok
+test pack_refusals_carry_code_and_detail_and_the_path_must_match ... ok
+test 걸음_도중_실패하면_거래를_되돌려_파일_지문이_그대로다 ... ok
+test 쓰는_동안_다른_스레드는_옛_답을_곧바로_받고_끝난_뒤에는_새_답을_받는다 ... ok
+test 쓰다_죽어_남은_일지는_저장소를_열_때_되돌려_열린다 ... ok
+test 열린_저장소에_두_쓰기가_겹치면_프로세스_안에서_하나씩_돈다 ... ok
+test 열쇠가_갈린_저장소에서_진짜_apply가_도는_동안에도_타일은_옛_답을_곧바로_받는다 ... ok
+test 외래_열쇠를_어긴_쓰기는_commit이_거르고_파일이_그대로다 ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.75s
+
+# 끝 2026-10-25 11:43:19 KST · 끝 코드 0 · 1137초

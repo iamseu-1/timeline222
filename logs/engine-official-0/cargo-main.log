@@ -1,0 +1,409 @@
+# 시작 2026-10-25 11:24:35 KST · cargo test(파일 21개)
+# 명령 cargo test --locked --release --no-fail-fast --manifest-path prototype/engine/Cargo.toml --test apply --test blobs --test canon --test doc_list --test format3 --test generate --test kin --test lay_js --test lay_m_boards --test lay_m_e_intact --test lay_m_figures --test lay_m_lens --test lay_m_minibars --test lay_m_rails --test lay_m_tracks --test lay_oracle --test lay_read --test lay_wiki --test lod_cells --test queries --test year_cycle
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded miniz_oxide v0.9.1
+  Downloaded bitflags v2.13.2
+  Downloaded adler2 v2.0.1
+  Downloaded block-buffer v0.10.4
+  Downloaded cc v1.4.7
+  Downloaded aho-corasick v1.1.5
+  Downloaded typenum v1.20.1
+  Downloaded digest v0.10.7
+  Downloaded unicode-ident v1.0.26
+  Downloaded zmij v1.0.23
+  Downloaded generic-array v0.14.7
+  Downloaded regex v1.13.1
+  Downloaded memchr v2.8.3
+  Downloaded version_check v0.9.5
+  Downloaded hashbrown v0.15.5
+  Downloaded proc-macro2 v1.0.107
+  Downloaded serde_core v1.0.229
+  Downloaded rusqlite v0.37.0
+  Downloaded crc32fast v1.5.2
+  Downloaded fallible-streaming-iterator v0.1.9
+  Downloaded itoa v1.0.18
+  Downloaded sha2 v0.10.9
+  Downloaded simd-adler32 v0.3.10
+  Downloaded smallvec v1.16.1
+  Downloaded crypto-common v0.1.7
+  Downloaded foldhash v0.1.5
+  Downloaded pkg-config v0.3.34
+  Downloaded quote v1.0.47
+  Downloaded cpufeatures v0.2.17
+  Downloaded cfg-if v1.0.5
+  Downloaded shlex v2.0.1
+  Downloaded hashlink v0.10.0
+  Downloaded serde_derive v1.0.229
+  Downloaded fallible-iterator v0.3.0
+  Downloaded find-msvc-tools v0.1.13
+  Downloaded serde v1.0.229
+  Downloaded flate2 v1.1.10
+  Downloaded zlib-rs v0.6.8
+  Downloaded serde_json v1.0.151
+  Downloaded vcpkg v0.2.15
+  Downloaded regex-syntax v0.8.11
+  Downloaded syn v3.0.6
+  Downloaded regex-automata v0.4.18
+  Downloaded libsqlite3-sys v0.35.0
+   Compiling version_check v0.9.5
+   Compiling proc-macro2 v1.0.107
+   Compiling find-msvc-tools v0.1.13
+   Compiling typenum v1.20.1
+   Compiling shlex v2.0.1
+   Compiling generic-array v0.14.7
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling cc v1.4.7
+   Compiling pkg-config v0.3.34
+   Compiling memchr v2.8.3
+   Compiling serde_core v1.0.229
+   Compiling vcpkg v0.2.15
+   Compiling foldhash v0.1.5
+   Compiling zmij v1.0.23
+   Compiling crc32fast v1.5.2
+   Compiling cfg-if v1.0.5
+   Compiling libsqlite3-sys v0.35.0
+   Compiling hashbrown v0.15.5
+   Compiling syn v3.0.6
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling aho-corasick v1.1.5
+   Compiling simd-adler32 v0.3.10
+   Compiling adler2 v2.0.1
+   Compiling serde_json v1.0.151
+   Compiling regex-syntax v0.8.11
+   Compiling serde v1.0.229
+   Compiling miniz_oxide v0.9.1
+   Compiling regex-automata v0.4.18
+   Compiling serde_derive v1.0.229
+   Compiling digest v0.10.7
+   Compiling hashlink v0.10.0
+   Compiling smallvec v1.16.1
+   Compiling cpufeatures v0.2.17
+   Compiling fallible-iterator v0.3.0
+   Compiling bitflags v2.13.2
+   Compiling fallible-streaming-iterator v0.1.9
+   Compiling itoa v1.0.18
+   Compiling sha2 v0.10.9
+   Compiling flate2 v1.1.10
+   Compiling regex v1.13.1
+   Compiling rusqlite v0.37.0
+   Compiling archive_engine v0.1.0 (/home/runner/work/timeline222/timeline222/prototype/engine)
+    Finished `release` profile [optimized] target(s) in 20m 10s
+     Running tests/apply.rs (prototype/engine/target/release/deps/apply-8d352954fc58a95c)
+
+running 69 tests
+test a_band_uid_in_two_tracks_is_refused_instead_of_answering_differently ... ok
+test a_covering_layout_missing_a_pack_keeps_that_packs_records ... ok
+test a_band_form_is_rewritten_with_its_track_like_a_full_build ... ok
+test a_covering_layout_with_every_pack_drops_the_records_it_left_out ... ok
+test a_covering_layout_without_the_hider_is_refused ... ok
+test a_covering_layout_on_a_store_missing_an_older_column_is_refused ... ok
+test a_covering_layout_leaves_sphere_lines_and_the_globals_print_to_the_next_whole_apply ... ok
+test a_hidden_thing_missing_from_the_store_is_refused ... ok
+test a_joint_event_in_a_rewritten_track_reads_its_stem_record ... ok
+test a_layout_that_only_reorders_tracks_respreads_names_and_tells_the_first_place ... ok
+test a_layout_with_only_other_sphere_lines_rewrites_the_globals_like_a_full_build ... ok
+test a_layout_without_now_dates_the_store_today ... ok
+test a_board_hiding_an_item_that_points_into_a_rewritten_track_finds_it ... ok
+test a_hidden_cell_recolored_rewrites_its_track_and_the_hider ... ok
+test a_pack_without_its_original_is_noted_like_a_partial_build ... ok
+test a_record_given_twice_keeps_its_first_place_in_the_name_order ... ok
+test a_rewrite_only_apply_samples_its_block_and_both_edge_chunks ... ok
+test a_new_board_from_a_partial_layout_lands_after_every_regular_track ... ok
+test a_row_pointer_past_a_shrunken_track_is_refused ... ok
+test a_shared_uid_outside_the_part_is_refused_too ... ok
+test a_shared_uid_under_covered_tracks_is_refused_too ... ok
+test a_rewritten_track_restores_its_own_summaries_before_the_sample_check ... ok
+test a_store_failing_the_sample_check_is_left_as_it_was ... ok
+test a_failed_apply_leaves_the_store_ready_for_the_next_one ... ok
+test a_store_from_before_format3_gets_its_name_tables_back ... ok
+test a_variant_only_event_never_stretches_the_view_range ... ok
+test a_new_event_wins_ties_by_layout_order_not_by_number ... ok
+test adding_a_track_counts_and_records_like_a_full_build ... ok
+test a_store_without_search_takes_adds_rewrites_and_removals ... ok
+test adding_a_dlc_on_another_track_rewrites_its_dependents ... ok
+test a_store_missing_an_older_column_is_rewritten_once_like_a_full_build has been running for over 60 seconds
+test adding_a_track_only_matches_a_full_build ... ok
+test a_store_missing_an_older_column_is_rewritten_once_like_a_full_build ... ok
+test an_emptied_store_ranges_like_a_full_build ... ok
+test adding_b_then_c_matches_full_builds ... ok
+test an_old_store_without_spheres_or_prints_waits_for_a_whole_apply ... ok
+test an_old_store_under_a_covering_layout_stops_at_the_hider_guard ... ok
+test covered_tracks_put_a_new_track_after_its_neighbour ... ok
+test entities_are_compared_by_uid_and_print ... ok
+test failure_at_any_step_leaves_the_file_as_it_was ... ok
+test adding_and_removing_back_and_forth_matches_full_builds ... ok
+test failure_at_any_step_on_an_old_store_leaves_the_file_as_it_was ... ok
+test failure_while_rewriting_leaves_the_file_as_it_was ... ok
+test full_builds_order_events_by_track_then_in_track_order_like_their_numbers_r26 ... ok
+test adding_c_then_b_then_removing_b_matches_full_builds ... ok
+test global_tables_are_rewritten_like_a_full_build ... ok
+test missing_meta_keys_are_counted_like_a_full_build ... ok
+test names_respread_in_place_equal_the_full_build_on_real_data ... ok
+test an_untouched_track_keeps_its_place_in_a_shared_row_after_a_rewrite ... ok
+test pictures_are_compared_to_the_byte ... ok
+test merged_summaries_break_ties_by_the_stored_in_track_order ... ok
+test records_alone_respread_search_and_names ... ok
+test refused_layouts_leave_the_file_as_it_was ... ok
+test removing_a_dlc_with_pictures_and_a_shared_date_cell_matches_a_full_build ... ok
+test hiders_of_a_hider_are_rewritten_too ... ok
+test removing_a_track_matches_a_full_build ... ok
+test removing_the_middle_pack_leaves_no_number_of_it_in_sphere_lines ... ok
+test one_side_of_a_board_is_rewritten_and_the_other_side_is_found_in_the_store has been running for over 60 seconds
+test one_side_of_a_board_is_rewritten_and_the_other_side_is_found_in_the_store ... ok
+test same_layout_again_does_nothing ... ok
+test same_year_breaks_ties_by_track_then_in_track_order_like_a_full_build ... ok
+test sphere_lines_never_stretch_the_view_range ... ok
+test recolor_rewrites_only_that_track_and_keeps_numbers has been running for over 60 seconds
+test removing_both_then_adding_them_back_matches_full_builds ... ok
+test recolor_rewrites_only_that_track_and_keeps_numbers ... ok
+test the_step_list_covers_every_fail_point ... ok
+test the_tools_apply_a_layout_file_and_print_canon ... ok
+test reorder_removal_and_board_hides_in_one_apply_match_a_full_build ... ok
+test view_range_follows_the_packs ... ok
+test the_apply_command_rewrites_the_open_store_in_place ... ok
+test store_from_before_this_plan_is_rewritten_once_in_place ... ok
+test twin_hidden_things_pair_one_by_one_from_the_store ... ok
+
+test result: ok. 69 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 260.58s
+
+     Running tests/blobs.rs (prototype/engine/target/release/deps/blobs-a3eddd080c0c6758)
+
+running 5 tests
+test base64는_되돌릴_수_있고_틀린_글자는_거절한다 ... ok
+test 그림이_없는_배치는_답도_표도_예전_그대로다 ... ok
+test 그림_바이트는_열쇠로_그대로_돌아오고_자료집에_붙는다 ... ok
+test 그림_표가_없는_옛_저장소에서는_그림이_없음이다 ... ok
+test 틀린_그림_바이트는_가져오기를_멈춘다 ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests/canon.rs (prototype/engine/target/release/deps/canon-ae16522446daee7f)
+
+running 9 tests
+test canon_leaks_no_numbers ... ok
+test echo_group_ties_compare_by_content ... ok
+test pack_b_widens_the_view_range ... ok
+test range_lists_compare_by_content ... ok
+test different_combination_gives_a_different_canon ... ok
+test row_label_track_numbers_compare_by_track_key ... ok
+test band_number_fields_compare_by_uid ... ok
+test same_plan_built_twice_gives_the_same_canon ... ok
+test dense_levels_see_one_deleted_event ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 22.57s
+
+     Running tests/doc_list.rs (prototype/engine/target/release/deps/doc_list-d12d05e792c9c5bc)
+
+running 3 tests
+test 본문_있는_문서만_하위는_수로 ... ok
+test 앞부분은_320자까지 ... ok
+test 켠_자료집만 ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+     Running tests/format3.rs (prototype/engine/target/release/deps/format3-3a67b50f7354e274)
+
+running 10 tests
+test 단체와_제도는_곁글_줄_기간_색과_함께_오고_트랙을_끄면_숨는다 ... ok
+test 사건은_다른_이름으로도_찾히고_한_번만_나온다 ... ok
+test 결과_차례는_항목_칸_하위_문서_가문_단체_제도다 ... ok
+test 같은_도시를_쓴_정권들에서_도읍_칸의_주인이_맞다 ... ok
+test 예약한_번호의_칸_구역_변형은_그대로_지나간다 ... ok
+test 사건의_찾을_글_표가_없으면_항목_기록에서_꺼내_같은_답을_낸다 ... ok
+test 옛_저장소는_예전_규칙_그대로_답한다 ... ok
+test 원어_옛_이름_로마자로_정권_칸_가문이_찾히고_결과는_본_이름이다 ... ok
+test 통틀어_몇_건인지는_쪽을_넘어_물어도_맞다 ... ok
+test 허용_목록_밖의_기록은_이름_표에_들지_않는다 ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.28s
+
+     Running tests/generate.rs (prototype/engine/target/release/deps/generate-8707249cb1de876b)
+
+running 3 tests
+test 섞어_넣은_특수한_사건의_수가_규칙과_같다 ... ok
+test 같은_줄의_띠는_겹치지_않고_칸은_제_띠_안에_있다 ... ok
+test 두_번_만들어도_같은_자료가_나오고_기존_저장소는_덮어쓰지_않는다 ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 14.38s
+
+     Running tests/kin.rs (prototype/engine/target/release/deps/kin-910eb4f6605db246)
+
+running 7 tests
+test kin_기록은_해석_없이_들어가_entity로_글자_그대로_돌아온다 ... ok
+test kin_기록은_이름_표에_들지_않고_검색_갈래도_아니다 ... ok
+test 가문_정권_성씨의_새_미리_푼_값은_그대로_오고_이름_표_줄은_그대로다 ... ok
+test 기간_없는_계보_전용_인물은_이름_표와_검색에_든다 ... ok
+test d1_e의_실제_기록이_있으면_그대로_들어가고_같은_규칙을_지킨다 ... ok
+test 계보_기록을_더해도_다른_답은_그대로다 ... ok
+test 큰_뼈대_기록의_entity_시간 ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.77s
+
+     Running tests/lay_js.rs (prototype/engine/target/release/deps/lay_js-ce8473f626e999ed)
+
+running 18 tests
+test deep_pack_is_refused_in_plain_words_with_the_reason ... ok
+test hidden_properties_follow_define_property ... ok
+test cmp16_is_utf16_code_unit_order ... ok
+test coercions_like_js ... ok
+test int_conversions_wrap_like_js ... ok
+test local_date_follows_offset ... ok
+test json_text_like_js ... ok
+test map_and_set_use_same_value_zero ... ok
+test math_round_like_js ... ok
+test minute_matches_base_mjs ... ok
+test deep_nesting_does_not_overflow ... ok
+test numbers_print_like_js ... ok
+test object_keys_keep_js_order ... ok
+test object_order_after_set_and_delete ... ok
+test serde_bridge_follows_json_stringify ... ok
+test seam_matches_oracle_rule ... ok
+test strings_count_utf16_like_js ... ok
+test sort_is_v8_timsort ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/lay_m_boards.rs (prototype/engine/target/release/deps/lay_m_boards-4b5813a1e6c049c4)
+
+running 2 tests
+test a_failing_board_is_dropped_and_the_context_restored ... ok
+test boards_contribute_matches_node ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.40s
+
+     Running tests/lay_m_e_intact.rs (prototype/engine/target/release/deps/lay_m_e_intact-f293c704207d8c51)
+
+running 3 tests
+test variants_leave_the_context_intact ... ok
+test lens_leaves_the_context_intact ... ok
+test boards_leave_the_context_intact ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.93s
+
+     Running tests/lay_m_figures.rs (prototype/engine/target/release/deps/lay_m_figures-2b4175d1f57e0be3)
+
+running 1 test
+test figures_contribute_matches_node ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.47s
+
+     Running tests/lay_m_lens.rs (prototype/engine/target/release/deps/lay_m_lens-306ff5c959d4bafc)
+
+running 5 tests
+test lens_has_data_faults_on_non_arrays ... ok
+test lens_without_band_of_is_an_error ... ok
+test lens_shape_faults_are_errors ... ok
+test lens_contribute_matches_node ... ok
+test lens_relayout_restores_rows ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.75s
+
+     Running tests/lay_m_minibars.rs (prototype/engine/target/release/deps/lay_m_minibars-566e3c7daa70b6df)
+
+running 1 test
+test minibars_contribute_matches_node ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.55s
+
+     Running tests/lay_m_rails.rs (prototype/engine/target/release/deps/lay_m_rails-0b7a55266ca6be8f)
+
+running 2 tests
+test rails_own_rail_levels_match_node_bytes ... ok
+test rails_contribute_matches_node ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.50s
+
+     Running tests/lay_m_tracks.rs (prototype/engine/target/release/deps/lay_m_tracks-800bef63ba0f28f6)
+
+running 2 tests
+test tracks_contribute_matches_node ... ok
+test tracks_late_matches_node ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.95s
+
+     Running tests/lay_oracle.rs (prototype/engine/target/release/deps/lay_oracle-5990f582ce051bf2)
+
+running 6 tests
+test fixed_instant_matches_the_oracle_constants ... ok
+test oracle_rejects_heads_from_other_web_code_or_icu ... ok
+test oracle_rejects_inputs_that_changed_since_extraction ... ok
+test lantern_f4_is_a_rust_fixture_with_its_own_oracle ... ok
+test assert_same_accepts_the_oracle_and_reports_a_changed_copy ... ok
+test fixtures_load_with_their_inputs_and_oracle_headers ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.28s
+
+     Running tests/lay_read.rs (prototype/engine/target/release/deps/lay_read-dbdb2e8ca277ee80)
+
+running 5 tests
+test intl_calendar_needs_the_table ... ok
+test today_matches_node_at_the_oracle_instant ... ok
+test read_helpers_match_node_vectors ... ok
+test f4_down_of_fixture_files_matches_node ... ok
+test normalized_packs_match_node ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+     Running tests/lay_wiki.rs (prototype/engine/target/release/deps/lay_wiki-8ec48e501c8a6439)
+
+running 8 tests
+test oracle_clock_is_read_right ... ok
+test regex_rule_rows_match_node ... ok
+test functions_match_node ... ok
+test describe_of_unknown_calendar_is_a_fault ... ok
+test render_matches_node ... ok
+test every_regex_matches_node_on_its_samples ... ok
+test when_texts_match_node ... ok
+test sample_documents_render_like_node ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests/lod_cells.rs (prototype/engine/target/release/deps/lod_cells-e6bccc70feea2c5c)
+
+running 9 tests
+test 거르개를_걸면_분류_비율도_거른_뒤의_수다 ... ok
+test 나눗수를_줄이면_성긴_단계의_짧은_칸이_실제로_빠진다 ... ok
+test 손잡이를_두지_않은_타일은_바이트까지_예전과_같다 ... ok
+test 띠가_좁아_칸을_하나도_그릴_수_없으면_그_칸은_타일에서_빠진다 ... ok
+test 추림_문턱은_가장_확대한_쪽에서_재어_보수적이다 ... ok
+test 칸_문턱은_이미_lod가_거르는_것보다_너그럽다 ... ok
+test 알약은_통_전체의_분류별_수를_싣는다 ... ok
+test 알약의_열이_늘어도_옛_열의_자리는_그대로다 ... ok
+test 읽을_수_없는_손잡이는_기본값으로_둔다 ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests/queries.rs (prototype/engine/target/release/deps/queries-6b7d84f4953318e4)
+
+running 15 tests
+test 검색은_나눠_받아도_빠짐없이_이어진다 ... ok
+test 같은_해_보기는_트랙마다_띠와_칸과_사건을_묶는다 ... ok
+test 그때에_걸친_것은_정권_먼저_칸_다음_가까운_사건이다 ... ok
+test 같은_해_보기의_form은_열이_없는_옛_저장소에서_0이다 ... ok
+test 번호와_이름을_서로_바꾼다 ... ok
+test 범례는_지금_자료에_쓰인_것만_알린다 ... ok
+test 옛_검색은_그대로고_kinds를_주면_이름까지_찾는다 ... ok
+test 이_시기의_사건은_중요도_큰_순이고_나눠_받을_수_있다 ... ok
+test 이름_묶음을_번호로_한_번에_바꾼다 ... ok
+test 이름_표는_사건을_빼고_넣을_때_펴_둔다 ... ok
+test 칸_목록은_시작_순이고_없는_띠는_까닭과_함께_거절한다 ... ok
+test 표를_내보낸_파일은_bom과_crlf로_쓰고_이미_있는_파일은_덮어쓰지_않는다 ... ok
+test 표는_시작_순_트랙_순이고_정권을_함께_담을_수_있다 ... ok
+test 항목_기록은_있는_것만_입력_순서로_준다 ... ok
+test 직위_줄_더_칸은_범례와_연도_검색에_보이지_않는다 ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.38s
+
+     Running tests/year_cycle.rs (prototype/engine/target/release/deps/year_cycle-519320c6886c46c0)
+
+running 3 tests
+test 끈_설정과_다음_자료집의_순환을_차례대로_보존한다 ... ok
+test 설정이_없으면_순환_열쇠를_만들지_않는다 ... ok
+test 이름과_첫해와_줄제목을_싣되_기존_조회와_타일은_그대로다 ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+# 끝 2026-10-25 11:49:54 KST · 끝 코드 0 · 1519초

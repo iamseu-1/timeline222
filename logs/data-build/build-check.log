@@ -1,0 +1,42 @@
+# 시작 2026-10-25 11:28:29 KST · build-check(Rust 짓기 = Node 배치 · 전부)
+# 명령 node prototype/scripts/build-check.mjs
+건너뜀 synth-calclip — 달력 잘림 자료(list.json의 calClip): Rust는 표 밖을 생략해 `cal:` 기록이 Node와 다르다(판정 R61)
+달력 표: /home/runner/work/timeline222/timeline222/prototype/results/calendar-cache.json · -3500 ~ 2500년 · 글 738299바이트 · zlib 26974바이트
+건너뜀 east-asia+ktl — 선택 자료의 파일이 없습니다: /home/runner/work/timeline222/timeline222/D:/Timeline/KoreanTimeLine-v1.0.5.htpack
+건너뜀 east-asia+ktl@f4 — 선택 자료의 파일이 없습니다: /home/runner/work/timeline222/timeline222/prototype/fixtures/oracle/f4/KoreanTimeLine-v1.0.5.htpack
+Node 배치 33개 — 3215ms(한 프로세스)
+같음 lantern — Node 922ms · Rust 760ms · canon 성긴 단계 + 기록 · 이름 · 출처 행 · form≠0 띠 52 · 문화권 단위 줄 8 · 표본 Rust 96장 · 누락·중복 0 / Node 96장 · 누락·중복 0
+같음 east-asia — Node 162ms · Rust 155ms · canon --queries · form≠0 띠 84 · 문화권 단위 줄 0 · 표본 Rust 106장 · 누락·중복 0 / Node 106장 · 누락·중복 0
+같음 east-asia+move — Node 188ms · Rust 180ms · canon --queries · form≠0 띠 91 · 문화권 단위 줄 0 · 표본 Rust 106장 · 누락·중복 0 / Node 106장 · 누락·중복 0
+같음 east-asia+nest — Node 210ms · Rust 204ms · canon --queries · form≠0 띠 98 · 문화권 단위 줄 0 · 표본 Rust 102장 · 누락·중복 0 / Node 102장 · 누락·중복 0
+같음 east-asia+dep — Node 173ms · Rust 189ms · canon --queries · form≠0 띠 98 · 문화권 단위 줄 0 · 표본 Rust 97장 · 누락·중복 0 / Node 97장 · 누락·중복 0
+같음 east-asia+d7 — Node 172ms · Rust 193ms · canon --queries · form≠0 띠 95 · 문화권 단위 줄 0 · 표본 Rust 106장 · 누락·중복 0 / Node 106장 · 누락·중복 0
+같음 east-asia+sphere — Node 139ms · Rust 162ms · canon --queries · form≠0 띠 95 · 문화권 단위 줄 0 · 표본 Rust 106장 · 누락·중복 0 / Node 106장 · 누락·중복 0
+같음 nest-f4 — Node 89ms · Rust 88ms · canon --queries · form≠0 띠 14 · 문화권 단위 줄 0 · 표본 Rust 97장 · 누락·중복 0 / Node 97장 · 누락·중복 0
+같음 synth — Node 96ms · Rust 103ms · canon --queries · form≠0 띠 19 · 문화권 단위 줄 0 · 표본 Rust 98장 · 누락·중복 0 / Node 98장 · 누락·중복 0
+같음 synth+patch — Node 97ms · Rust 112ms · canon --queries · form≠0 띠 20 · 문화권 단위 줄 0 · 표본 Rust 102장 · 누락·중복 0 / Node 102장 · 누락·중복 0
+같음 synth-lay — Node 201ms · Rust 185ms · canon --queries · form≠0 띠 45 · 문화권 단위 줄 0 · 표본 Rust 109장 · 누락·중복 0 / Node 109장 · 누락·중복 0
+같음 synth-lens — Node 67ms · Rust 82ms · canon --queries · form≠0 띠 9 · 문화권 단위 줄 0 · 표본 Rust 86장 · 누락·중복 0 / Node 86장 · 누락·중복 0
+같음 f4-crowns — Node 66ms · Rust 81ms · canon --queries · form≠0 띠 8 · 문화권 단위 줄 1 · 표본 Rust 87장 · 누락·중복 0 / Node 87장 · 누락·중복 0
+같음 f4-office3 — Node 66ms · Rust 84ms · canon --queries · form≠0 띠 4 · 문화권 단위 줄 0 · 표본 Rust 88장 · 누락·중복 0 / Node 88장 · 누락·중복 0
+같음 f4-sphere — Node 75ms · Rust 90ms · canon --queries · form≠0 띠 5 · 문화권 단위 줄 6 · 표본 Rust 93장 · 누락·중복 0 / Node 93장 · 누락·중복 0
+같음 f4-federation — Node 67ms · Rust 82ms · canon --queries · form≠0 띠 14 · 문화권 단위 줄 0 · 표본 Rust 97장 · 누락·중복 0 / Node 97장 · 누락·중복 0
+같음 f4-liege — Node 63ms · Rust 79ms · canon --queries · form≠0 띠 4 · 문화권 단위 줄 1 · 표본 Rust 86장 · 누락·중복 0 / Node 86장 · 누락·중복 0
+같음 f4-federation@f4 — Node 66ms · Rust 83ms · canon --queries · form≠0 띠 14 · 문화권 단위 줄 0 · 표본 Rust 97장 · 누락·중복 0 / Node 97장 · 누락·중복 0
+같음 lantern@f4 — Node 616ms · Rust 700ms · canon 성긴 단계 + 기록 · 이름 · 출처 행 · form≠0 띠 52 · 문화권 단위 줄 8 · 표본 Rust 96장 · 누락·중복 0 / Node 96장 · 누락·중복 0
+같음 east-asia@f4 — Node 142ms · Rust 154ms · canon --queries · form≠0 띠 84 · 문화권 단위 줄 0 · 표본 Rust 106장 · 누락·중복 0 / Node 106장 · 누락·중복 0
+같음 east-asia+move@f4 — Node 154ms · Rust 181ms · canon --queries · form≠0 띠 91 · 문화권 단위 줄 0 · 표본 Rust 106장 · 누락·중복 0 / Node 106장 · 누락·중복 0
+같음 east-asia+nest@f4 — Node 182ms · Rust 201ms · canon --queries · form≠0 띠 98 · 문화권 단위 줄 0 · 표본 Rust 102장 · 누락·중복 0 / Node 102장 · 누락·중복 0
+같음 east-asia+dep@f4 — Node 163ms · Rust 183ms · canon --queries · form≠0 띠 98 · 문화권 단위 줄 0 · 표본 Rust 97장 · 누락·중복 0 / Node 97장 · 누락·중복 0
+같음 east-asia+d7@f4 — Node 180ms · Rust 189ms · canon --queries · form≠0 띠 95 · 문화권 단위 줄 0 · 표본 Rust 106장 · 누락·중복 0 / Node 106장 · 누락·중복 0
+같음 east-asia+sphere@f4 — Node 139ms · Rust 155ms · canon --queries · form≠0 띠 95 · 문화권 단위 줄 0 · 표본 Rust 106장 · 누락·중복 0 / Node 106장 · 누락·중복 0
+같음 nest-f4@f4 — Node 72ms · Rust 85ms · canon --queries · form≠0 띠 14 · 문화권 단위 줄 0 · 표본 Rust 97장 · 누락·중복 0 / Node 97장 · 누락·중복 0
+같음 synth@f4 — Node 81ms · Rust 100ms · canon --queries · form≠0 띠 19 · 문화권 단위 줄 0 · 표본 Rust 98장 · 누락·중복 0 / Node 98장 · 누락·중복 0
+같음 synth+patch@f4 — Node 88ms · Rust 110ms · canon --queries · form≠0 띠 20 · 문화권 단위 줄 0 · 표본 Rust 102장 · 누락·중복 0 / Node 102장 · 누락·중복 0
+같음 synth-lay@f4 — Node 158ms · Rust 184ms · canon --queries · form≠0 띠 45 · 문화권 단위 줄 0 · 표본 Rust 109장 · 누락·중복 0 / Node 109장 · 누락·중복 0
+같음 synth-lens@f4 — Node 64ms · Rust 81ms · canon --queries · form≠0 띠 9 · 문화권 단위 줄 0 · 표본 Rust 86장 · 누락·중복 0 / Node 86장 · 누락·중복 0
+같음 synth+patch2+patch — Node 95ms · Rust 112ms · canon --queries · form≠0 띠 20 · 문화권 단위 줄 0 · 표본 Rust 102장 · 누락·중복 0 / Node 102장 · 누락·중복 0
+같음 lantern+d7+sphere — Node 606ms · Rust 750ms · canon 성긴 단계 + 기록 · 이름 · 출처 행 · form≠0 띠 74 · 문화권 단위 줄 8 · 표본 Rust 120장 · 누락·중복 0 / Node 120장 · 누락·중복 0
+같음 east-asia+nest+move — Node 195ms · Rust 227ms · canon --queries · form≠0 띠 105 · 문화권 단위 줄 0 · 표본 Rust 97장 · 누락·중복 0 / Node 97장 · 누락·중복 0
+모두 같음 — 33개 자료(Node 길 = Rust 길 · 누락 · 중복 0)
+# 끝 2026-10-25 11:39:34 KST · 끝 코드 0 · 665초

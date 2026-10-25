@@ -1,0 +1,4 @@
+{"id":"clippy","label":"cargo clippy --locked --all-targets","kind":"clippy","state":"started","at":"2026-10-25T02:23:34.113Z"}
+{"id":"clippy","label":"cargo clippy --locked --all-targets","kind":"clippy","state":"done","code":0,"seconds":25,"at":"2026-10-25T02:23:59.593Z"}
+{"id":"lay-rules","label":"lay-rules --check","kind":"plain","state":"started","at":"2026-10-25T02:23:59.632Z"}
+{"id":"lay-rules","label":"lay-rules --check","kind":"plain","state":"done","code":0,"seconds":0,"at":"2026-10-25T02:23:59.695Z"}

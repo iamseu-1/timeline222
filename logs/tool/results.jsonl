@@ -1,0 +1,2 @@
+{"id":"build-release","label":"archive-tool 짓기(cargo build --locked --release)","kind":"plain","state":"started","at":"2026-10-25T02:23:33.200Z"}
+{"id":"build-release","label":"archive-tool 짓기(cargo build --locked --release)","kind":"plain","state":"done","code":0,"seconds":262,"at":"2026-10-25T02:27:55.759Z"}
