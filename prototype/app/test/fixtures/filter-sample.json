@@ -1,0 +1,791 @@
+{
+ "note": "월흔해 견본(가상)에서 뽑은 필터 시트 검사용 자료 — scripts는 scratchpad의 make-filter-fixture.mjs",
+ "layout": {
+  "packs": [
+   {
+    "id": 1,
+    "name": "월흔해 연대기 — 부서진 달과 열두 땅",
+    "events": 5468
+   }
+  ],
+  "tracks": [
+   {
+    "id": 1,
+    "pack": 1,
+    "ord": 0,
+    "name": "흑요산맥",
+    "color": 12297109,
+    "dynasty": 1,
+    "leader": 1,
+    "cabinet": 1,
+    "organ": 1,
+    "rail_levels": 3,
+    "rows": [
+     {
+      "id": 0,
+      "height": 168,
+      "band_top": 20,
+      "band_h": 148,
+      "dyn_top": 24,
+      "lead_top": 42,
+      "cab_top": 65,
+      "text_top": 85,
+      "text_lines": 2,
+      "rail_top": 127,
+      "organ_top": 149,
+      "kind": 0,
+      "group_start": 1,
+      "scope_pad": 0,
+      "phase": 0,
+      "rank": 0,
+      "cats": [],
+      "fig": 0,
+      "dep": 0,
+      "zones": 0,
+      "hem": 0
+     },
+     {
+      "id": 1,
+      "height": 428,
+      "band_top": 33,
+      "band_h": 357,
+      "dyn_top": 37,
+      "lead_top": 101,
+      "cab_top": 124,
+      "text_top": 144,
+      "text_lines": 8,
+      "rail_top": 312,
+      "organ_top": 371,
+      "kind": 0,
+      "group_start": 1,
+      "scope_pad": 0,
+      "phase": 2,
+      "rank": 1,
+      "cats": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "fig": 2,
+      "dep": 0,
+      "zones": 1,
+      "hem": 1
+     }
+    ],
+    "groups": [
+     {
+      "depth": 0,
+      "first": 0,
+      "count": 1,
+      "name": "문화",
+      "color": 12297109,
+      "kind": 1
+     },
+     {
+      "depth": 0,
+      "first": 1,
+      "count": 1,
+      "name": "월흔해의 백성",
+      "color": 14332309,
+      "kind": 0
+     },
+     {
+      "depth": 1,
+      "first": 1,
+      "count": 1,
+      "name": "석각족",
+      "color": 12297109,
+      "kind": 0
+     },
+     {
+      "depth": 2,
+      "first": 1,
+      "count": 1,
+      "name": "화맥인",
+      "color": 12297109,
+      "kind": 0
+     }
+    ]
+   },
+   {
+    "id": 2,
+    "pack": 1,
+    "ord": 1,
+    "name": "수관림",
+    "color": 10337960,
+    "dynasty": 1,
+    "leader": 1,
+    "cabinet": 1,
+    "organ": 1,
+    "rail_levels": 2,
+    "rows": [
+     {
+      "id": 2,
+      "height": 161,
+      "band_top": 20,
+      "band_h": 141,
+      "dyn_top": 24,
+      "lead_top": 42,
+      "cab_top": 65,
+      "text_top": 85,
+      "text_lines": 2,
+      "rail_top": 127,
+      "organ_top": 142,
+      "kind": 0,
+      "group_start": 1,
+      "scope_pad": 0,
+      "phase": 0,
+      "rank": 0,
+      "cats": [],
+      "fig": 0,
+      "dep": 0,
+      "zones": 0,
+      "hem": 0
+     },
+     {
+      "id": 3,
+      "height": 421,
+      "band_top": 33,
+      "band_h": 350,
+      "dyn_top": 37,
+      "lead_top": 101,
+      "cab_top": 124,
+      "text_top": 144,
+      "text_lines": 8,
+      "rail_top": 312,
+      "organ_top": 364,
+      "kind": 0,
+      "group_start": 1,
+      "scope_pad": 0,
+      "phase": 2,
+      "rank": 1,
+      "cats": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "fig": 2,
+      "dep": 0,
+      "zones": 1,
+      "hem": 1
+     }
+    ],
+    "groups": [
+     {
+      "depth": 0,
+      "first": 0,
+      "count": 1,
+      "name": "문화",
+      "color": 10337960,
+      "kind": 1
+     },
+     {
+      "depth": 0,
+      "first": 1,
+      "count": 1,
+      "name": "월흔해의 백성",
+      "color": 14332309,
+      "kind": 0
+     },
+     {
+      "depth": 1,
+      "first": 1,
+      "count": 1,
+      "name": "수피족",
+      "color": 10337960,
+      "kind": 0
+     },
+     {
+      "depth": 2,
+      "first": 1,
+      "count": 1,
+      "name": "상엽인",
+      "color": 10337960,
+      "kind": 0
+     }
+    ]
+   },
+   {
+    "id": 3,
+    "pack": 1,
+    "ord": 2,
+    "name": "청동초원",
+    "color": 14139790,
+    "dynasty": 1,
+    "leader": 1,
+    "cabinet": 1,
+    "organ": 1,
+    "rail_levels": 2,
+    "rows": [
+     {
+      "id": 4,
+      "height": 161,
+      "band_top": 20,
+      "band_h": 141,
+      "dyn_top": 24,
+      "lead_top": 42,
+      "cab_top": 65,
+      "text_top": 85,
+      "text_lines": 2,
+      "rail_top": 127,
+      "organ_top": 142,
+      "kind": 0,
+      "group_start": 1,
+      "scope_pad": 0,
+      "phase": 0,
+      "rank": 0,
+      "cats": [],
+      "fig": 0,
+      "dep": 0,
+      "zones": 0,
+      "hem": 0
+     },
+     {
+      "id": 5,
+      "height": 421,
+      "band_top": 33,
+      "band_h": 350,
+      "dyn_top": 37,
+      "lead_top": 101,
+      "cab_top": 124,
+      "text_top": 144,
+      "text_lines": 8,
+      "rail_top": 312,
+      "organ_top": 364,
+      "kind": 0,
+      "group_start": 1,
+      "scope_pad": 0,
+      "phase": 2,
+      "rank": 1,
+      "cats": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "fig": 2,
+      "dep": 0,
+      "zones": 1,
+      "hem": 1
+     }
+    ],
+    "groups": [
+     {
+      "depth": 0,
+      "first": 0,
+      "count": 1,
+      "name": "문화",
+      "color": 14139790,
+      "kind": 1
+     },
+     {
+      "depth": 0,
+      "first": 1,
+      "count": 1,
+      "name": "월흔해의 백성",
+      "color": 14332309,
+      "kind": 0
+     },
+     {
+      "depth": 1,
+      "first": 1,
+      "count": 1,
+      "name": "바람귀족",
+      "color": 14139790,
+      "kind": 0
+     },
+     {
+      "depth": 2,
+      "first": 1,
+      "count": 1,
+      "name": "갈기인",
+      "color": 14139790,
+      "kind": 0
+     }
+    ]
+   },
+   {
+    "id": 4,
+    "pack": 1,
+    "ord": 3,
+    "name": "거울사막",
+    "color": 14332309,
+    "dynasty": 1,
+    "leader": 1,
+    "cabinet": 1,
+    "organ": 1,
+    "rail_levels": 2,
+    "rows": [
+     {
+      "id": 6,
+      "height": 140,
+      "band_top": 20,
+      "band_h": 120,
+      "dyn_top": 24,
+      "lead_top": 42,
+      "cab_top": 65,
+      "text_top": 85,
+      "text_lines": 1,
+      "rail_top": 106,
+      "organ_top": 121,
+      "kind": 0,
+      "group_start": 1,
+      "scope_pad": 0,
+      "phase": 0,
+      "rank": 0,
+      "cats": [],
+      "fig": 0,
+      "dep": 0,
+      "zones": 0,
+      "hem": 0
+     },
+     {
+      "id": 7,
+      "height": 395,
+      "band_top": 33,
+      "band_h": 333,
+      "dyn_top": 37,
+      "lead_top": 101,
+      "cab_top": 124,
+      "text_top": 144,
+      "text_lines": 8,
+      "rail_top": 312,
+      "organ_top": 347,
+      "kind": 0,
+      "group_start": 1,
+      "scope_pad": 0,
+      "phase": 2,
+      "rank": 1,
+      "cats": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "fig": 1,
+      "dep": 0,
+      "zones": 1,
+      "hem": 1
+     },
+     {
+      "id": 8,
+      "height": 139,
+      "band_top": 19,
+      "band_h": 120,
+      "dyn_top": 23,
+      "lead_top": 41,
+      "cab_top": 64,
+      "text_top": 84,
+      "text_lines": 1,
+      "rail_top": 105,
+      "organ_top": 120,
+      "kind": 0,
+      "group_start": 0,
+      "scope_pad": 0,
+      "phase": 0,
+      "rank": 0,
+      "cats": [],
+      "fig": 0,
+      "dep": 0,
+      "zones": 0,
+      "hem": 0
+     },
+     {
+      "id": 9,
+      "height": 139,
+      "band_top": 19,
+      "band_h": 120,
+      "dyn_top": 23,
+      "lead_top": 41,
+      "cab_top": 64,
+      "text_top": 84,
+      "text_lines": 1,
+      "rail_top": 105,
+      "organ_top": 120,
+      "kind": 0,
+      "group_start": 0,
+      "scope_pad": 0,
+      "phase": 0,
+      "rank": 0,
+      "cats": [],
+      "fig": 0,
+      "dep": 0,
+      "zones": 0,
+      "hem": 0
+     },
+     {
+      "id": 10,
+      "height": 139,
+      "band_top": 19,
+      "band_h": 120,
+      "dyn_top": 23,
+      "lead_top": 41,
+      "cab_top": 64,
+      "text_top": 84,
+      "text_lines": 1,
+      "rail_top": 105,
+      "organ_top": 120,
+      "kind": 0,
+      "group_start": 0,
+      "scope_pad": 0,
+      "phase": 0,
+      "rank": 0,
+      "cats": [],
+      "fig": 0,
+      "dep": 0,
+      "zones": 0,
+      "hem": 0
+     },
+     {
+      "id": 11,
+      "height": 139,
+      "band_top": 19,
+      "band_h": 120,
+      "dyn_top": 23,
+      "lead_top": 41,
+      "cab_top": 64,
+      "text_top": 84,
+      "text_lines": 1,
+      "rail_top": 105,
+      "organ_top": 120,
+      "kind": 0,
+      "group_start": 0,
+      "scope_pad": 0,
+      "phase": 0,
+      "rank": 0,
+      "cats": [],
+      "fig": 0,
+      "dep": 0,
+      "zones": 0,
+      "hem": 0
+     },
+     {
+      "id": 12,
+      "height": 148,
+      "band_top": 19,
+      "band_h": 120,
+      "dyn_top": 23,
+      "lead_top": 41,
+      "cab_top": 64,
+      "text_top": 84,
+      "text_lines": 1,
+      "rail_top": 105,
+      "organ_top": 120,
+      "kind": 0,
+      "group_start": 0,
+      "scope_pad": 0,
+      "phase": 0,
+      "rank": 0,
+      "cats": [],
+      "fig": 0,
+      "dep": 0,
+      "zones": 0,
+      "hem": 0
+     }
+    ],
+    "groups": [
+     {
+      "depth": 0,
+      "first": 0,
+      "count": 1,
+      "name": "문화",
+      "color": 14332309,
+      "kind": 1
+     },
+     {
+      "depth": 0,
+      "first": 1,
+      "count": 1,
+      "name": "월흔해의 백성",
+      "color": 14332309,
+      "kind": 0
+     },
+     {
+      "depth": 1,
+      "first": 1,
+      "count": 1,
+      "name": "유영족",
+      "color": 14332309,
+      "kind": 0
+     },
+     {
+      "depth": 2,
+      "first": 1,
+      "count": 1,
+      "name": "사경인",
+      "color": 14332309,
+      "kind": 0
+     }
+    ]
+   },
+   {
+    "id": 5,
+    "pack": 1,
+    "ord": 4,
+    "name": "재의삼각주",
+    "color": 13935515,
+    "dynasty": 1,
+    "leader": 1,
+    "cabinet": 1,
+    "organ": 1,
+    "rail_levels": 2,
+    "rows": [
+     {
+      "id": 13,
+      "height": 161,
+      "band_top": 20,
+      "band_h": 141,
+      "dyn_top": 24,
+      "lead_top": 42,
+      "cab_top": 65,
+      "text_top": 85,
+      "text_lines": 2,
+      "rail_top": 127,
+      "organ_top": 142,
+      "kind": 0,
+      "group_start": 1,
+      "scope_pad": 0,
+      "phase": 0,
+      "rank": 0,
+      "cats": [],
+      "fig": 0,
+      "dep": 0,
+      "zones": 0,
+      "hem": 0
+     },
+     {
+      "id": 14,
+      "height": 421,
+      "band_top": 33,
+      "band_h": 350,
+      "dyn_top": 37,
+      "lead_top": 101,
+      "cab_top": 124,
+      "text_top": 144,
+      "text_lines": 8,
+      "rail_top": 312,
+      "organ_top": 364,
+      "kind": 0,
+      "group_start": 1,
+      "scope_pad": 0,
+      "phase": 2,
+      "rank": 1,
+      "cats": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "fig": 2,
+      "dep": 0,
+      "zones": 1,
+      "hem": 1
+     }
+    ],
+    "groups": [
+     {
+      "depth": 0,
+      "first": 0,
+      "count": 1,
+      "name": "문화",
+      "color": 13935515,
+      "kind": 1
+     },
+     {
+      "depth": 0,
+      "first": 1,
+      "count": 1,
+      "name": "월흔해의 백성",
+      "color": 14332309,
+      "kind": 0
+     },
+     {
+      "depth": 1,
+      "first": 1,
+      "count": 1,
+      "name": "등불사람",
+      "color": 10534085,
+      "kind": 0
+     },
+     {
+      "depth": 2,
+      "first": 1,
+      "count": 1,
+      "name": "재민",
+      "color": 13935515,
+      "kind": 0
+     }
+    ]
+   }
+  ],
+  "categories": [
+   {
+    "id": 0,
+    "key": "politics",
+    "name": "정치",
+    "color": 11252681
+   },
+   {
+    "id": 1,
+    "key": "war",
+    "name": "전쟁",
+    "color": 13935515
+   },
+   {
+    "id": 2,
+    "key": "diplomacy",
+    "name": "외교·교류",
+    "color": 10337960
+   },
+   {
+    "id": 3,
+    "key": "society",
+    "name": "사회·경제",
+    "color": 14139790
+   },
+   {
+    "id": 4,
+    "key": "culture",
+    "name": "문화·사상",
+    "color": 12299464
+   },
+   {
+    "id": 5,
+    "key": "mw-magic",
+    "name": "마법·기억",
+    "color": 12299464
+   },
+   {
+    "id": 6,
+    "key": "mw-nature",
+    "name": "환경·생태",
+    "color": 10337960
+   },
+   {
+    "id": 7,
+    "key": "mw-voyage",
+    "name": "탐사·귀환",
+    "color": 10534085
+   }
+  ],
+  "epochs": [],
+  "axis": []
+ },
+ "legend_kinds": {
+  "kinds": [
+   {
+    "id": "state",
+    "name": "국가"
+   },
+   {
+    "id": "federation",
+    "name": "연맹"
+   },
+   {
+    "id": "org",
+    "name": "조직체"
+   },
+   {
+    "id": "culture",
+    "name": "문화"
+   }
+  ],
+  "historicity": [
+   {
+    "id": "attested",
+    "name": "실재"
+   },
+   {
+    "id": "semi",
+    "name": "반전설"
+   },
+   {
+    "id": "legendary",
+    "name": "전설"
+   },
+   {
+    "id": "disputed",
+    "name": "실재 논쟁"
+   },
+   {
+    "id": "refuted",
+    "name": "부정됨"
+   }
+  ],
+  "categories": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "certainty": [],
+  "alt": true,
+  "fuzzy_cells": false
+ },
+ "scopes": {
+  "scopes": [
+   {
+    "uid": "moonwake-chronicle/scope-warlords",
+    "track": 1,
+    "name": "빈 왕좌의 할거",
+    "label": "할거",
+    "color": 13935515,
+    "members": 3,
+    "default": false
+   },
+   {
+    "uid": "moonwake-chronicle/scope-scattered",
+    "track": 2,
+    "name": "세 자유 항구",
+    "label": "도시 연합",
+    "color": 12299464,
+    "members": 3,
+    "default": false
+   },
+   {
+    "uid": "moonwake-chronicle/scope-epoch",
+    "track": 1,
+    "name": "무왕 협약 시대",
+    "label": "",
+    "color": 12299464,
+    "members": 3,
+    "default": false
+   },
+   {
+    "uid": "moonwake-chronicle/scope-revival",
+    "track": 2,
+    "name": "은륜 부흥 운동",
+    "label": "부흥",
+    "color": 14332309,
+    "members": 2,
+    "default": false
+   }
+  ]
+ }
+}

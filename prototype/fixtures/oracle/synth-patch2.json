@@ -1,0 +1,15 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 3,
+  "id": "synth-patch2",
+  "name": "합성 학설 둘 — 이어 고치는 패치",
+  "version": "1.0.0",
+  "author": "검사 자료",
+  "description": "합성 학설(synth-patch)이 이미 고친 항목을 한 번 더 고치는 둘째 패치 DLC — 모델의 patchedBy가 이어진다. 모든 이름은 지어낸 것입니다.",
+  "requires": [],
+  "tracks": [],
+  "patches": [
+    { "target": "synth-world/e-a", "set": { "title": "다시 고친 가상 사건" }, "note": "둘째 학설" },
+    { "target": "synth-world/p-b", "set": { "name": "다시 고친 다라 공국" }, "note": "둘째 학설" }
+  ]
+}

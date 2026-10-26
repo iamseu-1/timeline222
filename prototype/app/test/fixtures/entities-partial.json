@@ -1,0 +1,3 @@
+[
+ {"uid": "sample-partial/p-b", "kind": "period", "json": "{\"id\":\"p-b\",\"track\":\"mw-coast\",\"name\":\"나래 연맹\",\"start\":100,\"end\":300,\"x_succ\":{\"pre\":[{\"uid\":\"sample-partial/p-a\",\"name\":\"다솜 왕국\",\"color\":\"#bba395\",\"when\":\"기원전 50년 ~ 100년\",\"type\":\"partial\",\"degree\":3,\"degreeName\":\"강\",\"parts\":[\"지배층\",\"백성\"]}],\"post\":[{\"uid\":\"sample-partial/p-c\",\"name\":\"가람 공화국\",\"color\":\"#a0bcc5\",\"when\":\"300년 ~ 400년\",\"type\":\"partial\",\"degree\":2}]}}"}
+]

@@ -1,0 +1,27 @@
+.claude/
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/gen/
+배포/
+참고/
+.taste-skill/
+.agents/
+skills-lock.json
+
+# 비밀값 — 서명 키 · 인증서 · 환경 파일은 저장소에 두지 않는다(키는 base64로 Secrets에만)
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+key.properties
+keystore.properties
+.env
+.env.*
+
+# 뿌리에 떨군 DLC 꾸러미 — 추적 중인 견본 둘만 예외(새 저장소에 트리를 다시 담아도 빠지지 않게)
+/*.htpack
+!/LanternChronicle-v1.0.0.htpack
+!/LanternChronicle-v2.0.0.htpack

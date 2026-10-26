@@ -1,0 +1,263 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 4,
+  "id": "f4-moves",
+  "name": "형식 4 가상 팩 — 옮겨 앉기의 그릇 밖 토막 · 토막 난 상대를 가리킨 섬김 · 실권 · 실권 정권의 섬김 밑줄",
+  "version": "1.0.0",
+  "description": "검사용 가상 자료(고증 아님) — 기간 있는 within 하나(end만 · start만)가 그릇 밖 토막을 내고, 토막 난 나라를 섬김 · 실권으로 가리킨 줄이 시작 해의 토막으로 가며, 실권 정권(regime)의 명목상 섬김이 실권 밑줄(구역 56)이 되는지, 토막 난 나라가 쥔 남의 실권 줄은 그 줄의 시작 해가 든 토막 하나에만 실리는지(이름만인 줄은 토막마다)를 봅니다",
+  "spheres": [
+    {
+      "id": "reed-delta",
+      "name": "갈대 하구권",
+      "order": 1
+    }
+  ],
+  "tracks": [
+    {
+      "id": "galdae",
+      "name": "갈대",
+      "sphere": "reed-delta"
+    },
+    {
+      "id": "moraeteo",
+      "name": "모래터",
+      "sphere": "reed-delta"
+    }
+  ],
+  "objects": [
+    {
+      "id": "e-split",
+      "type": "era",
+      "track": "galdae",
+      "name": "갈라진 시대",
+      "start": 600,
+      "end": 900
+    },
+    {
+      "id": "o-blue",
+      "name": "푸른 강 왕국",
+      "track": "galdae",
+      "start": 620,
+      "end": 1000,
+      "within": [
+        {
+          "of": "e-split",
+          "end": 900
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "첫 임금",
+              "start": 620,
+              "end": 700
+            },
+            {
+              "name": "둘째 임금",
+              "start": 700,
+              "end": 880
+            },
+            {
+              "name": "셋째 임금",
+              "start": 880,
+              "end": 940
+            },
+            {
+              "name": "넷째 임금",
+              "start": 940,
+              "end": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-green",
+      "name": "푸른 들 나라",
+      "track": "galdae",
+      "start": 550,
+      "end": 800,
+      "within": [
+        {
+          "of": "e-split",
+          "start": 600
+        }
+      ],
+      "power": [
+        {
+          "over": "o-hill",
+          "start": 560,
+          "end": 640
+        },
+        {
+          "over": "o-hill",
+          "start": 650,
+          "end": 760
+        },
+        {
+          "over": "o-red"
+        },
+        {
+          "name": "들 권신",
+          "start": 580,
+          "end": 650
+        }
+      ]
+    },
+    {
+      "id": "o-red",
+      "name": "붉은 여울",
+      "track": "galdae",
+      "start": 650,
+      "end": 850,
+      "within": [
+        {
+          "of": "e-split"
+        }
+      ]
+    },
+    {
+      "id": "r-wind",
+      "type": "regime",
+      "name": "바람 막부",
+      "track": "galdae",
+      "start": 910,
+      "end": 970,
+      "partOf": [
+        {
+          "of": "푸른 강 왕국",
+          "relation": "nominal"
+        }
+      ]
+    },
+    {
+      "id": "r-wave",
+      "type": "regime",
+      "name": "물결 정권",
+      "track": "galdae",
+      "start": 700,
+      "end": 860,
+      "partOf": [
+        {
+          "of": "o-blue",
+          "relation": "nominal",
+          "start": 720,
+          "end": 820
+        }
+      ]
+    },
+    {
+      "id": "o-next",
+      "name": "새 강 왕국",
+      "track": "galdae",
+      "start": 1000,
+      "end": 1100,
+      "succeeds": [
+        {
+          "from": "o-blue",
+          "type": "direct",
+          "how": "개명"
+        }
+      ]
+    },
+    {
+      "id": "o-hill",
+      "name": "높은 모래성",
+      "track": "moraeteo",
+      "start": 600,
+      "end": 1000
+    },
+    {
+      "id": "o-small",
+      "name": "작은 모래 고을",
+      "track": "moraeteo",
+      "start": 650,
+      "end": 800,
+      "within": [
+        {
+          "of": "o-hill"
+        }
+      ]
+    },
+    {
+      "id": "r-mist",
+      "type": "regime",
+      "name": "안개 무리",
+      "track": "moraeteo",
+      "start": 700,
+      "end": 760,
+      "partOf": [
+        {
+          "of": "o-small",
+          "relation": "nominal"
+        }
+      ]
+    },
+    {
+      "id": "r-dew",
+      "type": "regime",
+      "name": "이슬 정권",
+      "track": "moraeteo",
+      "start": 930,
+      "end": 990,
+      "partOf": [
+        {
+          "of": "o-blue",
+          "relation": "nominal"
+        }
+      ],
+      "power": [
+        {
+          "over": "o-blue",
+          "start": 940,
+          "end": 980
+        }
+      ]
+    },
+    {
+      "id": "o-neighbor",
+      "name": "이웃 모래 나라",
+      "track": "moraeteo",
+      "start": 850,
+      "end": 990,
+      "power": [
+        {
+          "over": "푸른 강 왕국",
+          "start": 920,
+          "end": 950
+        }
+      ]
+    },
+    {
+      "id": "o-after",
+      "name": "뒤 여울 나라",
+      "track": "moraeteo",
+      "start": 905,
+      "end": 995,
+      "partOf": "푸른 강 왕국"
+    },
+    {
+      "id": "o-ford",
+      "name": "여울 고을",
+      "track": "moraeteo",
+      "start": 920,
+      "end": 980,
+      "partOf": [
+        "o-blue"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "ev-flood",
+      "title": "큰 물난리",
+      "track": "galdae",
+      "start": 950,
+      "category": "politics",
+      "importance": 2,
+      "polity": "o-blue"
+    }
+  ]
+}

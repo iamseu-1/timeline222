@@ -1,0 +1,327 @@
+{
+ "format": "history-timeline-dlc",
+ "formatVersion": 4,
+ "id": "nest-scene",
+ "name": "포개짐 시험",
+ "version": "0.0.1",
+ "tracks": [
+  {
+   "id": "jp",
+   "name": "일본",
+   "color": "#b9b2c9",
+   "order": 1,
+   "sphere": "east-asia"
+  },
+  {
+   "id": "la",
+   "name": "라틴 유럽",
+   "color": "#a0bcc5",
+   "order": 2,
+   "sphere": "latin-europe"
+  }
+ ],
+ "objects": [
+  {
+   "id": "jp-era",
+   "type": "era",
+   "name": "일본",
+   "track": "jp",
+   "start": 1150,
+   "end": 1650,
+   "default": true,
+   "label": "나라",
+   "color": "#b9b2c9"
+  },
+  {
+   "id": "sengoku",
+   "type": "era",
+   "name": "전국 시대",
+   "start": 1467,
+   "end": 1603,
+   "default": true,
+   "label": "할거",
+   "within": [
+    {
+     "of": "jp-era"
+    }
+   ]
+  },
+  {
+   "id": "court",
+   "name": "조정",
+   "start": 1150,
+   "end": 1650,
+   "color": "#b9b2c9",
+   "within": [
+    {
+     "of": "jp-era"
+    }
+   ]
+  },
+  {
+   "id": "south",
+   "name": "남조",
+   "start": 1336,
+   "end": 1392,
+   "color": "#d9a6a6",
+   "within": [
+    {
+     "of": "jp-era"
+    }
+   ]
+  },
+  {
+   "id": "kamakura",
+   "name": "가마쿠라 막부",
+   "start": 1185,
+   "end": 1333,
+   "color": "#a9c4a0",
+   "within": [
+    {
+     "of": "jp-era"
+    }
+   ],
+   "offices": [
+    {
+     "name": "쇼군",
+     "cells": [
+      [
+       "미나모토노 요리토모",
+       1192,
+       1199
+      ],
+      [
+       "미나모토노 요리이에",
+       1202,
+       1203
+      ],
+      [
+       "미나모토노 사네토모",
+       1203,
+       1219
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "muromachi",
+   "name": "무로마치 막부",
+   "start": 1336,
+   "end": 1573,
+   "color": "#d7c18e",
+   "within": [
+    {
+     "of": "jp-era"
+    }
+   ],
+   "succeeds": [
+    {
+     "from": "kamakura",
+     "type": "direct"
+    }
+   ]
+  },
+  {
+   "id": "edo",
+   "name": "에도 막부",
+   "start": 1603,
+   "end": 1868,
+   "color": "#c8b193",
+   "within": [
+    {
+     "of": "jp-era"
+    }
+   ],
+   "succeeds": [
+    {
+     "from": "muromachi",
+     "type": "indirect"
+    }
+   ]
+  },
+  {
+   "id": "takeda",
+   "name": "다케다",
+   "start": 1467,
+   "end": 1582,
+   "color": "#d9a6a6",
+   "within": [
+    {
+     "of": "sengoku"
+    }
+   ]
+  },
+  {
+   "id": "hojo",
+   "name": "고호조",
+   "start": 1493,
+   "end": 1590,
+   "color": "#a0bcc5",
+   "within": [
+    {
+     "of": "sengoku"
+    }
+   ]
+  },
+  {
+   "id": "oda",
+   "name": "오다 정권",
+   "start": 1568,
+   "end": 1582,
+   "color": "#e0d0a0",
+   "within": [
+    {
+     "of": "sengoku"
+    }
+   ]
+  },
+  {
+   "id": "toyotomi",
+   "name": "도요토미 정권",
+   "start": 1582,
+   "end": 1603,
+   "color": "#e0b0bf",
+   "within": [
+    {
+     "of": "sengoku"
+    }
+   ],
+   "succeeds": [
+    {
+     "from": "oda",
+     "type": "direct"
+    }
+   ]
+  },
+  {
+   "id": "hre",
+   "type": "era",
+   "name": "신성 로마",
+   "track": "la",
+   "start": 962,
+   "end": 1806,
+   "default": true,
+   "label": "제국",
+   "color": "#a0bcc5"
+  },
+  {
+   "id": "interregnum",
+   "type": "era",
+   "name": "대공위 시대",
+   "start": 1254,
+   "end": 1273,
+   "within": [
+    {
+     "of": "hre"
+    }
+   ]
+  },
+  {
+   "id": "hab",
+   "type": "era",
+   "name": "합스부르크 군주국",
+   "track": "la",
+   "start": 1526,
+   "end": 1918,
+   "default": true,
+   "label": "동군연합",
+   "color": "#d7c18e"
+  },
+  {
+   "id": "boh",
+   "type": "principality",
+   "name": "보헤미아 왕국",
+   "start": 1198,
+   "end": 1526,
+   "color": "#abb3c9",
+   "within": [
+    {
+     "of": "hre"
+    }
+   ],
+   "offices": [
+    {
+     "name": "지도자",
+     "cells": [
+      [
+       "오타카르 1세",
+       1198,
+       1230
+      ],
+      [
+       "카렐 4세",
+       1346,
+       1378
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "aut",
+   "name": "오스트리아",
+   "start": 1156,
+   "end": 1806,
+   "color": "#b6c398",
+   "within": [
+    {
+     "of": "hre"
+    }
+   ]
+  },
+  {
+   "id": "lub",
+   "type": "city",
+   "name": "뤼베크",
+   "start": 1226,
+   "end": 1806,
+   "color": "#c8b193",
+   "within": [
+    {
+     "of": "hre"
+    }
+   ]
+  },
+  {
+   "id": "hun",
+   "name": "헝가리 왕국",
+   "start": 1000,
+   "end": 1918,
+   "color": "#e0b0bf",
+   "within": [
+    {
+     "of": "hab"
+    }
+   ]
+  },
+  {
+   "id": "fra",
+   "name": "프랑스 왕국",
+   "track": "la",
+   "start": 987,
+   "end": 1792,
+   "color": "#bbacc8"
+  }
+ ],
+ "events": [
+  {
+   "id": "e1",
+   "track": "jp",
+   "start": 1333,
+   "category": "politics",
+   "importance": 1,
+   "title": "겐무 신정",
+   "polity": "court"
+  },
+  {
+   "id": "e2",
+   "track": "jp",
+   "start": 1467,
+   "category": "war",
+   "importance": 1,
+   "title": "오닌의 난",
+   "polity": "muromachi"
+  }
+ ]
+}

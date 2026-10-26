@@ -1,0 +1,378 @@
+{
+ "cases": [
+  {
+   "name": "섭정 — 품은 후보 없이 겹친 후보만(같은 차례에서 처음 겹친 후보의 단) · 품은 후보 · 아무와도 겹치지 않음",
+   "p": {
+    "endY": 1100,
+    "leaders": [
+     {
+      "name": "첫왕",
+      "start": 1000,
+      "end": 1050
+     },
+     {
+      "name": "둘째왕",
+      "start": 1030,
+      "end": 1080,
+      "status": "joint"
+     },
+     {
+      "name": "섭정 들녘",
+      "start": 1060,
+      "end": 1070,
+      "status": "regent"
+     },
+     {
+      "name": "섭정 바람",
+      "start": 1081,
+      "end": 1084,
+      "status": "regent"
+     },
+     {
+      "name": "섭정 물결",
+      "start": 1075,
+      "end": 1090,
+      "status": "regent"
+     },
+     {
+      "name": "셋째왕",
+      "start": 1085,
+      "end": 1100
+     }
+    ]
+   },
+   "want": {
+    "n": 2,
+    "lane": [
+     0,
+     1,
+     1,
+     0,
+     1,
+     0
+    ],
+    "over": 0
+   }
+  },
+  {
+   "name": "섭정 — 겹친 후보가 여럿이면 시작이 앞인 쪽(목록 차례가 뒤여도)",
+   "p": {
+    "endY": 1100,
+    "leaders": [
+     {
+      "name": "셋째왕",
+      "start": 1085,
+      "end": 1100
+     },
+     {
+      "name": "첫왕",
+      "start": 1000,
+      "end": 1050
+     },
+     {
+      "name": "둘째왕",
+      "start": 1030,
+      "end": 1080,
+      "status": "claim"
+     },
+     {
+      "name": "섭정 물결",
+      "start": 1075,
+      "end": 1090,
+      "status": "regent"
+     }
+    ]
+   },
+   "want": {
+    "n": 2,
+    "lane": [
+     0,
+     0,
+     1,
+     1
+    ],
+    "over": 0
+   }
+  },
+  {
+   "name": "시작 · 끝이 수가 아닌 칸은 후보도 섭정도 아니고 단 0(빈 칸 · 시작 null · 글 시작 · 끝 null은 띠 끝)",
+   "p": {
+    "endY": 1100,
+    "leaders": [
+     {
+      "name": "가",
+      "start": 1000,
+      "end": 1050,
+      "status": "joint"
+     },
+     null,
+     {
+      "name": "나",
+      "start": null,
+      "end": 1040
+     },
+     {
+      "name": "다",
+      "start": "1030",
+      "end": 1060
+     },
+     {
+      "name": "라",
+      "start": 1020,
+      "end": null
+     },
+     {
+      "name": "마",
+      "start": 1025
+     },
+     {
+      "name": "바 섭정",
+      "start": null,
+      "end": 1030,
+      "status": "regent"
+     }
+    ]
+   },
+   "want": {
+    "n": 3,
+    "lane": [
+     0,
+     0,
+     0,
+     0,
+     1,
+     2,
+     0
+    ],
+    "over": 0
+   }
+  },
+  {
+   "name": "띠 끝도 칸 끝도 없으면 후보가 아님",
+   "p": {
+    "leaders": [
+     {
+      "name": "가",
+      "start": 1000,
+      "end": 1050,
+      "status": "joint"
+     },
+     {
+      "name": "나",
+      "start": 1020
+     },
+     {
+      "name": "다",
+      "start": 1030,
+      "end": 1040
+     }
+    ]
+   },
+   "want": {
+    "n": 2,
+    "lane": [
+     0,
+     0,
+     1
+    ],
+    "over": 0
+   }
+  },
+  {
+   "name": "시작이 같은 칸 — 목록 순번 차례(주장이 앞)",
+   "p": {
+    "endY": 1060,
+    "leaders": [
+     {
+      "name": "주장 가",
+      "start": 1000,
+      "end": 1050,
+      "status": "claim"
+     },
+     {
+      "name": "나",
+      "start": 1000,
+      "end": 1040
+     },
+     {
+      "name": "다",
+      "start": 1040,
+      "end": 1060
+     }
+    ]
+   },
+   "want": {
+    "n": 2,
+    "lane": [
+     0,
+     1,
+     1
+    ],
+    "over": 0
+   }
+  },
+  {
+   "name": "시작이 같은 칸 — 목록 순번 차례(주장이 뒤)",
+   "p": {
+    "endY": 1060,
+    "leaders": [
+     {
+      "name": "나",
+      "start": 1000,
+      "end": 1040
+     },
+     {
+      "name": "주장 가",
+      "start": 1000,
+      "end": 1050,
+      "status": "claim"
+     },
+     {
+      "name": "다",
+      "start": 1040,
+      "end": 1060
+     }
+    ]
+   },
+   "want": {
+    "n": 2,
+    "lane": [
+     0,
+     1,
+     0
+    ],
+    "over": 0
+   }
+  },
+  {
+   "name": "넘친 칸(4단 넘음 — 마지막 단)을 품은 섭정 · 넘친 뒤 빈 단",
+   "p": {
+    "endY": 1100,
+    "leaders": [
+     {
+      "name": "공 하나",
+      "start": 1000,
+      "end": 1020,
+      "status": "joint"
+     },
+     {
+      "name": "공 둘",
+      "start": 1000,
+      "end": 1020,
+      "status": "joint"
+     },
+     {
+      "name": "공 셋",
+      "start": 1000,
+      "end": 1020,
+      "status": "joint"
+     },
+     {
+      "name": "공 넷",
+      "start": 1000,
+      "end": 1020,
+      "status": "joint"
+     },
+     {
+      "name": "공 다섯",
+      "start": 1010,
+      "end": 1060,
+      "status": "joint"
+     },
+     {
+      "name": "섭정",
+      "start": 1030,
+      "end": 1050,
+      "status": "regent"
+     },
+     {
+      "name": "공 여섯",
+      "start": 1030,
+      "end": 1040,
+      "status": "joint"
+     }
+    ]
+   },
+   "want": {
+    "n": 4,
+    "lane": [
+     0,
+     1,
+     2,
+     3,
+     3,
+     3,
+     0
+    ],
+    "over": 1
+   }
+  },
+  {
+   "name": "공동 · 주장 칸이 없으면 겹쳐도 한 단(정통성 없이 겹친 옛 자료 · 명목 · 섭정만)",
+   "p": {
+    "endY": 1100,
+    "leaders": [
+     {
+      "name": "가",
+      "start": 1000,
+      "end": 1060
+     },
+     {
+      "name": "나",
+      "start": 1040,
+      "end": 1100,
+      "status": "nominal"
+     },
+     {
+      "name": "다",
+      "start": 1050,
+      "end": 1070,
+      "status": "regent"
+     }
+    ]
+   },
+   "want": {
+    "n": 1,
+    "lane": [
+     0,
+     0,
+     0
+    ],
+    "over": 0
+   }
+  },
+  {
+   "name": "공동 칸이 맞닿기만 하면 한 단 · 공동이 아닌 칸끼리만 겹치면 한 단",
+   "p": {
+    "endY": 1100,
+    "leaders": [
+     {
+      "name": "가",
+      "start": 1000,
+      "end": 1050,
+      "status": "joint"
+     },
+     {
+      "name": "나",
+      "start": 1050,
+      "end": 1100
+     },
+     {
+      "name": "다",
+      "start": 1060,
+      "end": 1080
+     }
+    ]
+   },
+   "want": {
+    "n": 1,
+    "lane": [
+     0,
+     0,
+     0
+    ],
+    "over": 0
+   }
+  }
+ ]
+}

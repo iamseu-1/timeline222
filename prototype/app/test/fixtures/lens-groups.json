@@ -1,0 +1,209 @@
+{
+ "note": "lens-export-check.mjs가 sample-groups에서 뜬 렌즈 자료(웹 HEAD) — 손으로 고치지 않는다",
+ "themes": "{\"list\":[{\"id\":\"system\",\"name\":\"체제\",\"color\":\"#abb3c9\",\"order\":0},{\"id\":\"faction\",\"name\":\"붕당\",\"color\":\"#d4a39b\",\"order\":1},{\"id\":\"law\",\"name\":\"법률\",\"color\":\"#bba395\",\"order\":2},{\"id\":\"election\",\"name\":\"선거제도\",\"color\":\"#a0bcc5\",\"order\":3},{\"id\":\"ideology\",\"name\":\"이념\",\"color\":\"#bbacc8\",\"order\":4},{\"id\":\"military\",\"name\":\"군사제도\",\"color\":\"#b6c398\",\"order\":5},{\"id\":\"tax\",\"name\":\"조세제도\",\"color\":\"#d7c18e\",\"order\":6},{\"id\":\"selection\",\"name\":\"선발제도\",\"color\":\"#9dbea8\",\"order\":7}],\"x_lens\":{\"slot\":[\"sample-gr-west\"],\"themes\":[{\"id\":\"system\",\"hint\":\"나라의 짜임\",\"has\":0},{\"id\":\"faction\",\"hint\":\"집권한 단체\",\"has\":1,\"v\":1,\"sw\":{\"t\":\"붕당 — 칸 색은 집권한 단체의 색 · 두 색은 연정\",\"l\":[[\"옛 무리\",12299464],[\"동쪽 무리\",14332309],[\"새 무리\",13740473],[\"곧은 길 모임\",14139790]]}},{\"id\":\"law\",\"hint\":\"법 · 법전\",\"has\":0},{\"id\":\"election\",\"hint\":\"뽑는 방법\",\"has\":0},{\"id\":\"ideology\",\"hint\":\"기준 이념\",\"has\":0},{\"id\":\"military\",\"hint\":\"병제\",\"has\":0},{\"id\":\"tax\",\"hint\":\"세금 거두는 법\",\"has\":0},{\"id\":\"selection\",\"hint\":\"관리 뽑는 법\",\"has\":0}]}}",
+ "tracks": [
+  {
+   "key": "sample-gr-west",
+   "leader": 1,
+   "rows": 1
+  },
+  {
+   "key": "sample-gr-east",
+   "leader": 0,
+   "rows": 2
+  }
+ ],
+ "variants": [
+  {
+   "key": "theme:faction",
+   "kind": 4,
+   "uid": "faction",
+   "name": "붕당",
+   "hides": 12
+  }
+ ],
+ "cells": [
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 2,
+   "start": -667955520,
+   "end": -636399360,
+   "name": "첫 임금",
+   "style": 536903680,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 2,
+   "start": -636399360,
+   "end": -609049440,
+   "name": "둘째 임금",
+   "style": 536952836,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 2,
+   "start": -609049440,
+   "end": -580646880,
+   "name": "셋째 임금",
+   "style": 536969220,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 2,
+   "start": -580646880,
+   "end": -563290560,
+   "name": "넷째 임금",
+   "style": 537018372,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 2,
+   "start": -563290560,
+   "end": -543831840,
+   "name": "어린 임금",
+   "style": 1610776580,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 2,
+   "start": -543831840,
+   "end": -520689600,
+   "name": "여섯째 임금",
+   "style": 537083908,
+   "color": 0
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 0,
+   "start": -620619840,
+   "end": -609049440,
+   "name": "옛\t옛 무리",
+   "style": 268468256,
+   "color": 12299464
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 0,
+   "start": -588536640,
+   "end": -580646880,
+   "name": "동\t동쪽 무리",
+   "style": 268501028,
+   "color": 14332309
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 0,
+   "start": -578543040,
+   "end": -573284160,
+   "name": "새\t새 무리",
+   "style": 268533796,
+   "color": 13740473
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 0,
+   "start": -573284160,
+   "end": -570127680,
+   "name": "동·새\t동쪽 무리 · 새 무리",
+   "style": 268566564,
+   "color": 14332309
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 0,
+   "start": -570127680,
+   "end": -546986880,
+   "name": "새\t새 무리",
+   "style": 268599334,
+   "color": 13740473
+  },
+  {
+   "variant": "theme:faction",
+   "period": "sample-groups/gr-kap",
+   "lane": 0,
+   "start": -543831840,
+   "end": -523319040,
+   "name": "곧\t곧은 길 모임",
+   "style": 268632100,
+   "color": 14139790
+  }
+ ],
+ "items": [
+  {
+   "variant": "theme:faction",
+   "ref": "sample-groups/gr-kap",
+   "b": 0,
+   "c": 1,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-groups/gr-old"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-groups/gr-kap",
+   "b": 0,
+   "c": 2,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-groups/gr-east"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-groups/gr-kap",
+   "b": 0,
+   "c": 3,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-groups/gr-new"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-groups/gr-kap",
+   "b": 0,
+   "c": 4,
+   "name": "",
+   "color": 13740473,
+   "d": 0,
+   "text2": "sample-groups/gr-east\tdab195,d1a9b9"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-groups/gr-kap",
+   "b": 0,
+   "c": 5,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-groups/gr-new"
+  },
+  {
+   "variant": "theme:faction",
+   "ref": "sample-groups/gr-kap",
+   "b": 0,
+   "c": 6,
+   "name": "",
+   "color": 0,
+   "d": 0,
+   "text2": "sample-groups/gr-straight"
+  }
+ ]
+}

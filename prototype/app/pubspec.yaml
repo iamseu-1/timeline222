@@ -1,0 +1,36 @@
+name: archive_prototype
+description: 별여울 아카이브의 보기 전용 성능 시제품
+publish_to: none
+version: 0.1.0+16
+environment:
+  sdk: ^3.13.4
+dependencies:
+  flutter:
+    sdk: flutter
+  ffi: 2.2.0
+  pdfrx: 2.6.5
+  path_provider: 2.1.6
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: 6.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/seed/
+    - assets/seed/originals/
+    - assets/fonts/Pretendard-OFL.txt
+    - assets/fonts/ChosunKm-LICENSE.txt
+  fonts:
+    - family: Pretendard
+      fonts:
+        - asset: assets/fonts/Pretendard-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Pretendard-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/Pretendard-Bold.otf
+          weight: 700
+    - family: ChosunKm
+      fonts:
+        - asset: assets/fonts/ChosunKm.ttf
+          weight: 700

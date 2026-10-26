@@ -1,0 +1,287 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 4,
+  "id": "f4-office4",
+  "name": "형식 4 가상 팩 — 직위 줄 더의 줄 높이(G7) · 승계로 이은 띠마다 다른 수 · 직위 줄 더만 칸이 있는 객체 · 칸 · 소속 구간의 정통성",
+  "version": "1.0.0",
+  "spheres": [
+    {
+      "id": "reed-delta",
+      "name": "갈대 삼각주권",
+      "order": 1
+    }
+  ],
+  "tracks": [
+    {
+      "id": "galdae",
+      "name": "갈대",
+      "sphere": "reed-delta"
+    },
+    {
+      "id": "moraeteo",
+      "name": "모래터",
+      "sphere": "reed-delta"
+    },
+    {
+      "id": "naru",
+      "name": "나루",
+      "sphere": "reed-delta"
+    }
+  ],
+  "objects": [
+    {
+      "id": "o-reed",
+      "name": "갈대 왕국",
+      "track": "galdae",
+      "start": 500,
+      "end": 760,
+      "importance": 3,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "갈대 첫왕",
+              "start": 500,
+              "end": 560
+            },
+            {
+              "name": "갈대 둘째왕",
+              "start": 560,
+              "end": 640,
+              "status": "joint"
+            },
+            {
+              "name": "갈대 셋째왕",
+              "start": 640,
+              "end": 760,
+              "status": "섭정"
+            }
+          ]
+        },
+        {
+          "name": "내각",
+          "cells": [
+            {
+              "name": "갈대 원로회",
+              "start": 600,
+              "end": 700
+            }
+          ]
+        },
+        {
+          "name": "재상",
+          "cells": [
+            {
+              "name": "물길 재상",
+              "start": 520,
+              "end": 600,
+              "status": "nominal"
+            },
+            {
+              "name": "모래 재상",
+              "start": 600,
+              "end": 690
+            }
+          ]
+        },
+        {
+          "name": "서기",
+          "from": "o-scribe/서기"
+        }
+      ]
+    },
+    {
+      "id": "o-reed2",
+      "name": "갈대 후왕국",
+      "track": "galdae",
+      "start": 760,
+      "end": 950,
+      "succeeds": [
+        {
+          "from": "o-reed",
+          "type": "direct"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "후왕 하람",
+              "start": 760,
+              "end": 830
+            },
+            {
+              "name": "후왕 이솔",
+              "start": 830,
+              "end": 950
+            }
+          ]
+        },
+        {
+          "name": "내각",
+          "cells": [
+            {
+              "name": "후왕 내각",
+              "start": 800,
+              "end": 880,
+              "status": "claim"
+            }
+          ]
+        },
+        {
+          "name": "재상",
+          "cells": [
+            {
+              "name": "강 재상",
+              "start": 790,
+              "end": 870
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-scribe",
+      "name": "모래 서원",
+      "track": "moraeteo",
+      "start": 450,
+      "end": 900,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": []
+        },
+        {
+          "name": "내각",
+          "cells": []
+        },
+        {
+          "name": "서기",
+          "cells": [
+            {
+              "name": "서기 누리",
+              "start": 540,
+              "end": 620
+            },
+            {
+              "name": "서기 단",
+              "start": 620,
+              "end": 720,
+              "status": "대립"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-sand",
+      "name": "모래 부족국",
+      "track": "moraeteo",
+      "start": 300,
+      "end": 1000,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "모래 족장 바람",
+              "start": 400,
+              "end": 600
+            },
+            {
+              "name": "모래 족장 여울",
+              "start": 600,
+              "end": 820
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-ferry",
+      "name": "나루 왕국",
+      "track": "naru",
+      "start": 550,
+      "end": 950,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "나루 첫임금",
+              "start": 550,
+              "end": 700
+            },
+            {
+              "name": "나루 둘째임금",
+              "start": 700,
+              "end": 820,
+              "status": "반쪽"
+            },
+            {
+              "name": "나루 셋째임금",
+              "start": 820,
+              "end": 950
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-isle",
+      "name": "섬 고을",
+      "track": "naru",
+      "start": 600,
+      "end": 900,
+      "within": [
+        {
+          "of": "o-ferry",
+          "start": 640,
+          "end": 760,
+          "status": "claim"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "섬 고을지기",
+              "start": 600,
+              "end": 900
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-pier",
+      "name": "부두 마을",
+      "track": "naru",
+      "start": 650,
+      "end": 850,
+      "within": [
+        {
+          "of": "o-ferry",
+          "status": "대립"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "track": "galdae",
+      "polity": "o-reed2",
+      "name": "후왕국 세움",
+      "start": 760
+    },
+    {
+      "track": "moraeteo",
+      "polity": "o-sand",
+      "name": "모래 회맹",
+      "start": 700
+    }
+  ]
+}

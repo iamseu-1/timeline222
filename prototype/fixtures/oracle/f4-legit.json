@@ -1,0 +1,1213 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 4,
+  "id": "f4-legit",
+  "name": "형식 4 가상 팩 — 정통성 넷 가 다듬은 꼴의 줄 높이(지도자 두 단)와 띠마다 제 몸통 높이(줄어드는 층) · 다듬기 판 정통성 장면(하연 왕국 공동 · 섭정 / 남하연 조정 대립 / 설원 제국 명목 둘 · 주장 둘 · 내각 / 북설 칸국 정통성 없음 / 백사 공국 빙원 동맹 소속 명목 / 붉은탑 망명 조정 띠 자체 주장) · 곁 트랙(섭정이 겹치고 명목만 · 정통성 없이 겹침 · 주장이 맞닿기만 — 한 단 / 다섯 겹 공동 — 4단까지 / 접힌 소속의 두 단 / 대범위 모아 보기에서 이사로 드는 두 단) · 몸통 트랙(짧은 몸통 줄 넷 — 앞 지도자 + 지위 · 뒤 지도자 + 내각 + 직위 줄 더 / 두 단 + 내각 / 한 띠가 모든 층 / 기관이 한 띠에만 · 두 층 줄어드는 줄 — 앞 지도자 + 시기 둘 · 뒤 지도자 + 내각 + 직위 줄 더 둘 · 일곱 층에서 자르는 줄 — 네 겹 공동 / 시기 셋 + 기관 + 식민 예속 / 지도자 + 내각 + 직위 줄 더 셋)",
+  "version": "1.0.0",
+  "spheres": [
+    {
+      "id": "lamp-basin",
+      "name": "등불 분지권",
+      "order": 1
+    },
+    {
+      "id": "snow-plain",
+      "name": "설령 빙원권",
+      "order": 2
+    },
+    {
+      "id": "fork-field",
+      "name": "갈림 들녘권",
+      "order": 3
+    }
+  ],
+  "tracks": [
+    {
+      "id": "hayeon",
+      "name": "하연",
+      "sphere": "lamp-basin"
+    },
+    {
+      "id": "seolryeong",
+      "name": "설령",
+      "sphere": "snow-plain"
+    },
+    {
+      "id": "gyeot",
+      "name": "곁",
+      "sphere": "fork-field"
+    },
+    {
+      "id": "momtong",
+      "name": "몸통",
+      "sphere": "fork-field"
+    }
+  ],
+  "objects": [
+    {
+      "id": "o-hayeon",
+      "name": "하연 왕국",
+      "track": "hayeon",
+      "start": 900,
+      "end": 1300,
+      "importance": 3,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "서하왕",
+              "start": 1004,
+              "end": 1031
+            },
+            {
+              "name": "온결왕",
+              "start": 1031,
+              "end": 1066
+            },
+            {
+              "name": "다빈왕",
+              "start": 1050,
+              "end": 1092,
+              "status": "joint"
+            },
+            {
+              "name": "무령왕",
+              "start": 1092,
+              "end": 1141
+            },
+            {
+              "name": "태후 서리",
+              "start": 1092,
+              "end": 1106,
+              "status": "regent"
+            },
+            {
+              "name": "하늘왕",
+              "start": 1141,
+              "end": 1178
+            },
+            {
+              "name": "진왕",
+              "start": 1178,
+              "end": 1209
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-south",
+      "type": "government",
+      "name": "남하연 조정",
+      "track": "hayeon",
+      "start": 1121,
+      "end": 1163,
+      "status": "rival",
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "남 온결",
+              "start": 1121,
+              "end": 1140
+            },
+            {
+              "name": "남 다온",
+              "start": 1140,
+              "end": 1163
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-empire",
+      "name": "설원 제국",
+      "track": "seolryeong",
+      "start": 940,
+      "end": 1260,
+      "importance": 3,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "첫 황제",
+              "start": 990,
+              "end": 1032
+            },
+            {
+              "name": "둘째 황제",
+              "start": 1032,
+              "end": 1061
+            },
+            {
+              "name": "셋째 황제",
+              "start": 1061,
+              "end": 1088,
+              "status": "nominal"
+            },
+            {
+              "name": "넷째 황제",
+              "start": 1088,
+              "end": 1110,
+              "status": "nominal"
+            },
+            {
+              "name": "다섯째 황제",
+              "start": 1110,
+              "end": 1138
+            },
+            {
+              "name": "붉은탑 공",
+              "start": 1138,
+              "end": 1156,
+              "status": "claim"
+            },
+            {
+              "name": "물안개 공",
+              "start": 1140,
+              "end": 1154,
+              "status": "claim"
+            },
+            {
+              "name": "여섯째 황제",
+              "start": 1156,
+              "end": 1190
+            },
+            {
+              "name": "일곱째 황제",
+              "start": 1190,
+              "end": 1230
+            }
+          ]
+        },
+        {
+          "name": "내각",
+          "cells": [
+            {
+              "name": "설원 원로원",
+              "start": 1064,
+              "end": 1110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-khan",
+      "name": "북설 칸국",
+      "track": "seolryeong",
+      "start": 980,
+      "end": 1170,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "눈칸",
+              "start": 1010,
+              "end": 1052
+            },
+            {
+              "name": "서리칸",
+              "start": 1052,
+              "end": 1083
+            },
+            {
+              "name": "우박칸",
+              "start": 1083,
+              "end": 1117
+            },
+            {
+              "name": "얼음칸",
+              "start": 1117,
+              "end": 1160
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-strait",
+      "type": "league",
+      "name": "해협 동맹",
+      "track": "seolryeong",
+      "start": 1000,
+      "end": 1120
+    },
+    {
+      "id": "o-icefield",
+      "type": "league",
+      "name": "빙원 동맹",
+      "track": "seolryeong",
+      "start": 1090,
+      "end": 1250
+    },
+    {
+      "id": "o-baeksa",
+      "type": "principality",
+      "name": "백사 공국",
+      "track": "seolryeong",
+      "start": 1020,
+      "end": 1250,
+      "partOf": [
+        {
+          "of": "o-strait",
+          "relation": "member",
+          "start": 1020,
+          "end": 1100
+        },
+        {
+          "of": "o-icefield",
+          "relation": "member",
+          "start": 1100,
+          "end": 1250,
+          "status": "nominal"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "운결공",
+              "start": 1020,
+              "end": 1058
+            },
+            {
+              "name": "세린공",
+              "start": 1058,
+              "end": 1101
+            },
+            {
+              "name": "하람공",
+              "start": 1101,
+              "end": 1146
+            },
+            {
+              "name": "도윤공",
+              "start": 1146,
+              "end": 1188
+            },
+            {
+              "name": "라온공",
+              "start": 1188,
+              "end": 1215
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-exile",
+      "type": "government",
+      "name": "붉은탑 망명 조정",
+      "track": "seolryeong",
+      "start": 1156,
+      "end": 1196,
+      "status": "claim",
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "붉은탑 공",
+              "start": 1156,
+              "end": 1171
+            },
+            {
+              "name": "붉은탑 소공",
+              "start": 1171,
+              "end": 1196
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-ford",
+      "name": "여울 공국",
+      "track": "gyeot",
+      "start": 1000,
+      "end": 1150,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "여울 첫공",
+              "start": 1000,
+              "end": 1040
+            },
+            {
+              "name": "여울 둘째공",
+              "start": 1040,
+              "end": 1085,
+              "status": "nominal"
+            },
+            {
+              "name": "태비 아란",
+              "start": 1050,
+              "end": 1070,
+              "status": "regent"
+            },
+            {
+              "name": "여울 셋째공",
+              "start": 1080,
+              "end": 1150,
+              "status": "nominal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-willow",
+      "name": "버들 왕국",
+      "track": "gyeot",
+      "start": 1000,
+      "end": 1150,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "버들 큰왕",
+              "start": 1000,
+              "end": 1060
+            },
+            {
+              "name": "버들 작은왕",
+              "start": 1040,
+              "end": 1100
+            },
+            {
+              "name": "버들 끝왕",
+              "start": 1100,
+              "end": 1150
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-willow-town",
+      "type": "city",
+      "name": "버들 성시",
+      "start": 1010,
+      "end": 1120,
+      "within": [
+        "o-willow"
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "성주 가람",
+              "start": 1020,
+              "end": 1070,
+              "status": "joint"
+            },
+            {
+              "name": "성주 나린",
+              "start": 1040,
+              "end": 1090
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-pebble",
+      "name": "자갈 후국",
+      "track": "gyeot",
+      "start": 1000,
+      "end": 1120,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "자갈 첫후",
+              "start": 1000,
+              "end": 1050
+            },
+            {
+              "name": "자갈 둘째후",
+              "start": 1050,
+              "end": 1090,
+              "status": "claim"
+            },
+            {
+              "name": "자갈 셋째후",
+              "start": 1090,
+              "end": 1120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-wheel",
+      "name": "물레 공동왕국",
+      "track": "gyeot",
+      "start": 1000,
+      "end": 1100,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "물레 하나",
+              "start": 1000,
+              "end": 1100,
+              "status": "joint"
+            },
+            {
+              "name": "물레 둘",
+              "start": 1010,
+              "end": 1090,
+              "status": "joint"
+            },
+            {
+              "name": "물레 셋",
+              "start": 1020,
+              "end": 1080,
+              "status": "joint"
+            },
+            {
+              "name": "물레 넷",
+              "start": 1030,
+              "end": 1070,
+              "status": "joint"
+            },
+            {
+              "name": "물레 다섯",
+              "start": 1040,
+              "end": 1060,
+              "status": "joint"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-gather",
+      "type": "era",
+      "name": "갈림 모임",
+      "track": "gyeot"
+    },
+    {
+      "id": "o-dure-head",
+      "name": "두레 으뜸나라",
+      "track": "gyeot",
+      "start": 1000,
+      "end": 1200,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "두레 으뜸왕",
+              "start": 1000,
+              "end": 1200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-dure",
+      "name": "두레 앞나라",
+      "track": "gyeot",
+      "start": 1000,
+      "end": 1060,
+      "within": [
+        "o-gather"
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "두레 첫왕",
+              "start": 1000,
+              "end": 1040
+            },
+            {
+              "name": "두레 둘째왕",
+              "start": 1020,
+              "end": 1060,
+              "status": "joint"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-dure2",
+      "name": "두레 뒤나라",
+      "track": "gyeot",
+      "start": 1060,
+      "end": 1150,
+      "within": [
+        "o-gather"
+      ],
+      "succeeds": [
+        {
+          "from": "o-dure",
+          "type": "indirect"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "두레 뒷왕",
+              "start": 1060,
+              "end": 1150
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-dure-side",
+      "name": "두레 곁나라",
+      "start": 1060,
+      "end": 1120,
+      "within": [
+        "o-dure-head",
+        "o-gather"
+      ],
+      "succeeds": [
+        {
+          "from": "o-dure",
+          "type": "direct"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "두레 곁왕",
+              "start": 1060,
+              "end": 1120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-pine",
+      "name": "솔 왕국",
+      "track": "momtong",
+      "start": 1000,
+      "end": 1080,
+      "ranks": [
+        {
+          "name": "공",
+          "start": 1000,
+          "end": 1040
+        },
+        {
+          "name": "왕",
+          "start": 1040,
+          "end": 1080
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "솔 첫왕",
+              "start": 1000,
+              "end": 1040
+            },
+            {
+              "name": "솔 둘째왕",
+              "start": 1040,
+              "end": 1080
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-pine2",
+      "name": "솔 후왕국",
+      "track": "momtong",
+      "start": 1080,
+      "end": 1160,
+      "succeeds": [
+        {
+          "from": "o-pine",
+          "type": "direct"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "솔 후왕",
+              "start": 1080,
+              "end": 1160
+            }
+          ]
+        },
+        {
+          "name": "내각",
+          "cells": [
+            {
+              "name": "솔 원로회",
+              "start": 1090,
+              "end": 1140
+            }
+          ]
+        },
+        {
+          "name": "재상",
+          "cells": [
+            {
+              "name": "솔 재상",
+              "start": 1085,
+              "end": 1130
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-gull",
+      "name": "갈매 왕국",
+      "track": "momtong",
+      "start": 1000,
+      "end": 1100,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "갈매 첫왕",
+              "start": 1000,
+              "end": 1050
+            },
+            {
+              "name": "갈매 둘째왕",
+              "start": 1030,
+              "end": 1080,
+              "status": "joint"
+            },
+            {
+              "name": "섭정 들녘",
+              "start": 1060,
+              "end": 1070,
+              "status": "regent"
+            },
+            {
+              "name": "섭정 바람",
+              "start": 1081,
+              "end": 1084,
+              "status": "regent"
+            },
+            {
+              "name": "갈매 셋째왕",
+              "start": 1085,
+              "end": 1100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-gull2",
+      "name": "갈매 후왕국",
+      "track": "momtong",
+      "start": 1100,
+      "end": 1180,
+      "succeeds": [
+        {
+          "from": "o-gull",
+          "type": "direct"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "갈매 후왕",
+              "start": 1100,
+              "end": 1180
+            }
+          ]
+        },
+        {
+          "name": "내각",
+          "cells": [
+            {
+              "name": "갈매 내각",
+              "start": 1110,
+              "end": 1160
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-shoal",
+      "name": "모래톱 왕국",
+      "track": "momtong",
+      "start": 1000,
+      "end": 1090,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "모래톱 왕",
+              "start": 1000,
+              "end": 1090
+            }
+          ]
+        },
+        {
+          "name": "내각",
+          "cells": [
+            {
+              "name": "모래톱 원로회",
+              "start": 1010,
+              "end": 1080
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-shoal2",
+      "name": "모래톱 후국",
+      "track": "momtong",
+      "start": 1090,
+      "end": 1170,
+      "succeeds": [
+        {
+          "from": "o-shoal",
+          "type": "direct"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "모래톱 후왕",
+              "start": 1090,
+              "end": 1170
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-quay",
+      "name": "나루터 왕국",
+      "track": "momtong",
+      "start": 1000,
+      "end": 1100,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "나루터 왕",
+              "start": 1000,
+              "end": 1100
+            }
+          ]
+        },
+        {
+          "name": "내각",
+          "cells": [
+            {
+              "name": "나루터 원로회",
+              "start": 1020,
+              "end": 1090
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-quay2",
+      "name": "나루터 후국",
+      "track": "momtong",
+      "start": 1100,
+      "end": 1180,
+      "succeeds": [
+        {
+          "from": "o-quay",
+          "type": "direct"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "나루터 후왕",
+              "start": 1100,
+              "end": 1180
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-quay-customs",
+      "type": "organization",
+      "display": "inside",
+      "name": "나루터 세관",
+      "start": 1110,
+      "end": 1170,
+      "within": [
+        "o-quay2"
+      ]
+    },
+    {
+      "id": "o-reef",
+      "name": "산호 왕국",
+      "track": "momtong",
+      "start": 1000,
+      "end": 1090,
+      "phases": [
+        {
+          "scheme": "도읍",
+          "spans": [
+            {
+              "name": "산호 앞도읍기",
+              "end": 1045
+            },
+            {
+              "name": "산호 뒤도읍기",
+              "start": 1045
+            }
+          ]
+        },
+        {
+          "scheme": "왕실",
+          "spans": [
+            {
+              "name": "산호 첫왕실",
+              "end": 1060
+            },
+            {
+              "name": "산호 둘째왕실",
+              "start": 1060
+            }
+          ]
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "산호 첫왕",
+              "start": 1000,
+              "end": 1050
+            },
+            {
+              "name": "산호 둘째왕",
+              "start": 1050,
+              "end": 1090
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-reef2",
+      "name": "산호 후왕국",
+      "track": "momtong",
+      "start": 1090,
+      "end": 1170,
+      "succeeds": [
+        {
+          "from": "o-reef",
+          "type": "direct"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "산호 후왕",
+              "start": 1090,
+              "end": 1170
+            }
+          ]
+        },
+        {
+          "name": "내각",
+          "cells": [
+            {
+              "name": "산호 원로회",
+              "start": 1100,
+              "end": 1150
+            }
+          ]
+        },
+        {
+          "name": "재상",
+          "cells": [
+            {
+              "name": "산호 재상",
+              "start": 1095,
+              "end": 1140
+            }
+          ]
+        },
+        {
+          "name": "장군",
+          "cells": [
+            {
+              "name": "산호 장군",
+              "start": 1100,
+              "end": 1160
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-cliff",
+      "name": "벼랑 공동왕국",
+      "track": "momtong",
+      "start": 1000,
+      "end": 1060,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "벼랑 하나",
+              "start": 1000,
+              "end": 1060,
+              "status": "joint"
+            },
+            {
+              "name": "벼랑 둘",
+              "start": 1005,
+              "end": 1055,
+              "status": "joint"
+            },
+            {
+              "name": "벼랑 셋",
+              "start": 1010,
+              "end": 1050,
+              "status": "joint"
+            },
+            {
+              "name": "벼랑 넷",
+              "start": 1015,
+              "end": 1045,
+              "status": "joint"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-cliff2",
+      "name": "벼랑 항구국",
+      "track": "momtong",
+      "start": 1060,
+      "end": 1120,
+      "succeeds": [
+        {
+          "from": "o-cliff",
+          "type": "direct"
+        }
+      ],
+      "phases": [
+        {
+          "scheme": "도읍",
+          "spans": [
+            {
+              "name": "벼랑 앞도읍기",
+              "end": 1090
+            },
+            {
+              "name": "벼랑 뒤도읍기",
+              "start": 1090
+            }
+          ]
+        },
+        {
+          "scheme": "왕실",
+          "spans": [
+            {
+              "name": "벼랑 첫왕실",
+              "end": 1080
+            },
+            {
+              "name": "벼랑 둘째왕실",
+              "start": 1080
+            }
+          ]
+        },
+        {
+          "scheme": "교역",
+          "spans": [
+            {
+              "name": "벼랑 닫힌 바다",
+              "end": 1100
+            },
+            {
+              "name": "벼랑 열린 바다",
+              "start": 1100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-cliff3",
+      "name": "벼랑 후왕국",
+      "track": "momtong",
+      "start": 1120,
+      "end": 1180,
+      "succeeds": [
+        {
+          "from": "o-cliff2",
+          "type": "direct"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "벼랑 후왕",
+              "start": 1120,
+              "end": 1180
+            }
+          ]
+        },
+        {
+          "name": "내각",
+          "cells": [
+            {
+              "name": "벼랑 원로회",
+              "start": 1130,
+              "end": 1170
+            }
+          ]
+        },
+        {
+          "name": "재상",
+          "cells": [
+            {
+              "name": "벼랑 재상",
+              "start": 1125,
+              "end": 1160
+            }
+          ]
+        },
+        {
+          "name": "장군",
+          "cells": [
+            {
+              "name": "벼랑 장군",
+              "start": 1130,
+              "end": 1175
+            }
+          ]
+        },
+        {
+          "name": "서기",
+          "cells": [
+            {
+              "name": "벼랑 서기",
+              "start": 1140,
+              "end": 1170
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-cliff-guard",
+      "type": "organization",
+      "display": "inside",
+      "name": "벼랑 해안 수비대",
+      "start": 1070,
+      "end": 1110,
+      "within": [
+        "o-cliff2"
+      ]
+    },
+    {
+      "id": "o-cliff-isle",
+      "name": "벼랑 식민 섬",
+      "track": "momtong",
+      "start": 1070,
+      "end": 1110,
+      "partOf": [
+        {
+          "of": "o-cliff2",
+          "relation": "colony",
+          "start": 1070,
+          "end": 1110
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "track": "hayeon",
+      "polity": "o-hayeon",
+      "name": "하연 공의회",
+      "start": 1036
+    },
+    {
+      "track": "hayeon",
+      "polity": "o-hayeon",
+      "name": "남하연 갈라섬",
+      "start": 1121
+    },
+    {
+      "track": "seolryeong",
+      "polity": "o-empire",
+      "name": "칸의 섭정",
+      "start": 1064
+    },
+    {
+      "track": "seolryeong",
+      "polity": "o-empire",
+      "name": "계승 다툼",
+      "start": 1155
+    },
+    {
+      "track": "seolryeong",
+      "polity": "o-khan",
+      "name": "빙원 원정",
+      "start": 1070
+    },
+    {
+      "track": "seolryeong",
+      "polity": "o-baeksa",
+      "name": "빙원 동맹 가입",
+      "start": 1104
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 4,
+  "id": "f4-sphere",
+  "name": "형식 4 가상 팩 — 문화권 단위의 시대 구분 · 주기 줄 — 틀린 것: 상대 없는 실권",
+  "version": "1.0.0",
+  "spheres": [
+    {
+      "id": "ember-basin",
+      "name": "등불 분지권",
+      "order": 1
+    },
+    {
+      "id": "frost-ridge",
+      "name": "설령 빙원권",
+      "order": 2
+    }
+  ],
+  "tracks": [
+    {
+      "id": "hayeon",
+      "name": "하연",
+      "sphere": "ember-basin"
+    },
+    {
+      "id": "seolryeong",
+      "name": "설령",
+      "sphere": "frost-ridge"
+    }
+  ],
+  "yearCycle": {
+    "names": [
+      "한낮",
+      "별",
+      "바람",
+      "쇠",
+      "새벽",
+      "노을",
+      "달",
+      "물",
+      "숲"
+    ],
+    "start": 1,
+    "label": "불씨해"
+  },
+  "yearCycles": [
+    {
+      "sphere": "ember-basin",
+      "names": [
+        "한낮",
+        "별",
+        "바람",
+        "쇠",
+        "새벽",
+        "노을",
+        "달",
+        "물",
+        "숲"
+      ],
+      "start": 1,
+      "label": "불씨해"
+    },
+    {
+      "sphere": "frost-ridge",
+      "era": "빙원",
+      "from": 300,
+      "step": 10,
+      "label": "빙원력"
+    }
+  ],
+  "objects": [
+    {
+      "id": "ep-world",
+      "type": "era",
+      "name": "안개 시대",
+      "start": 1,
+      "end": 1031
+    },
+    {
+      "id": "ep-l1",
+      "type": "era",
+      "name": "등불 왕국 시대",
+      "sphere": "ember-basin",
+      "start": 1,
+      "end": 788
+    },
+    {
+      "id": "ep-l2",
+      "type": "era",
+      "name": "아홉 불씨 시대",
+      "sphere": "ember-basin",
+      "start": 788,
+      "end": 1031
+    },
+    {
+      "id": "ep-s1",
+      "type": "era",
+      "name": "칸국기",
+      "sphere": "frost-ridge",
+      "start": 300,
+      "end": 788
+    },
+    {
+      "id": "ep-s2",
+      "type": "era",
+      "name": "제국기",
+      "sphere": "frost-ridge",
+      "start": 788,
+      "end": 1031
+    },
+    {
+      "id": "ep-t",
+      "type": "era",
+      "name": "하연 줄 시대",
+      "track": "hayeon",
+      "start": 455,
+      "end": 900
+    },
+    {
+      "id": "o-lantern",
+      "name": "등불 왕국",
+      "track": "hayeon",
+      "start": 1,
+      "end": 788,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "등불 무령왕",
+              "start": 690,
+              "end": 731
+            },
+            {
+              "name": "등불 하온왕",
+              "start": 731,
+              "end": 766
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-gov",
+      "type": "dependency",
+      "name": "하연 총관부",
+      "track": "hayeon",
+      "start": 788,
+      "end": 900,
+      "partOf": [
+        {
+          "of": "o-emp",
+          "relation": "prefecture"
+        }
+      ],
+      "succeeds": [
+        {
+          "from": "o-lantern",
+          "type": "direct"
+        }
+      ]
+    },
+    {
+      "id": "o-city",
+      "type": "city",
+      "name": "빛나루 자유시",
+      "track": "hayeon",
+      "start": 455,
+      "end": 1402,
+      "power": [
+        {
+          "name": "제 실권",
+          "start": 900,
+          "end": 950,
+          "over": "o-city"
+        }
+      ]
+    },
+    {
+      "id": "o-khan",
+      "name": "설족 칸국",
+      "track": "seolryeong",
+      "start": 300,
+      "end": 788,
+      "power": [
+        {
+          "start": 900,
+          "end": 950,
+          "note": "상대도 이름도 적지 않은 실권(이름만 적으면 제 안의 실권자로 맞는 줄 — 2026-10-24)"
+        }
+      ]
+    },
+    {
+      "id": "o-emp",
+      "name": "설원 제국",
+      "track": "seolryeong",
+      "start": 788,
+      "end": 1031,
+      "succeeds": [
+        {
+          "from": "o-khan",
+          "type": "direct"
+        }
+      ],
+      "power": [
+        {
+          "name": "없는 나라의 실권",
+          "start": 900,
+          "end": 950,
+          "over": "o-nowhere"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "track": "hayeon",
+      "polity": "o-city",
+      "name": "항로 개척",
+      "start": 741
+    }
+  ]
+}

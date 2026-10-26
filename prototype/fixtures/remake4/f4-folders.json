@@ -1,0 +1,294 @@
+{
+  "format": "history-timeline-dlc",
+  "formatVersion": 4,
+  "id": "f4-folders",
+  "name": "형식 4 가상 팩 — 4단계 과제 8(소속 폴더 · 그릇 노릇 객체의 꼴)",
+  "version": "1.0.0",
+  "description": "리메이크 4단계 과제 8 걸음 1 · 2의 시험 자료(prototype/scripts/remake4-shots.mjs 장면 f4-folders · f4-folders-open). 지도자 줄이 있는 연방과 구성원 넷(그 가운데 제후국 하나가 다시 구성원 둘을 품음 — 포개진 소속) · 같은 왕의 지도자 칸이 있는 동군연합과 구성원 둘 · 구성원 없는 나라 · 구성원 없는 동맹 · 처음부터 켠 시대 그릇과 그 안의 소속을 가진 국가. 이름은 모두 가상.",
+  "spheres": [
+    {
+      "id": "salt-coast",
+      "name": "소금 해안권",
+      "order": 1
+    }
+  ],
+  "tracks": [
+    {
+      "id": "cheolryeong",
+      "name": "철령",
+      "sphere": "salt-coast"
+    },
+    {
+      "id": "haeseong",
+      "name": "해성",
+      "sphere": "salt-coast"
+    },
+    {
+      "id": "baegol",
+      "name": "바위골",
+      "sphere": "salt-coast"
+    }
+  ],
+  "objects": [
+    {
+      "id": "o-fed",
+      "type": "federation",
+      "name": "철령 제후 연방",
+      "track": "cheolryeong",
+      "start": 1150,
+      "end": 1480,
+      "importance": 3,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "선출 대공 하람",
+              "start": 1150,
+              "end": 1214
+            },
+            {
+              "name": "선출 대공 무령",
+              "start": 1214,
+              "end": 1286
+            },
+            {
+              "name": "선출 대공 세린",
+              "start": 1286,
+              "end": 1352
+            },
+            {
+              "name": "선출 대공 다온",
+              "start": 1352,
+              "end": 1420
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-duchy",
+      "type": "principality",
+      "name": "검은솔 대공국",
+      "start": 1160,
+      "end": 1450,
+      "within": [
+        "o-fed"
+      ],
+      "importance": 2
+    },
+    {
+      "id": "o-duchy-north",
+      "type": "principality",
+      "name": "솔뫼 백령",
+      "start": 1172,
+      "end": 1384,
+      "within": [
+        "o-duchy"
+      ]
+    },
+    {
+      "id": "o-duchy-port",
+      "type": "city",
+      "name": "솔강 자유시",
+      "start": 1236,
+      "end": 1440,
+      "within": [
+        "o-duchy"
+      ]
+    },
+    {
+      "id": "o-windgate",
+      "type": "city",
+      "name": "바람목 자유시",
+      "start": 1200,
+      "end": 1460,
+      "within": [
+        "o-fed"
+      ]
+    },
+    {
+      "id": "o-abbey",
+      "type": "faith",
+      "name": "흰돌 수도원령",
+      "start": 1180,
+      "end": 1400,
+      "within": [
+        "o-fed"
+      ],
+      "importance": 1
+    },
+    {
+      "id": "o-march",
+      "type": "principality",
+      "name": "북녘 변경백령",
+      "start": 1220,
+      "end": 1470,
+      "within": [
+        "o-fed"
+      ],
+      "importance": 2
+    },
+    {
+      "id": "o-union",
+      "type": "union",
+      "name": "해성 · 달섬 연합 왕관",
+      "track": "haeseong",
+      "start": 1260,
+      "end": 1400,
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "해성왕 무진",
+              "start": 1260,
+              "end": 1302
+            },
+            {
+              "name": "해성왕 이솔",
+              "start": 1302,
+              "end": 1351
+            },
+            {
+              "name": "해성왕 란",
+              "start": 1351,
+              "end": 1400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-haeseong",
+      "name": "해성 왕국",
+      "start": 1270,
+      "end": 1400,
+      "within": [
+        "o-union"
+      ]
+    },
+    {
+      "id": "o-dalseom",
+      "name": "달섬 왕국",
+      "start": 1275,
+      "end": 1390,
+      "within": [
+        "o-union"
+      ]
+    },
+    {
+      "id": "o-realm",
+      "type": "realm",
+      "name": "외솔 나라",
+      "track": "haeseong",
+      "start": 1110,
+      "end": 1245
+    },
+    {
+      "id": "o-league",
+      "type": "league",
+      "name": "세 포구 동맹",
+      "track": "haeseong",
+      "start": 1120,
+      "end": 1250
+    },
+    {
+      "id": "o-age",
+      "type": "era",
+      "name": "바위골 할거",
+      "label": "할거",
+      "track": "baegol",
+      "start": 1240,
+      "end": 1440,
+      "default": true,
+      "color": "#c9b79a",
+      "description": "바위골이 여러 세력으로 갈라진 때 — 처음부터 켜져 그 안의 바위골 왕국이 소속을 품은 채 폴더에 든다"
+    },
+    {
+      "id": "o-rock",
+      "name": "바위골 왕국",
+      "start": 1245,
+      "end": 1430,
+      "within": [
+        {
+          "of": "o-age"
+        }
+      ],
+      "offices": [
+        {
+          "name": "지도자",
+          "cells": [
+            {
+              "name": "바위왕 진",
+              "start": 1245,
+              "end": 1301
+            },
+            {
+              "name": "바위왕 하윤",
+              "start": 1301,
+              "end": 1362
+            },
+            {
+              "name": "바위왕 해온",
+              "start": 1362,
+              "end": 1430
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-rock-north",
+      "type": "principality",
+      "name": "바위골 북백령",
+      "start": 1262,
+      "end": 1410,
+      "within": [
+        "o-rock"
+      ]
+    },
+    {
+      "id": "o-rock-market",
+      "type": "city",
+      "name": "바위골 장터",
+      "start": 1290,
+      "end": 1425,
+      "within": [
+        "o-rock"
+      ]
+    },
+    {
+      "id": "o-ash",
+      "type": "warlord",
+      "name": "붉은재 군벌",
+      "start": 1250,
+      "end": 1336,
+      "within": [
+        {
+          "of": "o-age"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "track": "cheolryeong",
+      "polity": "o-fed",
+      "name": "선출 회의",
+      "start": 1214
+    },
+    {
+      "track": "haeseong",
+      "polity": "o-union",
+      "name": "두 왕관 서약",
+      "start": 1260
+    },
+    {
+      "track": "baegol",
+      "polity": "o-rock",
+      "name": "장터 특허",
+      "start": 1290
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "history-timeline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "역사 연표 — 원본 웹 폴더 하나에서 연표와 DLC 메이커를 따로 PWA · Windows 앱(Tauri)으로 포장합니다",
+  "type": "module",
+  "scripts": {
+    "tauri": "tauri",
+    "web": "node scripts/build-web.mjs",
+    "icons": "node scripts/make-icons.mjs",
+    "serve": "node scripts/serve.mjs . 8765",
+    "pwa:serve": "npm run web && node scripts/serve.mjs dist/web 8766",
+    "pwa:serve:maker": "npm run web && node scripts/serve.mjs dist/maker 8767",
+    "desktop:dev": "tauri dev",
+    "desktop:dev:maker": "tauri dev --config src-tauri/tauri.maker.conf.json",
+    "desktop:build": "tauri build && node scripts/collect-build.mjs web",
+    "desktop:build:maker": "tauri build --config src-tauri/tauri.maker.conf.json && node scripts/collect-build.mjs maker",
+    "desktop:build:all": "npm run desktop:build && npm run desktop:build:maker",
+    "collect": "node scripts/collect-build.mjs",
+    "desktop:icons": "tauri icon icons/app-1024.png",
+    "version": "node scripts/sync-version.mjs && git add -A"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2"
+  }
+}
